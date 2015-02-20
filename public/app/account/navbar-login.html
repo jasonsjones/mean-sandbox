@@ -1,8 +1,8 @@
-<form class="navbar-form navbar-right" ng-hide="vm.identity.isAuthenticated()">
+<form class="navbar-form navbar-right" name="loginForm" ng-hide="vm.identity.isAuthenticated()">
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="username" ng-model="vm.username" />
+        <input type="text" class="form-control" placeholder="username" ng-model="vm.username" required />
         <input type="password" class="form-control" placeholder="password" ng-model="vm.password" />
-        <button type="submit" class="btn btn-primary" ng-click="vm.login()"><i class="fa fa-sign-in"></i>  Login</button>
+        <button type="submit" class="btn btn-primary" ng-click="vm.login()" ng-disabled="loginForm.$invalid"><i class="fa fa-sign-in"></i>  Login</button>
     </div>
 </form>
 <ul class="nav navbar-nav navbar-right" ng-show="vm.identity.isAuthenticated()">
