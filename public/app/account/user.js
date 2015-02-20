@@ -5,7 +5,7 @@
         .service('UserResource', UserResource);
 
     function UserResource($resource) {
-        var UserResrc = $resource('/api/user/:_id', {_id: "@id"},
+        var UserResrc = $resource('/api/users/:_id', {_id: "@id"},
             { update: {
                 method: 'PUT',
                 isArray: false

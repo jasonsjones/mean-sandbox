@@ -11,9 +11,9 @@ exports.getUsers = function (req, res) {
     });
 };
 
-exports.getUserByName = function (req, res) {
+exports.getUserById = function (req, res) {
     console.log(req.params);
-    User.find({"username": req.params.name}, '-salt -password').exec(function (err, user) {
+    User.find({"_id": req.params.id}, '-salt -password').exec(function (err, user) {
         if (err) {
             console.log('error');
         } else {
@@ -39,4 +39,10 @@ exports.createUser = function (req, res, next) {
             res.json(user);
         });
     });
+};
+
+exports.updateUser = function (req, res) {
+    console.log('update user called with the following data: ');
+    console.log(req.body);
+    res.send('well done...');
 };

@@ -8,6 +8,7 @@
 
         var service = {
             authenticateUser: authenticateUser,
+            updateUser: updateUser,
             createUser: createUser
         };
 
@@ -54,6 +55,21 @@
             function newUserFailure(response) {
                 deferred.reject(response.data.reason);
             }
+        }
+
+        function updateUser(updatedUserData) {
+            var deferred = $q.defer();
+
+            var clonedUser = angular.copy(identityservice.currentUser);
+            angular.extend(clonedUser, updatedUserData);
+
+            clonedUser.$update().then(function () {
+                deferred.resolve();
+            }, function (response) {
+                deferred.reject(response.data.reason);
+            });
+
+            return deferred.promise;
         }
 
     }
