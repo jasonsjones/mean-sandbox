@@ -1,0 +1,10 @@
+<div class="jumbotron">
+    <h1>Welcome to the MEAN Sandbox!</h1>
+    <p class="leading">A playground to explore the MEAN stack</p>
+</div>
+<div class="row">
+    <div class="col-md-3" ng-repeat="service in vm.components">
+        <img ng-src="{{ service.img_url }}" class="img-responsive">
+        <p ng-bind="service.description"></p>
+    </div>
+</div>

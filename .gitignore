@@ -1,0 +1,6 @@
+.c9/
+node_modules/
+public/components
+data/
+npm-debug.log
+*.swp

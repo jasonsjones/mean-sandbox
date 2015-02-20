@@ -1,0 +1,19 @@
+.navbar .navbar-form button {
+    margin-right: 30px;
+}
+
+footer {
+    background: #333;
+    color: #eee;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.unstyled {
+    list-style: none;
+    padding: 0;
+}
+
+.toast-top-right {
+    top: 55px;
+}

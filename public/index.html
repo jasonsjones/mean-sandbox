@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css" type="text/css" >
+        <link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css" type="text/css" >
+        <link rel="stylesheet" href="components/toastr/toastr.min.css" type="text/css" >
+        <link rel="stylesheet" href="css/style.css" type="text/css" >
+        <base href="/">
+        <title>MEAN Sandbox</title>
+    </head>
+    <body ng-app="app">
+        <div ng-include="'app/account/navbar.html'"></div>
+        <div class="container">
+            <div ng-view=""></div>
+        </div>
+        <div ng-include="'app/main/navbar-footer.html'"></div>
+        <script type="text/javascript" src="components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="components/toastr/toastr.min.js"></script>
+        <script type="text/javascript" src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="components/angular-resource/angular-resource.min.js"></script>
+        <script type="text/javascript" src="app/app.js"></script>
+        <script type="text/javascript" src="app/account/identity.js"></script>
+        <script type="text/javascript" src="app/account/navBarLoginCtrl.js"></script>
+        <script type="text/javascript" src="app/account/SignupCtrl.js"></script>
+        <script type="text/javascript" src="app/account/ProfileCtrl.js"></script>
+        <script type="text/javascript" src="app/admin/UserAdminCtrl.js"></script>
+        <script type="text/javascript" src="app/main/dataservice.js"></script>
+        <script type="text/javascript" src="app/main/Controller.js"></script>
+        <script type="text/javascript" src="app/account/auth.js"></script>
+        <script type="text/javascript" src="app/account/user.js"></script>
+        <script type="text/javascript" src="app/util/notifier.js"></script>
+    </body>
+</html>
