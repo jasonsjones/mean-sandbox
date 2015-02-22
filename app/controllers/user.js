@@ -44,7 +44,7 @@ exports.createUser = function (req, res, next) {
 exports.updateUser = function (req, res) {
     var userUpdates = req.body;
 
-    if (req.user._id !== userUpdates._id || req.user.roles.indexOf('admin') === -1) {
+    if (req.user._id !== userUpdates._id && req.user.roles.indexOf('admin') === -1) {
         res.status(403);
         return res.end();
     }
