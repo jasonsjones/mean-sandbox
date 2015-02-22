@@ -34,7 +34,7 @@
             //}
 
             authservice.updateUser(userUpdate).then(function () {
-                notifier.notify('info updated');
+                notifier.notify('Your profile information has been successfully updated');
             }, function (reason) {
                 notifier.error(reason);
             });
