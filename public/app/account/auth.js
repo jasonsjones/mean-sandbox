@@ -64,6 +64,7 @@
             angular.extend(clonedUser, updatedUserData);
 
             clonedUser.$update().then(function () {
+                identityservice.currentUser = clonedUser;
                 deferred.resolve();
             }, function (response) {
                 deferred.reject(response.data.reason);

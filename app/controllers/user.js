@@ -42,7 +42,29 @@ exports.createUser = function (req, res, next) {
 };
 
 exports.updateUser = function (req, res) {
-    console.log('update user called with the following data: ');
-    console.log(req.body);
-    res.send('well done...');
+    var userUpdates = req.body;
+
+    if (req.user._id !== userUpdates._id || req.user.roles.indexOf('admin') === -1) {
+        res.status(403);
+        return res.end();
+    }
+
+    req.user.firstName = userUpdates.firstName;
+    req.user.lastName = userUpdates.lastName;
+    req.user.username = userUpdates.username;
+
+    //if (userUpdates.password && userUpdates.password.length > 0) {
+        //req.user.salt = hash.createSalt();
+        //req.user.password = hash.hashPassword(req.user.salt, userUpdates.password);
+    //} else {
+        //console.log('user\'s passowrd was not updated...');
+    //}
+
+    req.user.save(function (err) {
+        if (err) {
+            res.status(400);
+            return res.json({reason: err.toString()});
+        }
+        res.send(req.user);
+    });
 };

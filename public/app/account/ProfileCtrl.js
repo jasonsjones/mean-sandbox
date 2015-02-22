@@ -9,12 +9,10 @@
 
         vm.editPassword = false;
 
-        vm.identity = identityservice;
-
-        vm.firstName = vm.identity.currentUser.firstName;
-        vm.lastName = vm.identity.currentUser.lastName;
-        vm.email = vm.identity.currentUser.email;
-        vm.username = vm.identity.currentUser.username;
+        vm.firstName = identityservice.currentUser.firstName;
+        vm.lastName = identityservice.currentUser.lastName;
+        vm.email = identityservice.currentUser.email;
+        vm.username = identityservice.currentUser.username;
 
         vm.updateData = function () {
             console.log('Update Data clicked...');
@@ -26,22 +24,20 @@
             };
 
 
-            if (vm.newPassword && vm.newPassword.length > 0) {
-                if (vm.newPassword !== vm.confirmPassword) {
-                    notifier.error('Passwords do not match');
-                    vm.newPassword = "";
-                    vm.confirmPassword = "";
-                }
-                userUpdate.password = vm.newPassword;
-            }
+            //if (vm.newPassword && vm.newPassword.length > 0) {
+                //if (vm.newPassword !== vm.confirmPassword) {
+                    //notifier.error('Passwords do not match');
+                    //vm.newPassword = "";
+                    //vm.confirmPassword = "";
+                //}
+                //userUpdate.password = vm.newPassword;
+            //}
 
             authservice.updateUser(userUpdate).then(function () {
-                notifier.notify('info updates');
+                notifier.notify('info updated');
             }, function (reason) {
                 notifier.error(reason);
             });
-
-
 
         };
 
