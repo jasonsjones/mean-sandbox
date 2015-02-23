@@ -26,7 +26,7 @@
                 <input class="form-control" type="text" name="username" placeholder="Username" ng-model="vm.username">
             </div>
         </div>
-        <!-- div to enclose pwd fields
+        <!-- div to enclose pwd fields -->
         <div ng-show="vm.editPassword">
             <div class="form-group">
                 <label class="col-md-2 control-label" for="new-password">New Password</label>
@@ -41,12 +41,9 @@
                 </div>
             </div>
         </div>
-        -->
         <div class="form-group">
             <div class="col-md-10 col-md-offset-2">
-                <!--
                 <a href="" class="btn btn-info" ng-hide="vm.editPassword" ng-click="vm.toggleEditPassword()"> Change Password?</a>
-                -->
                 <div class="pull-right">
                    <button class="btn btn-primary" ng-click="vm.updateData()"><i class="fa fa-check"></i> Update</button>
                    &nbsp; <a href="/" class="btn btn-default"><i class="fa fa-times"></i> Cancel</a>

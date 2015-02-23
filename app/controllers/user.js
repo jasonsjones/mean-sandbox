@@ -51,14 +51,16 @@ exports.updateUser = function (req, res) {
 
     req.user.firstName = userUpdates.firstName;
     req.user.lastName = userUpdates.lastName;
+    req.user.email = userUpdates.email;
     req.user.username = userUpdates.username;
 
-    //if (userUpdates.password && userUpdates.password.length > 0) {
-        //req.user.salt = hash.createSalt();
-        //req.user.password = hash.hashPassword(req.user.salt, userUpdates.password);
-    //} else {
-        //console.log('user\'s passowrd was not updated...');
-    //}
+    if (userUpdates.password && userUpdates.password.length > 0 && req.user.password !== userUpdates.password) {
+        console.log('updating password to ' + userUpdates.password);
+        req.user.salt = hash.createSalt();
+        req.user.password = hash.hashPassword(req.user.salt, userUpdates.password);
+    } else {
+        console.log('user\'s password was not updated...');
+    }
 
     req.user.save(function (err) {
         if (err) {
