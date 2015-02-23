@@ -27,17 +27,24 @@
                     notifier.error('passwords do not match');
                     vm.newPassword = "";
                     vm.confirmPassword = "";
+                } else {
+                    userUpdate.password = vm.newPassword;
+                    sendToAuthService(userUpdate);
                 }
-                userUpdate.password = vm.newPassword;
+            } else {
+                sendToAuthService(userUpdate);
             }
 
-            authservice.updateUser(userUpdate).then(function () {
-                notifier.notify('Your profile information has been successfully updated');
-                $location.path('/');
-            }, function (reason) {
-                notifier.error(reason);
-            });
+            //////////////////
 
+            function sendToAuthService(newUserData) {
+                authservice.updateUser(newUserData).then(function () {
+                    notifier.notify('Your profile information has been successfully updated');
+                    $location.path('/');
+                }, function (reason) {
+                    notifier.error(reason);
+                });
+            }
         };
 
         vm.toggleEditPassword = function () {
