@@ -6,7 +6,7 @@ var config = require('./config/config')[env];
 
 var app = require('./config/express')(config);
 
-require('./config/mongoose');
+require('./config/mongoose')(config);
 
 require('./app/routes/user')(app);
 // this route needs to be defined at the end of all other routes
