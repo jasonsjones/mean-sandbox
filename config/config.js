@@ -1,6 +1,6 @@
 module.exports = {
     development: {
-        db: 'mongodb://localhost/cashtracker',
+        db: 'mongodb://localhost/meansandbox',
         secret: 'learningtheMEANstack',
         port: process.env.PORT || 8080
     }
