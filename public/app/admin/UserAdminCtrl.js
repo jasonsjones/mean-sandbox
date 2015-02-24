@@ -8,4 +8,4 @@
         var vm = this;
         vm.users = UserResource.query();
     }
-})();
+}());

@@ -51,4 +51,4 @@
             vm.editPassword = !vm.editPassword;
         };
     }
-})();
+}());

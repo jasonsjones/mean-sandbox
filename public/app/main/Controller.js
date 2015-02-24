@@ -16,4 +16,4 @@
             notifier.info('MEAN components loaded...');
         });
     }
-})();
+}());

@@ -43,4 +43,4 @@
             return vm.password === vm.confirmPassword;
         }
     }
-})();
+}());

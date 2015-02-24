@@ -21,7 +21,6 @@ var User = mongoose.model('User', userSchema);
 function createDefaultUsers() {
     User.find({}).exec(function (err, collection) {
         if (err) {
-
         }
         if (collection.length === 0) {
             console.log('creating list of default users in db...');
