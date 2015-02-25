@@ -12,6 +12,7 @@ function logger(req, res, next) {
 module.exports = function (config) {
     var app = express();
 
+    app.use(logger);
     app.use(express.static(path.join(__dirname + '/../public')));
     app.use('components', express.static(path.join(__dirname + '/../public/components')));
     app.use(bodyParser.urlencoded({extended: true}));
@@ -25,7 +26,9 @@ module.exports = function (config) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.use(logger);
+    require('../app/routes/user')(app);
+    // this route needs to be defined at the end of all other routes
+    require('../app/routes/index')(app);
 
     return app;
 };
