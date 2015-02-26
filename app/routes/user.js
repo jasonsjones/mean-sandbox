@@ -9,7 +9,8 @@ module.exports = function (app, api) {
         .put(user.updateUser);
 
     api.route('/api/users/:id')
-        .get(user.getUserById);
+        .get(user.getUserById)
+        .delete(user.userDelete);
 
     api.route('/login')
         .post(auth.authenticateWithPassport);

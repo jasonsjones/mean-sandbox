@@ -70,3 +70,12 @@ exports.updateUser = function (req, res) {
         res.send(req.user);
     });
 };
+
+exports.userDelete = function (req, res) {
+    User.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.send(err);
+        }
+        res.send({message: 'user removed'});
+    });
+};
