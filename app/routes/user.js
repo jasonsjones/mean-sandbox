@@ -1,14 +1,16 @@
 var auth = require('../controllers/auth');
 var user = require('../controllers/user');
 
-module.exports = function (app) {
+module.exports = function (app, api) {
 
-    app.get('/api/users', user.getUsers);
-    app.post('/api/users', user.createUser);
-    app.put('/api/users', user.updateUser);
+    api.route('/api/users')
+        .get(user.getUsers)
+        .post(user.createUser)
+        .put(user.updateUser);
 
-    app.get('/api/users/:id', user.getUserById);
+    api.route('/api/users/:id')
+        .get(user.getUserById);
 
-    // app.post('/login', auth.authenticate);
-    app.post('/login', auth.authenticateWithPassport);
+    api.route('/login')
+        .post(auth.authenticateWithPassport);
 };
