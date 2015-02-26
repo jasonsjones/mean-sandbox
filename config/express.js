@@ -5,7 +5,7 @@ var passport = require('passport');
 var session = require('express-session');
 
 function logger(req, res, next) {
-    console.log(req.method + ' ' + req.url);
+    console.log(req.method + ' ' + req.url + ' -- ' + res.statusCode);
     next();
 }
 
