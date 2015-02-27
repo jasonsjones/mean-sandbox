@@ -2,6 +2,22 @@
     <h1>Admin Page</h1>
 </div>
 <hr>
-<div ng-repeat="user in vm.users">
-    <h3>{{ user.firstName + ' ' + user.lastName }}</h3>
-</div>
+<h3>Users</h3>
+<table class="table">
+    <thead>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Admin</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="user in vm.users">
+            <td>{{ user.username }}</td>
+            <td>{{ user.firstName + ' ' + user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ (user.roles.indexOf('admin')) > -1 ? 'yes' : 'no'  }}</td>
+            <td><a href="/" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a></td>
+            <td><a href="/" class="btn btn-info">Update</a></td>
+        </tr>
+    </tbody>
+</table>
