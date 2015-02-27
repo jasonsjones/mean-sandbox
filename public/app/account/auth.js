@@ -4,7 +4,7 @@
     angular.module('app.core')
         .factory('authservice', authservice);
 
-    function authservice($http, $q, $window, identityservice, UserResource) {
+    function authservice($http, $q, $window, identityservice, sbUser) {
 
         var service = {
             authenticateUser: authenticateUser,
@@ -25,7 +25,7 @@
 
             function authSuccess(response) {
                 if (response.data.success) {
-                    var user = new UserResource();
+                    var user = new sbUser();
                     angular.extend(user, response.data.user);
                     identityservice.currentUser = user;
                     $window.localStorage.currentUser = JSON.stringify(user);
@@ -38,7 +38,7 @@
 
         function createUser(newUserData) {
             console.log(newUserData);
-            var newUser = new UserResource(newUserData);
+            var newUser = new sbUser(newUserData);
 
             var deferred = $q.defer();
 

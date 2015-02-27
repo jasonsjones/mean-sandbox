@@ -2,21 +2,22 @@
     'use strict';
 
     angular.module('app.core')
-        .service('UserResource', UserResource);
+        .service('sbUser', sbUser);
 
-    function UserResource($resource) {
-        var UserResrc = $resource('/api/users/:_id', {_id: "@id"},
+    function sbUser($resource) {
+
+        var User = $resource('/api/users/:id', {id: "@_id"},
             { update: {
                 method: 'PUT',
                 isArray: false
             }
         });
 
-        UserResrc.prototype.isAdmin = function () {
+        User.prototype.isAdmin = function () {
             return this.roles && this.roles.indexOf('admin') > -1;
         };
 
 
-        return UserResrc;
+        return User;
     }
 }());

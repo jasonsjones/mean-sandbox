@@ -5,13 +5,13 @@
     angular.module('app.core')
         .factory('identityservice', identityservice);
 
-    function identityservice($window, UserResource) {
+    function identityservice($window, sbUser) {
 
         var currentUser = null;
 
         if ($window.localStorage.currentUser) {
             var systemUser = JSON.parse($window.localStorage.currentUser);
-            currentUser = new UserResource();
+            currentUser = new sbUser();
             angular.extend(currentUser, systemUser);
             console.log(currentUser);
         }
@@ -27,5 +27,4 @@
         function isAuthenticated() {
             return !!this.currentUser;
         }
-    }
-}());
+    } }());

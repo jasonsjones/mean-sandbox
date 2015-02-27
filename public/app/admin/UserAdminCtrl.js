@@ -3,9 +3,9 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    function UserAdminCtrl(UserResource) {
+    function UserAdminCtrl(sbUser) {
         console.log('UserAdminCtrl loaded...');
         var vm = this;
-        vm.users = UserResource.query();
+        vm.users = sbUser.query();
     }
 }());
