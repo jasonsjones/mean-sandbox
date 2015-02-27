@@ -4,7 +4,7 @@
 </div>
 <div class="row">
     <div class="col-md-3" ng-repeat="service in vm.components">
-        <img ng-src="{{ service.img_url }}" class="img-responsive">
+        <a href="{{ service.web_url }}"><img ng-src="{{ service.img_url }}" class="img-responsive"></a>
         <p ng-bind="service.description"></p>
     </div>
 </div>

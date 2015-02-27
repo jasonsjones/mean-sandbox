@@ -9,8 +9,6 @@
         var vm = this;
         vm.identity = identityservice;
 
-        vm.text = dataservice.getText();
-
         dataservice.getMeanComponents().then(function (results) {
             vm.components = results;
             notifier.info('MEAN components loaded...');
