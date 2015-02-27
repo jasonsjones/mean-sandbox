@@ -3,12 +3,14 @@
 </div>
 <hr>
 <h3>Users</h3>
-<table class="table">
+<table class="table table-condensed">
     <thead>
-        <th>Username</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Admin</th>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Admin</th>
+        </tr>
     </thead>
     <tbody>
         <tr ng-repeat="user in vm.users">
@@ -16,8 +18,8 @@
             <td>{{ user.firstName + ' ' + user.lastName }}</td>
             <td>{{ user.email }}</td>
             <td>{{ (user.roles.indexOf('admin')) > -1 ? 'yes' : 'no'  }}</td>
-            <td><a href="/" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a></td>
-            <td><a href="/" class="btn btn-info">Update</a></td>
+            <td><a href="" ng-click="vm.deleteUser(user)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a></td>
+            <td><a href="" ng-click="vm.updateUser(user)" class="btn btn-info">Update</a></td>
         </tr>
     </tbody>
 </table>
