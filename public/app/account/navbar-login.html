@@ -3,6 +3,7 @@
         <input type="text" class="form-control" placeholder="username" ng-model="vm.username" required />
         <input type="password" class="form-control" placeholder="password" ng-model="vm.password" />
         <button type="submit" class="btn btn-primary" ng-click="vm.login()" ng-disabled="loginForm.$invalid"><i class="fa fa-sign-in"></i>  Login</button>
+        <a href="/signup" class="btn btn-default"><i class="fa fa-user-plus"></i> Sign Up</a>
     </div>
 </form>
 <ul class="nav navbar-nav navbar-right" ng-show="vm.identity.isAuthenticated()">
