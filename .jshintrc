@@ -1,5 +1,6 @@
 {
+    "newcap": false,
     "globals": {
-        "angular": false
+        "angular": true
     }
 }
