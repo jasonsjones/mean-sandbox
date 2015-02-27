@@ -5,12 +5,12 @@
     angular.module('app.core')
         .controller('navBarLoginCtrl', navBarLoginCtrl);
 
-    function navBarLoginCtrl($location, $window, authservice, identityservice, notifier) {
+    function navBarLoginCtrl($location, $window, sbAuth, identityservice, notifier) {
         var vm = this;
         vm.identity = identityservice;
 
         vm.login = function () {
-            authservice.authenticateUser(vm.username, vm.password)
+            sbAuth.authenticateUser(vm.username, vm.password)
                 .then(function (success) {
                     if (success) {
                         notifier.notify('You have successfully logged in');

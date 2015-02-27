@@ -4,7 +4,7 @@
     angular.module('app.core')
         .controller('SignupCtrl', SignupCtrl);
 
-    function SignupCtrl($http, $location, authservice, notifier) {
+    function SignupCtrl($http, $location, sbAuth, notifier) {
         console.log('SignupCtrl loaded...');
 
         var vm = this;
@@ -20,7 +20,7 @@
             };
 
             if (newUser.password.length > 0 && isPasswordCorrect()) {
-                authservice.createUser(newUser).then(
+                sbAuth.createUser(newUser).then(
                     function () {
                         notifier.notify('User account created');
                         $location.path('/');

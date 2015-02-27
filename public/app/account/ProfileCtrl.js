@@ -3,7 +3,7 @@
     angular.module('app.core')
         .controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($http, $location, identityservice, notifier, authservice) {
+    function ProfileCtrl($http, $location, identityservice, notifier, sbAuth) {
         console.log('ProfileCtrl loaded...');
         var vm = this;
 
@@ -38,7 +38,7 @@
             //////////////////
 
             function sendToAuthService(newUserData) {
-                authservice.updateUser(newUserData).then(function () {
+                sbAuth.updateUser(newUserData).then(function () {
                     notifier.notify('Your profile information has been successfully updated');
                     $location.path('/');
                 }, function (reason) {

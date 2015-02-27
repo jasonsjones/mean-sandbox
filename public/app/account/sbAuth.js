@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app.core')
-        .factory('authservice', authservice);
+        .factory('sbAuth', sbAuth);
 
-    function authservice($http, $q, $window, identityservice, sbUser) {
+    function sbAuth($http, $q, $window, identityservice, sbUser) {
 
         var service = {
             authenticateUser: authenticateUser,
