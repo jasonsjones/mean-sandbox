@@ -36,6 +36,11 @@
                 controller: 'UserAdminCtrl',
                 controllerAs: 'vm'
             })
+            .when('/admin/edituser', {
+                templateUrl: 'app/account/profile.html',
+                controller: 'EditUserCtrl',
+                controllerAs: 'vm'
+            })
             .otherwise({
                 redirectTo: '/'
             });
