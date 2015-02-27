@@ -5,11 +5,11 @@ module.exports = function (app, api) {
 
     api.route('/api/users')
         .get(user.getUsers)
-        .post(user.createUser)
-        .put(user.updateUser);
+        .post(user.createUser);
 
     api.route('/api/users/:id')
         .get(user.getUserById)
+        .put(user.updateUserById)
         .delete(user.userDelete);
 
     api.route('/login')

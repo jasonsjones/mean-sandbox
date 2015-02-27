@@ -41,7 +41,42 @@ exports.createUser = function (req, res, next) {
     });
 };
 
-exports.updateUser = function (req, res) {
+exports.updateUserById = function (req, res) {
+    User.findOne({_id: req.params.id}).exec(function (err, user) {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        }
+
+        //if (req.user.roles.indexOf('admin') === -1) {
+            //res.status(403);
+            //return res.end();
+        //}
+
+        var userUpdates = req.body;
+        user.firstName = userUpdates.firstName;
+        user.lastName = userUpdates.lastName;
+        user.email = userUpdates.email;
+        user.username = userUpdates.username;
+
+        if (userUpdates.password && userUpdates.password.length > 0 && user.password !== userUpdates.password) {
+            user.salt = hash.createSalt();
+            user.password = hash.hashPassword(user.salt, userUpdates.password);
+            console.log('user\'s password was successfully updated...');
+        } else {
+            console.log('user\'s password was not updated...');
+        }
+        user.save(function (err) {
+            if (err) {
+                res.status(400);
+                return res.json({reason: err.toString()});
+            }
+            res.send(user);
+        });
+    });
+};
+
+exports.updateCurrentUser = function (req, res) {
     var userUpdates = req.body;
 
     if (req.user._id !== userUpdates._id && req.user.roles.indexOf('admin') === -1) {
