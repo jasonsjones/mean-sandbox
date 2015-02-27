@@ -6,6 +6,9 @@
     angular.module('app.core').factory('notifier', notifier);
 
     function notifier(toastr) {
+        toastr.options.closeButton = true;
+        toastr.options.progressBar = true;
+        toastr.options.positionClass = 'toast-bottom-right';
        return {
            notify: function(msg) {
                toastr.success(msg);

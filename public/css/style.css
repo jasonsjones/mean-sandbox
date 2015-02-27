@@ -17,3 +17,7 @@ footer {
 .toast-top-right {
     top: 55px;
 }
+
+.toast-bottom-right {
+    bottom: 55px;
+}
