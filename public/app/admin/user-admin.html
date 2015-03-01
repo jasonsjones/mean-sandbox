@@ -19,7 +19,7 @@
             <td>{{ user.email }}</td>
             <td>{{ (user.roles.indexOf('admin')) > -1 ? 'yes' : 'no'  }}</td>
             <td><a href="" ng-click="vm.deleteUser(user)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a></td>
-            <td><a href="/admin/edituser" class="btn btn-info">Edit User</a></td>
+            <td><a href="" ng-click="vm.updateUser(user)" class="btn btn-info">Edit User</a></td>
         </tr>
     </tbody>
 </table>

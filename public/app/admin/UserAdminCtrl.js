@@ -3,8 +3,9 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    function UserAdminCtrl(sbUser) {
+    function UserAdminCtrl(sbUser, sbEditUser, $location) {
         console.log('UserAdminCtrl loaded...');
+
         var vm = this;
         vm.users = sbUser.query();
 
@@ -14,6 +15,8 @@
 
         vm.updateUser = function (user) {
             console.log(user.firstName + ' is to be updtated...');
+            sbEditUser.userToEdit = user;
+            $location.path('/admin/edituser');
         };
     }
 }());
