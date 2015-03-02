@@ -4,7 +4,7 @@
     angular.module('app.core')
         .factory('sbAuth', sbAuth);
 
-    function sbAuth($http, $q, $window, identityservice, sbUser) {
+    function sbAuth($http, $q, $window, sbIdentity, sbUser) {
 
         var service = {
             authenticateUser: authenticateUser,
@@ -27,7 +27,7 @@
                 if (response.data.success) {
                     var user = new sbUser();
                     angular.extend(user, response.data.user);
-                    identityservice.currentUser = user;
+                    sbIdentity.currentUser = user;
                     $window.localStorage.currentUser = JSON.stringify(user);
                     deferred.resolve(true);
                 } else {
@@ -48,7 +48,7 @@
 
             ////////////////
             function newUserSuccess(response) {
-                identityservice.currentUser = newUser;
+                sbIdentity.currentUser = newUser;
                 deferred.resolve();
             }
 
@@ -60,11 +60,11 @@
         function updateUser(updatedUserData) {
             var deferred = $q.defer();
 
-            var clonedUser = angular.copy(identityservice.currentUser);
+            var clonedUser = angular.copy(sbIdentity.currentUser);
             angular.extend(clonedUser, updatedUserData);
 
             clonedUser.$update().then(function () {
-                identityservice.currentUser = clonedUser;
+                sbIdentity.currentUser = clonedUser;
                 deferred.resolve();
             }, function (response) {
                 deferred.reject(response.data.reason);

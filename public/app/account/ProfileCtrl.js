@@ -3,16 +3,16 @@
     angular.module('app.core')
         .controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($http, $location, identityservice, notifier, sbAuth) {
+    function ProfileCtrl($http, $location, sbIdentity, notifier, sbAuth) {
         console.log('ProfileCtrl loaded...');
         var vm = this;
 
         vm.editPassword = false;
 
-        vm.firstName = identityservice.currentUser.firstName;
-        vm.lastName = identityservice.currentUser.lastName;
-        vm.email = identityservice.currentUser.email;
-        vm.username = identityservice.currentUser.username;
+        vm.firstName = sbIdentity.currentUser.firstName;
+        vm.lastName = sbIdentity.currentUser.lastName;
+        vm.email = sbIdentity.currentUser.email;
+        vm.username = sbIdentity.currentUser.username;
 
         vm.updateData = function () {
             var userUpdate = {

@@ -25,7 +25,7 @@
                 templateUrl: '/app/account/profile.html',
                 controller: 'ProfileCtrl',
                 resolve: {
-                    show: function (identityservice) {
+                    show: function (sbIdentity) {
 
                     }
                 },

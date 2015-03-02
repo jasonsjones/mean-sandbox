@@ -1,11 +1,10 @@
 (function () {
-    /* jshint validthis: true */
     'use strict';
 
     angular.module('app.core')
-        .factory('identityservice', identityservice);
+        .factory('sbIdentity', sbIdentity);
 
-    function identityservice($window, sbUser) {
+    function sbIdentity($window, sbUser) {
 
         var currentUser = null;
 

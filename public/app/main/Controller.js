@@ -5,9 +5,9 @@
         .controller('Controller', Controller);
 
     //////////////////////////
-    function Controller(dataservice, identityservice, notifier) {
+    function Controller(dataservice, sbIdentity, notifier) {
         var vm = this;
-        vm.identity = identityservice;
+        vm.identity = sbIdentity;
 
         dataservice.getMeanComponents().then(function (results) {
             vm.components = results;

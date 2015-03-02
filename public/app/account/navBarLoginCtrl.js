@@ -5,9 +5,9 @@
     angular.module('app.core')
         .controller('navBarLoginCtrl', navBarLoginCtrl);
 
-    function navBarLoginCtrl($location, $window, sbAuth, identityservice, notifier) {
+    function navBarLoginCtrl($location, $window, sbAuth, sbIdentity, notifier) {
         var vm = this;
-        vm.identity = identityservice;
+        vm.identity = sbIdentity;
 
         vm.login = function () {
             sbAuth.authenticateUser(vm.username, vm.password)

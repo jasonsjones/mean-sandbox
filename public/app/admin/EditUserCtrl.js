@@ -5,7 +5,7 @@
         .controller('EditUserCtrl', EditUserCtrl);
 
     //////////
-    function EditUserCtrl(sbEditUser, identityservice) {
+    function EditUserCtrl(sbEditUser, sbIdentity) {
         console.log('EditUserCtrl loaded...');
         var vm = this;
         var ute = sbEditUser.userToEdit;
