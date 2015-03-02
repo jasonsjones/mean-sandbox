@@ -1,5 +1,6 @@
 {
     "newcap": false,
+    "validthis": true,
     "globals": {
         "angular": true
     }

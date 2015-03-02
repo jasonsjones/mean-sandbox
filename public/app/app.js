@@ -37,7 +37,7 @@
                 controllerAs: 'vm'
             })
             .when('/admin/edituser', {
-                templateUrl: 'app/account/profile.html',
+                templateUrl: 'app/admin/edit-profile.html',
                 controller: 'EditUserCtrl',
                 controllerAs: 'vm'
             })

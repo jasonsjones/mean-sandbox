@@ -1,0 +1,55 @@
+<div class="well">
+    <h1>Edit User Profile</h1>
+    <h3>User: {{ vm.firstName + ' ' + vm.lastName  }}</h3>
+    <form class="form-horizontal" name="profileUpdate">
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="fname">First Name</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="fname" placeholder="First Name" ng-model="vm.firstName">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="lname">Last Name</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="lname" placeholder="Last Name" ng-model="vm.lastName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="email">Email</label>
+            <div class="col-md-10">
+                <input class="form-control" type="email" name="email" placeholder="Email" ng-model="vm.email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="username">Username</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="username" placeholder="Username" ng-model="vm.username">
+            </div>
+        </div>
+        <!-- div to enclose pwd fields -->
+        <div ng-show="vm.editPassword">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="new-password">New Password</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="password" name="new-password" placeholder="Enter New Password" ng-model="vm.newPassword">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="confirm-password">Confirm New Password</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="password" name="confirm-password" placeholder="Enter Password Again" ng-model="vm.confirmPassword">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-2">
+                <a href="" class="btn btn-info" ng-hide="vm.editPassword" ng-click="vm.toggleEditPassword()"> Change Password?</a>
+                <div class="pull-right">
+                   <button class="btn btn-primary" ng-click="vm.updateData()"><i class="fa fa-check"></i> Update</button>
+                   &nbsp; <a href="/" class="btn btn-default"><i class="fa fa-times"></i> Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

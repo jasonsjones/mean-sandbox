@@ -17,7 +17,7 @@
             <td>{{ user.username }}</td>
             <td>{{ user.firstName + ' ' + user.lastName }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ (user.roles.indexOf('admin')) > -1 ? 'yes' : 'no'  }}</td>
+            <td><span ng-if="vm.isAdmin(user)"><i class="fa fa-check"></i></span></td>
             <td><a href="" ng-click="vm.deleteUser(user)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a></td>
             <td><a href="" ng-click="vm.updateUser(user)" class="btn btn-info">Edit User</a></td>
         </tr>

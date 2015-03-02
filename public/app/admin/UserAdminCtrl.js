@@ -9,6 +9,10 @@
         var vm = this;
         vm.users = sbUser.query();
 
+        vm.isAdmin = function (user) {
+            return user.roles.indexOf('admin') > -1;
+        };
+
         vm.deleteUser = function (user) {
             console.log(user.firstName + ' is to be deleted...');
         };
