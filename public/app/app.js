@@ -3,12 +3,22 @@
     'use strict';
 
     angular.module('app', ['ngRoute', 'ngResource', 'app.core']);
+    angular.module('app.core', []);
 
     angular.module('app')
         .config(config);
 
     function config($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
+
+        var routeRoleCheck = {
+            admin: {
+                auth: function (sbAuth) {
+                    console.log('calling adminRoutes in app config...');
+                    return sbAuth.authorizeCurrentUserForRoute('admin');
+                }
+            }
+        };
 
         $routeProvider
             .when('/', {
@@ -34,7 +44,8 @@
             .when('/admin/users', {
                 templateUrl: 'app/admin/user-admin.html',
                 controller: 'UserAdminCtrl',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: routeRoleCheck.admin
             })
             .when('/admin/edituser', {
                 templateUrl: 'app/admin/edit-profile.html',
@@ -46,6 +57,12 @@
             });
     }
 
-    angular.module('app.core', []);
+    angular.module('app').run(function($rootScope, $location) {
+        $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
+            if (rejection === 'not authorized') {
+                $location.path('/');
+            }
+        });
+    });
 
 }());

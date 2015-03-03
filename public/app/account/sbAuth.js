@@ -9,7 +9,9 @@
         var service = {
             authenticateUser: authenticateUser,
             updateUser: updateUser,
-            createUser: createUser
+            createUser: createUser,
+            authorizeCurrentUserForRoute: authorizeCurrentUserForRoute,
+            authorizeAuthenticatedUserForRoute: authorizeAuthenticatedUserForRoute
         };
 
         return service;
@@ -73,5 +75,23 @@
             return deferred.promise;
         }
 
+        function authorizeAuthenticatedUserForRoute() {
+            if (sbIdentity.isAuthenticated()) {
+               return true;
+            } else {
+                return $q.reject('not authorized');
+            }
+        }
+
+        function authorizeCurrentUserForRoute(role) {
+
+            if (sbIdentity.isAuthorizedForRole(role)) {
+                console.log('user is authorized for role: ' + role);
+                return true;
+            } else {
+                return $q.reject('not authorized');
+            }
+        }
     }
+
 }());
