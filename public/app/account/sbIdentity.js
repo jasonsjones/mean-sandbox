@@ -12,12 +12,12 @@
             var systemUser = JSON.parse($window.localStorage.currentUser);
             currentUser = new sbUser();
             angular.extend(currentUser, systemUser);
-            console.log(currentUser);
         }
 
         var service = {
             currentUser: currentUser,
-            isAuthenticated: isAuthenticated
+            isAuthenticated: isAuthenticated,
+            isAuthorizedForRole: isAuthorizedForRole
         };
 
         return service;
@@ -26,4 +26,9 @@
         function isAuthenticated() {
             return !!this.currentUser;
         }
+
+        function isAuthorizedForRole(role) {
+            return this.currentUser && this.currentUser.role.indexOf(role) > -1;
+        }
+
     } }());
