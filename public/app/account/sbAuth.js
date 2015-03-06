@@ -5,11 +5,12 @@
     angular.module('app.core')
         .factory('sbAuth', sbAuth);
 
-    function sbAuth($http, $q, $window, sbIdentity, sbUser) {
+    function sbAuth($http, $q, $window, sbIdentity, sbUser, sbEditUser) {
 
         var service = {
             authenticateUser: authenticateUser,
             updateUser: updateUser,
+            updateCurrentUser: updateCurrentUser,
             createUser: createUser,
             authorizeCurrentUserForRoute: authorizeCurrentUserForRoute,
             authorizeAuthenticatedUserForRoute: authorizeAuthenticatedUserForRoute
@@ -62,7 +63,7 @@
             }
         }
 
-        function updateUser(updatedUserData) {
+        function updateCurrentUser(updatedUserData) {
             var deferred = $q.defer();
 
             var clonedUser = angular.copy(sbIdentity.currentUser);
@@ -75,6 +76,26 @@
             ////////////////
             function updateUserSuccess() {
                 sbIdentity.currentUser = clonedUser;
+                deferred.resolve();
+            }
+
+            function updateUserFailure(response) {
+                deferred.reject(response.data.reason);
+            }
+        }
+
+        function updateUser(updatedUserData) {
+            var deferred = $q.defer();
+
+            var clonedUser = angular.copy(sbEditUser.userToEdit);
+            angular.extend(clonedUser, updatedUserData);
+
+            clonedUser.$update().then(updateUserSuccess, updateUserFailure);
+
+            return deferred.promise;
+
+            ////////////////
+            function updateUserSuccess() {
                 deferred.resolve();
             }
 

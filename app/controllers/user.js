@@ -59,6 +59,10 @@ exports.updateUserById = function (req, res) {
         user.email = userUpdates.email;
         user.username = userUpdates.username;
 
+        if (userUpdates.roles.admin && user.roles.indexOf('admin') > -1) {
+            user.roles.push('admin');
+        }
+
         if (userUpdates.password && userUpdates.password.length > 0 && user.password !== userUpdates.password) {
             user.salt = hash.createSalt();
             user.password = hash.hashPassword(user.salt, userUpdates.password);

@@ -27,6 +27,14 @@
                 <input class="form-control" type="text" name="username" placeholder="Username" ng-model="vm.username">
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="roles">Roles</label>
+            <div class="checkbox col-md-4">
+                <label>
+                    <input type="checkbox" ng-model="vm.roles.admin"> Admin
+                </label>
+            </div>
+        </div>
         <!-- div to enclose pwd fields -->
         <div ng-show="vm.editPassword">
             <div class="form-group">

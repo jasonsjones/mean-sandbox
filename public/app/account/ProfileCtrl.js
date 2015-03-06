@@ -38,7 +38,7 @@
             //////////////////
 
             function sendToAuthService(newUserData) {
-                sbAuth.updateUser(newUserData).then(function () {
+                sbAuth.updateCurrentUser(newUserData).then(function () {
                     notifier.notify('Your profile information has been successfully updated');
                     $location.path('/');
                 }, function (reason) {
