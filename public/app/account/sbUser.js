@@ -1,4 +1,5 @@
 (function () {
+    /* global angular: true */
     'use strict';
 
     angular.module('app.core')
@@ -6,18 +7,18 @@
 
     function sbUser($resource) {
 
-        var User = $resource('/api/users/:id', {id: "@_id"},
-            { update: {
-                method: 'PUT',
-                isArray: false
+        var UserResource = $resource('/api/users/:id', {id: "@_id"},
+            {
+                update: {
+                    method: 'PUT',
+                    isArray: false
             }
         });
 
-        User.prototype.isAdmin = function () {
+        UserResource.prototype.isAdmin = function () {
             return this.roles && this.roles.indexOf('admin') > -1;
         };
 
-
-        return User;
+        return UserResource;
     }
 }());

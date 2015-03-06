@@ -34,11 +34,6 @@
             .when('/profile', {
                 templateUrl: '/app/account/profile.html',
                 controller: 'ProfileCtrl',
-                resolve: {
-                    show: function (sbIdentity) {
-
-                    }
-                },
                 controllerAs: 'vm'
             })
             .when('/admin/users', {
@@ -57,12 +52,15 @@
             });
     }
 
-    angular.module('app').run(function($rootScope, $location) {
-        $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
-            if (rejection === 'not authorized') {
-                $location.path('/');
+    angular.module('app')
+        .run(function($rootScope, $location) {
+            $rootScope.$on('$routeChangeError', handleRouteChangeError);
+
+            function handleRouteChangeError(evt, current, previous, rejection) {
+                if (rejection === 'not authorized') {
+                    $location.path('/');
+                }
             }
-        });
     });
 
 }());

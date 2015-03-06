@@ -1,5 +1,7 @@
 (function () {
     'use strict';
+    /* global angular: true */
+
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
@@ -18,7 +20,6 @@
         };
 
         vm.updateUser = function (user) {
-            console.log(user.firstName + ' is to be updtated...');
             sbEditUser.userToEdit = user;
             $location.path('/admin/edituser');
         };

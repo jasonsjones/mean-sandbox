@@ -1,4 +1,5 @@
 (function () {
+    /* global angular:true */
     'use strict';
 
     angular.module('app.core')
@@ -16,6 +17,7 @@
 
         return service;
 
+        /************* implementation details *************/
         function authenticateUser(username, password) {
             var deferred = $q.defer();
             $http.post('/login', {
@@ -25,6 +27,7 @@
 
             return deferred.promise;
 
+            /////////////////////////
             function authSuccess(response) {
                 if (response.data.success) {
                     var user = new sbUser();
@@ -65,14 +68,19 @@
             var clonedUser = angular.copy(sbIdentity.currentUser);
             angular.extend(clonedUser, updatedUserData);
 
-            clonedUser.$update().then(function () {
-                sbIdentity.currentUser = clonedUser;
-                deferred.resolve();
-            }, function (response) {
-                deferred.reject(response.data.reason);
-            });
+            clonedUser.$update().then(updateUserSuccess, updateUserFailure);
 
             return deferred.promise;
+
+            ////////////////
+            function updateUserSuccess() {
+                sbIdentity.currentUser = clonedUser;
+                deferred.resolve();
+            }
+
+            function updateUserFailure(response) {
+                deferred.reject(response.data.reason);
+            }
         }
 
         function authorizeAuthenticatedUserForRoute() {
