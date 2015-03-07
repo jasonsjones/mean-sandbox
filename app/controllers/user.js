@@ -59,8 +59,15 @@ exports.updateUserById = function (req, res) {
         user.email = userUpdates.email;
         user.username = userUpdates.username;
 
-        if (userUpdates.roles.admin && user.roles.indexOf('admin') > -1) {
+        if (userUpdates.roles.admin && user.roles.indexOf('admin') === -1) {
             user.roles.push('admin');
+            console.log('user added as admin');
+        }
+
+        if (!(userUpdates.roles.admin) && user.roles.indexOf('admin') > -1) {
+            var idx = user.roles.indexOf('admin');
+            user.roles.splice(idx, 1);
+            console.log('user removed as admin');
         }
 
         if (userUpdates.password && userUpdates.password.length > 0 && user.password !== userUpdates.password) {
