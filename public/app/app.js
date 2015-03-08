@@ -55,12 +55,11 @@
     angular.module('app')
         .run(function($rootScope, $location) {
             $rootScope.$on('$routeChangeError', handleRouteChangeError);
+        });
 
-            function handleRouteChangeError(evt, current, previous, rejection) {
-                if (rejection === 'not authorized') {
-                    $location.path('/');
-                }
-            }
-    });
-
+    function handleRouteChangeError(evt, current, previous, rejection) {
+        if (rejection === 'not authorized') {
+            $location.path('/');
+        }
+    }
 }());

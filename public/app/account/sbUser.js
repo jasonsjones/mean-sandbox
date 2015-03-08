@@ -7,7 +7,7 @@
 
     function sbUser($resource) {
 
-        var UserResource = $resource('/api/users/:id', {id: "@_id"},
+        var UserResource = $resource('/api/users/:id', {id: '@_id'},
             {
                 update: {
                     method: 'PUT',

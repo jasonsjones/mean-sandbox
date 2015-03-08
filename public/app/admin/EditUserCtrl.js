@@ -45,8 +45,8 @@
             if (vm.newPassword && vm.newPassword.length > 0) {
                 if (vm.newPassword !== vm.confirmPassword) {
                     notifier.error('passwords do not match');
-                    vm.newPassword = "";
-                    vm.confirmPassword = "";
+                    vm.newPassword = '';
+                    vm.confirmPassword = '';
                 } else {
                     userUpdate.password = vm.newPassword;
                     sendToAuthService(userUpdate);

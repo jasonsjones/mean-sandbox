@@ -106,7 +106,7 @@
 
         function authorizeAuthenticatedUserForRoute() {
             if (sbIdentity.isAuthenticated()) {
-               return true;
+                return true;
             } else {
                 return $q.reject('not authorized');
             }
