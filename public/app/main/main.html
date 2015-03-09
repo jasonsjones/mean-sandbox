@@ -5,7 +5,8 @@
 <div class="row">
     <div class="col-md-3" ng-repeat="service in vm.components">
         <div class="thumbnail">
-            <a href="{{ service.web_url }}"><img ng-src="{{ service.img_url }}" class="img-responsive"></a>
+            <a href="{{ service.webUrl }}"><img ng-src="{{ service.imgUrl }}"
+                class="img-responsive"></a>
             <div class="caption">
                 <p ng-bind="service.description"></p>
             </div>

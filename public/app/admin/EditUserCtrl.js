@@ -59,7 +59,8 @@
 
             function sendToAuthService(newUserData) {
                 sbAuth.updateUser(newUserData).then(function () {
-                    notifier.notify('User information for ' + newUserData.username + ' has been successfully updated');
+                    notifier.notify('User information for ' + newUserData.username +
+                                    ' has been successfully updated');
                     $location.path('/');
                 }, function (reason) {
                     notifier.error(reason);
