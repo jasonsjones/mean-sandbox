@@ -1,22 +1,17 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
+var config = require('./gulp.config')();
 var $ = require('gulp-load-plugins')({lazy: true});
-
-var source = [
-    './public/*.js',
-    './public/app/**/*.js'
-];
 
 gulp.task('vet', function() {
     log('Analyzing source with JSHint and JSCS...');
-    return gulp.src(source)
-        .pipe($.print())
+    return gulp.src(config.alljs)
+        .pipe($.if(args.verbose, $.print()))
         .pipe($.jscs()).on('error', handleError)
         .pipe($.jshint('./.jshintrc'))
         .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
         .pipe($.jshint.reporter('fail'));
 });
-
 
 gulp.task('serve-dev', function () {
 
