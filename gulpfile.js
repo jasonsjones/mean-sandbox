@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
 var config = require('./gulp.config')();
+var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('vet', function() {
@@ -13,8 +14,24 @@ gulp.task('vet', function() {
         .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('serve-dev', function () {
+gulp.task('styles', ['clean-styles'], function () {
+    log('Compiling Less --> CSS');
+    console.log(config.less);
 
+    return gulp
+        .src(config.less)
+        .pipe($.print())
+        .pipe($.less())
+        .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
+        .pipe(gulp.dest(config.temp));
+});
+
+gulp.task('clean-styles', function (done) {
+    var files = config.temp + '**/*.css';
+    clean(files, done);
+});
+
+gulp.task('serve-dev', function () {
     var nodeOptions = {
         script: 'server.js',
         delayTime: 1,
@@ -43,6 +60,11 @@ gulp.task('serve-dev', function () {
 });
 
 /***************************/
+function clean(path, done) {
+    log('Cleaning: ' + $.util.colors.blue(path));
+    del(path, done);
+}
+
 function log(msg) {
     if (typeof(msg) === 'object') {
         for (var item in msg) {
