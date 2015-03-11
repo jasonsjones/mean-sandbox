@@ -2,7 +2,7 @@ module.exports = function () {
     var client = './public/';
 
     var config = {
-        temp: client + '/.tmp',
+        temp: client + '.tmp/',
 
         // all js to vet
         alljs: [

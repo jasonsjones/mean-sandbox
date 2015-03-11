@@ -8,7 +8,8 @@ gulp.task('vet', function() {
     log('Analyzing source with JSHint and JSCS...');
     return gulp.src(config.alljs)
         .pipe($.if(args.verbose, $.print()))
-        .pipe($.jscs()).on('error', handleError)
+        .pipe($.plumber())
+        .pipe($.jscs())//.on('error', errorLogger)
         .pipe($.jshint('./.jshintrc'))
         .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
         .pipe($.jshint.reporter('fail'));
@@ -20,8 +21,9 @@ gulp.task('styles', ['clean-styles'], function () {
 
     return gulp
         .src(config.less)
-        .pipe($.print())
+        .pipe($.plumber())
         .pipe($.less())
+        // .on('error', errorLogger)
         .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
         .pipe(gulp.dest(config.temp));
 });
@@ -29,6 +31,10 @@ gulp.task('styles', ['clean-styles'], function () {
 gulp.task('clean-styles', function (done) {
     var files = config.temp + '**/*.css';
     clean(files, done);
+});
+
+gulp.task('less-watcher', function () {
+    gulp.watch([config.less], ['styles']);
 });
 
 gulp.task('serve-dev', function () {
@@ -75,9 +81,4 @@ function log(msg) {
     } else {
         $.util.log($.util.colors.blue(msg));
     }
-}
-
-function handleError(err) {
-    $.util.log(err.message);
-    this.emit('end');
 }
