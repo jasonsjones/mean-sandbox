@@ -61,7 +61,7 @@
                 sbAuth.updateUser(newUserData).then(function () {
                     notifier.notify('User information for ' + newUserData.username +
                                     ' has been successfully updated');
-                    $location.path('/');
+                    $location.path('/admin/users');
                 }, function (reason) {
                     notifier.error(reason);
                 });
