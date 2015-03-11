@@ -37,6 +37,16 @@ gulp.task('less-watcher', function () {
     gulp.watch([config.less], ['styles']);
 });
 
+gulp.task('wiredep', function () {
+    var options = config.getWiredepDefaultOptions(); // TODO
+    var wiredep = require('wiredep').stream;
+    return gulp
+        .src(config.index) // TODO index.html
+        .pipe(wiredep(options))
+        .pipe($.inject(gulp.src(config.js)))
+        .pipe(gulp.dest(config.client));
+});
+
 gulp.task('serve-dev', function () {
     var nodeOptions = {
         script: 'server.js',
