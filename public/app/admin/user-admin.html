@@ -17,9 +17,11 @@
             <td>{{ user.username }}</td>
             <td>{{ user.firstName + ' ' + user.lastName }}</td>
             <td>{{ user.email }}</td>
+            <!--
             <td><span ng-if="vm.isAdmin(user)"><i class="fa fa-check"></i></span></td>
-            <td><a href="" ng-click="vm.updateUser(user)" class="btn btn-info">Edit User</a></td>
-            <td><a href="" ng-click="vm.deleteUser(user)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a></td>
+          -->
+            <td><button ng-click="vm.updateUser(user)" class="btn btn-info">Edit User</button></td>
+            <td><button ng-click="vm.deleteUser(user)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button></td>
         </tr>
     </tbody>
 </table>

@@ -12,6 +12,7 @@
             updateUser: updateUser,
             updateCurrentUser: updateCurrentUser,
             createUser: createUser,
+            deleteUser: deleteUser,
             authorizeCurrentUserForRoute: authorizeCurrentUserForRoute,
             authorizeAuthenticatedUserForRoute: authorizeAuthenticatedUserForRoute
         };
@@ -102,6 +103,16 @@
             function updateUserFailure(response) {
                 deferred.reject(response.data.reason);
             }
+        }
+
+        function deleteUser(userToDelete) {
+            var deferred = $q.defer();
+
+            userToDelete.$delete().then(function () {
+                deferred.resolve();
+            });
+
+            return deferred.promise;
         }
 
         function authorizeAuthenticatedUserForRoute() {
