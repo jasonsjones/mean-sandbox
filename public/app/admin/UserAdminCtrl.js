@@ -5,7 +5,7 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    function UserAdminCtrl(sbUser, sbEditUser, sbAuth, notifier, $location) {
+    function UserAdminCtrl(sbUser, sbEditUser, sbAuth, notifier, $location, $route) {
         console.log('UserAdminCtrl loaded...');
 
         var vm = this;
@@ -24,6 +24,7 @@
 
             sbAuth.deleteUser(user).then(function () {
                 notifier.notify('user successfully deleted');
+                $route.reload();
             },
             function () {
                 notifier.error('user was not deleted');
