@@ -1,24 +1,35 @@
 @footerHeight: 180px;
-@backgroundColor: #ccc;
 
 body {
-    padding-bottom: @footerHeight;
-    background: @backgroundColor;
+    //padding-bottom: @footerHeight;
+    height: 100%;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -180px;
+    padding: 0 0 @footerHeight;
 }
 
 .navbar .navbar-form button {
     margin-right: 30px;
 }
 
-.footer {
+footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: @footerHeight;
     background: #333;
     color: #eee;
-    padding: 20px;
+    //padding: 20px;
     font-size: 14px;
+    h6 {
+        font-size: 18px;
+        color: #bbb;
+    }
 }
 
 .unstyled {

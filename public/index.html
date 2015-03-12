@@ -12,9 +12,11 @@
         <title>MEAN Sandbox</title>
     </head>
     <body ng-app="app">
-        <div ng-include="'app/main/navbar.html'"></div>
-        <div class="container">
-            <div ng-view=""></div>
+        <div class="wrap">
+            <div ng-include="'app/main/navbar.html'"></div>
+            <div class="container">
+                <div ng-view=""></div>
+            </div>
         </div>
         <div ng-include="'app/main/footer.html'"></div>
         <!-- bower:js -->
