@@ -29,13 +29,13 @@ module.exports = function () {
          bower: {
             json: require('./bower.json'),
             directory: client + 'components/',
-            ignorePath: '../..'
+            ignorePath: '../public/' // this doesn't work...
          }
     };
 
     config.getWiredepDefaultOptions = function () {
         var options = {
-            bowerJSON: config.bower.json,
+            bowerJson: config.bower.json,
             directory: config.bower.directory,
             ignorePath: config.bower.ignorePath
         };

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" type="text/css" >
-        <link rel="stylesheet" href="/components/font-awesome/css/font-awesome.min.css" type="text/css" >
-        <link rel="stylesheet" href="/components/toastr/toastr.min.css" type="text/css" >
+        <!-- bower:css -->
+        <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="components/toastr/toastr.css" />
+        <!-- endbower -->
+
         <link rel="stylesheet" href="/.tmp/styles.css" type="text/css" >
         <base href="/">
         <title>MEAN Sandbox</title>
@@ -14,24 +17,30 @@
             <div ng-view=""></div>
         </div>
         <div ng-include="'app/main/footer.html'"></div>
-        <script type="text/javascript" src="/components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="/components/toastr/toastr.min.js"></script>
-        <script type="text/javascript" src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="/components/angular/angular.min.js"></script>
-        <script type="text/javascript" src="/components/angular-route/angular-route.min.js"></script>
-        <script type="text/javascript" src="/components/angular-resource/angular-resource.min.js"></script>
-        <script type="text/javascript" src="/app/app.js"></script>
-        <script type="text/javascript" src="/app/account/sbIdentity.js"></script>
-        <script type="text/javascript" src="/app/account/navBarLoginCtrl.js"></script>
-        <script type="text/javascript" src="/app/account/SignupCtrl.js"></script>
-        <script type="text/javascript" src="/app/account/ProfileCtrl.js"></script>
-        <script type="text/javascript" src="/app/admin/UserAdminCtrl.js"></script>
-        <script type="text/javascript" src="/app/admin/EditUserCtrl.js"></script>
-        <script type="text/javascript" src="/app/admin/sbEditUser.js"></script>
-        <script type="text/javascript" src="/app/main/dataservice.js"></script>
-        <script type="text/javascript" src="/app/main/Controller.js"></script>
-        <script type="text/javascript" src="/app/account/sbAuth.js"></script>
-        <script type="text/javascript" src="/app/account/sbUser.js"></script>
-        <script type="text/javascript" src="/app/util/notifier.js"></script>
+        <!-- bower:js -->
+        <script src="components/jquery/dist/jquery.js"></script>
+        <script src="components/angular/angular.js"></script>
+        <script src="components/angular-mocks/angular-mocks.js"></script>
+        <script src="components/angular-resource/angular-resource.js"></script>
+        <script src="components/angular-route/angular-route.js"></script>
+        <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="components/toastr/toastr.js"></script>
+        <!-- endbower -->
+
+        <!-- inject:js -->
+        <script src="/public/app/app.js"></script>
+        <script src="/public/app/account/ProfileCtrl.js"></script>
+        <script src="/public/app/account/SignupCtrl.js"></script>
+        <script src="/public/app/account/navBarLoginCtrl.js"></script>
+        <script src="/public/app/account/sbAuth.js"></script>
+        <script src="/public/app/account/sbIdentity.js"></script>
+        <script src="/public/app/account/sbUser.js"></script>
+        <script src="/public/app/admin/EditUserCtrl.js"></script>
+        <script src="/public/app/admin/UserAdminCtrl.js"></script>
+        <script src="/public/app/admin/sbEditUser.js"></script>
+        <script src="/public/app/main/Controller.js"></script>
+        <script src="/public/app/main/dataservice.js"></script>
+        <script src="/public/app/util/notifier.js"></script>
+        <!-- endinject -->
     </body>
 </html>
