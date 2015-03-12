@@ -14,8 +14,9 @@ module.exports = function (config) {
     var router = express.Router();
 
     app.use(logger);
-    app.use(express.static(path.join(__dirname + '/../public')));
     app.use('components', express.static(path.join(__dirname + '/../public/components')));
+    app.use(express.static(path.join(__dirname + '/../public')));
+    app.use(express.static(path.join(__dirname + '/../')));
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
 
