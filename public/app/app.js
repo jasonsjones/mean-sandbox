@@ -2,9 +2,6 @@
     /* global angular */
     'use strict';
 
-    angular.module('app', ['ngRoute', 'ngResource', 'app.core']);
-    angular.module('app.core', []);
-
     angular.module('app')
         .config(config);
 
