@@ -38,12 +38,22 @@ gulp.task('less-watcher', function () {
 });
 
 gulp.task('wiredep', function () {
-    var options = config.getWiredepDefaultOptions(); // TODO
+    log('Wire up the bower css js and our app js into html')
+    var options = config.getWiredepDefaultOptions();
     var wiredep = require('wiredep').stream;
     return gulp
-        .src(config.index) // TODO index.html
+        .src(config.index)
         .pipe(wiredep(options))
         .pipe($.inject(gulp.src(config.js)))
+        .pipe(gulp.dest(config.client));
+});
+
+gulp.task('inject', ['wiredep', 'styles'], function () {
+    log('Wire up css into html after files are ready');
+
+    return gulp
+        .src(config.index)
+        .pipe($.inject(gulp.src(config.css)))
         .pipe(gulp.dest(config.client));
 });
 

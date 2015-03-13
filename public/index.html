@@ -7,7 +7,10 @@
         <link rel="stylesheet" href="components/toastr/toastr.css" />
         <!-- endbower -->
 
-        <link rel="stylesheet" href="/.tmp/styles.css" type="text/css" >
+        <!-- inject:css -->
+        <link rel="stylesheet" href="/public/.tmp/styles.css">
+        <!-- endinject -->
+
         <base href="/">
         <title>MEAN Sandbox</title>
     </head>
@@ -40,9 +43,9 @@
         <script src="/public/app/admin/EditUserCtrl.js"></script>
         <script src="/public/app/admin/UserAdminCtrl.js"></script>
         <script src="/public/app/admin/sbEditUser.js"></script>
+        <script src="/public/app/util/notifier.js"></script>
         <script src="/public/app/main/Controller.js"></script>
         <script src="/public/app/main/dataservice.js"></script>
-        <script src="/public/app/util/notifier.js"></script>
         <!-- endinject -->
     </body>
 </html>
