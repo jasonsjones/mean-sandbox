@@ -4,7 +4,6 @@ module.exports = function () {
     var temp = client + '.tmp/';
 
     var config = {
-        temp: temp,
 
         // all js to vet
         alljs: [
@@ -24,6 +23,8 @@ module.exports = function () {
         ],
 
         less: client + 'css/styles.less',
+        serverFiles: ['server.js', './app/**/*.js', './config/**/*.js'],
+        temp: temp,
 
         /**
          * bower and npm locations
@@ -32,7 +33,14 @@ module.exports = function () {
             json: require('./bower.json'),
             directory: client + 'components/',
             ignorePath: '../public/' // this doesn't work...
-         }
+        },
+
+        /**
+         * Node Settings
+         */
+         defaultPort: 8080,
+         nodeServer: 'server.js',
+
     };
 
     config.getWiredepDefaultOptions = function () {
