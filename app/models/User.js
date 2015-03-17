@@ -17,6 +17,10 @@ userSchema.methods.authenticate = function (pwdToMatch) {
     return this.password === hash.hashPassword(this.salt, pwdToMatch);
 };
 
+userSchema.methods.isAdmin = function () {
+    return this.roles && this.roles.indexOf('admin') > -1;
+};
+
 var User = mongoose.model('User', userSchema);
 
 
