@@ -23,7 +23,7 @@ module.exports = function () {
         ],
 
         less: client + 'css/styles.less',
-        serverFiles: ['server.js', './app/**/*.js', './config/**/*.js'],
+        serverFiles: ['server.js', 'app/**/*.js', 'config/**/*.js'],
         temp: temp,
 
         /**
