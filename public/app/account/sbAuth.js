@@ -67,8 +67,15 @@
         function updateCurrentUser(updatedUserData) {
             var deferred = $q.defer();
 
-            var clonedUser = angular.copy(sbIdentity.currentUser);
+            console.log('logged in current user: ');
+            console.log(sbIdentity.currentUser);
+            var clonedUser = new sbUser();
+            angular.copy(sbIdentity.currentUser, clonedUser);
+            console.log('logged in copied (cloned) user: ');
+            console.log(clonedUser);
             angular.extend(clonedUser, updatedUserData);
+            console.log('cloned user after extended with updated data: ');
+            console.log(clonedUser);
 
             clonedUser.$update().then(updateUserSuccess, updateUserFailure);
 
@@ -88,7 +95,9 @@
         function updateUser(updatedUserData) {
             var deferred = $q.defer();
 
-            var clonedUser = angular.copy(sbEditUser.userToEdit);
+            var clonedUser = new sbUser();
+            angular.copy(sbEditUser.userToEdit, clonedUser);
+            // var clonedUser = angular.copy(sbEditUser.userToEdit);
             angular.extend(clonedUser, updatedUserData);
 
             clonedUser.$update().then(updateUserSuccess, updateUserFailure);
@@ -97,6 +106,9 @@
 
             ////////////////
             function updateUserSuccess() {
+                if (clonedUser._id === sbIdentity.currentUser._id) {
+                    sbIdentity.currentUser = clonedUser;
+                }
                 deferred.resolve();
             }
 

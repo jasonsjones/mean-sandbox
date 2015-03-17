@@ -48,18 +48,27 @@ exports.updateUserById = function (req, res) {
             res.send(err);
         }
 
+        if (user.isAdmin()) {
+            console.log('user is admin--from user.isAdmin...');
+        }
+
         //if (req.user.roles.indexOf('admin') === -1) {
             //res.status(403);
             //return res.end();
         //}
+        console.log('user found in db before updating: ');
+        console.log(user);
 
         var userUpdates = req.body;
+        console.log('req body data sent with req: ');
+        console.log(userUpdates);
         user.firstName = userUpdates.firstName;
         user.lastName = userUpdates.lastName;
         user.email = userUpdates.email;
         user.username = userUpdates.username;
         user.lastModified = Date.now();
 
+        // check for roles
         if (userUpdates.roles.admin && user.roles.indexOf('admin') === -1) {
             user.roles.push('admin');
             console.log('user added as admin');

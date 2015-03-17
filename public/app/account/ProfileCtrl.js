@@ -19,8 +19,15 @@
                 firstName: vm.firstName,
                 lastName: vm.lastName,
                 email: vm.email,
-                username: vm.username
+                username: vm.username,
+                roles: {}
             };
+
+            if (sbIdentity.currentUser.isAdmin()) {
+                userUpdate.roles.admin = true;
+            } else {
+                userUpdate.roles.admin = false;
+            }
 
             if (vm.newPassword && vm.newPassword.length > 0) {
                 if (vm.newPassword !== vm.confirmPassword) {
