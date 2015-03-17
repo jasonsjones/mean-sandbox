@@ -8,7 +8,9 @@ var userSchema = mongoose.Schema({
     username: String,
     salt: String,
     password: String,
-    roles: [String]
+    roles: [String],
+    createdOn: {type: Date, default: Date.now},
+    lastModified: {type: Date, default: Date.now}
 });
 
 userSchema.methods.authenticate = function (pwdToMatch) {

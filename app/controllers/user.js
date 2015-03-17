@@ -58,6 +58,7 @@ exports.updateUserById = function (req, res) {
         user.lastName = userUpdates.lastName;
         user.email = userUpdates.email;
         user.username = userUpdates.username;
+        user.lastModified = Date.now();
 
         if (userUpdates.roles.admin && user.roles.indexOf('admin') === -1) {
             user.roles.push('admin');
@@ -99,6 +100,7 @@ exports.updateCurrentUser = function (req, res) {
     req.user.lastName = userUpdates.lastName;
     req.user.email = userUpdates.email;
     req.user.username = userUpdates.username;
+    req.user.lastModified = Date.now();
 
     if (userUpdates.password.length > 0 && req.user.password !== userUpdates.password) {
         req.user.salt = hash.createSalt();
