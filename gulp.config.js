@@ -1,5 +1,5 @@
 module.exports = function () {
-    var client = './public/';
+    var client = 'public/';
     var clientApp = client + 'app/';
     var temp = client + '.tmp/';
 
@@ -32,7 +32,7 @@ module.exports = function () {
          bower: {
             json: require('./bower.json'),
             directory: client + 'components/',
-            ignorePath: '../public/' // this doesn't work...
+            ignorePath: '../' // this doesn't work...
         },
 
         /**
@@ -52,6 +52,13 @@ module.exports = function () {
         return options;
 
     };
+
+    // config.getInjectDefaultOptions = function () {
+    //     var options = {
+    //         read: config.inject.read
+    //     };
+    //     return options;
+    // }
 
     return config;
 

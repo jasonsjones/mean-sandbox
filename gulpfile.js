@@ -19,7 +19,6 @@ gulp.task('vet', function() {
 
 gulp.task('styles', ['clean-styles'], function () {
     log('Compiling Less --> CSS');
-    console.log(config.less);
 
     return gulp
         .src(config.less)
@@ -41,12 +40,12 @@ gulp.task('less-watcher', function () {
 
 gulp.task('wiredep', function () {
     log('Wire up the bower css js and our app js into html')
-    var options = config.getWiredepDefaultOptions();
+    var wiredepOptions = config.getWiredepDefaultOptions();
     var wiredep = require('wiredep').stream;
     return gulp
         .src(config.index)
-        .pipe(wiredep(options))
-        .pipe($.inject(gulp.src(config.js)))
+        .pipe(wiredep(wiredepOptions))
+        .pipe($.inject( gulp.src(config.js), {ignorePath: 'public'}))
         .pipe(gulp.dest(config.client));
 });
 
@@ -55,7 +54,7 @@ gulp.task('inject', ['wiredep', 'styles'], function () {
 
     return gulp
         .src(config.index)
-        .pipe($.inject(gulp.src(config.css)))
+        .pipe($.inject(gulp.src(config.css), {ignorePath: 'public'}))
         .pipe(gulp.dest(config.client));
 });
 
@@ -70,7 +69,6 @@ gulp.task('serve-dev', ['inject'], function () {
             'NODE_ENV': isDev? 'development' : 'build'
         },
         watch: config.serverFiles
-        // watch: ['server.js', 'app/**/*.js', 'config/**/*.js']
     };
 
     return $.nodemon(nodeOptions)
