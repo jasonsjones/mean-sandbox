@@ -59,7 +59,7 @@ gulp.task('inject', ['wiredep', 'styles'], function () {
 });
 
 gulp.task('serve-dev', ['inject'], function () {
-    var isDev = false;
+    var isDev = true;
     var nodeOptions = {
         script: config.nodeServer,
         // script: 'server.js',
