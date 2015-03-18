@@ -59,14 +59,14 @@ gulp.task('inject', ['wiredep', 'styles'], function () {
 });
 
 gulp.task('serve-dev', ['inject'], function () {
-    var isDev = true;
+    var isDev = false;
     var nodeOptions = {
         script: config.nodeServer,
         // script: 'server.js',
         delayTime: 1,
         env: {
             'PORT': 8080,
-            'NODE_ENV': isDev? 'development' : 'build'
+            'NODE_ENV': isDev? 'development' : 'koding'
         },
         watch: config.serverFiles
     };

@@ -5,3 +5,4 @@ data/
 npm-debug.log
 *.swp
 public/.tmp
+.dbcreds
