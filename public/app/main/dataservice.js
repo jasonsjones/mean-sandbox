@@ -32,18 +32,19 @@
 
         ];
         var factory = {
-            getMeanComponents: getMeanComponents
+            query: query
         };
 
         return factory;
 
         ///////////////
 
-        function getMeanComponents() {
-            var deferred = $q.defer();
-            deferred.resolve(meanComponents);
+        function query() {
+            // var deferred = $q.defer();
+            // deferred.resolve(meanComponents);
 
-            return deferred.promise;
+            // return deferred.promise;
+            return meanComponents;
         }
     }
 }());

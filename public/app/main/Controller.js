@@ -8,10 +8,11 @@
     function Controller(dataservice, sbIdentity, notifier) {
         var vm = this;
         vm.identity = sbIdentity;
+        vm.components = dataservice.query();
 
-        dataservice.getMeanComponents().then(function (results) {
-            vm.components = results;
-            notifier.info('MEAN components loaded...');
-        });
+        // dataservice.query().then(function (results) {
+        //     vm.components = results;
+        //     notifier.info('MEAN components loaded...');
+        // });
     }
 }());
