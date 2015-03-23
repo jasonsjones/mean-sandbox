@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" ng-controller="navBarLoginCtrl as vm">
+<nav class="navbar navbar-default" ng-controller="NavBarCtrl as vm">
 
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -13,9 +13,9 @@
 
     <div class="collapse navbar-collapse" id="mean-navbar-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/">About</a></li>
-            <li><a href="/">Contact</a></li>
+            <li ng-class="{ active: vm.isActive('/') }"><a href="/">Home</a></li>
+            <li ng-class="{ active: vm.isActive('/about') }"><a href="/about">About</a></li>
+            <li ng-class="{ active: vm.isActive('/contact') }"><a href="/">Contact</a></li>
         </ul>
         <div ng-include="'app/account/navbar-login.html'"></div>
     </div>
