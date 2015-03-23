@@ -33,6 +33,11 @@
                 controller: 'ProfileCtrl',
                 controllerAs: 'vm'
             })
+            .when('/about', {
+                templateUrl: '/app/main/about.html',
+                controller: 'Controller',
+                controllerAs: 'vm'
+            })
             .when('/admin/users', {
                 templateUrl: 'app/admin/user-admin.html',
                 controller: 'UserAdminCtrl',
