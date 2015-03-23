@@ -38,6 +38,11 @@
                 controller: 'Controller',
                 controllerAs: 'vm'
             })
+            .when('/contact', {
+                templateUrl: '/app/main/contact.html',
+                controller: 'Controller',
+                controllerAs: 'vm'
+            })
             .when('/admin/users', {
                 templateUrl: 'app/admin/user-admin.html',
                 controller: 'UserAdminCtrl',
