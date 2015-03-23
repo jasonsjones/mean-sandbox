@@ -3,9 +3,9 @@
     'use strict';
 
     angular.module('app.core')
-        .controller('navBarLoginCtrl', navBarLoginCtrl);
+        .controller('NavBarLoginCtrl', NavBarLoginCtrl);
 
-    function navBarLoginCtrl($location, $window, sbAuth, sbIdentity, notifier) {
+    function NavBarLoginCtrl($location, $window, sbAuth, sbIdentity, notifier) {
         var vm = this;
         vm.identity = sbIdentity;
 
