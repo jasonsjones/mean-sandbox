@@ -10,7 +10,6 @@
         var service = {
             authenticateUser: authenticateUser,
             updateUser: updateUser,
-            updateCurrentUser: updateCurrentUser,
             createUser: createUser,
             deleteUser: deleteUser,
             authorizeCurrentUserForRoute: authorizeCurrentUserForRoute,
@@ -64,40 +63,15 @@
             }
         }
 
-        function updateCurrentUser(updatedUserData) {
-            var deferred = $q.defer();
-
-            console.log('logged in current user: ');
-            console.log(sbIdentity.currentUser);
-            var clonedUser = new sbUser();
-            angular.copy(sbIdentity.currentUser, clonedUser);
-            console.log('logged in copied (cloned) user: ');
-            console.log(clonedUser);
-            angular.extend(clonedUser, updatedUserData);
-            console.log('cloned user after extended with updated data: ');
-            console.log(clonedUser);
-
-            clonedUser.$update().then(updateUserSuccess, updateUserFailure);
-
-            return deferred.promise;
-
-            ////////////////
-            function updateUserSuccess() {
-                sbIdentity.currentUser = clonedUser;
-                deferred.resolve();
-            }
-
-            function updateUserFailure(response) {
-                deferred.reject(response.data.reason);
-            }
-        }
-
-        function updateUser(updatedUserData) {
+        function updateUser(updatedUserData, isCurrentUser) {
             var deferred = $q.defer();
 
             var clonedUser = new sbUser();
-            angular.copy(sbEditUser.userToEdit, clonedUser);
-            // var clonedUser = angular.copy(sbEditUser.userToEdit);
+            if (isCurrentUser) {
+                angular.copy(sbIdentity.currentUser, clonedUser);
+            } else {
+                angular.copy(sbEditUser.userToEdit, clonedUser);
+            }
             angular.extend(clonedUser, updatedUserData);
 
             clonedUser.$update().then(updateUserSuccess, updateUserFailure);
