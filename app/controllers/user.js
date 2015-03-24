@@ -56,12 +56,8 @@ exports.updateUserById = function (req, res) {
             //res.status(403);
             //return res.end();
         //}
-        console.log('user found in db before updating: ');
-        console.log(user);
 
         var userUpdates = req.body;
-        console.log('req body data sent with req: ');
-        console.log(userUpdates);
         user.firstName = userUpdates.firstName;
         user.lastName = userUpdates.lastName;
         user.email = userUpdates.email;
@@ -94,37 +90,6 @@ exports.updateUserById = function (req, res) {
             }
             res.send(user);
         });
-    });
-};
-
-exports.updateCurrentUser = function (req, res) {
-    var userUpdates = req.body;
-
-    if (req.user._id !== userUpdates._id && req.user.roles.indexOf('admin') === -1) {
-        res.status(403);
-        return res.end();
-    }
-
-    req.user.firstName = userUpdates.firstName;
-    req.user.lastName = userUpdates.lastName;
-    req.user.email = userUpdates.email;
-    req.user.username = userUpdates.username;
-    req.user.lastModified = Date.now();
-
-    if (userUpdates.password.length > 0 && req.user.password !== userUpdates.password) {
-        req.user.salt = hash.createSalt();
-        req.user.password = hash.hashPassword(req.user.salt, userUpdates.password);
-        console.log('user\'s password was successfully updated...');
-    } else {
-        console.log('user\'s password was not updated...');
-    }
-
-    req.user.save(function (err) {
-        if (err) {
-            res.status(400);
-            return res.json({reason: err.toString()});
-        }
-        res.send(req.user);
     });
 };
 

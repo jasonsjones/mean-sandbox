@@ -23,7 +23,6 @@ userSchema.methods.isAdmin = function () {
 
 var User = mongoose.model('User', userSchema);
 
-
 function createDefaultUsers() {
     User.find({}).exec(function (err, collection) {
         if (err) {

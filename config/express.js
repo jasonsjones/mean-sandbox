@@ -5,12 +5,6 @@ var logger = require('morgan');
 var passport = require('passport');
 var session = require('express-session');
 
-// function logger(req, res, next) {
-//     console.log(req.method + ' ' + req.url + ' -- ' + res.statusCode);
-//     next();
-// add another comment
-// }
-
 module.exports = function (config) {
     var app = express();
     var router = express.Router();
@@ -31,6 +25,7 @@ module.exports = function (config) {
 
     require('../app/routes/user')(router);
     app.use(router);
+
     // this route needs to be defined at the end of all other routes
     require('../app/routes/index')(app);
 

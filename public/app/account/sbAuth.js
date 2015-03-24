@@ -43,7 +43,6 @@
         }
 
         function createUser(newUserData) {
-            console.log(newUserData);
             var newUser = new sbUser(newUserData);
 
             var deferred = $q.defer();

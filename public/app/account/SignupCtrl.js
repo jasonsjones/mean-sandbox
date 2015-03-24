@@ -10,7 +10,6 @@
         var vm = this;
 
         vm.signup = function () {
-            console.log('signup clicked...');
             var newUser = {
                 firstName: vm.firstName,
                 lastName: vm.lastName,
@@ -20,14 +19,14 @@
             };
 
             if (newUser.password.length > 0 && isPasswordCorrect()) {
-                sbAuth.createUser(newUser).then(
-                    function () {
-                        notifier.notify('User account created');
-                        $location.path('/');
-                    },
-                    function (reason) {
-                        notifier.error(reason);
-                    });
+                sbAuth.createUser(newUser)
+                .then(function () {
+                    notifier.notify('User account created');
+                    $location.path('/');
+                },
+                function (reason) {
+                    notifier.error(reason);
+                });
             } else {
                 if (!isPasswordCorrect()) {
                     notifier.error('Passwords do not match');
