@@ -1,7 +1,7 @@
 //
 // # SimpleServer
 //
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'devlocal';
 var config = require('./config/config')[env];
 
 require('./config/mongoose')(config);

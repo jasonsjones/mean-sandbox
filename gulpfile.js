@@ -66,7 +66,7 @@ gulp.task('serve-dev', ['inject'], function () {
         delayTime: 1,
         env: {
             'PORT': 8080,
-            'NODE_ENV': isDev? 'development' : 'koding'
+            'NODE_ENV': isDev? 'devlocal' : 'devweb'
         },
         watch: config.serverFiles
     };
