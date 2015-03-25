@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
+var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
 var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
@@ -78,6 +79,7 @@ gulp.task('serve-dev', ['inject'], function () {
         })
         .on('start', function() {
             log('*** nodemon started');
+            //startBrowserSync();
         })
         .on('crash', function() {
             log('*** nodemon crashed: script crashed for some reason');
@@ -91,6 +93,35 @@ gulp.task('serve-dev', ['inject'], function () {
 gulp.task('default', ['serve-dev']);
 
 /***************************/
+
+function startBrowserSync() {
+    if (browserSync.active) {
+       return;
+    }
+
+    log('Starting browser-sync on port ' + port);
+
+    var options = {
+        proxy: 'localhost:' + port,
+        port: 8080,
+        files: [config.client + '**/*.*'],
+        ghostMode: {
+            clicks: true,
+            location: false,
+            forms: true,
+            scroll: true
+        },
+        injectChanges: true,
+        logFileChanges: true,
+        logLeve: 'debug',
+        logPrefix: 'mean-sandbox',
+        notify: true,
+        reloadDelay: 1000
+    };
+
+    browserSync(options);
+}
+
 function clean(path, done) {
     log('Cleaning: ' + $.util.colors.blue(path));
     del(path, done);
