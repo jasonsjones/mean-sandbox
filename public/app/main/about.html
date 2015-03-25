@@ -1,3 +1,20 @@
 <div class="page-header">
-  <h1>About Page</h1>
+    <h1>About Page</h1>
+    <h3 class="leading">A playground to explore the MEAN stack</h3>
+</div>
+
+<div class="row">
+    <p>For now, this page does absolutely nothing except allow users to sign up
+    for an account and change some profile information.</p>
+</div>
+<div class="row">
+    <div class="col-md-3" ng-repeat="service in vm.components">
+        <div class="thumbnail">
+            <a href="{{ service.webUrl }}"><img ng-src="{{ service.imgUrl }}"
+                class="img-responsive"></a>
+            <div class="caption">
+                <p ng-bind="service.description"></p>
+            </div>
+        </div>
+    </div>
 </div>
