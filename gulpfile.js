@@ -39,7 +39,7 @@ gulp.task('less-watcher', function () {
 });
 
 gulp.task('wiredep', function () {
-    log('Wire up the bower css js and our app js into html')
+    log('Wire up the bower css js and our app js into html');
     var wiredepOptions = config.getWiredepDefaultOptions();
     var wiredep = require('wiredep').stream;
     return gulp
@@ -87,6 +87,8 @@ gulp.task('serve-dev', ['inject'], function () {
         });
 
 });
+
+gulp.task('default', ['serve-dev']);
 
 /***************************/
 function clean(path, done) {
