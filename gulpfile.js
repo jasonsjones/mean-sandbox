@@ -25,7 +25,6 @@ gulp.task('styles', ['clean-styles'], function () {
         .src(config.less)
         .pipe($.plumber())
         .pipe($.less())
-        // .on('error', errorLogger)
         .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
         .pipe(gulp.dest(config.temp));
 });
@@ -66,8 +65,8 @@ gulp.task('serve-dev', ['inject'], function () {
         // script: 'server.js',
         delayTime: 1,
         env: {
-            'PORT': 8080,
-            'NODE_ENV': isDev? 'devlocal' : 'devweb'
+            'PORT': port,
+            'NODE_ENV': isDev ? 'devlocal' : 'devweb'
         },
         watch: config.serverFiles
     };
@@ -79,7 +78,7 @@ gulp.task('serve-dev', ['inject'], function () {
         })
         .on('start', function() {
             log('*** nodemon started');
-            //startBrowserSync();
+            // startBrowserSync();
         })
         .on('crash', function() {
             log('*** nodemon crashed: script crashed for some reason');
@@ -103,7 +102,7 @@ function startBrowserSync() {
 
     var options = {
         proxy: 'localhost:' + port,
-        port: 8080,
+        port: 3000,
         files: [config.client + '**/*.*'],
         ghostMode: {
             clicks: true,
@@ -113,7 +112,7 @@ function startBrowserSync() {
         },
         injectChanges: true,
         logFileChanges: true,
-        logLeve: 'debug',
+        logLevel: 'debug',
         logPrefix: 'mean-sandbox',
         notify: true,
         reloadDelay: 1000
