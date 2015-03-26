@@ -75,10 +75,14 @@ gulp.task('serve-dev', ['inject'], function () {
         .on('restart', function(ev) {
             log('*** nodemon restarted');
             log('files changed on restart:\n' + ev);
+            setTimeout(function () {
+                browserSync.notify('reloading now ...');
+                browserSync.reload({stream: false});
+            }, config.browserReloadDelay);
         })
         .on('start', function() {
             log('*** nodemon started');
-            // startBrowserSync();
+            startBrowserSync();
         })
         .on('crash', function() {
             log('*** nodemon crashed: script crashed for some reason');
@@ -93,17 +97,31 @@ gulp.task('default', ['serve-dev']);
 
 /***************************/
 
+function changeEvent(event) {
+    var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
+    log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
+}
+
 function startBrowserSync() {
-    if (browserSync.active) {
+    if (args.nosync || browserSync.active) {
        return;
     }
 
     log('Starting browser-sync on port ' + port);
 
+    gulp.watch([config.less], ['styles'])
+        .on('change', function (event) {
+            changeEvent(event);
+        });
+
     var options = {
         proxy: 'localhost:' + port,
         port: 3000,
-        files: [config.client + '**/*.*'],
+        files: [
+            config.client + '**/*.*',
+            '!' + config.less,
+            config.temp + '**/*.css'
+        ],
         ghostMode: {
             clicks: true,
             location: false,
@@ -115,7 +133,7 @@ function startBrowserSync() {
         logLevel: 'debug',
         logPrefix: 'mean-sandbox',
         notify: true,
-        reloadDelay: 1000
+        reloadDelay: 0 //1000
     };
 
     browserSync(options);

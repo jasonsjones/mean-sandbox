@@ -27,6 +27,12 @@ module.exports = function () {
         temp: temp,
 
         /**
+         * browser-sync
+         *
+         */
+        browserReloadDelay: 1000,
+
+        /**
          * bower and npm locations
          */
          bower: {
