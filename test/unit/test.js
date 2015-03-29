@@ -1,6 +1,6 @@
+
 describe('Basic test suite', function () {
     it('boolean test', function () {
-        //expect(true).to.equal(true);
-        true.should.equal(true);
+        expect(true).to.equal(true);
     });
 });
