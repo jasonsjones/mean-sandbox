@@ -93,7 +93,7 @@ exports.updateUserById = function (req, res) {
     });
 };
 
-exports.userDelete = function (req, res) {
+exports.deleteUser = function (req, res) {
     User.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
             res.send(err);

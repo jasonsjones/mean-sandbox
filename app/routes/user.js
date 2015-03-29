@@ -10,7 +10,7 @@ module.exports = function (api) {
     api.route('/api/users/:id')
         .get(user.getUserById)
         .put(user.updateUserById)
-        .delete(user.userDelete);
+        .delete(user.deleteUser);
 
     api.route('/login')
         .post(auth.authenticateWithPassport);
