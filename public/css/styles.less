@@ -1,7 +1,10 @@
 @footerHeight: 180px;
 
-body {
-    //padding-bottom: @footerHeight;
+* {
+    margin: 0;
+}
+
+html, body {
     height: 100%;
 }
 
@@ -10,21 +13,26 @@ body {
     height: auto;
     /* Negative indent footer by its height */
     margin: 0 auto -180px;
-    padding: 0 0 @footerHeight;
+}
+
+.wrap:after {
+    content: "";
+    display: block;
 }
 
 .navbar .navbar-form button {
     margin-right: 30px;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
+.footer, .wrap:after {
+    height: @footerHeight;
+}
+
+.footer {
     width: 100%;
     height: @footerHeight;
     background: #333;
     color: #eee;
-    //padding: 20px;
     font-size: 14px;
     h6 {
         font-size: 18px;
