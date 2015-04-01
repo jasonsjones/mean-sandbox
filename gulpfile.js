@@ -45,7 +45,7 @@ gulp.task('wiredep', function () {
     return gulp
         .src(config.index)
         .pipe(wiredep(wiredepOptions))
-        .pipe($.inject( gulp.src(config.js), {ignorePath: 'public'}))
+        .pipe($.inject(gulp.src(config.js), {ignorePath: 'public'}))
         .pipe(gulp.dest(config.client));
 });
 
@@ -104,7 +104,7 @@ function changeEvent(event) {
 
 function startBrowserSync() {
     if (args.nosync || browserSync.active) {
-       return;
+        return;
     }
 
     log('Starting browser-sync on port ' + port);

@@ -9,6 +9,6 @@
 
         vm.isActive = function (viewLocation) {
             return viewLocation === $location.path();
-        }
+        };
     }
 }());
