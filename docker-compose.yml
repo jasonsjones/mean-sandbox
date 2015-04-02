@@ -1,0 +1,11 @@
+web:
+    build: .
+    links:
+        - db
+    ports:
+        - "7401:7401"
+    environment:
+        NODE_ENV: development
+db:
+    # local mongo image; any mongo image should work
+    image: jasonsjones/mongodb
