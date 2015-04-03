@@ -13,8 +13,11 @@ module.exports = function () {
             './public/*.js',
             './public/app/**/*.js'
         ],
+        build: './build/',
         client: client,
         css: temp + 'styles.css',
+        fonts: client + 'components/font-awesome/fonts/**/*.*',
+        images: client + 'img/**/*.*',
         index: client + 'index.html',
         js: [
             clientApp + '**/*.module.js',
