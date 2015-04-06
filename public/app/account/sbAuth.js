@@ -5,7 +5,7 @@
     angular.module('app.core')
         .factory('sbAuth', sbAuth);
 
-    function sbAuth($http, $q, $window, sbIdentity, sbUser, sbEditUser) {
+    function sbAuth($http, $q, $window, identity, sbUser, sbEditUser) {
 
         var service = {
             authenticateUser: authenticateUser,
@@ -33,7 +33,7 @@
                 if (response.data.success) {
                     var user = new sbUser();
                     angular.extend(user, response.data.user);
-                    sbIdentity.currentUser = user;
+                    identity.currentUser = user;
                     $window.localStorage.currentUser = JSON.stringify(user);
                     deferred.resolve(true);
                 } else {
@@ -53,7 +53,7 @@
 
             ////////////////
             function newUserSuccess(response) {
-                sbIdentity.currentUser = newUser;
+                identity.currentUser = newUser;
                 deferred.resolve();
             }
 
@@ -67,7 +67,7 @@
 
             var clonedUser = new sbUser();
             if (isCurrentUser) {
-                angular.copy(sbIdentity.currentUser, clonedUser);
+                angular.copy(identity.currentUser, clonedUser);
             } else {
                 angular.copy(sbEditUser.userToEdit, clonedUser);
             }
@@ -79,8 +79,8 @@
 
             ////////////////
             function updateUserSuccess() {
-                if (clonedUser._id === sbIdentity.currentUser._id) {
-                    sbIdentity.currentUser = clonedUser;
+                if (clonedUser._id === identity.currentUser._id) {
+                    identity.currentUser = clonedUser;
                 }
                 deferred.resolve();
             }
@@ -101,7 +101,7 @@
         }
 
         function authorizeAuthenticatedUserForRoute() {
-            if (sbIdentity.isAuthenticated()) {
+            if (identity.isAuthenticated()) {
                 return true;
             } else {
                 return $q.reject('not authorized');
@@ -110,7 +110,7 @@
 
         function authorizeCurrentUserForRoute(role) {
 
-            if (sbIdentity.isAuthorizedForRole(role)) {
+            if (identity.isAuthorizedForRole(role)) {
                 console.log('user is authorized for role: ' + role);
                 return true;
             } else {

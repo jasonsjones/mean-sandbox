@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app.core')
-        .factory('sbIdentity', sbIdentity);
+        .factory('identity', identity);
 
-    function sbIdentity($window, sbUser) {
+    function identity($window, sbUser) {
 
         var currentUser = null;
 

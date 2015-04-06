@@ -3,16 +3,16 @@
     angular.module('app.core')
         .controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($http, $location, sbIdentity, notifier, sbAuth) {
+    function ProfileCtrl($http, $location, identity, notifier, sbAuth) {
         console.log('ProfileCtrl loaded...');
         var vm = this;
 
         vm.editPassword = false;
 
-        vm.firstName = sbIdentity.currentUser.firstName;
-        vm.lastName = sbIdentity.currentUser.lastName;
-        vm.email = sbIdentity.currentUser.email;
-        vm.username = sbIdentity.currentUser.username;
+        vm.firstName = identity.currentUser.firstName;
+        vm.lastName = identity.currentUser.lastName;
+        vm.email = identity.currentUser.email;
+        vm.username = identity.currentUser.username;
 
         vm.updateData = function () {
             var userUpdate = {
@@ -23,7 +23,7 @@
                 roles: {}
             };
 
-            if (sbIdentity.currentUser.isAdmin()) {
+            if (identity.currentUser.isAdmin()) {
                 userUpdate.roles.admin = true;
             } else {
                 userUpdate.roles.admin = false;

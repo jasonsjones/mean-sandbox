@@ -5,10 +5,10 @@
         .controller('EditUserCtrl', EditUserCtrl);
 
     //////////
-    function EditUserCtrl(sbEditUser, sbIdentity, sbAuth, notifier, $location) {
+    function EditUserCtrl(sbEditUser, identity, sbAuth, notifier, $location) {
         var vm = this;
         var ute = sbEditUser.userToEdit;
-        var isCurrentUser = ute._id === sbIdentity.currentUser._id;
+        var isCurrentUser = ute._id === identity.currentUser._id;
         vm.editPassword = false;
 
         vm.firstName = ute.firstName;

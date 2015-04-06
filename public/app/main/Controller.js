@@ -5,9 +5,9 @@
         .controller('Controller', Controller);
 
     //////////////////////////
-    function Controller(dataservice, sbIdentity, notifier) {
+    function Controller(dataservice, identity, notifier) {
         var vm = this;
-        vm.identity = sbIdentity;
+        vm.identity = identity;
         vm.components = dataservice.query();
 
         // dataservice.query().then(function (results) {
