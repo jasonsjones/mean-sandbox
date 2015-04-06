@@ -4,17 +4,13 @@
 </div>
 
 <div class="row">
-    <p>For now, this page does absolutely nothing except allow users to sign up
-    for an account and change some profile information.</p>
+    <h4>For now, this site does absolutely nothing except allow users to sign up
+    for an account and change some profile information.</h4>
 </div>
 <div class="row">
     <div class="col-md-3" ng-repeat="service in vm.components">
-        <div class="thumbnail">
-            <a href="{{ service.webUrl }}"><img ng-src="{{ service.imgUrl }}"
-                class="img-responsive"></a>
-            <div class="caption">
-                <p ng-bind="service.description"></p>
-            </div>
-        </div>
+        <a href="{{ service.webUrl }}"><img ng-src="{{ service.imgUrl }}"
+           class="img-responsive"></a>
+        <p ng-bind="service.description"></p>
     </div>
 </div>
