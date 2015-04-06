@@ -6,10 +6,11 @@
 
     function identity($window, sbUser) {
 
+        var storage = $window.localStorage;
         var currentUser = null;
 
-        if ($window.localStorage.currentUser) {
-            var systemUser = JSON.parse($window.localStorage.currentUser);
+        if (storage.getItem('currentUser')) {
+            var systemUser = JSON.parse(storage.getItem('currentUser'));
             currentUser = new sbUser();
             angular.extend(currentUser, systemUser);
         }
@@ -31,4 +32,5 @@
             return this.currentUser && this.currentUser.roles.indexOf(role) > -1;
         }
 
-    } }());
+    }
+}());
