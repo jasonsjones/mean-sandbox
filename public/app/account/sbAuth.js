@@ -47,7 +47,7 @@
 
             var deferred = $q.defer();
 
-            newUser.$save().then(newUserSuccess, newUserFailure);
+            newUser.$save().then(newUserSuccess, userFailure);
 
             return deferred.promise;
 
@@ -55,10 +55,6 @@
             function newUserSuccess(response) {
                 identity.currentUser = newUser;
                 deferred.resolve();
-            }
-
-            function newUserFailure(response) {
-                deferred.reject(response.data.reason);
             }
         }
 
@@ -73,7 +69,7 @@
             }
             angular.extend(clonedUser, updatedUserData);
 
-            clonedUser.$update().then(updateUserSuccess, updateUserFailure);
+            clonedUser.$update().then(updateUserSuccess, userFailure);
 
             return deferred.promise;
 
@@ -83,10 +79,6 @@
                     identity.currentUser = clonedUser;
                 }
                 deferred.resolve();
-            }
-
-            function updateUserFailure(response) {
-                deferred.reject(response.data.reason);
             }
         }
 
@@ -116,6 +108,10 @@
             } else {
                 return $q.reject('not authorized');
             }
+        }
+
+        function userFailure(response) {
+            deferred.reject(response.data.reason);
         }
     }
 
