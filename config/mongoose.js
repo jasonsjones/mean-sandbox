@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var userModel = require('../app/models/User');
+var todoModel = require('../app/models/Todo');
 
 module.exports = function (config) {
     mongoose.connect(config.db);
@@ -10,4 +11,5 @@ module.exports = function (config) {
     });
 
     userModel.createDefaultUsers();
+    todoModel.createDefaultTodos();
 };

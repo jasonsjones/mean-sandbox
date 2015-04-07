@@ -24,6 +24,7 @@ module.exports = function (config) {
     app.use(passport.session());
 
     require('../app/routes/user')(router);
+    require('../app/routes/todo')(router);
     app.use(router);
 
     // this route needs to be defined at the end of all other routes
