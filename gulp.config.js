@@ -17,6 +17,7 @@ module.exports = function () {
         client: client,
         css: temp + 'styles.css',
         fonts: client + 'components/font-awesome/fonts/**/*.*',
+        htmltemplates: clientApp + '**/*.html',
         images: client + 'img/**/*.*',
         index: client + 'index.html',
         js: [
@@ -28,6 +29,19 @@ module.exports = function () {
         less: client + 'css/styles.less',
         serverFiles: ['server.js', 'app/**/*.js', 'config/**/*.js'],
         temp: temp,
+
+        /**
+         * template cache
+         *
+         */
+        templateCache: {
+            file: 'templates.js',
+            options: {
+                module: 'app.core',
+                standAlone: false,
+                root: 'app/'
+            }
+        },
 
         /**
          * browser-sync

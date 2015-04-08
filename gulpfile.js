@@ -33,7 +33,7 @@ gulp.task('styles', ['clean-styles'], function () {
 });
 
 gulp.task('fonts', ['clean-fonts'], function () {
-    log('Copying fonts')
+    log('Copying fonts');
 
     return gulp
         .src(config.fonts)
@@ -41,7 +41,7 @@ gulp.task('fonts', ['clean-fonts'], function () {
 });
 
 gulp.task('images', ['clean-images'], function () {
-    log('Copying and compressing images')
+    log('Copying and compressing images');
 
     return gulp
         .src(config.images)
@@ -62,12 +62,35 @@ gulp.task('clean-fonts', function (done) {
 gulp.task('clean-images', function (done) {
     clean(config.build + 'images/**/*.*', done);
 });
+
 gulp.task('clean-styles', function (done) {
     clean(config.temp + '**/*.css', done);
 });
 
+gulp.task('clean-code', function (done) {
+    var files = [].concat(
+        config.temp + '**/*.js',
+        config.build + '**/*.html',
+        config.build + 'js/**/*.js'
+    );
+    clean(files, done);
+});
+
 gulp.task('less-watcher', function () {
     gulp.watch([config.less], ['styles']);
+});
+
+gulp.task('templatecache', ['clean-code'], function () {
+    log('Creating AngularJS $templateCache');
+
+    return gulp
+        .src(config.htmltemplates)
+        .pipe($.minifyHtml({empty: true}))
+        .pipe($.angularTemplatecache(
+            config.templateCache.file,
+            config.templateCache.options
+            ))
+        .pipe(gulp.dest(config.temp));
 });
 
 gulp.task('wiredep', function () {
