@@ -43,6 +43,11 @@
                 controller: 'Controller',
                 controllerAs: 'vm'
             })
+            .when('/todos', {
+                templateUrl: '/app/todo/todo.html',
+                controller: 'TodoCtrl',
+                controllerAs: 'vm'
+            })
             .when('/admin/users', {
                 templateUrl: 'app/admin/user-admin.html',
                 controller: 'UserAdminCtrl',
