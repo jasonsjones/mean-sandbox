@@ -23,4 +23,14 @@ module.exports = function (api) {
             res.json(todo);
         });
     });
+
+    api.delete('/api/todos/:id', function (req, res) {
+        Todo.findByIdAndRemove(req.params.id, function (err) {
+            if (err) {
+                res.send(err);
+            }
+            res.send({message: 'todo removed'});
+        });
+
+    });
 };

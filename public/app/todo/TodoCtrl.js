@@ -16,8 +16,16 @@
             console.log(vm.formData);
         };
 
-        vm.deleteTodo = function (id) {
+        vm.deleteTodo = function (todo) {
             console.log('deleteTodo fired');
+
+            todo.$delete().then(function (err) {
+                if (err) {
+                    console.log(err);
+                }
+                console.log('todo deleted...');
+            });
+
         };
     }
 }());
