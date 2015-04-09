@@ -11,4 +11,16 @@ module.exports = function (api) {
             res.json(todos);
         });
     });
+
+    api.post('/api/todos', function (req, res) {
+        var newTodo = req.body;
+
+        Todo.create(newTodo, function (err, todo) {
+            if (err) {
+                console.log(err);
+                res.send(err);
+            }
+            res.json(todo);
+        });
+    });
 };

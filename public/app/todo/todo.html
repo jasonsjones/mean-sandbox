@@ -2,12 +2,13 @@
     <div class="jumbotron text-center">
         <h1>I'm a Todo-aholic <span class="label label-info">{{vm.todos.length}}</span></h1>
     </div>
-    <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-            <div class="checkbox" ng-repeat="todo in vm.todos">
-                <label>
-                    <input type="checkbox" ng-click="vm.deleteTodo(todo._id)"> {{todo.text}}
-                </label>
+    <div ng-repeat="todo in vm.todos">
+        <div class="row todo-item">
+            <div class="col-sm-4 col-sm-offset-4">
+                <p>{{ todo.text }}</p>
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)"><i class="fa fa-trash"></i></button>
             </div>
         </div>
     </div>
