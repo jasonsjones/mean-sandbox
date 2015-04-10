@@ -18,18 +18,28 @@ module.exports = function (api) {
         Todo.create(newTodo, function (err, todo) {
             if (err) {
                 console.log(err);
-                res.send(err);
+                return res.send(err);
             }
-            res.json(todo);
+            Todo.find({}).exec(function (err, todos) {
+                if (err) {
+                    return res.send(err);
+                }
+                res.json(todos);
+            });
         });
     });
 
     api.delete('/api/todos/:id', function (req, res) {
         Todo.findByIdAndRemove(req.params.id, function (err) {
             if (err) {
-                res.send(err);
+                return res.send(err);
             }
-            res.send({message: 'todo removed'});
+            Todo.find({}).exec(function (err, todos) {
+                if (err) {
+                    return res.send(err);
+                }
+                res.json(todos);
+            });
         });
 
     });

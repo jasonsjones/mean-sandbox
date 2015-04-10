@@ -3,18 +3,22 @@
     'use strict';
 
     angular.module('app.core')
-        .service('todo', todo);
+        .factory('todo', todo);
 
-    function todo($resource) {
+    function todo($http) {
+        return {
+            get: function () {
+                return $http.get('/api/todos');
 
-        var TodoResource = $resource('/api/todos/:id', {id: '@_id'},
-            {
-                update: {
-                    method: 'PUT',
-                    isArray: false
+            },
+
+            create: function (todoData) {
+                return $http.post('/api/todos', todoData);
+            },
+
+            delete: function (id) {
+                return $http.delete('/api/todos/' + id);
             }
-        });
-
-        return TodoResource;
+        };
     }
 }());

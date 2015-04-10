@@ -8,10 +8,11 @@
                 <p>{{ todo.text }}</p>
             </div>
             <div class="col-sm-2">
-                <button class="btn btn-danger" ng-click="vm.deleteTodo(todo)"><i class="fa fa-trash"></i></button>
+                <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)"><i class="fa fa-trash"></i></button>
             </div>
         </div>
     </div>
+    <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 text-center">
             <form>
