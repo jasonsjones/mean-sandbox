@@ -4,7 +4,7 @@
         .controller('TodoCtrl', TodoCtrl);
 
     ////////////////////////
-    function TodoCtrl(todo) {
+    function TodoCtrl(todo, $route) {
         console.log('TodoCtrl loaded...');
 
         var vm = this;
@@ -24,6 +24,7 @@
                     console.log(err);
                 }
                 console.log('todo deleted...');
+                $route.reload();
             });
 
         };
