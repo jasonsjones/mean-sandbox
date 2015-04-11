@@ -15,6 +15,8 @@
         vm.username = identity.currentUser.username;
 
         vm.updateData = function () {
+            console.log('id to update: ' + identity.currentUser._id);
+
             var userUpdate = {
                 firstName: vm.firstName,
                 lastName: vm.lastName,
@@ -23,7 +25,7 @@
                 roles: {}
             };
 
-            if (identity.currentUser.isAdmin()) {
+            if (identity.isAuthorizedForRole('admin')) {
                 userUpdate.roles.admin = true;
             } else {
                 userUpdate.roles.admin = false;
@@ -45,7 +47,10 @@
             //////////////////
 
             function sendToAuthService(newUserData) {
-                sbAuth.updateUser(newUserData, true).then(function () {
+                // var isCurrentUser = true;
+                console.log('newUserData: ');
+                console.log(newUserData);
+                sbAuth.updateUser(identity.currentUser._id, newUserData).then(function () {
                     notifier.notify('Your profile information has been successfully updated');
                     $location.path('/');
                 }, function (reason) {

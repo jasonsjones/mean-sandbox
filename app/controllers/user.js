@@ -5,6 +5,7 @@ exports.getUsers = function (req, res) {
     User.find({}, '-salt -password').exec(function (err, users) {
         if (err) {
             console.log('there was an error');
+            res.send(err);
         } else {
             res.json(users);
         }
@@ -45,7 +46,7 @@ exports.updateUserById = function (req, res) {
     User.findOne({_id: req.params.id}).exec(function (err, user) {
         if (err) {
             console.log(err);
-            res.send(err);
+            return res.send(err);
         }
 
         if (user.isAdmin()) {
@@ -96,7 +97,7 @@ exports.updateUserById = function (req, res) {
 exports.deleteUser = function (req, res) {
     User.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
-            res.send(err);
+            return res.send(err);
         }
         res.send({message: 'user removed'});
     });

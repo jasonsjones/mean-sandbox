@@ -27,7 +27,7 @@
             vm.username = '';
             vm.password = '';
             notifier.notify('You successfully logged out!');
-            $window.localStorage.clear();
+            $window.localStorage.removeItem('currentUser');
             $location.path('/');
         };
     }

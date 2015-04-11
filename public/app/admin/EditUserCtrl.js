@@ -8,7 +8,7 @@
     function EditUserCtrl(sbEditUser, identity, sbAuth, notifier, $location) {
         var vm = this;
         var ute = sbEditUser.userToEdit;
-        var isCurrentUser = ute._id === identity.currentUser._id;
+        var isCurrentUser = (ute._id === identity.currentUser._id);
         vm.editPassword = false;
 
         vm.firstName = ute.firstName;
@@ -17,7 +17,8 @@
         vm.username = ute.username;
         vm.roles = {};
 
-        if (ute.isAdmin()) {
+        //if (ute.isAdmin()) {
+        if (ute.roles.indexOf('admin') > -1) {
             vm.roles.admin = true;
         }
 
@@ -56,7 +57,7 @@
             //////////////////
 
             function sendToAuthService(newUserData) {
-                sbAuth.updateUser(newUserData, isCurrentUser).then(function () {
+                sbAuth.updateUser(ute._id, newUserData).then(function () {
                     notifier.notify('User information for ' + newUserData.username +
                                     ' has been successfully updated');
                     $location.path('/admin/users');

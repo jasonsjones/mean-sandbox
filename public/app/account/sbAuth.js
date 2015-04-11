@@ -5,7 +5,7 @@
     angular.module('app.core')
         .factory('sbAuth', sbAuth);
 
-    function sbAuth($http, $q, $window, identity, sbUser, sbEditUser) {
+    function sbAuth($http, $q, $window, identity, sbUser, sbEditUser, moduser) {
 
         var service = {
             authenticateUser: authenticateUser,
@@ -31,11 +31,14 @@
             /////////////////////////
             function authSuccess(response) {
                 if (response.data.success) {
-                    var user = new sbUser();
-                    angular.extend(user, response.data.user);
+                    //var user = new sbUser();
+                    //angular.extend(user, response.data.user);
+                    var user = response.data.user;
                     identity.currentUser = user;
                     $window.localStorage.currentUser = JSON.stringify(user);
                     deferred.resolve(true);
+                    console.log('logged in user: ');
+                    console.log(user);
                 } else {
                     deferred.resolve(false);
                 }
@@ -43,50 +46,78 @@
         }
 
         function createUser(newUserData) {
-            var newUser = new sbUser(newUserData);
+            //var newUser = new sbUser(newUserData);
 
             var deferred = $q.defer();
 
-            newUser.$save().then(newUserSuccess, userFailure);
+            //newUser.$save().then(newUserSuccess, userFailure);
+            moduser.create(newUserData).success(function (user) {
+                identity.currentUser = user;
+                deferred.resolve();
+            })
+            .error(userFailure);
 
             return deferred.promise;
 
             ////////////////
-            function newUserSuccess(response) {
-                identity.currentUser = newUser;
-                deferred.resolve();
+            // function newUserSuccess(response) {
+            //     identity.currentUser = newUser;
+            //     deferred.resolve();
+            // }
+
+            function userFailure(response) {
+                deferred.reject(response.data.reason);
             }
         }
 
-        function updateUser(updatedUserData, isCurrentUser) {
+        function updateUser(id, updatedUserData) {
             var deferred = $q.defer();
 
-            var clonedUser = new sbUser();
-            if (isCurrentUser) {
-                angular.copy(identity.currentUser, clonedUser);
-            } else {
-                angular.copy(sbEditUser.userToEdit, clonedUser);
-            }
-            angular.extend(clonedUser, updatedUserData);
+            // var clonedUser = new sbUser();
+            // if (isCurrentUser) {
+            //     angular.copy(identity.currentUser, clonedUser);
+            // } else {
+            //     angular.copy(sbEditUser.userToEdit, clonedUser);
+            // }
+            // angular.extend(clonedUser, updatedUserData);
 
-            clonedUser.$update().then(updateUserSuccess, userFailure);
+            // clonedUser.$update().then(updateUserSuccess, userFailure);
+
+            moduser.update(id, updatedUserData).success(function (user) {
+                if (id === identity.currentUser._id) {
+                    identity.currentUser = user;
+                    $window.localStorage.currentUser = JSON.stringify(user);
+                }
+                deferred.resolve();
+            })
+            .error(function (response) {
+                deferred.reject(response.data.reason);
+            });
 
             return deferred.promise;
 
             ////////////////
-            function updateUserSuccess() {
-                if (clonedUser._id === identity.currentUser._id) {
-                    identity.currentUser = clonedUser;
-                }
-                deferred.resolve();
-            }
+            // function updateUserSuccess() {
+            //     if (id === identity.currentUser._id) {
+            //         identity.currentUser = clonedUser;
+            //     }
+            //     deferred.resolve();
+            // }
+
+            // function userFailure(response) {
+            //     deferred.reject(response.data.reason);
+            // }
         }
 
         function deleteUser(userToDelete) {
             var deferred = $q.defer();
 
-            userToDelete.$delete().then(function () {
-                deferred.resolve();
+            // userToDelete.$delete().then(function () {
+            //     deferred.resolve();
+            // });
+            moduser.remove(userToDelete._id).success(function (data) {
+               console.log(data);
+               deferred.resolve(data);
             });
 
             return deferred.promise;
@@ -108,10 +139,6 @@
             } else {
                 return $q.reject('not authorized');
             }
-        }
-
-        function userFailure(response) {
-            deferred.reject(response.data.reason);
         }
     }
 
