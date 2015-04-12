@@ -23,9 +23,9 @@
                 controller: 'Controller',
                 controllerAs: 'vm'
             })
-            .when('/signup', {
-                templateUrl: '/app/account/signup.html',
-                controller: 'SignupCtrl',
+            .when('/register', {
+                templateUrl: '/app/account/register.html',
+                controller: 'RegisterCtrl',
                 controllerAs: 'vm'
             })
             .when('/profile', {

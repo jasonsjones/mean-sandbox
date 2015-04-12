@@ -2,10 +2,10 @@
     /* globals angular */
     'use strict';
     angular.module('app.core')
-        .controller('SignupCtrl', SignupCtrl);
+        .controller('RegisterCtrl', RegisterCtrl);
 
-    function SignupCtrl($http, $location, sbAuth, notifier) {
-        console.log('SignupCtrl loaded...');
+    function RegisterCtrl($http, $location, sbAuth, notifier) {
+        console.log('RegisterCtrl loaded...');
 
         var vm = this;
 
