@@ -5,7 +5,7 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    function UserAdminCtrl(userAPI, sbUser, sbEditUser, register, notifier, $location, $route) {
+    function UserAdminCtrl(userAPI, sbEditUser, register, notifier, $location, $route) {
         var vm = this;
 
         vm.users = null;
