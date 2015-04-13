@@ -116,8 +116,8 @@
             //     deferred.resolve();
             // });
             moduser.remove(userToDelete._id).success(function (data) {
-               console.log(data);
-               deferred.resolve(data);
+                console.log(data);
+                deferred.resolve(data);
             });
 
             return deferred.promise;
