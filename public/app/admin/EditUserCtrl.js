@@ -5,7 +5,7 @@
         .controller('EditUserCtrl', EditUserCtrl);
 
     //////////
-    function EditUserCtrl(sbEditUser, identity, sbAuth, notifier, $location) {
+    function EditUserCtrl(sbEditUser, identity, register, notifier, $location) {
         var vm = this;
         var ute = sbEditUser.userToEdit;
         var isCurrentUser = (ute._id === identity.currentUser._id);
@@ -57,7 +57,7 @@
             //////////////////
 
             function sendToAuthService(newUserData) {
-                sbAuth.updateUser(ute._id, newUserData).then(function () {
+                register.updateUser(ute._id, newUserData).then(function () {
                     notifier.notify('User information for ' + newUserData.username +
                                     ' has been successfully updated');
                     $location.path('/admin/users');

@@ -5,11 +5,9 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    function UserAdminCtrl(userAPI, sbUser, sbEditUser, sbAuth, notifier, $location, $route) {
-        console.log('UserAdminCtrl loaded...');
-
+    function UserAdminCtrl(userAPI, sbUser, sbEditUser, register, notifier, $location, $route) {
         var vm = this;
-        //vm.users = sbUser.query();
+
         vm.users = null;
         vm.loading = true;
 
@@ -27,9 +25,9 @@
         };
 
         vm.deleteUser = function (user) {
-            console.log(user.firstName + ' is to be deleted...');
 
-            sbAuth.deleteUser(user).then(function () {
+            register.deleteUser(user)
+            .then(function () {
                 notifier.notify('user successfully deleted');
                 $route.reload();
             },
@@ -39,8 +37,6 @@
         };
 
         vm.updateUser = function (user) {
-            console.log(user);
-            console.log(vm.isAdmin(user));
             sbEditUser.userToEdit = user;
             $location.path('/admin/edituser');
         };

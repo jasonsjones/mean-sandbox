@@ -3,7 +3,7 @@
     angular.module('app.core')
         .controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($http, $location, identity, notifier, sbAuth) {
+    function ProfileCtrl($http, $location, identity, notifier, register) {
         console.log('ProfileCtrl loaded...');
         var vm = this;
 
@@ -50,7 +50,7 @@
                 // var isCurrentUser = true;
                 console.log('newUserData: ');
                 console.log(newUserData);
-                sbAuth.updateUser(identity.currentUser._id, newUserData).then(function () {
+                register.updateUser(identity.currentUser._id, newUserData).then(function () {
                     notifier.notify('Your profile information has been successfully updated');
                     $location.path('/');
                 }, function (reason) {

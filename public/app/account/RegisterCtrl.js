@@ -4,12 +4,12 @@
     angular.module('app.core')
         .controller('RegisterCtrl', RegisterCtrl);
 
-    function RegisterCtrl($http, $location, sbAuth, notifier) {
+    function RegisterCtrl($location, register, notifier) {
         console.log('RegisterCtrl loaded...');
 
         var vm = this;
 
-        vm.signup = function () {
+        vm.register = function () {
             var newUser = {
                 firstName: vm.firstName,
                 lastName: vm.lastName,
@@ -19,7 +19,7 @@
             };
 
             if (newUser.password.length > 0 && isPasswordCorrect()) {
-                sbAuth.createUser(newUser)
+                register.createUser(newUser)
                 .then(function () {
                     notifier.notify('User account created');
                     $location.path('/');
