@@ -3,9 +3,9 @@
     'use strict';
 
     angular.module('app.core')
-        .factory('moduser', moduser);
+        .factory('userAPI', userAPI);
 
-    function moduser($http) {
+    function userAPI($http) {
 
         return {
            get: function () {

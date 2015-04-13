@@ -5,7 +5,7 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    function UserAdminCtrl(moduser, sbUser, sbEditUser, sbAuth, notifier, $location, $route) {
+    function UserAdminCtrl(userAPI, sbUser, sbEditUser, sbAuth, notifier, $location, $route) {
         console.log('UserAdminCtrl loaded...');
 
         var vm = this;
@@ -13,7 +13,7 @@
         vm.users = null;
         vm.loading = true;
 
-        moduser.get().success(function (users) {
+        userAPI.get().success(function (users) {
             vm.users = users;
             vm.loading = false;
         });

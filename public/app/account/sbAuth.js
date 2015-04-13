@@ -5,7 +5,7 @@
     angular.module('app.core')
         .factory('sbAuth', sbAuth);
 
-    function sbAuth($http, $q, $window, identity, sbUser, sbEditUser, moduser) {
+    function sbAuth($http, $q, $window, identity, sbUser, sbEditUser, userAPI) {
 
         var service = {
             authenticateUser: authenticateUser,
@@ -51,7 +51,7 @@
             var deferred = $q.defer();
 
             //newUser.$save().then(newUserSuccess, userFailure);
-            moduser.create(newUserData).success(function (user) {
+            userAPI.create(newUserData).success(function (user) {
                 identity.currentUser = user;
                 deferred.resolve();
             })
@@ -83,7 +83,7 @@
 
             // clonedUser.$update().then(updateUserSuccess, userFailure);
 
-            moduser.update(id, updatedUserData).success(function (user) {
+            userAPI.update(id, updatedUserData).success(function (user) {
                 if (id === identity.currentUser._id) {
                     identity.currentUser = user;
                     $window.localStorage.currentUser = JSON.stringify(user);
@@ -115,7 +115,7 @@
             // userToDelete.$delete().then(function () {
             //     deferred.resolve();
             // });
-            moduser.remove(userToDelete._id).success(function (data) {
+            userAPI.remove(userToDelete._id).success(function (data) {
                 console.log(data);
                 deferred.resolve(data);
             });
