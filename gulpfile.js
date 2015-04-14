@@ -104,13 +104,27 @@ gulp.task('wiredep', function () {
         .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['wiredep', 'styles'], function () {
+gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function () {
     log('Wire up css into html after files are ready');
 
     return gulp
         .src(config.index)
         .pipe($.inject(gulp.src(config.css), {ignorePath: 'public'}))
         .pipe(gulp.dest(config.client));
+});
+
+gulp.task('optimize', ['inject'], function () {
+    log('Optimizing the javascript, css, and html');
+
+    var templateCache = config.temp + config.templateCache.file;
+
+    return gulp
+        .src(config.index)
+        .pipe($.plumber())
+        .pipe($.inject(gulp.src(templateCache, {read: false}), {
+            starttag: '<!-- inject:templates:js -->'
+        }))
+        .pipe(gulp.dest(config.build));
 });
 
 gulp.task('serve-dev', ['inject'], function () {
