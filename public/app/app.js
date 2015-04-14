@@ -14,6 +14,12 @@
                     console.log('calling adminRoutes in app config...');
                     return sbAuth.authorizeCurrentUserForRoute('admin');
                 }
+            },
+            user : {
+                auth: function (sbAuth) {
+                    console.log('calling userRoutes in app config...');
+                    return sbAuth.authorizeAuthenticatedUserForRoute();
+                }
             }
         };
 
@@ -31,7 +37,8 @@
             .when('/profile', {
                 templateUrl: '/app/account/profile.html',
                 controller: 'ProfileCtrl',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: routeRoleCheck.user
             })
             .when('/about', {
                 templateUrl: '/app/main/about.html',
@@ -46,7 +53,8 @@
             .when('/todos', {
                 templateUrl: '/app/todo/todo.html',
                 controller: 'TodoCtrl',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: routeRoleCheck.user
             })
             .when('/admin/users', {
                 templateUrl: 'app/admin/user-admin.html',
