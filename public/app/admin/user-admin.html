@@ -16,14 +16,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="user in vm.users">
+        <tr ng-repeat="user in vm.users | orderBy:'-roles'">
             <td>{{ user.firstName + ' ' + user.lastName }}</td>
             <td>{{ user.username }}</td>
             <td>{{ user.email }}</td>
             <td><span ng-if="vm.isAdmin(user)"><i class="fa fa-check"></i></span></td>
             <td>{{ user.createdOn | date:'medium' }}</td>
             <td>{{ user.lastModified | date:'medium' }}</td>
-            <td><button ng-click="vm.updateUser(user)" class="btn btn-info">Edit User</button></td>
+            <td><button ng-click="vm.updateUser(user)" class="btn btn-info"><i class="fa fa-pencil"></i> Edit User</button></td>
             <td><button ng-click="vm.deleteUser(user)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button></td>
         </tr>
     </tbody>
