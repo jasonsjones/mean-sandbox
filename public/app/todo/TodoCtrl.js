@@ -4,7 +4,7 @@
         .controller('TodoCtrl', TodoCtrl);
 
     ////////////////////////
-    function TodoCtrl(todo, $route) {
+    function TodoCtrl(todo) {
         console.log('TodoCtrl loaded...');
 
         var vm = this;
