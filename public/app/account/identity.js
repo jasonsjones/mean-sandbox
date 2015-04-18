@@ -4,7 +4,7 @@
     angular.module('app.core')
         .factory('identity', identity);
 
-    function identity($window, sbUser) {
+    function identity($window) {
 
         var storage = $window.localStorage;
         var currentUser = null;
@@ -12,10 +12,6 @@
         if (storage.getItem('currentUser')) {
             var systemUser = JSON.parse(storage.getItem('currentUser'));
             currentUser = systemUser;
-            //currentUser = new sbUser();
-            //angular.extend(currentUser, systemUser);
-            console.log('Identiy already logged in ');
-            console.log(currentUser);
         }
 
         var service = {
