@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- build:css styles/lib.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
         <link rel="stylesheet" href="components/toastr/toastr.css" />
         <!-- endbower -->
+        <!-- endbuild -->
 
+        <!-- build:css styles/app.css -->
         <!-- inject:css -->
         <link rel="stylesheet" href="/.tmp/styles.css">
         <!-- endinject -->
+        <!-- endbuild -->
         <link rel="stylesheet" href="/css/bootstrap-superhero.css">
 
         <base href="/">
@@ -23,6 +27,7 @@
             </div>
         </div>
         <div ng-include="'app/main/footer.html'"></div>
+        <!-- build:js js/lib.js -->
         <!-- bower:js -->
         <script src="components/jquery/dist/jquery.js"></script>
         <script src="components/angular/angular.js"></script>
@@ -32,14 +37,13 @@
         <script src="components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="components/toastr/toastr.js"></script>
         <!-- endbower -->
+        <!-- endbuild -->
 
+        <!-- build:js js/app.js -->
         <!-- inject:js -->
         <script src="/app/app.module.js"></script>
         <script src="/app/core/app.core.module.js"></script>
         <script src="/app/app.js"></script>
-        <script src="/app/admin/EditUserCtrl.js"></script>
-        <script src="/app/admin/UserAdminCtrl.js"></script>
-        <script src="/app/admin/sbEditUser.js"></script>
         <script src="/app/account/NavBarLoginCtrl.js"></script>
         <script src="/app/account/ProfileCtrl.js"></script>
         <script src="/app/account/RegisterCtrl.js"></script>
@@ -48,6 +52,9 @@
         <script src="/app/account/sbAuth.js"></script>
         <script src="/app/account/sbUser.js"></script>
         <script src="/app/account/userAPI.js"></script>
+        <script src="/app/admin/EditUserCtrl.js"></script>
+        <script src="/app/admin/UserAdminCtrl.js"></script>
+        <script src="/app/admin/sbEditUser.js"></script>
         <script src="/app/main/Controller.js"></script>
         <script src="/app/main/NavBarCtrl.js"></script>
         <script src="/app/main/dataservice.js"></script>
@@ -58,5 +65,6 @@
 
         <!-- inject:templates:js -->
         <!-- endinject -->
+        <!-- endbuild -->
     </body>
 </html>
