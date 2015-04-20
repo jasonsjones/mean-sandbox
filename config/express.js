@@ -8,6 +8,7 @@ var session = require('express-session');
 module.exports = function (config) {
     var app = express();
     var router = express.Router();
+    var environment = config.env;
 
     app.use(logger('dev'));
     app.use(express.static(path.join(__dirname + '/../public')));
@@ -29,6 +30,18 @@ module.exports = function (config) {
 
     // this route needs to be defined at the end of all other routes
     require('../app/routes/index')(app);
+
+    switch (environment) {
+        case 'build':
+            console.log('** BUILD **');
+            break;
+        case 'devlocal':
+            console.log('** DEVLOCAL **');
+            app.use(express.static(path.join(__dirname + '/../public/')));
+            app.use(express.static(path.join(__dirname + '/../')));
+            break;
+        default:
+    }
 
     return app;
 };
