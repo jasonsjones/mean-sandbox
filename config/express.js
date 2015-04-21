@@ -11,8 +11,6 @@ module.exports = function (config) {
     var environment = config.env;
 
     app.use(logger('dev'));
-    app.use(express.static(path.join(__dirname + '/../public')));
-    app.use(express.static(path.join(__dirname + '/../')));
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
 
@@ -24,24 +22,28 @@ module.exports = function (config) {
     app.use(passport.initialize());
     app.use(passport.session());
 
+    switch (environment) {
+        case 'build':
+            console.log('** BUILD **');
+            app.use(express.static(path.join(__dirname + '/../build/')));
+            app.use(express.static(path.join(__dirname + '/../')));
+            app.use('/*', express.static(path.join(__dirname + '/../build/index.html')));
+            break;
+        case 'devlocal':
+            console.log('** DEVLOCAL **');
+            app.use(express.static(path.join(__dirname + '/../public/')));
+            app.use('/admin', express.static(path.join(__dirname + '/../public/')));
+            app.use(express.static(path.join(__dirname + '/../')));
+            break;
+        default:
+    }
+
     require('../app/routes/user')(router);
     require('../app/routes/todo')(router);
     app.use(router);
 
     // this route needs to be defined at the end of all other routes
-    require('../app/routes/index')(app);
-
-    switch (environment) {
-        case 'build':
-            console.log('** BUILD **');
-            break;
-        case 'devlocal':
-            console.log('** DEVLOCAL **');
-            app.use(express.static(path.join(__dirname + '/../public/')));
-            app.use(express.static(path.join(__dirname + '/../')));
-            break;
-        default:
-    }
+    require('../app/routes/index')(app, environment);
 
     return app;
 };

@@ -123,7 +123,8 @@ gulp.task('optimize', ['inject'], function () {
         .src(config.index)
         .pipe($.plumber())
         .pipe($.inject(gulp.src(templateCache, {read: false}), {
-            starttag: '<!-- inject:templates:js -->'
+            starttag: '<!-- inject:templates:js -->',
+            ignorePath: 'public'
         }))
         .pipe(assets)
         .pipe(assets.restore())
