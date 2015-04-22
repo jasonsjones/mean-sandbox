@@ -14,6 +14,8 @@ module.exports = function (api) {
 
     api.post('/api/todos', function (req, res) {
         var newTodo = req.body;
+        // TODO: add newTodo.userId = req.user._id
+        // once express-session is set up
 
         Todo.create(newTodo, function (err, todo) {
             if (err) {
