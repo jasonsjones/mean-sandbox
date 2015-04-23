@@ -11,10 +11,7 @@
         vm.loading = true;
         vm.todos = null;
 
-        todo.get().success(function (data) {
-            vm.todos = data;
-            vm.loading = false;
-        });
+        initialize();
 
         vm.createTodo = function () {
             console.log('createTodo fired...');
@@ -38,5 +35,17 @@
             });
 
         };
+
+        vm.completeTodo = function (todoToUpdate) {
+            todoToUpdate.done = !todoToUpdate.done;
+            console.log(todoToUpdate);
+        };
+
+        function initialize() {
+            todo.get().success(function (data) {
+                vm.todos = data;
+                vm.loading = false;
+            });
+        }
     }
 }());
