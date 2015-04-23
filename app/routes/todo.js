@@ -32,6 +32,11 @@ module.exports = function (api) {
         });
     });
 
+    api.put('/api/todos/:id', function (req, res) {
+        var todoData = req.body;
+        console.log(todoData);
+    });
+
     api.delete('/api/todos/:id', function (req, res) {
         Todo.findByIdAndRemove(req.params.id, function (err) {
             if (err) {
