@@ -32,7 +32,7 @@ exports.authenticateWithPassport = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-
+            req.session.user = user;
             res.json({success: true, user: user});
         });
     });
