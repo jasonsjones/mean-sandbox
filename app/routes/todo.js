@@ -1,54 +1,15 @@
 
 var mongoose = require('mongoose');
 var Todo = mongoose.model('Todo');
+var todoCtrl = require('../controllers/todo');
 
 module.exports = function (api) {
-    api.get('/api/todos', function (req, res) {
-        Todo.find({userId: {$in: ['global', req.session.user._id]}})
-            .exec(function (err, todos) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(todos);
-            });
-    });
 
-    api.post('/api/todos', function (req, res) {
-        var newTodo = req.body;
-        newTodo.userId = req.session.user._id;
+    api.route('/api/todos')
+        .get(todoCtrl.getTodos)
+        .post(todoCtrl.createTodo);
 
-        Todo.create(newTodo, function (err, todo) {
-            if (err) {
-                console.log(err);
-                return res.send(err);
-            }
-            Todo.find({userId: {$in: ['global', req.session.user._id]}})
-                .exec(function (err, todos) {
-                if (err) {
-                    return res.send(err);
-                }
-                res.json(todos);
-            });
-        });
-    });
-
-    api.put('/api/todos/:id', function (req, res) {
-        var todoData = req.body;
-        console.log(todoData);
-    });
-
-    api.delete('/api/todos/:id', function (req, res) {
-        Todo.findByIdAndRemove(req.params.id, function (err) {
-            if (err) {
-                return res.send(err);
-            }
-            Todo.find({userId: {$in: ['global', req.session.user._id]}})
-                .exec(function (err, todos) {
-                if (err) {
-                    return res.send(err);
-                }
-                res.json(todos);
-            });
-        });
-    });
+    api.route('/api/todos/:id')
+        .put(todoCtrl.updateTodo)
+        .delete(todoCtrl.deleteTodo);
 };
