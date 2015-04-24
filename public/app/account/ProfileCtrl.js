@@ -4,7 +4,6 @@
         .controller('ProfileCtrl', ProfileCtrl);
 
     function ProfileCtrl($http, $location, identity, notifier, register) {
-        console.log('ProfileCtrl loaded...');
         var vm = this;
 
         vm.editPassword = false;
@@ -15,7 +14,6 @@
         vm.username = identity.currentUser.username;
 
         vm.updateData = function () {
-            console.log('id to update: ' + identity.currentUser._id);
 
             var userUpdate = {
                 firstName: vm.firstName,
@@ -47,9 +45,6 @@
             //////////////////
 
             function sendToAuthService(newUserData) {
-                // var isCurrentUser = true;
-                console.log('newUserData: ');
-                console.log(newUserData);
                 register.updateUser(identity.currentUser._id, newUserData).then(function () {
                     notifier.notify('Your profile information has been successfully updated');
                     $location.path('/');
