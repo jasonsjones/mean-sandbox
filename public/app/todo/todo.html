@@ -1,8 +1,8 @@
 <div class="container">
     <div class="jumbotron text-center">
-        <h1>There are <span class="label label-info">{{vm.todos.length}}</span> Things ToDo</h1>
+        <h1><span class="label label-info">{{vm.numberOfTodos}}</span> Thing(s) ToDo</h1>
     </div>
-    <div ng-repeat="todo in vm.todos">
+    <div ng-repeat="todo in vm.todos | orderBy:'done'">
         <div class="row todo-item">
             <div class="col-sm-4 col-sm-offset-3">
                 <p ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>

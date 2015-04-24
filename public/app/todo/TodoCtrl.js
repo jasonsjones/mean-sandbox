@@ -10,16 +10,18 @@
         var vm = this;
         vm.loading = true;
         vm.todos = null;
+        vm.numberOfTodos = null;
 
         initialize();
 
+
         vm.createTodo = function () {
             console.log('createTodo fired...');
-            console.log(vm.formData);
             vm.loading = true;
             todo.create(vm.formData).success(function (data) {
                 vm.formData = {};
                 vm.todos = data;
+                vm.numberOfTodos = updateNumberOfTodos();
                 vm.loading = false;
             });
         };
@@ -31,6 +33,7 @@
             todo.delete(id).success(function (data) {
                 console.log('todo deleted...');
                 vm.todos = data;
+                vm.numberOfTodos = updateNumberOfTodos();
                 vm.loading = false;
             });
 
@@ -41,6 +44,7 @@
             todo.update(todoToUpdate._id, todoToUpdate)
             .success(function (data) {
                 vm.todos = data;
+                vm.numberOfTodos = updateNumberOfTodos();
             });
         };
 
@@ -48,7 +52,19 @@
             todo.get().success(function (data) {
                 vm.todos = data;
                 vm.loading = false;
+                vm.numberOfTodos = updateNumberOfTodos();
             });
+        }
+
+        function updateNumberOfTodos(argument) {
+            var result = 0;
+            vm.todos.forEach(function (todo) {
+                if (!todo.done) {
+                    result++;
+
+                }
+            });
+            return result;
         }
     }
 }());
