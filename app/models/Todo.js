@@ -14,10 +14,10 @@ exports.createDefaultTodos = function () {
         }
         if (collection.length === 0) {
             console.log('creating list of default todos in db...');
-            Todo.create({text: 'Write resume'});
-            Todo.create({text: 'Clean old house'});
-            Todo.create({text: 'Finish personal projects'});
-            Todo.create({text: 'Complete linkedin profile'});
+            Todo.create({text: 'Global -- Write resume'});
+            Todo.create({text: 'Global -- Clean old house'});
+            Todo.create({text: 'Global -- Finish personal projects'});
+            Todo.create({text: 'Global -- Complete linkedin profile'});
         }
     });
 

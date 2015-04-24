@@ -38,7 +38,10 @@
 
         vm.completeTodo = function (todoToUpdate) {
             todoToUpdate.done = !todoToUpdate.done;
-            console.log(todoToUpdate);
+            todo.update(todoToUpdate._id, todoToUpdate)
+            .success(function (data) {
+                vm.todos = data;
+            });
         };
 
         function initialize() {

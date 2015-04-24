@@ -41,6 +41,19 @@ exports.deleteTodo = function (req, res) {
 };
 
 exports.updateTodo = function (req, res) {
-    var todoData = req.body;
-    console.log(todoData);
+    Todo.findOne({_id: req.params.id}).exec(function (err, todo) {
+        if (err) {
+            return res.send(err);
+        }
+        var todoData = req.body;
+        todo.text = todoData.text;
+        todo.done = todoData.done;
+
+        todo.save(function (err) {
+            if (err) {
+                return res.status(400).send({reason: err.toString()});
+            }
+            _getTodos(req, res);
+        });
+    });
 };
