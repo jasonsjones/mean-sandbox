@@ -53,11 +53,6 @@ exports.updateUserById = function (req, res) {
             console.log('user is admin--from user.isAdmin...');
         }
 
-        //if (req.user.roles.indexOf('admin') === -1) {
-            //res.status(403);
-            //return res.end();
-        //}
-
         var userUpdates = req.body;
         user.firstName = userUpdates.firstName;
         user.lastName = userUpdates.lastName;
@@ -77,7 +72,10 @@ exports.updateUserById = function (req, res) {
             console.log('user removed as admin');
         }
 
-        if (userUpdates.password && userUpdates.password.length > 0 && user.password !== userUpdates.password) {
+        if (userUpdates.password &&
+            userUpdates.password.length > 0 &&
+            user.password !== userUpdates.password) {
+
             user.salt = hash.createSalt();
             user.password = hash.hashPassword(user.salt, userUpdates.password);
             console.log('user\'s password was successfully updated...');
