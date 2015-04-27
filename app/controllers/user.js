@@ -37,6 +37,7 @@ exports.createUser = function (req, res, next) {
             if (err) {
                 return next(err);
             }
+            res.session.user = user;
             res.json(user);
         });
     });

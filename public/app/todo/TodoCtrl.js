@@ -14,7 +14,6 @@
 
         initialize();
 
-
         vm.createTodo = function () {
             console.log('createTodo fired...');
             vm.loading = true;
@@ -61,9 +60,13 @@
             vm.todos.forEach(function (todo) {
                 if (!todo.done) {
                     result++;
-
                 }
             });
+            if (result === 1) {
+                vm.jumbotronLabel = "Thing to do";
+            } else {
+                vm.jumbotronLabel = "Things to do";
+            }
             return result;
         }
     }
