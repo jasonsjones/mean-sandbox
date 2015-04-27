@@ -5,7 +5,7 @@
     angular.module('app.core')
         .factory('register', register);
 
-    function register($q, userAPI, identity, $window) {
+    function register($q, $http, identity, $window) {
         var service = {
             createUser: createUser,
             deleteUser: deleteUser,
@@ -18,15 +18,15 @@
         function createUser(newUserData) {
             var deferred = $q.defer();
 
-            userAPI.create(newUserData)
-            .success(function (user) {
-                identity.currentUser = user;
-                $window.localStorage.currentUser = JSON.stringify(user);
-                deferred.resolve();
-            })
-            .error(function (response) {
-                deferred.reject(response.data.reason);
-            });
+            $http.post('/api/users', newUserData)
+                .success(function (user) {
+                    identity.currentUser = user;
+                    $window.localStorage.currentUser = JSON.stringify(user);
+                    deferred.resolve();
+                })
+                .error(function (response) {
+                    deferred.reject(response.data.reason);
+                });
 
             return deferred.promise;
         }
@@ -34,11 +34,11 @@
         function deleteUser(userToDelete) {
             var deferred = $q.defer();
 
-            userAPI.remove(userToDelete._id)
-            .success(function (data) {
-                console.log(data);
-                deferred.resolve(data);
-            });
+            $http.delete('/api/users/' + userToDelete._id)
+                .success(function (data) {
+                    console.log(data);
+                    deferred.resolve(data);
+                });
 
             return deferred.promise;
         }
@@ -46,17 +46,17 @@
         function updateUser(id, updatedUserData) {
             var deferred = $q.defer();
 
-            userAPI.update(id, updatedUserData)
-            .success(function (user) {
-                if (id === identity.currentUser._id) {
-                    identity.currentUser = user;
-                    $window.localStorage.currentUser = JSON.stringify(user);
-                }
-                deferred.resolve();
-            })
-            .error(function (response) {
-                deferred.reject(response.data.reason);
-            });
+            $http.put('/api/users/' + id, updatedUserData)
+                .success(function (user) {
+                    if (id === identity.currentUser._id) {
+                        identity.currentUser = user;
+                        $window.localStorage.currentUser = JSON.stringify(user);
+                    }
+                    deferred.resolve();
+                })
+                .error(function (response) {
+                    deferred.reject(response.data.reason);
+                });
 
             return deferred.promise;
         }

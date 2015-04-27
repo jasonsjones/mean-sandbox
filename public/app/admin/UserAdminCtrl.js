@@ -5,16 +5,13 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    function UserAdminCtrl(userAPI, sbEditUser, register, notifier, $location, $route) {
+    function UserAdminCtrl($http, sbEditUser, register, notifier, $location, $route) {
         var vm = this;
 
         vm.users = null;
         vm.loading = true;
 
-        userAPI.get().success(function (users) {
-            vm.users = users;
-            vm.loading = false;
-        });
+        getUsers();
 
         vm.isAdmin = function (user) {
             if (user) {
@@ -40,5 +37,12 @@
             sbEditUser.userToEdit = user;
             $location.path('/admin/edituser');
         };
+
+        function getUsers() {
+            $http.get('/api/users').success(function (users) {
+                vm.users = users;
+                vm.loading = false;
+            });
+        }
     }
 }());
