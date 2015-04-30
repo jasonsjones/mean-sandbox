@@ -2,7 +2,7 @@
     /* global angular: true */
     'use strict';
 
-    angular.module('app.core')
+    angular.module('app.todo')
         .factory('todo', todo);
 
     function todo($http) {
