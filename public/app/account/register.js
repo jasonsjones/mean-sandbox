@@ -24,8 +24,8 @@
                     $window.localStorage.currentUser = JSON.stringify(user);
                     deferred.resolve();
                 })
-                .error(function (response) {
-                    deferred.reject(response.data.reason);
+                .error(function (error) {
+                    deferred.reject(error);
                 });
 
             return deferred.promise;
