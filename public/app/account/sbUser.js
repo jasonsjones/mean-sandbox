@@ -2,7 +2,7 @@
     /* global angular: true */
     'use strict';
 
-    angular.module('app.core')
+    angular.module('app.account')
         .service('sbUser', sbUser);
 
     function sbUser($resource) {

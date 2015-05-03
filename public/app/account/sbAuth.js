@@ -2,7 +2,7 @@
     /* global angular:true */
     'use strict';
 
-    angular.module('app.core')
+    angular.module('app.account')
         .factory('sbAuth', sbAuth);
 
     function sbAuth($http, $q, $window, identity) {

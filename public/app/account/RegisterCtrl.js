@@ -1,7 +1,8 @@
 (function () {
     /* globals angular */
     'use strict';
-    angular.module('app.core')
+
+    angular.module('app.account')
         .controller('RegisterCtrl', RegisterCtrl);
 
     function RegisterCtrl($location, register, notifier) {

@@ -2,7 +2,7 @@
     /* jshint validthis: true */
     'use strict';
 
-    angular.module('app.core')
+    angular.module('app.account')
         .controller('NavBarLoginCtrl', NavBarLoginCtrl);
 
     function NavBarLoginCtrl($location, $window, sbAuth, identity, notifier) {

@@ -1,6 +1,7 @@
 (function () {
     'use strict';
-    angular.module('app.core')
+
+    angular.module('app.account')
         .controller('ProfileCtrl', ProfileCtrl);
 
     function ProfileCtrl($http, $location, identity, notifier, register) {
