@@ -17,6 +17,7 @@ module.exports = function () {
         client: client,
         css: temp + 'styles.css',
         fonts: client + 'components/font-awesome/fonts/**/*.*',
+        html: clientApp + '**/*.html',
         htmltemplates: clientApp + '**/*.html',
         images: client + 'img/**/*.*',
         index: client + 'index.html',

@@ -26,8 +26,8 @@ module.exports = function (config) {
         case 'build':
             console.log('** BUILD **');
             app.use(express.static(path.join(__dirname + '/../build/')));
+            app.use('/admin', express.static(path.join(__dirname + '/../build/')));
             app.use(express.static(path.join(__dirname + '/../')));
-            app.use('/*', express.static(path.join(__dirname + '/../build/index.html')));
             break;
         case 'devlocal':
             console.log('** DEVLOCAL **');

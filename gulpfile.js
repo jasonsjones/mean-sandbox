@@ -132,14 +132,24 @@ gulp.task('optimize', ['inject'], function () {
         .pipe(gulp.dest(config.build));
 });
 
+gulp.task('serve-build', ['optimize'], function () {
+    serve('build');
+});
+
 gulp.task('serve-dev', ['inject'], function () {
-    var isDev = true;
+    serve('devlocal');
+});
+
+/***************************/
+
+function serve(env) {
+
     var nodeOptions = {
         script: config.nodeServer,
         delayTime: 1,
         env: {
             'PORT': port,
-            'NODE_ENV': isDev ? 'devlocal' : 'devweb'
+            'NODE_ENV': env
         },
         watch: config.serverFiles
     };
@@ -155,7 +165,7 @@ gulp.task('serve-dev', ['inject'], function () {
         })
         .on('start', function() {
             log('*** nodemon started');
-            startBrowserSync();
+            startBrowserSync(env);
         })
         .on('crash', function() {
             log('*** nodemon crashed: script crashed for some reason');
@@ -163,36 +173,45 @@ gulp.task('serve-dev', ['inject'], function () {
         .on('exit', function() {
             log('*** nodemon exited cleanly');
         });
-
-});
-
-/***************************/
+}
 
 function changeEvent(event) {
     var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
     log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
 }
 
-function startBrowserSync() {
+function startBrowserSync(env) {
     if (args.nosync || browserSync.active) {
         return;
     }
 
     log('Starting browser-sync on port ' + port);
 
-    gulp.watch([config.less], ['styles'])
-        .on('change', function (event) {
-            changeEvent(event);
-        });
+    var optsFiles;
+
+    if (env === 'devlocal' || env === 'devweb') {
+        optsFiles = [
+            config.client + '**/*.*',
+            '!' + config.less,
+            config.temp + '**/*.css'
+        ];
+
+        gulp.watch([config.less], ['styles'])
+            .on('change', function (event) {
+                changeEvent(event);
+            });
+    } else {
+        optsFiles = [];
+        gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
+            .on('change', function (event) {
+                changeEvent(event);
+            });
+    }
 
     var options = {
         proxy: 'localhost:' + port,
         port: 3000,
-        files: [
-            config.client + '**/*.*',
-            '!' + config.less,
-            config.temp + '**/*.css'
-        ],
+        files: optsFiles,
         ghostMode: {
             clicks: true,
             location: false,
