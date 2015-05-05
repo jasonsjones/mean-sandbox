@@ -63,9 +63,9 @@
                 }
             });
             if (result === 1) {
-                vm.jumbotronLabel = "Thing to do";
+                vm.jumbotronLabel = 'Thing to do';
             } else {
-                vm.jumbotronLabel = "Things to do";
+                vm.jumbotronLabel = 'Things to do';
             }
             return result;
         }
