@@ -7,13 +7,14 @@
             <div class="col-sm-4 col-sm-offset-3">
                 <p ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>
             </div>
-            <div class="col-sm-1">
-                <button class="btn btn-success" ng-click="vm.completeTodo(todo)">
-                    <i class="fa fa-check"></i></button>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-success" ng-click="vm.completeTodo(todo)"
+                    data-toggle="tooltip" data-placement="left" title="click to complete">
+                    <i class="fa fa-check"></i> Done</button>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-2">
                 <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)">
-                    <i class="fa fa-trash"></i></button>
+                    <i class="fa fa-trash"></i> Delete</button>
             </div>
         </div>
     </div>
