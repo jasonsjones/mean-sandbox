@@ -8,12 +8,16 @@
                 <p ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>
             </div>
             <div class="col-sm-2">
-                <button type="button" class="btn btn-success" ng-click="vm.completeTodo(todo)"
-                    data-toggle="tooltip" data-placement="left" title="click to complete" tooltip>
+                <button ng-hide="todo.done" type="button" class="btn btn-success" ng-click="vm.completeTodo(todo)"
+                    data-placement="left" title="mark complete" tooltip>
                     <i class="fa fa-check"></i> Done</button>
+                <button ng-show="todo.done" type="button" class="btn btn-default" ng-click="vm.completeTodo(todo)"
+                    data-placement="left" title="more to do?" tooltip>
+                    <i class="fa fa-check"></i> Not Done?</button>
             </div>
             <div class="col-sm-2">
-                <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)">
+                <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)"
+                    title="delete item" data-placement="right" tooltip>
                     <i class="fa fa-trash"></i> Delete</button>
             </div>
         </div>
