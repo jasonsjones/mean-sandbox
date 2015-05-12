@@ -4,7 +4,7 @@
         .controller('TodoCtrl', TodoCtrl);
 
     ////////////////////////
-    function TodoCtrl(todo) {
+    function TodoCtrl(todo, notifier) {
         console.log('TodoCtrl loaded...');
 
         var vm = this;
@@ -15,14 +15,18 @@
         initialize();
 
         vm.createTodo = function () {
-            console.log('createTodo fired...');
-            vm.loading = true;
-            todo.create(vm.formData).success(function (data) {
-                vm.formData = {};
-                vm.todos = data;
-                vm.numberOfTodos = updateNumberOfTodos();
-                vm.loading = false;
-            });
+            if (!vm.formData) {
+                notifier.error('You must enter text for the todo');
+                console.log('must enter text for the todo...');
+            } else {
+                vm.loading = true;
+                todo.create(vm.formData).success(function (data) {
+                    vm.formData = {};
+                    vm.todos = data;
+                    vm.numberOfTodos = updateNumberOfTodos();
+                    vm.loading = false;
+                });
+            }
         };
 
         vm.deleteTodo = function (id) {
