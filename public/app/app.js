@@ -5,6 +5,7 @@
     angular.module('app')
         .config(config);
 
+    //=======================
     function config($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
 
