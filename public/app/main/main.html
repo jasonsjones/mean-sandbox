@@ -1,24 +1,23 @@
-<div class="jumbotron">
-    <h1>Welcome to the MEAN Sandbox!</h1>
+<div class="head-banner">
+    <h1>Welcome to the MEAN Sandbox</h1>
     <p class="leading">A playground to explore the MEAN stack</p>
-    <div class="row">
-        <p class="text-center">Let's take it for a test drive....</p>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <a class="btn btn-warning btn-block" href="/todos"><i class="fa fa-check"></i> Todo</a>
-            <p class="text-muted text-center" ng-hide="vm.identity.isAuthenticated()"><small>Must be logged in to see the "todos"</small></p>
-        </div>
-        <div class="col-md-6">
-            <a class="btn btn-info btn-block" href="">ATMs</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" ng-repeat="service in vm.components">
+                <a href="{{ service.webUrl }}"><img ng-src="{{ service.imgUrl }}"
+                   class="img-responsive"></a>
+                <p ng-bind="service.description"></p>
+                <a class="btn btn-primary btn-block" ng-href="{{service.webUrl}}">Learn more</a>
+            </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3" ng-repeat="service in vm.components">
-        <a href="{{ service.webUrl }}"><img ng-src="{{ service.imgUrl }}"
-           class="img-responsive"></a>
-        <p ng-bind="service.description"></p>
-        <a class="btn btn-primary btn-block" ng-href="{{service.webUrl}}">Learn more</a>
+    <div class="col-md-3 col-md-offset-3">
+        <a class="btn btn-lg btn-warning" href="/todos"><i class="fa fa-check"></i> Todo</a>
+        <p class="text-muted text-center" ng-hide="vm.identity.isAuthenticated()"><small>Must be logged in to see the "todos"</small></p>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-lg btn-info" href="">ATMs</a>
     </div>
 </div>

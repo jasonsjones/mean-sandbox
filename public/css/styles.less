@@ -8,11 +8,28 @@ html, body {
     height: 100%;
 }
 
+
 .wrap {
     min-height: 100%;
     height: auto;
     /* Negative indent footer by its height */
     margin: 0 auto -180px;
+    background: #d0d0d0;
+    .head-banner {
+        width: 100%;
+        height: 450px;
+        background: #255c69;
+        text-align: center;
+        color: #ccc;
+        h1 {
+            font-size: 64px;
+            margin: 0;
+            padding: 20px 0;
+        }
+        .leading {
+            font-size: 24px;
+        }
+    }
 }
 
 .wrap:after {
@@ -24,8 +41,12 @@ html, body {
     padding-top: 5px;
 }
 
-.navbar .navbar-form button {
-    margin-right: 30px;
+.navbar {
+    margin-bottom: 0;
+
+    .navbar-form button {
+        margin-right: 30px;
+    }
 }
 
 .todo-item {
