@@ -14,7 +14,8 @@
         </div>
         <div class="row mean-components">
             <div class="col-md-3" ng-repeat="service in vm.components">
-                <a class="btn btn-primary btn-block" ng-href="{{service.webUrl}}">Learn more</a>
+                <a class="btn btn-primary btn-block"
+                   ng-href="{{service.webUrl}}">Learn more</a>
             </div>
         </div>
     </div>
@@ -27,7 +28,8 @@
                     <a href="/todos"><i class="fa fa-2x fa-check"></i></a>
                     <p class="lead">Todos</p>
                     <p>The traditional 'Todo' app</p>
-                    <p class="text-muted" ng-hide="vm.identity.isAuthenticated()"><small>Must be logged in...</small></p>
+                    <p class="text-muted" ng-hide="vm.identity.isAuthenticated()">
+                        <small><em>Must be logged in...</em></small></p>
                 </div>
             </div>
         </div>
@@ -35,9 +37,10 @@
             <div class="tile">
                 <div class="tile-content text-center">
                     <a href=""><i class="fa fa-2x fa-money"></i></a>
-                    <p class="lead">ATMs</p>
-                    <p>A way to track ATM transactions</p>
-                    <p class="text-muted" ng-hide="vm.identity.isAuthenticated()"><small>Must be logged in...</small></p>
+                    <p class="lead">ATM Cash Tracker</p>
+                    <p>A simple way to track ATM transactions</p>
+                    <p class="text-muted" ng-hide="vm.identity.isAuthenticated()">
+                        <small><em>Must be logged in...</em></small></p>
                 </div>
             </div>
         </div>
