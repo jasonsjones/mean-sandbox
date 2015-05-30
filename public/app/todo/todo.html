@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center jumbotron-lower">
         <h1><span class="label label-info">{{vm.numberOfTodos}}</span> {{vm.jumbotronLabel}}</h1>
     </div>
     <div ng-repeat="todo in vm.todos | orderBy:'done'">
