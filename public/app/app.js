@@ -57,6 +57,12 @@
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.user
             })
+            .when('/atm', {
+                templateUrl: '/app/atm/atm.html',
+                controller: 'ATMCtrl',
+                controllerAs: 'vm',
+                resolve: routeRoleCheck.user
+            })
             .when('/admin/users', {
                 templateUrl: 'app/admin/user-admin.html',
                 controller: 'UserAdminCtrl',

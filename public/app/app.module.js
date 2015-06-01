@@ -6,6 +6,7 @@
         'ngResource',
         'app.core',
         'app.account',
-        'app.todo'
+        'app.todo',
+        'app.atm'
     ]);
 }());
