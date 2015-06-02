@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="col-lg-8 col-lg-offset-2">
+    <h3>ATM Transaction</h3>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <img class="pull-left" src="images/atm-32.png" alt="atm icon">
+        <h2 class="panel-title text-right">ATM Withdrawal</h2>
+        <p class="text-right">
+          <em>$43.00</em>
+        </p>
+        </div> <!-- end panel-header -->
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <th>amount</th>
+              <th>description</th>
+            </thead>
+            <tbody class="purchase-item">
+              <!--<tr ng-repeat="p in atm.xTransaction.purchases">-->
+                <!--<td>{{ p.amount | currency }}</td>-->
+                <!--<td>{{ p.description }}</td>-->
+              <!--</tr>-->
+            </tbody>
+            <tfoot>
+              <tr>
+                <!--<td>{{ atm.getTotalSpent(atm.xTransaction) | currency }}</td>-->
+                <td>total</td>
+              </tr>
+              <tr class="text-right remaining">
+                <!--<td>{{ (atm.getTotalAmount(atm.xTransaction) - atm.getTotalSpent(atm.xTransaction)) | currency }}</td>-->
+                <td>remaining</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
