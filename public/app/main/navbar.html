@@ -16,6 +16,14 @@
             <li ng-class="{ active: vm.isActive('/') }"><a href="/"><i class="fa fa-home"></i> Home</a></li>
             <li ng-class="{ active: vm.isActive('/about') }"><a href="/about">About</a></li>
             <li ng-class="{ active: vm.isActive('/contact') }"><a href="/contact">Contact</a></li>
+            <li class="dropdown" ng-show="vm.identity.isAuthenticated()">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Apps
+                <i class="fa fa-caret-down"></i></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="/todos"><i class="fa fa-check"></i> Todo</a></li>
+                    <li><a href="/atm"><i class="fa fa-money"></i> ATM Tracker</a></li>
+                </ul>
+            </li>
         </ul>
         <div ng-include="'app/account/navbar-login.html'"></div>
     </div>
