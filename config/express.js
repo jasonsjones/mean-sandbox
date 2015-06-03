@@ -40,6 +40,7 @@ module.exports = function (config) {
 
     require('../app/routes/user')(router);
     require('../app/routes/todo')(router);
+    require('../app/routes/atm')(router);
     app.use(router);
 
     // this route needs to be defined at the end of all other routes
