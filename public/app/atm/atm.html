@@ -1,8 +1,53 @@
 <div class="container">
     <div class="page-header">
-        <h1>ATM Transaction</h1>
+        <h1>ATM Transactions</h1>
     </div>
     <p class="lead">This page will provide the place to track all ATM
     transactions as well as input new transactions</p>
-    <a href="#" class="btn btn-default btn-large">+ ATM Transaction</a>
+    <p>There are {{ vm.transactions.length }} transactions of dummy data</p>
+    <a href="#" class="btn btn-default btn-large new-atm-btn"><i class="fa fa-plus"></i> <strong>ATM Transaction</strong></a>
+
+    <div ng-repeat="t in vm.transactions">
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <!--<img class="pull-left" src="images/atm-32.png" alt="atm icon">-->
+                    <h2 class="panel-title text-right">ATM Withdrawal</h2>
+                    <p class="text-left">
+                        <span class="amount">{{ vm.getTotalAmount(t) | currency }}</span> <em> on {{ t.date | date  }} </em>
+                    </p>
+                </div><!-- end panel-heading -->
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        </thead>
+
+                        <tbody class="purchase-item">
+                        <tr ng-repeat="p in t.purchases">
+                            <td>{{ p.amount | currency }}</td>
+                            <td>{{ p.description }}</td>
+                        </tr>
+                        </tbody>
+
+                        <tfoot>
+                        <tr>
+                            <td>$total</td>
+                            <!--<td>{{ getTotalSpent(t) | currency }}</td>-->
+                            <td>total</td>
+                        </tr>
+                        <tr class="text-right remaining">
+                            <td>$remaining</td>
+                            <!--<td>{{ (getTotalAmount(t) - getTotalSpent(t)) | currency }}</td>-->
+                            <td>remaining</td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                </div> <!-- end panel-body -->
+            </div>
+        </div>
+    </div>
 </div>
+
