@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var userModel = require('../app/models/User');
 var todoModel = require('../app/models/Todo');
+var atmModel = require('../app/models/ATM');
 
 module.exports = function (config) {
     mongoose.connect(config.db);
@@ -12,4 +13,5 @@ module.exports = function (config) {
 
     userModel.createDefaultUsers();
     todoModel.createDefaultTodos();
+    atmModel.createDefaultATMTransactions();
 };
