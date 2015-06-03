@@ -8,9 +8,19 @@
 
         var vm = this;
 
-        vm.transactions = ATM.getTransactions();
+        vm.transactions = null;
+        vm.loading = true;
+
+        initialize();
         vm.getTotalAmount = function (t) {
             return ATM.getTotalAmount(t);
         };
+
+        function initialize() {
+            ATM.get().success(function (data) {
+                vm.transactions = data;
+                vm.loading = false;
+            });
+        }
     }
 })();
