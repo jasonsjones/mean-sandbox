@@ -9,7 +9,8 @@ module.exports = function (api) {
         .get(atmCtrl.getWithdrawals);
     //     .post(atmCtrl.createWithdrawal);
 
-    // api.route('/api/atms/:id')
+    api.route('/api/atms/:id')
+        .get(atmCtrl.getWithrawalById);
     //     .put(atmCtrl.updateWithdrawal)
     //     .delete(atmCtrl.deleteWithdrawal);
 };
