@@ -1,0 +1,23 @@
+(function () {
+    'use strict';
+    angular.module('app.atm')
+        .controller('PurchaseCtrl', PurchaseCtrl);
+
+    ////////////////
+    function PurchaseCtrl(purchase) {
+        var vm = this;
+        vm.purchases = null;
+        vm.loading = true;
+
+        vm.getPurchases = function (id) {
+            purchase.get(id).success(function (data) {
+                vm.purchases = data;
+                vm.loading = false;
+                vm.totalSpent = vm.purchases.reduce(function (prev, curr) {
+                    return prev + curr.amount;
+                }, 0);
+            });
+        };
+
+    }
+})();
