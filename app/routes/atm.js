@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 var ATM = mongoose.model('ATMWithdrawal');
 var atmCtrl = require('../controllers/atm');
+var purchaseCtrl = require('../controllers/purchase');
 
 module.exports = function (api) {
 
@@ -13,4 +14,7 @@ module.exports = function (api) {
         .get(atmCtrl.getWithrawalById);
     //     .put(atmCtrl.updateWithdrawal)
     //     .delete(atmCtrl.deleteWithdrawal);
+
+    api.route('/api/atms/:atmId/purchases')
+        .get(purchaseCtrl.getPurchasesForWithdrawal);
 };

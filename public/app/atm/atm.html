@@ -19,14 +19,15 @@
                     </p>
                 </div><!-- end panel-heading -->
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table" ng-controller="PurchaseCtrl as pc" ng-init="pc.getPurchases(t._id)">
+                        <p class="text-center" ng-show="pc.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
                         <thead>
                         <th>Amount</th>
                         <th>Description</th>
                         </thead>
 
                         <tbody class="purchase-item">
-                        <tr ng-repeat="p in t.purchases">
+                        <tr ng-repeat="p in pc.purchases">
                             <td>{{ p.amount | currency }}</td>
                             <td>{{ p.description }}</td>
                         </tr>
@@ -34,13 +35,11 @@
 
                         <tfoot>
                         <tr>
-                            <td>$total</td>
-                            <!--<td>{{ getTotalSpent(t) | currency }}</td>-->
+                            <td>{{ pc.totalSpent | currency }}</td>
                             <td>total</td>
                         </tr>
                         <tr class="text-right remaining">
-                            <td>$remaining</td>
-                            <!--<td>{{ (getTotalAmount(t) - getTotalSpent(t)) | currency }}</td>-->
+                            <td>{{ (vm.getTotalAmount(t) - pc.totalSpent) | currency }}</td>
                             <td>remaining</td>
                         </tr>
                         </tfoot>
