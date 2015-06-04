@@ -5,22 +5,22 @@
     <p class="lead">This page will provide the place to track all ATM
     transactions as well as input new transactions</p>
     <p>There are {{ vm.transactions.length }} transactions of dummy data</p>
-    <a href="#" class="btn btn-default btn-large new-atm-btn"><i class="fa fa-plus"></i> <strong>ATM Transaction</strong></a>
+    <a href="/new-atm" class="btn btn-default btn-large new-atm-btn"><i class="fa fa-plus"></i> <strong>ATM Transaction</strong></a>
 
-    <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
     <div ng-repeat="t in vm.transactions">
         <div class="col-md-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <!--<img class="pull-left" src="images/atm-32.png" alt="atm icon">-->
-                    <h2 class="panel-title text-right">ATM Withdrawal</h2>
+                    <h2 class="panel-title text-right">
+                        <a ng-href="/atm-details/{{t._id}}">ATM Withdrawal</a></h2>
                     <p class="text-left">
                         <span class="amount">{{ vm.getTotalAmount(t) | currency }}</span> <em> on {{ t.date | date  }} </em>
                     </p>
                 </div><!-- end panel-heading -->
                 <div class="panel-body">
+                    <p class="text-center" ng-show="pc.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
                     <table class="table" ng-controller="PurchaseCtrl as pc" ng-init="pc.getPurchases(t._id)">
-                        <p class="text-center" ng-show="pc.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
                         <thead>
                         <th>Amount</th>
                         <th>Description</th>

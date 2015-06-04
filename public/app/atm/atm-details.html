@@ -1,14 +1,11 @@
 <div class="container">
   <div class="col-lg-8 col-lg-offset-2">
-    <h3>ATM Transaction</h3>
+    <h3>Transaction Details</h3>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <img class="pull-left" src="images/atm-32.png" alt="atm icon">
         <h2 class="panel-title text-right">ATM Withdrawal</h2>
-        <p class="text-right">
-          <em>$43.00</em>
-        </p>
-        </div> <!-- end panel-header -->
+        <p class="text-right">{{ vm.id }} </p>
+      </div> <!-- end panel-header -->
         <div class="panel-body">
           <table class="table">
             <thead>
@@ -17,8 +14,8 @@
             </thead>
             <tbody class="purchase-item">
               <!--<tr ng-repeat="p in atm.xTransaction.purchases">-->
-                <!--<td>{{ p.amount | currency }}</td>-->
-                <!--<td>{{ p.description }}</td>-->
+              <!--  <td>{{ p.amount | currency }}</td>-->
+              <!--  <td>{{ p.description }}</td>-->
               <!--</tr>-->
             </tbody>
             <tfoot>
@@ -33,7 +30,6 @@
             </tfoot>
           </table>
         </div>
-      </div>
     </div>
   </div>
-
+</div>
