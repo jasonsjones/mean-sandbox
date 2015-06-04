@@ -1,16 +1,16 @@
 <div class="container">
   <div class="col-lg-8 col-lg-offset-2">
     <h3>Transaction Details</h3>
-    <div class="panel panel-default">
+    <div class="panel panel-warning">
       <div class="panel-heading">
         <h2 class="panel-title text-right">ATM Withdrawal</h2>
         <p class="text-right">{{ vm.id }} </p>
       </div> <!-- end panel-header -->
-        <div class="panel-body">
+        <div class="panel-body atm-details-item">
           <table class="table">
             <thead>
-              <th>amount</th>
-              <th>description</th>
+              <th>Amount</th>
+              <th>Description</th>
             </thead>
             <tbody class="purchase-item">
               <!--<tr ng-repeat="p in atm.xTransaction.purchases">-->
@@ -21,10 +21,12 @@
             <tfoot>
               <tr>
                 <!--<td>{{ atm.getTotalSpent(atm.xTransaction) | currency }}</td>-->
+                <td>$23.00</td>
                 <td>total</td>
               </tr>
               <tr class="text-right remaining">
                 <!--<td>{{ (atm.getTotalAmount(atm.xTransaction) - atm.getTotalSpent(atm.xTransaction)) | currency }}</td>-->
+                <td>$20.00</td>
                 <td>remaining</td>
               </tr>
             </tfoot>
