@@ -7,6 +7,7 @@
         <p class="text-right panel-heading">
           <span class="amount">{{ vm.totalAmount | currency }}</span> <em> on {{ vm.transaction.date | date  }} </em>
         </p>
+        <p class="text-right">Location: <em>{{ vm.transaction.location }}</em></p>
       </div> <!-- end panel-header -->
         <div class="panel-body atm-details-item">
           <table class="table">
@@ -23,13 +24,13 @@
               <tr ng-repeat="p in vm.purchases">
                 <td>{{ p.amount | currency }}</td>
                 <td>{{ p.description }}</td>
-                <td><a href="#"><i class="fa fa-pencil" ng-click="vm.editPurchase()"></i></a></td>
+                <!--<td><a href="#"><i class="fa fa-pencil" ng-click="vm.editPurchase()"></i></a></td>-->
               </tr>
             </tbody>
             <tfoot>
               <tr>
-                <!--<td>{{ atm.getTotalSpent(atm.xTransaction) | currency }}</td>-->
-                <td>$23.00</td>
+                <td>{{ vm.totalSpent | currency }}</td>
+                <!--<td>$23.00</td>-->
                 <td>total</td>
               </tr>
               <tr class="text-right remaining">

@@ -12,6 +12,7 @@
         vm.loading = true;
 
         initialize();
+
         vm.getTotalAmount = function (t) {
             return ATM.getTotalAmount(t);
         };
