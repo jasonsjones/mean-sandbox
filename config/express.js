@@ -33,6 +33,7 @@ module.exports = function (config) {
             console.log('** DEVLOCAL **');
             app.use(express.static(path.join(__dirname + '/../public/')));
             app.use('/admin', express.static(path.join(__dirname + '/../public/')));
+            app.use('/atm-details', express.static(path.join(__dirname + '/../public/')));
             app.use(express.static(path.join(__dirname + '/../')));
             break;
         default:
