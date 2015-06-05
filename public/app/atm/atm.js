@@ -13,6 +13,9 @@
             getTotalAmount: getTotalAmount,
             get: function () {
                 return $http.get('/api/atms');
+            },
+            getById: function (id) {
+                return $http.get('/api/atms/' + id);
             }
         };
 

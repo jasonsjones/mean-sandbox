@@ -3,8 +3,10 @@
     <h3>Transaction Details</h3>
     <div class="panel panel-warning">
       <div class="panel-heading">
-        <h2 class="panel-title text-right">ATM Withdrawal</h2>
-        <p class="text-right">{{ vm.id }} </p>
+        <h1 class="panel-title text-center">ATM Withdrawal</h1>
+        <p class="text-right panel-heading">
+          <span class="amount">{{ vm.totalAmount | currency }}</span> <em> on {{ vm.transaction.date | date  }} </em>
+        </p>
       </div> <!-- end panel-header -->
         <div class="panel-body atm-details-item">
           <table class="table">
@@ -13,10 +15,16 @@
               <th>Description</th>
             </thead>
             <tbody class="purchase-item">
-              <!--<tr ng-repeat="p in atm.xTransaction.purchases">-->
-              <!--  <td>{{ p.amount | currency }}</td>-->
-              <!--  <td>{{ p.description }}</td>-->
-              <!--</tr>-->
+              <tr>
+                <td><input type="text" placeholder="Purchase Amount" ng-model="vm.newPurchase.amount"/></td>
+                <td><input type="text" placeholder="Description" ng-model="vm.newPurchase.description"/></td>
+                <td><button class="btn btn-primary" ng-click="vm.addPurchase()"><i class="fa fa-plus"></i> Add</button></td>
+              </tr>
+              <tr ng-repeat="p in vm.purchases">
+                <td>{{ p.amount | currency }}</td>
+                <td>{{ p.description }}</td>
+                <td><a href="#"><i class="fa fa-pencil" ng-click="vm.editPurchase()"></i></a></td>
+              </tr>
             </tbody>
             <tfoot>
               <tr>
