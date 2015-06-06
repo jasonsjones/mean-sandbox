@@ -7,16 +7,12 @@
         .factory('ATM', ATM);
 
     //////////////
-    function ATM($http) {
+    function ATM($http, $q) {
 
         var service = {
             getTotalAmount: getTotalAmount,
-            get: function () {
-                return $http.get('/api/atms');
-            },
-            getById: function (id) {
-                return $http.get('/api/atms/' + id);
-            }
+            query: query,
+            getById: getById
         };
 
         return service;
@@ -24,6 +20,32 @@
         ////////////////////////
         function getTotalAmount(transaction) {
             return transaction.cashAmount + transaction.serviceFee;
+        }
+
+        function query() {
+            var deferred = $q.defer();
+            var url = '/api/atms';
+            $http.get(url)
+                .success(function (data) {
+                    deferred.resolve(data);
+                })
+                .error(function () {
+                    deferred.reject('Failed to retrieve the ATM transactions');
+                });
+            return deferred.promise;
+        }
+
+        function getById(id) {
+            var deferred = $q.defer();
+            var url = '/api/atms/' + id;
+            $http.get(url)
+                .success(function (data) {
+                    deferred.resolve(data);
+                })
+                .error(function () {
+                    deferred.reject('Failed to get ATM transaction '+ id);
+                });
+            return deferred.promise;
         }
     }
 })();

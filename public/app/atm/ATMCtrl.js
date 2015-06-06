@@ -18,7 +18,7 @@
         };
 
         function initialize() {
-            ATM.get().success(function (data) {
+            ATM.query().then(function (data) {
                 vm.transactions = data;
                 vm.loading = false;
             });

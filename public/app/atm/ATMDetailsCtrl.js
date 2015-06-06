@@ -7,7 +7,6 @@
     function ATMDetailsCtrl($routeParams, ATM, purchase) {
         var vm = this;
         vm.loading = true;
-        vm.purchaseEditMode = false;
         vm.purchases = null;
         vm.totalSpent = 0;
         var id = $routeParams.atmId;
@@ -19,10 +18,6 @@
             vm.newPurchase.description = '';
         };
 
-        vm.editPurchase = function () {
-            vm.purchaseEditMode = !vm.purchaseEditMode;
-            console.log(vm.purchaseEditMode);
-        };
 
         vm.getTotalSpent = function () {
             return vm.purchases.reduce(function (prev, curr) {
@@ -31,7 +26,7 @@
         };
 
         vm.getPurchases = function () {
-            purchase.get(id).success(function (data) {
+            purchase.get(id).then(function (data) {
                 vm.purchases = data;
                 vm.loading = false;
                 vm.totalSpent = vm.getTotalSpent();
@@ -40,7 +35,7 @@
 
         initialize();
         function initialize() {
-            ATM.getById(id).success(function (data) {
+            ATM.getById(id).then(function (data) {
                 vm.transaction = data;
                 vm.loading = false;
                 vm.totalAmount = ATM.getTotalAmount(vm.transaction);

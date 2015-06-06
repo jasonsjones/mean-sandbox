@@ -10,7 +10,7 @@
         vm.loading = true;
 
         vm.getPurchases = function (id) {
-            purchase.get(id).success(function (data) {
+            purchase.get(id).then(function (data) {
                 vm.purchases = data;
                 vm.loading = false;
                 vm.totalSpent = vm.purchases.reduce(function (prev, curr) {
