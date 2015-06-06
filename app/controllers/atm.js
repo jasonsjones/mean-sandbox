@@ -24,3 +24,25 @@ exports.getWithrawalById = function (req, res) {
         }
     });
 };
+
+exports.createTransaction = function (req, res) {
+    var transactionData = req.body;
+    Withdrawal.create(transactionData, function (err, transaction) {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            res.json(transaction);
+        }
+    });
+};
+
+exports.deleteTransaction = function (req, res) {
+    Withdrawal.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send('Transaction successfully deleted');
+        }
+    });
+}

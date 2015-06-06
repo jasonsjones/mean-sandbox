@@ -7,14 +7,18 @@ var purchaseCtrl = require('../controllers/purchase');
 module.exports = function (api) {
 
     api.route('/api/atms')
-        .get(atmCtrl.getWithdrawals);
-    //     .post(atmCtrl.createWithdrawal);
+        .get(atmCtrl.getWithdrawals)
+        .post(atmCtrl.createTransaction);
 
     api.route('/api/atms/:id')
-        .get(atmCtrl.getWithrawalById);
+        .get(atmCtrl.getWithrawalById)
     //     .put(atmCtrl.updateWithdrawal)
-    //     .delete(atmCtrl.deleteWithdrawal);
+        .delete(atmCtrl.deleteTransaction);
 
     api.route('/api/atms/:atmId/purchases')
-        .get(purchaseCtrl.getPurchasesForWithdrawal);
+        .get(purchaseCtrl.getPurchasesForWithdrawal)
+        .post(purchaseCtrl.createPurchase);
+
+    api.route('/api/atms/:atmId/purchases/:id')
+        .delete(purchaseCtrl.deletePurchase);
 };

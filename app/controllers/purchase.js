@@ -10,3 +10,26 @@ exports.getPurchasesForWithdrawal = function (req, res) {
         }
     })
 };
+
+exports.createPurchase = function (req, res) {
+    var purchaseData = req.body;
+    purchaseData.atmId = req.params.atmId;
+
+    Purchase.create(purchaseData, function (err, purchase) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(purchase);
+        }
+    })
+};
+
+exports.deletePurchase = function (req, res) {
+    Purchase.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send('Purchase successfully deleted');
+        }
+    });
+};
