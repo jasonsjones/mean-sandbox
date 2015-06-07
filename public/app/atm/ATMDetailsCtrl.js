@@ -11,13 +11,33 @@
         vm.totalSpent = 0;
         var id = $routeParams.atmId;
 
-
         vm.addPurchase = function () {
-            console.log(vm.newPurchase.amount + ' ' + vm.newPurchase.description);
+            var newPurchase = {
+                amount: vm.newPurchase.amount,
+                description: vm.newPurchase.description
+            };
+            purchase.add(newPurchase, id).then(function (data) {
+                vm.purchases.push(data);
+                vm.totalSpent = vm.getTotalSpent();
+            }, function (reason) {
+                console.log('unable to add purchase: ' + reason);
+            });
             vm.newPurchase.amount = '';
             vm.newPurchase.description = '';
         };
 
+        vm.deletePurchase = function (purchaseToDelete) {
+            purchase.remove(id, purchaseToDelete._id).then(function (result) {
+                if (result.success) {
+                    console.log('successfully deleted');
+                    var index = vm.purchases.indexOf(purchaseToDelete);
+                    vm.purchases.splice(index, 1);
+                    vm.totalSpent = vm.getTotalSpent();
+                }
+            }, function () {
+                console.log('error deleting purchase');
+            });
+        };
 
         vm.getTotalSpent = function () {
             return vm.purchases.reduce(function (prev, curr) {

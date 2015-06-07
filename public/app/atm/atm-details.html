@@ -24,6 +24,7 @@
               <tr ng-repeat="p in vm.purchases">
                 <td>{{ p.amount | currency }}</td>
                 <td>{{ p.description }}</td>
+                <td><i class="fa fa-trash" ng-click="vm.deletePurchase(p)"></i></td>
                 <!--<td><a href="#"><i class="fa fa-pencil" ng-click="vm.editPurchase()"></i></a></td>-->
               </tr>
             </tbody>
