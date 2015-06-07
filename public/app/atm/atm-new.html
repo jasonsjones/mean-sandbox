@@ -7,7 +7,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="amount">Amount</label>
             <div class="col-md-6">
-                <input class="form-control" type="text" name="amount" placeholder="Amount" ng-model="vm.amount">
+                <input class="form-control" type="text" name="amount" placeholder="Amount" ng-model="vm.cashAmount">
             </div>
         </div>
         <div class="form-group">
@@ -34,7 +34,7 @@
         <div class="form-group">
             <div class="col-md-6 col-md-offset-2">
                 <div class="pull-right">
-                   <button class="btn btn-primary" ng-click=""><i class="fa fa-plus"></i> Submit</button>
+                   <button class="btn btn-primary" ng-click="vm.add()"><i class="fa fa-plus"></i> Submit</button>
                    &nbsp; <a href="/atm" class="btn btn-default"><i class="fa fa-times"></i> Cancel</a>
                 </div>
             </div>

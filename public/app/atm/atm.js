@@ -12,7 +12,8 @@
         var service = {
             getTotalAmount: getTotalAmount,
             query: query,
-            getById: getById
+            getById: getById,
+            addTransaction: addTransaction
         };
 
         return service;
@@ -46,6 +47,21 @@
                     deferred.reject('Failed to get ATM transaction '+ id);
                 });
             return deferred.promise;
+        }
+
+        function addTransaction(atmData) {
+            var deferred = $q.defer();
+            var url = '/api/atms';
+            $http.post(url, atmData)
+                .success(function (transaction) {
+                    deferred.resolve(transaction)
+                })
+                .error(function () {
+                    deferred.reject('failed to add transaction');
+                });
+
+            return deferred.promise;
+
         }
     }
 })();
