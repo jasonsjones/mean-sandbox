@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Withdrawal = mongoose.model('ATMWithdrawal');
+var Purchase = mongoose.model('Purchase');
 
 function _getWithdrawals(req, res) {
     Withdrawal.find({userId: req.session.user._id}).exec(function (err, withdrawals) {
@@ -34,6 +35,13 @@ exports.createTransaction = function (req, res) {
             console.log(err);
             res.send(err);
         } else {
+            if (transaction.serviceFee > 0) {
+                Purchase.create({
+                    amount: transaction.serviceFee,
+                    description: 'ATM service fee',
+                    atmId: transaction._id
+                });
+            }
             res.json(transaction);
         }
     });
