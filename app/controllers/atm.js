@@ -27,6 +27,8 @@ exports.getWithrawalById = function (req, res) {
 
 exports.createTransaction = function (req, res) {
     var transactionData = req.body;
+    transactionData.userId = req.session.user._id;
+
     Withdrawal.create(transactionData, function (err, transaction) {
         if (err) {
             console.log(err);
@@ -42,7 +44,7 @@ exports.deleteTransaction = function (req, res) {
         if (err) {
             res.send(err);
         } else {
-            res.send('Transaction successfully deleted');
+            res.send({success: true});
         }
     });
 }

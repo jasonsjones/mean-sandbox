@@ -29,7 +29,7 @@ exports.deletePurchase = function (req, res) {
         if (err) {
             res.send(err);
         } else {
-            res.send('Purchase successfully deleted');
+            res.send({success: true});
         }
     });
 };
