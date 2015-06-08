@@ -4,7 +4,7 @@
         .controller('ATMCtrl', ATMCtrl);
 
     ////////////////////
-    function ATMCtrl(ATM) {
+    function ATMCtrl(ATM, purchase) {
 
         var vm = this;
 
@@ -18,13 +18,20 @@
         };
 
         vm.deleteTransaction = function (id) {
-            ATM.deleteTransaction(id).then(function (result) {
+            purchase.removeAllPurchases(id).then(function (result) {
                 if (result.success) {
-                    console.log('transaction deleted');
-                    initialize();
+                    console.log('all purchases deleted...now deleting transaction');
+                    ATM.deleteTransaction(id).then(function (result) {
+                        if (result.success) {
+                            console.log('transaction deleted');
+                            initialize();
+                        }
+                    });
+                } else {
+                    console.log('unable to delete all purchases from transaction');
                 }
             });
-        }
+        };
 
         function initialize() {
             ATM.query().then(function (data) {

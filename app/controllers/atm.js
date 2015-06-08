@@ -17,7 +17,7 @@ exports.getWithdrawals = function (req, res) {
 };
 
 exports.getWithrawalById = function (req, res) {
-    Withdrawal.findById(req.params.id).exec(function (err, data) {
+    Withdrawal.findById(req.params.atmId).exec(function (err, data) {
         if (err) {
             res.send(err);
         } else {
@@ -48,7 +48,7 @@ exports.createTransaction = function (req, res) {
 };
 
 exports.deleteTransaction = function (req, res) {
-    Withdrawal.findByIdAndRemove(req.params.id, function (err) {
+    Withdrawal.findByIdAndRemove(req.params.atmId, function (err) {
         if (err) {
             res.send(err);
         } else {

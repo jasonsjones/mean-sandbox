@@ -8,7 +8,7 @@ exports.getPurchasesForWithdrawal = function (req, res) {
         } else {
             res.json(purchases);
         }
-    })
+    });
 };
 
 exports.createPurchase = function (req, res) {
@@ -21,7 +21,7 @@ exports.createPurchase = function (req, res) {
         } else {
             res.send(purchase);
         }
-    })
+    });
 };
 
 exports.deletePurchase = function (req, res) {
@@ -30,6 +30,16 @@ exports.deletePurchase = function (req, res) {
             res.send(err);
         } else {
             res.send({success: true});
+        }
+    });
+};
+
+exports.deleteAllPurchases = function (req, res) {
+    Purchase.find({atmId: req.params.atmId}).remove(function (err) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json({success: true});
         }
     });
 };

@@ -10,13 +10,13 @@ module.exports = function (api) {
         .get(atmCtrl.getWithdrawals)
         .post(atmCtrl.createTransaction);
 
-    api.route('/api/atms/:id')
+    api.route('/api/atms/:atmId')
         .get(atmCtrl.getWithrawalById)
-    //     .put(atmCtrl.updateWithdrawal)
         .delete(atmCtrl.deleteTransaction);
 
     api.route('/api/atms/:atmId/purchases')
         .get(purchaseCtrl.getPurchasesForWithdrawal)
+        .delete(purchaseCtrl.deleteAllPurchases)
         .post(purchaseCtrl.createPurchase);
 
     api.route('/api/atms/:atmId/purchases/:id')
