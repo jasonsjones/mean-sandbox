@@ -11,11 +11,11 @@
         <div class="col-md-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <!--<img class="pull-left" src="images/atm-32.png" alt="atm icon">-->
-                    <h2 class="panel-title text-right">
-                        <a class="btn btn-warning pull-left" ng-href="/atm-details/{{t._id}}"><i class="fa fa-pencil"></i> Details</a>
-                        ATM Withdrawal</h2>
-                    <p class="text-right panel-heading">
+                    <h1 class="panel-title pull-right"><i class="fa fa-close" ng-click="vm.deleteTransaction(t._id)"></i></h1>
+                    <a class="btn btn-warning pull-left" ng-href="/atm-details/{{t._id}}"><i class="fa fa-pencil"></i> Details</a>
+                    <h2 class="panel-title text-center"> ATM Withdrawal</h2>
+                    <br/>
+                    <p class="text-left panel-heading">
                         <span class="amount">{{ vm.getTotalAmount(t) | currency }}</span> <em> on {{ t.date | date  }} </em>
                     </p>
                 </div><!-- end panel-heading -->

@@ -17,6 +17,15 @@
             return ATM.getTotalAmount(t);
         };
 
+        vm.deleteTransaction = function (id) {
+            ATM.deleteTransaction(id).then(function (result) {
+                if (result.success) {
+                    console.log('transaction deleted');
+                    initialize();
+                }
+            });
+        }
+
         function initialize() {
             ATM.query().then(function (data) {
                 vm.transactions = data;

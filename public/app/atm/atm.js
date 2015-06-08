@@ -13,7 +13,8 @@
             getTotalAmount: getTotalAmount,
             query: query,
             getById: getById,
-            addTransaction: addTransaction
+            addTransaction: addTransaction,
+            deleteTransaction: deleteTransaction
         };
 
         return service;
@@ -62,6 +63,19 @@
 
             return deferred.promise;
 
+        }
+
+        function deleteTransaction(id) {
+            var deferred = $q.defer();
+            var url = '/api/atms/' + id;
+            $http.delete(url)
+                .success(function (data) {
+                    deferred.resolve(data);
+                })
+                .error(function () {
+                    deferred.reject('failed to delete transaction');
+                });
+            return deferred.promise;
         }
     }
 })();
