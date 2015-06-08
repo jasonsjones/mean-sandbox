@@ -3,6 +3,7 @@
     <h3>Transaction Details</h3>
     <div class="panel panel-warning">
       <div class="panel-heading">
+        <a href="/atm"><i class="fa fa-long-arrow-left"></i> Back</a>
         <h1 class="panel-title text-center">ATM Withdrawal</h1>
         <p class="text-right panel-heading">
           <span class="amount">{{ vm.totalAmount | currency }}</span> <em> on {{ vm.transaction.date | date  }} </em>
@@ -35,8 +36,7 @@
                 <td>total</td>
               </tr>
               <tr class="text-right remaining">
-                <!--<td>{{ (atm.getTotalAmount(atm.xTransaction) - atm.getTotalSpent(atm.xTransaction)) | currency }}</td>-->
-                <td>$20.00</td>
+                <td>{{ (vm.totalAmount - vm.totalSpent) | currency }}</td>
                 <td>remaining</td>
               </tr>
             </tfoot>

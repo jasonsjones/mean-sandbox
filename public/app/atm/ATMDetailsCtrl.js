@@ -9,6 +9,7 @@
         vm.loading = true;
         vm.purchases = null;
         vm.totalSpent = 0;
+        vm.totalAmount = 0;
         var id = $routeParams.atmId;
 
         vm.addPurchase = function () {
