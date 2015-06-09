@@ -1,0 +1,36 @@
+@dateColor: #aaa;
+@atmHeaderBg: #16222a;
+
+.atm-card {
+    border: 1px solid @atmHeaderBg;
+    margin-top: 20px;
+
+    .atm-card-header {
+        color: white;
+        padding: 10px 10px;
+
+        .fa {
+            cursor: pointer;
+        }
+
+        .date {
+            font-style: italic;
+            color: @dateColor;
+            float: right;
+            font-size: 80%;
+        }
+        .location {
+            color: lighten(@dateColor, 20%);
+            font-style: italic;
+        }
+    }
+
+    .atm-card-body {
+        tfoot {
+            font-weight: bold;
+            font-style: italic;
+            color: green;
+            border-top: 2px solid #777;
+        }
+    }
+}
