@@ -66,7 +66,7 @@ function populateATMTransactions(user) {
         location: "NEX Point Loma",
         userId: user._id
     }, function (err, w) {
-        Purchase.create({amount: 3, description: 'ATM service fee', atmId: w._id});
+        Purchase.create({amount: 2, description: 'ATM service fee', atmId: w._id});
         Purchase.create({amount: 5, description: 'lunch', atmId: w._id});
         Purchase.create({amount: 20, description: 'groceries', atmId: w._id});
         Purchase.create({amount: 6, description: 'coffee dues', atmId: w._id});
