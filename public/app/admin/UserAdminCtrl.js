@@ -11,6 +11,9 @@
         vm.users = null;
         vm.loading = true;
 
+        vm.userTableSortCol = '-roles';
+        vm.sortOrderAsc = false;
+
         getUsers();
 
         vm.isAdmin = function (user) {
@@ -38,6 +41,10 @@
             $location.path('/admin/edituser');
         };
 
+        vm.changeSortColumn = function (column) {
+            vm.sortOrderAsc = !vm.sortOrderAsc;
+            vm.userTableSortCol = (vm.sortOrderAsc ? column : '-'+column);
+        };
         function getUsers() {
             $http.get('/api/users').success(function (users) {
                 vm.users = users;
