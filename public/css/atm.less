@@ -3,14 +3,16 @@
 
 .atm-card {
     border: 1px solid @atmHeaderBg;
-    margin-top: 20px;
+    margin: 20px 0;
 
     .atm-card-header {
         color: white;
+        background: linear-gradient(@atmHeaderBg, lighten(@atmHeaderBg, 30%));
         padding: 10px 10px;
 
         .fa {
             cursor: pointer;
+            color: white;
         }
 
         .date {
@@ -26,6 +28,13 @@
     }
 
     .atm-card-body {
+        background: white;
+        font-size: 22px;
+
+        .table {
+            margin-bottom: 0;
+        }
+
         tfoot {
             font-weight: bold;
             font-style: italic;
