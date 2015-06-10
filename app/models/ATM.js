@@ -7,8 +7,9 @@ var atmWithdrawalSchema = new mongoose.Schema({
     serviceFee: Number,
     date: {type: Date, default: Date.now()},
     location: String,
-    userId: String
-    // purchases: [{type: mongoose.Schema.Types.ObjectId, ref: 'Purchase'}]
+    userId: String,
+    createdOn: {type: Date, default: Date.now()},
+    lastModified: {type: Date, default: Date.now()}
 });
 
 var Withdrawal = mongoose.model('ATMWithdrawal', atmWithdrawalSchema);
