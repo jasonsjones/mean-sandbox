@@ -40,11 +40,10 @@
         ///////////////
 
         function query() {
-            // var deferred = $q.defer();
-            // deferred.resolve(meanComponents);
+            var deferred = $q.defer();
+            deferred.resolve(meanComponents);
 
-            // return deferred.promise;
-            return meanComponents;
+            return deferred.promise;
         }
     }
 }());

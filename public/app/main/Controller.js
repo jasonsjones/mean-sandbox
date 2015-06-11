@@ -5,14 +5,18 @@
         .controller('Controller', Controller);
 
     //////////////////////////
-    function Controller(dataservice, identity, notifier) {
+    function Controller(dataservice, identity) {
         var vm = this;
         vm.identity = identity;
-        vm.components = dataservice.query();
+        vm.components = [];
 
-        // dataservice.query().then(function (results) {
-        //     vm.components = results;
-        //     notifier.info('MEAN components loaded...');
-        // });
+        getComponents();
+
+        function getComponents() {
+            dataservice.query().then(function (results) {
+                vm.components = results;
+            });
+        }
+
     }
 }());
