@@ -1,18 +1,20 @@
+'use strict';
+
 describe('Controller', function () {
 
     beforeEach(module('app.core'));
 
     var mainCtrl,
         querySpy,
-        deferred,
         mockDataservice,
         mockIdentity;
+
+    var dummyData = ["mean", "components", "go", "here"];
 
     beforeEach(inject(function ($controller, $q) {
         mockDataservice = {
             query: function () {
-                deferred = $q.defer();
-                return deferred.promise;
+                return $q.when(dummyData);
             }
         };
 
@@ -21,8 +23,8 @@ describe('Controller', function () {
             isAuthenticated: function () {
                 return true;
             },
-            isAuthorizedForRole: function () {
-                return false;
+            isAuthorizedForRole: function (role) {
+                return role === 'admin' ? false : true;
             }
         };
 
@@ -30,7 +32,6 @@ describe('Controller', function () {
 
         mainCtrl = $controller('Controller', {
             dataservice: mockDataservice,
-            notifier: {},
             identity: mockIdentity
         });
     }));
@@ -47,13 +48,22 @@ describe('Controller', function () {
         expect(mainCtrl.identity).to.exist;
     });
 
+    it('determines if a user is authenticated', function () {
+        expect(mainCtrl.identity.isAuthenticated()).to.be.true;
+    });
+
+    it('determines if a user is authorized for role', function () {
+        expect(mainCtrl.identity.isAuthorizedForRole('admin')).to.be.false;
+    });
+
     it('calls on the dataservice to initialize components', function () {
         expect(querySpy.called).to.be.true;
     });
 
-    it('initializes components with array of data', function () {
+    it('initializes components with array of data', inject(function ($rootScope) {
+        $rootScope.$apply();
         expect(querySpy.called).to.be.true;
         expect(mainCtrl.components).to.be.an.Array;
-        //expect(mainCtrl.components).to.have.length(4);
-    });
+        expect(mainCtrl.components).to.have.length(dummyData.length);
+    }));
 });
