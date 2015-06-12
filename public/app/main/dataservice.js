@@ -4,7 +4,6 @@
     angular.module('app.core')
         .factory('dataservice', dataservice);
 
-    ///////////////////////
     function dataservice($q) {
         var meanComponents = [
             {imgUrl: 'img/mongodb.png',
@@ -29,16 +28,15 @@
              description: 'Node.js is a platform built on Chrome\'s JavaScript runtime ' +
                  'for easily building fast, scalable network applications'
             }
-
         ];
+
         var factory = {
             query: query
         };
 
         return factory;
 
-        ///////////////
-
+        /********* Implementation Details **********/
         function query() {
             return $q.when(meanComponents);
         }
