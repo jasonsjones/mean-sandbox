@@ -40,10 +40,7 @@
         ///////////////
 
         function query() {
-            var deferred = $q.defer();
-            deferred.resolve(meanComponents);
-
-            return deferred.promise;
+            return $q.when(meanComponents);
         }
     }
 }());
