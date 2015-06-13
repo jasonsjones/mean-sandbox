@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app.core')
-        .factory('dataservice', dataservice);
+        .factory('dataservice', dataserviceFactory);
 
-    function dataservice($q) {
+    function dataserviceFactory($q) {
         var meanComponents = [
             {imgUrl: 'img/mongodb.png',
              webUrl: 'http://www.mongodb.org',
