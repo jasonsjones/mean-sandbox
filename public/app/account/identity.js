@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app.account')
-        .factory('identity', identity);
+        .factory('identity', identityFactory);
 
-    function identity($window) {
+    function identityFactory($window) {
 
         var storage = $window.localStorage;
         var currentUser = null;
@@ -22,14 +22,13 @@
 
         return service;
 
-        //////////////////////////
+        /********* Implementation Details **********/
         function isAuthenticated() {
             return !!this.currentUser;
         }
 
         function isAuthorizedForRole(role) {
-            return this.currentUser && this.currentUser.roles.indexOf(role) > -1;
+            return this.isAuthenticated() && this.currentUser.roles.indexOf(role) > -1;
         }
-
     }
 }());

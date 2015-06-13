@@ -1,5 +1,4 @@
 (function () {
-    /* jshint validthis: true */
     'use strict';
 
     angular.module('app.account')
@@ -9,7 +8,14 @@
         var vm = this;
         vm.identity = identity;
 
-        vm.login = function () {
+        vm.username = '';
+        vm.password = '';
+
+        vm.login = login;
+        vm.signout = signout;
+
+        /********* Implementation Details **********/
+        function login() {
             sbAuth.authenticateUser(vm.username, vm.password)
                 .then(function (success) {
                     if (success) {
@@ -20,15 +26,16 @@
                         vm.password = '';
                     }
                 });
-        };
+        }
 
-        vm.signout = function () {
+        function signout() {
             vm.identity.currentUser = null;
             vm.username = '';
             vm.password = '';
             notifier.notify('You successfully logged out!');
             $window.localStorage.removeItem('currentUser');
             $location.path('/');
-        };
+        }
+
     }
 }());
