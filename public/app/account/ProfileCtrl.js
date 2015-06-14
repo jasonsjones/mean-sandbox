@@ -4,7 +4,7 @@
     angular.module('app.account')
         .controller('ProfileCtrl', ProfileCtrl);
 
-    function ProfileCtrl($http, $location, identity, notifier, register) {
+    function ProfileCtrl($location, identity, notifier, register) {
         var vm = this;
 
         vm.editPassword = false;
@@ -14,7 +14,11 @@
         vm.email = identity.currentUser.email;
         vm.username = identity.currentUser.username;
 
-        vm.updateData = function () {
+        vm.toggleEditPassword = toggleEditPassword;
+        vm.updateData = updateData;
+
+        /********* Implementation Details **********/
+        function updateData () {
 
             var userUpdate = {
                 firstName: vm.firstName,
@@ -55,8 +59,8 @@
             }
         };
 
-        vm.toggleEditPassword = function () {
+        function toggleEditPassword () {
             vm.editPassword = !vm.editPassword;
-        };
+        }
     }
 }());
