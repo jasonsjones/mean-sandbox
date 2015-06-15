@@ -6,11 +6,12 @@
         .controller('RegisterCtrl', RegisterCtrl);
 
     function RegisterCtrl($location, register, notifier) {
-        console.log('RegisterCtrl loaded...');
 
         var vm = this;
+        vm.registerNewUser = registerNewUser;
 
-        vm.register = function () {
+        /********* Implementation Details **********/
+        function registerNewUser () {
             var newUser = {
                 firstName: vm.firstName,
                 lastName: vm.lastName,
@@ -21,8 +22,8 @@
 
             if (newUser.password.length > 0 && isPasswordCorrect()) {
                 register.createUser(newUser)
-                .then(function () {
-                    notifier.notify('User account created');
+                .then(function (user) {
+                    notifier.notify('User account for ' + user.username + ' created');
                     $location.path('/');
                 },
                 function (reason) {
@@ -37,7 +38,7 @@
                 vm.password = '';
                 vm.confirmPassword = '';
             }
-        };
+        }
 
         function isPasswordCorrect() {
             return vm.password === vm.confirmPassword;

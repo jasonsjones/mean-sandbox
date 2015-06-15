@@ -22,7 +22,7 @@
                 .success(function (user) {
                     identity.currentUser = user;
                     $window.localStorage.currentUser = JSON.stringify(user);
-                    deferred.resolve();
+                    deferred.resolve(user);
                 })
                 .error(function (error) {
                     deferred.reject(error);
