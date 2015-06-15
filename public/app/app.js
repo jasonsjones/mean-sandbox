@@ -12,13 +12,11 @@
         var routeRoleCheck = {
             admin: {
                 auth: function (sbAuth) {
-                    console.log('calling adminRoutes in app config...');
                     return sbAuth.authorizeCurrentUserForRoute('admin');
                 }
             },
             user : {
                 auth: function (sbAuth) {
-                    console.log('calling userRoutes in app config...');
                     return sbAuth.authorizeAuthenticatedUserForRoute();
                 }
             }
