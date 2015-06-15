@@ -50,7 +50,6 @@
         function authorizeCurrentUserForRoute(role) {
 
             if (identity.isAuthorizedForRole(role)) {
-                console.log('user is authorized for role: ' + role);
                 return true;
             } else {
                 return $q.reject('not authorized');
