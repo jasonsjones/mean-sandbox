@@ -16,14 +16,16 @@
                 firstName: vm.firstName,
                 lastName: vm.lastName,
                 email: vm.email,
-                username: vm.username,
-                password: vm.password
+                local: {
+                    username: vm.username,
+                    password: vm.password
+                }
             };
 
-            if (newUser.password.length > 0 && isPasswordCorrect()) {
+            if (newUser.local.password.length > 0 && isPasswordCorrect()) {
                 register.createUser(newUser)
                 .then(function (user) {
-                    notifier.notify('User account for ' + user.username + ' created');
+                    notifier.notify('User account for ' + user.local.username + ' created');
                     $location.path('/');
                 },
                 function (reason) {

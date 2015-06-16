@@ -25,8 +25,8 @@ exports.getUserById = function (req, res) {
 
 exports.createUser = function (req, res, next) {
     var userData = req.body;
-    userData.salt= hash.createSalt();
-    userData.password = hash.hashPassword(userData.salt, userData.password);
+    userData.local.salt= hash.createSalt();
+    userData.local.password = hash.hashPassword(userData.local.salt, userData.local.password);
 
     User.create(userData, function (err, user) {
         if (err) {
@@ -58,7 +58,7 @@ exports.updateUserById = function (req, res) {
         user.firstName = userUpdates.firstName;
         user.lastName = userUpdates.lastName;
         user.email = userUpdates.email;
-        user.username = userUpdates.username;
+        user.local.username = userUpdates.local.username;
         user.lastModified = Date.now();
 
         // check for roles
@@ -73,12 +73,12 @@ exports.updateUserById = function (req, res) {
             console.log('user removed as admin');
         }
 
-        if (userUpdates.password &&
-            userUpdates.password.length > 0 &&
-            user.password !== userUpdates.password) {
+        if (userUpdates.local.password &&
+            userUpdates.local.password.length > 0 &&
+            user.local.password !== userUpdates.local.password) {
 
-            user.salt = hash.createSalt();
-            user.password = hash.hashPassword(user.salt, userUpdates.password);
+            user.local.salt = hash.createSalt();
+            user.local.password = hash.hashPassword(user.local.salt, userUpdates.local.password);
             console.log('user\'s password was successfully updated...');
         } else {
             console.log('user\'s password was not updated...');

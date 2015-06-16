@@ -23,7 +23,7 @@ exports.createDefaultATMTransactions = function () {
 
         if (collection.length === 0) {
             console.log('creating dummy data for atm transactions');
-            User.findOne({username: 'jason'}).exec(function (err, user) {
+            User.findOne({'local.username': 'jason'}).exec(function (err, user) {
                 populateATMTransactions(user);
             });
         }

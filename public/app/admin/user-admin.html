@@ -18,7 +18,7 @@
     <tbody>
         <tr ng-repeat="user in vm.users | orderBy:vm.userTableSortCol">
             <td>{{ user.firstName + ' ' + user.lastName }}</td>
-            <td>{{ user.username }}</td>
+            <td>{{ user.local.username }}</td>
             <td>{{ user.email }}</td>
             <td><span ng-if="vm.isAdmin(user)"><i class="fa fa-check"></i></span></td>
             <td>{{ user.createdOn | date:'medium' }}</td>

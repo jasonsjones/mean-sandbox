@@ -7,7 +7,7 @@ module.exports = function () {
     passport.use('local', new LocalStrategy(localStrategy));
 
     function localStrategy(username, password, done) {
-        User.findOne({username: username}).exec(lookup);
+        User.findOne({'local.username': username}).exec(lookup);
 
         function lookup(err, user) {
             if (err) {

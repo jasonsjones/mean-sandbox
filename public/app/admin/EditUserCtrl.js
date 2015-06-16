@@ -14,7 +14,9 @@
         vm.firstName = ute.firstName;
         vm.lastName = ute.lastName;
         vm.email = ute.email;
-        vm.username = ute.username;
+        vm.local = {
+            username:  ute.local.username
+        },
         vm.roles = {};
 
         //if (ute.isAdmin()) {
@@ -31,7 +33,9 @@
                 firstName: vm.firstName,
                 lastName: vm.lastName,
                 email: vm.email,
-                username: vm.username,
+                local: {
+                    username: vm.local.username
+                },
                 roles: {}
             };
 
@@ -47,7 +51,7 @@
                     vm.newPassword = '';
                     vm.confirmPassword = '';
                 } else {
-                    userUpdate.password = vm.newPassword;
+                    userUpdate.local.password = vm.newPassword;
                     sendToAuthService(userUpdate);
                 }
             } else {
@@ -58,7 +62,7 @@
 
             function sendToAuthService(newUserData) {
                 register.updateUser(ute._id, newUserData).then(function () {
-                    notifier.notify('User information for ' + newUserData.username +
+                    notifier.notify('User information for ' + newUserData.local.username +
                                     ' has been successfully updated');
                     $location.path('/admin/users');
                 }, function (reason) {

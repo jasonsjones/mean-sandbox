@@ -5,16 +5,18 @@ var userSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     email: String,
-    username: String,
-    salt: String,
-    password: String,
+    local: {
+        username: String,
+        password: String,
+        salt: String
+    },
     roles: [String],
     createdOn: {type: Date, default: Date.now},
     lastModified: {type: Date, default: Date.now}
 });
 
 userSchema.methods.authenticate = function (pwdToMatch) {
-    return this.password === hash.hashPassword(this.salt, pwdToMatch);
+    return this.local.password === hash.hashPassword(this.local.salt, pwdToMatch);
 };
 
 userSchema.methods.isAdmin = function () {
@@ -32,26 +34,56 @@ function createDefaultUsers() {
 
             var salt = hash.createSalt();
             var pwd = hash.hashPassword(salt, 'jason');
-            User.create({firstName: 'Jason', lastName: 'Jones', email: 'jason@jasonsjones.com',
-                username: 'jason', salt: salt, password: pwd, roles: ['admin']
+
+            User.create({
+                firstName: 'Jason',
+                lastName: 'Jones',
+                email: 'jason@jasonsjones.com',
+                local: {
+                    username: 'jason',
+                    password: pwd,
+                    salt: salt
+                },
+                roles: ['admin']
             });
 
             salt = hash.createSalt();
             pwd = hash.hashPassword(salt, 'joe');
-            User.create({firstName: 'Joe', lastName: 'Eames', email: 'joe@joeeames.com',
-                username: 'joe', salt: salt, password: pwd
+            User.create({
+                firstName: 'Joe',
+                lastName: 'Eames',
+                email: 'joe@joeeames.com',
+                local: {
+                    username: 'joe',
+                    password: pwd,
+                    salt: salt
+                }
             });
 
             salt = hash.createSalt();
             pwd = hash.hashPassword(salt, 'john');
-            User.create({firstName: 'John', lastName: 'Papa', email: 'john@johnpapa.com',
-                username: 'john', salt: salt, password: pwd
+            User.create({
+                firstName: 'John',
+                lastName: 'Papa',
+                email: 'john@johnpapa.com',
+                local: {
+                    username: 'john',
+                    password: pwd,
+                    salt: salt
+                }
             });
 
             salt = hash.createSalt();
-            pwd = hash.hashPassword(salt, 'andy');
-            User.create({firstName: 'Andy', lastName: 'Perez', email: 'andy@andyperez.com',
-                username: 'andy', salt: salt, password: pwd
+            pwd = hash.hashPassword(salt, 'ward');
+            User.create({
+                firstName: 'Ward',
+                lastName: 'Bell',
+                email: 'ward@wardbell.com',
+                local: {
+                    username: 'ward',
+                    password: pwd,
+                    salt: salt
+                }
             });
         }
     });

@@ -12,7 +12,9 @@
         vm.firstName = identity.currentUser.firstName;
         vm.lastName = identity.currentUser.lastName;
         vm.email = identity.currentUser.email;
-        vm.username = identity.currentUser.username;
+        vm.local = {
+            username : identity.currentUser.local.username
+        };
 
         vm.toggleEditPassword = toggleEditPassword;
         vm.updateData = updateData;
@@ -24,7 +26,9 @@
                 firstName: vm.firstName,
                 lastName: vm.lastName,
                 email: vm.email,
-                username: vm.username,
+                local: {
+                    username: vm.local.username
+                },
                 roles: {}
             };
 
@@ -40,7 +44,7 @@
                     vm.newPassword = '';
                     vm.confirmPassword = '';
                 } else {
-                    userUpdate.password = vm.newPassword;
+                    userUpdate.local.password = vm.newPassword;
                     sendToAuthService(userUpdate);
                 }
             } else {
