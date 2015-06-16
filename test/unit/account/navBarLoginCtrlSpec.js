@@ -55,6 +55,20 @@ describe('NavBarLoginCtrl', function () {
        expect(navbarLoginCtrl).to.exist;
     });
 
+    it('has an identity property', function () {
+        expect(navbarLoginCtrl.identity).to.exist;
+    });
+
+    it('determines if a user is authenticated', function () {
+        sandbox.stub(mockIdentity, 'isAuthenticated').returns(true);
+        expect(navbarLoginCtrl.identity.isAuthenticated()).to.be.true;
+    });
+
+    it('determines if a user is authorized for role', function () {
+        sandbox.stub(mockIdentity, 'isAuthorizedForRole').returns(false);
+        expect(navbarLoginCtrl.identity.isAuthorizedForRole('admin')).to.be.false;
+    });
+
     it('login method calls authenticateUser on authservice', inject(function ($q) {
         sandbox.stub(authservice, 'authenticateUser').returns($q.when(true));
         navbarLoginCtrl.login();
