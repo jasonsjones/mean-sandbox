@@ -2,7 +2,7 @@ module.exports = {
     devlocal: {
         env: 'devlocal',
         db: 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + ':' +
-                (process.env.DB_1_PORT_27017_TCP_PORT || '27017') + '/meansandbox-dev',
+                (process.env.DB_1_PORT_27017_TCP_PORT || '27017') + '/meansandbox',
         secret: 'learningtheMEANstack',
         port: process.env.PORT || 7401
     },
