@@ -1,4 +1,8 @@
-<td>{{ vm.item.amount | currency }}</td>
-<td>{{ vm.item.description }}</td>
-<td><i class="fa fa-pencil" ng-click="vm.editPurchase()"></i></td>
-<td><i class="fa fa-trash" ng-click="vm.deletePurchase()"></i></td>
+<td ng-hide="vm.editPurchaseState">{{ p.amount | currency }}</td>
+<td ng-hide="vm.editPurchaseState">{{ p.description }}</td>
+<td ng-show="vm.editPurchaseState"><input type="text" ng-model="p.amount"/></td>
+<td ng-show="vm.editPurchaseState"><input type="text" ng-model="p.description"/></td>
+<td ng-hide="vm.editPurchaseState"><i class="fa fa-pencil" ng-click="vm.editPurchase()"></i></td>
+<td ng-show="vm.editPurchaseState"><i class="fa fa-plus" ng-click="vm.updatePurchase()"></i></td>
+<td><i class="fa fa-trash" ng-click="vm.deletePurchase(p)"></i></td>
+
