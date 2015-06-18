@@ -20,5 +20,6 @@ module.exports = function (api) {
         .post(purchaseCtrl.createPurchase);
 
     api.route('/api/atms/:atmId/purchases/:id')
+        .put(purchaseCtrl.updatePurchase)
         .delete(purchaseCtrl.deletePurchase);
 };
