@@ -14,9 +14,9 @@
 
         return service;
 
-        function get(id) {
+        function get(atmId) {
             var deferred = $q.defer();
-            var url = '/api/atms/' + id + '/purchases';
+            var url = '/api/atms/' + atmId + '/purchases';
 
             $http.get(url)
                 .success(function (purchases) {
@@ -28,9 +28,9 @@
             return deferred.promise;
         }
 
-        function add(data, id) {
+        function add(atmId, data) {
             var deferred = $q.defer();
-            var url = '/api/atms/' + id + '/purchases';
+            var url = '/api/atms/' + atmId + '/purchases';
 
             $http.post(url, data)
                 .success(function (newPurchaseData) {
@@ -38,6 +38,21 @@
                 })
                 .error(function () {
                     deferred.reject('failed to add new purchase');
+                });
+
+            return deferred.promise;
+        }
+
+        function update(atmId, purchaseId, data) {
+            var deferred = $q.defer();
+            var url = '/api/atms/' + atmId + '/purchases/' + purchaseId;
+
+            $http.put(url, data)
+                .success(function (response) {
+                   deferred.resolve(response)
+                })
+                .error(function () {
+                    deferred.reject('failed to update purchase id: ' + purchaseId);
                 });
 
             return deferred.promise;
