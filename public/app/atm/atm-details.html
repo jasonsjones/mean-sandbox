@@ -21,15 +21,7 @@
                           <td><input type="text" placeholder="Description" ng-model="vm.newPurchase.description"/></td>
                           <td><button class="btn btn-primary" ng-click="vm.addPurchase()"><i class="fa fa-plus"></i> Add</button></td>
                       </tr>
-                      <tr ng-repeat="p in vm.purchases">
-                          <td ng-hide="vm.editPurchaseState">{{ p.amount | currency }}</td>
-                          <td ng-hide="vm.editPurchaseState">{{ p.description }}</td>
-                          <td ng-show="vm.editPurchaseState"><input type="text" ng-model="p.amount"/></td>
-                          <td ng-show="vm.editPurchaseState"><input type="text" ng-model="p.description"/></td>
-                          <td ng-hide="vm.editPurchaseState"><i class="fa fa-pencil" ng-click="vm.editPurchase()"></i></td>
-                          <td ng-show="vm.editPurchaseState"><i class="fa fa-plus" ng-click="vm.updatePurchase()"></i></td>
-                          <td><i class="fa fa-trash" ng-click="vm.deletePurchase(p)"></i></td>
-                      </tr>
+                      <tr ng-repeat="p in vm.purchases" purchase-item="p"> </tr>
                   </tbody>
                   <tfoot>
                       <tr>
