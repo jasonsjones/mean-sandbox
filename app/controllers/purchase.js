@@ -24,6 +24,21 @@ exports.createPurchase = function (req, res) {
     });
 };
 
+exports.updatePurchase = function (req, res) {
+    Purchase.findOne({_id: req.params.id}).exec(function (err, purchase) {
+        if (err) {
+            res.send(err);
+        } else {
+            var purchaseUpdateData = req.body;
+            console.log('original purchase: ');
+            console.log(purchase);
+            console.log('updated purchase: ');
+            console.log(purchaseUpdateData);
+            res.send({success: true});
+        }
+    });
+};
+
 exports.deletePurchase = function (req, res) {
     Purchase.findByIdAndRemove(req.params.id, function (err) {
         if (err) {
