@@ -5,10 +5,9 @@
 
     function ATMDetailsCtrl($routeParams, ATM, purchase) {
         var vm = this;
-        var id = $routeParams.atmId;
+        var atmId = $routeParams.atmId;
 
         vm.loading = true;
-        vm.editPurchaseState = false;
         vm.purchases = null;
         vm.totalSpent = 0;
         vm.totalAmount = 0;
@@ -19,14 +18,12 @@
         vm.deletePurchase = deletePurchase;
         vm.getTotalSpent = getTotalSpent;
         vm.getPurchases = getPurchases;
-        vm.editPurchase = editPurchase;
-        vm.updatePurchase = updatePurchase;
 
         initialize();
 
         /*********** Implementation Details ************/
         function initialize() {
-            ATM.getById(id).then(function (data) {
+            ATM.getById(atmId).then(function (data) {
                 vm.transaction = data;
                 vm.totalAmount = ATM.getTotalAmount(vm.transaction);
             });
@@ -39,7 +36,7 @@
                 amount: vm.newPurchase.amount,
                 description: vm.newPurchase.description
             };
-            purchase.add(newPurchaseData, id).then(function (data) {
+            purchase.add(atmId, newPurchaseData).then(function (data) {
                 vm.purchases.push(data);
                 vm.totalSpent = vm.getTotalSpent();
             }, function (reason) {
@@ -50,7 +47,7 @@
         }
 
         function deletePurchase(purchaseToDelete) {
-            purchase.remove(id, purchaseToDelete._id).then(function (result) {
+            purchase.remove(atmId, purchaseToDelete._id).then(function (result) {
                 if (result.success) {
                     console.log('successfully deleted');
                     var index = vm.purchases.indexOf(purchaseToDelete);
@@ -69,19 +66,11 @@
         }
 
         function getPurchases() {
-            purchase.get(id).then(function (data) {
+            purchase.get(atmId).then(function (data) {
                 vm.purchases = data;
                 vm.loading = false;
                 vm.totalSpent = vm.getTotalSpent();
             });
-        }
-
-        function editPurchase() {
-            vm.editPurchaseState = true;
-        }
-
-        function updatePurchase() {
-            vm.editPurchaseState = false;
         }
     }
 })();
