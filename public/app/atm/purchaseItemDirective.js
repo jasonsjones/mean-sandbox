@@ -15,12 +15,13 @@
             bindToController: true
         };
 
-        function purchaseItemCtrl($routeParams) {
+        function purchaseItemCtrl($rootScope, $routeParams, purchase) {
             var vm = this;
             var atmId = $routeParams.atmId;
             vm.editPurchaseState = false;
             vm.editPurchase = editPurchase;
             vm.updatePurchase = updatePurchase;
+            vm.deletePurchase = deletePurchase;
 
             function editPurchase() {
                 vm.editPurchaseState = true;
@@ -35,6 +36,19 @@
                 console.log(updatedPurchaseData);
                 console.log(vm.item._id);
                 console.log(atmId);
+            }
+
+            function deletePurchase() {
+                purchase.remove(atmId, vm.item._id).then(function (result) {
+                    if (result.success) {
+                        console.log('successfully deleted');
+                        $rootScope.$broadcast('purchaseDeleted', {
+                            purchase: vm.item
+                        });
+                    }
+                }, function () {
+                    console.log('error deleting purchase');
+                });
             }
         }
     }

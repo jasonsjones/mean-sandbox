@@ -3,7 +3,7 @@
     angular.module('app.atm')
         .controller('ATMDetailsCtrl', ATMDetailsCtrl);
 
-    function ATMDetailsCtrl($routeParams, ATM, purchase) {
+    function ATMDetailsCtrl($scope, $routeParams, ATM, purchase) {
         var vm = this;
         var atmId = $routeParams.atmId;
 
@@ -15,11 +15,14 @@
         vm.newPurchase = {};
 
         vm.addPurchase = addPurchase;
-        vm.deletePurchase = deletePurchase;
         vm.getTotalSpent = getTotalSpent;
         vm.getPurchases = getPurchases;
 
         initialize();
+
+        $scope.$on('purchaseDeleted', function (evt, data) {
+            vm.getPurchases();
+        });
 
         /*********** Implementation Details ************/
         function initialize() {
@@ -44,19 +47,6 @@
             });
             vm.newPurchase.amount = '';
             vm.newPurchase.description = '';
-        }
-
-        function deletePurchase(purchaseToDelete) {
-            purchase.remove(atmId, purchaseToDelete._id).then(function (result) {
-                if (result.success) {
-                    console.log('successfully deleted');
-                    var index = vm.purchases.indexOf(purchaseToDelete);
-                    vm.purchases.splice(index, 1);
-                    vm.totalSpent = vm.getTotalSpent();
-                }
-            }, function () {
-                console.log('error deleting purchase');
-            });
         }
 
         function getTotalSpent() {
