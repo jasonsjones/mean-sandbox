@@ -30,11 +30,18 @@ exports.updatePurchase = function (req, res) {
             res.send(err);
         } else {
             var purchaseUpdateData = req.body;
-            console.log('original purchase: ');
-            console.log(purchase);
-            console.log('updated purchase: ');
-            console.log(purchaseUpdateData);
-            res.send({success: true});
+
+            purchase.amount = purchaseUpdateData.amount;
+            purchase.description = purchaseUpdateData.description;
+            purchase.lastModified = Date.now();
+
+            purchase.save(function (err) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.send({success: true});
+                }
+            });
         }
     });
 };

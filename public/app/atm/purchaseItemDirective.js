@@ -18,11 +18,13 @@
         function purchaseItemCtrl($rootScope, $routeParams, purchase) {
             var vm = this;
             var atmId = $routeParams.atmId;
+
             vm.editPurchaseState = false;
             vm.editPurchase = editPurchase;
             vm.updatePurchase = updatePurchase;
             vm.deletePurchase = deletePurchase;
 
+            /*********** Implementation Details ************/
             function editPurchase() {
                 vm.editPurchaseState = true;
             }
@@ -33,16 +35,25 @@
                     amount: vm.item.amount,
                     description: vm.item.description
                 };
-                console.log(updatedPurchaseData);
-                console.log(vm.item._id);
-                console.log(atmId);
+
+                purchase.update(atmId, vm.item._id, updatedPurchaseData)
+                    .then(function (result) {
+                        if (result.success) {
+                            console.log('purchase successfully updated');
+                            $rootScope.$broadcast('purchaseChanged', {
+                                purchase: vm.item
+                            });
+                        }
+                    }, function () {
+                        console.log('unable to update puchase');
+                    });
             }
 
             function deletePurchase() {
                 purchase.remove(atmId, vm.item._id).then(function (result) {
                     if (result.success) {
                         console.log('successfully deleted');
-                        $rootScope.$broadcast('purchaseDeleted', {
+                        $rootScope.$broadcast('purchaseChanged', {
                             purchase: vm.item
                         });
                     }

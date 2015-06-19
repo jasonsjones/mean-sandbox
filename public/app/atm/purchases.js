@@ -8,6 +8,7 @@
         var service = {
             get: get,
             add: add,
+            update: update,
             remove: remove,
             removeAllPurchases: removeAllPurchases
         };
@@ -57,11 +58,11 @@
 
             return deferred.promise;
         }
-        
+
         function remove(atmId, purchaseId) {
             var deferred = $q.defer();
             var url = '/api/atms/' + atmId + '/purchases/' + purchaseId;
-            
+
             $http.delete(url)
                 .success(function (data) {
                    deferred.resolve(data);
@@ -69,7 +70,7 @@
                 .error(function () {
                    deferred.reject('failed to delete purchase');
                 });
-            
+
             return deferred.promise;
         }
 

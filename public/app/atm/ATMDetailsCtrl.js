@@ -8,19 +8,19 @@
         var atmId = $routeParams.atmId;
 
         vm.loading = true;
-        vm.purchases = null;
+        vm.purchases = [];
         vm.totalSpent = 0;
         vm.totalAmount = 0;
 
         vm.newPurchase = {};
 
+        vm.getPurchases = getPurchases;
         vm.addPurchase = addPurchase;
         vm.getTotalSpent = getTotalSpent;
-        vm.getPurchases = getPurchases;
 
         initialize();
 
-        $scope.$on('purchaseDeleted', function (evt, data) {
+        $scope.$on('purchaseChanged', function (evt, data) {
             vm.getPurchases();
         });
 
