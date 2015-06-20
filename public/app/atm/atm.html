@@ -11,24 +11,25 @@
 
     <div ng-repeat="t in vm.transactions">
         <div class="col-md-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h1 class="panel-title pull-right"><i class="fa fa-close" ng-click="vm.deleteTransaction(t._id)"></i></h1>
-                    <a class="btn btn-warning pull-left" ng-href="/atm-details/{{t._id}}"><i class="fa fa-pencil"></i> Details</a>
-                    <h2 class="panel-title text-center"> ATM Withdrawal</h2>
-                    <br/>
-                    <p class="text-left panel-heading">
-                        <span class="amount">{{ vm.getTotalAmount(t) | currency }}</span> <em> on {{ t.date | date  }} </em>
-                    </p>
-                </div><!-- end panel-heading -->
-                <div class="panel-body">
+            <div class="atm-card">
+                <div class="atm-card-header">
+                    <a ng-href="/atm-details/{{t._id}}"><i class="fa fa-pencil"></i> Edit</a>
+                    <i class="fa fa-close pull-right" ng-click="vm.deleteTransaction(t._id)"></i>
+                    <h3 class="text-center">ATM Withdrawal</h3>
+                    <h4><span class="amount">{{ vm.getTotalAmount(t) | currency}}</span>
+                        <span class="location pull-right">{{ t.date | date }}</span></h4>
+                    <p class="location">{{ t.location }}
+                       <i ng-show="vm.expanded" ng-click="vm.expandList()" class="fa fa-2x fa-angle-up pull-right"></i>
+                       <i ng-hide="vm.expanded" ng-click="vm.expandList()" class="fa fa-2x fa-angle-down pull-right"></i></p>
+                </div>
+                <div class="atm-card-body">
                     <p class="text-center" ng-show="pc.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
-                    <table class="table" ng-controller="PurchaseCtrl as pc" ng-init="pc.getPurchases(t._id)">
+                    <table class="table atm-list" ng-controller="PurchaseCtrl as pc"
+                           ng-init="pc.getPurchases(t._id)" ng-show="vm.expanded">
                         <thead>
                         <th>Amount</th>
                         <th>Description</th>
                         </thead>
-
                         <tbody class="purchase-item">
                         <tr ng-repeat="p in pc.purchases">
                             <td>{{ p.amount | currency }}</td>
@@ -47,8 +48,7 @@
                         </tr>
                         </tfoot>
                     </table>
-
-                </div> <!-- end panel-body -->
+                </div>
             </div>
         </div>
     </div>
