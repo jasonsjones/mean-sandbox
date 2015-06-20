@@ -8,8 +8,11 @@
 
         var vm = this;
 
-        vm.transactions = null;
+        vm.transactions = [];
         vm.loading = true;
+        vm.expanded = false;
+
+        vm.expandList = expandList;
 
         initialize();
 
@@ -32,6 +35,10 @@
                 }
             });
         };
+
+        function expandList() {
+            vm.expanded = !vm.expanded;
+        }
 
         function initialize() {
             ATM.query().then(function (data) {
