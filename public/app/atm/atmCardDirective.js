@@ -5,7 +5,7 @@
 
     function atmCard() {
         return {
-            restrict: 'E',
+            restrict: 'EA',
             templateUrl: '/app/atm/atm-card.html',
             scope: {
                 item: '='
@@ -16,10 +16,11 @@
         };
 
         function atmCardCtrl(purchase) {
-           var vm = this;
+            var vm = this;
             vm.expanded = false;
             vm.purchases = [];
             vm.loading = true;
+            vm.totalSpent = 0;
 
             vm.expandList = expandList;
             vm.getTotalAmount = getTotalAmount;
@@ -28,9 +29,8 @@
             activate();
 
             function activate() {
-                // vm.getPurchases(vm.item._id);
+                vm.getPurchases(vm.item._id);
                 vm.loading = false;
-                console.log(vm.item);
             }
 
             function expandList() {
@@ -38,16 +38,16 @@
             }
 
             function getTotalAmount() {
-                return vm.cashAmount + vm.serviceFee;
+                return vm.item.cashAmount + vm.item.serviceFee;
             }
 
             function getPurchases(atmId) {
                 purchase.get(atmId).then(function (data) {
                     vm.purchases = data;
                     vm.loading = false;
-                    // vm.totalSpent = vm.purchases.reduce(function (prev, curr) {
-                    //     return prev + curr.amount;
-                    // }, 0);
+                    vm.totalSpent = vm.purchases.reduce(function (prev, curr) {
+                        return prev + curr.amount;
+                    }, 0);
                 });
             }
         }
