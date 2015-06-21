@@ -10,6 +10,7 @@
         vm.loading = true;
 
         vm.getPurchases = function (id) {
+            console.log('getPurchases is called with id: ' + id);
             purchase.get(id).then(function (data) {
                 vm.purchases = data;
                 vm.loading = false;
