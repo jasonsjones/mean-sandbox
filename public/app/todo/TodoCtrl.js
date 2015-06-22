@@ -5,16 +5,29 @@
 
     ////////////////////////
     function TodoCtrl(todo, notifier) {
-        console.log('TodoCtrl loaded...');
 
         var vm = this;
         vm.loading = true;
-        vm.todos = null;
-        vm.numberOfTodos = null;
+        vm.todos = [];
+        vm.numberOfTodos = 0;
+        vm.jumbotronLabel = '';
+
+        vm.createTodo = createTodo;
+        vm.deleteTodo = deleteTodo;
+        vm.completeTodo = completeTodo;
 
         initialize();
 
-        vm.createTodo = function () {
+        /************* Implementation Details **************/
+        function initialize() {
+            todo.get().success(function (data) {
+                vm.todos = data;
+                vm.loading = false;
+                vm.numberOfTodos = updateNumberOfTodos();
+            });
+        }
+
+        function createTodo() {
             if (!vm.formData) {
                 notifier.error('You must enter text for the todo');
                 console.log('must enter text for the todo...');
@@ -27,11 +40,9 @@
                     vm.loading = false;
                 });
             }
-        };
+        }
 
-        vm.deleteTodo = function (id) {
-            console.log('deleteTodo fired');
-
+        function deleteTodo (id) {
             vm.loading = true;
             todo.delete(id).success(function (data) {
                 console.log('todo deleted...');
@@ -40,24 +51,17 @@
                 vm.loading = false;
             });
 
-        };
+        }
 
-        vm.completeTodo = function (todoToUpdate) {
+        function completeTodo(todoToUpdate) {
             todoToUpdate.done = !todoToUpdate.done;
             todo.update(todoToUpdate._id, todoToUpdate)
             .success(function (data) {
                 vm.todos = data;
                 vm.numberOfTodos = updateNumberOfTodos();
             });
-        };
-
-        function initialize() {
-            todo.get().success(function (data) {
-                vm.todos = data;
-                vm.loading = false;
-                vm.numberOfTodos = updateNumberOfTodos();
-            });
         }
+
 
         function updateNumberOfTodos(argument) {
             var result = 0;
@@ -66,6 +70,7 @@
                     result++;
                 }
             });
+
             if (result === 1) {
                 vm.jumbotronLabel = 'Thing to do';
             } else {
