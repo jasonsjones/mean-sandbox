@@ -62,7 +62,6 @@
             });
         }
 
-
         function updateNumberOfTodos(argument) {
             var result = 0;
             vm.todos.forEach(function (todo) {
