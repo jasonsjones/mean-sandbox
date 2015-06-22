@@ -15,7 +15,8 @@
             bindToController: true
         };
 
-        function purchaseItemCtrl($rootScope, $routeParams, purchase) {
+        // Directive controller
+        function purchaseItemCtrl($rootScope, $routeParams, purchase, notifier) {
             var vm = this;
             var atmId = $routeParams.atmId;
 
@@ -39,26 +40,26 @@
                 purchase.update(atmId, vm.item._id, updatedPurchaseData)
                     .then(function (result) {
                         if (result.success) {
-                            console.log('purchase successfully updated');
+                            notifier.notify('purchase updated');
                             $rootScope.$broadcast('purchaseChanged', {
                                 purchase: vm.item
                             });
                         }
                     }, function () {
-                        console.log('unable to update puchase');
+                        notifier.error('unable to update purchase');
                     });
             }
 
             function deletePurchase() {
                 purchase.remove(atmId, vm.item._id).then(function (result) {
                     if (result.success) {
-                        console.log('successfully deleted');
+                        notifier.notify('purchase deleted');
                         $rootScope.$broadcast('purchaseChanged', {
                             purchase: vm.item
                         });
                     }
                 }, function () {
-                    console.log('error deleting purchase');
+                    notifier.error('error deleting purchase');
                 });
             }
         }
