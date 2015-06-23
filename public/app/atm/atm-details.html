@@ -17,9 +17,11 @@
                   </thead>
                   <tbody>
                       <tr>
-                          <td><input type="text" placeholder="Purchase Amount" ng-model="vm.newPurchase.amount"/></td>
-                          <td><input type="text" placeholder="Description" ng-model="vm.newPurchase.description"/></td>
+                        <div class="input-group">
+                          <td><input type="text" class="form-control" placeholder="Purchase Amount" ng-model="vm.newPurchase.amount"/></td>
+                          <td><input type="text" class="form-control" placeholder="Description" ng-model="vm.newPurchase.description"/></td>
                           <td><button class="btn btn-primary" ng-click="vm.addPurchase()"><i class="fa fa-plus"></i> Add</button></td>
+                        </div>
                       </tr>
                       <tr ng-repeat="p in vm.purchases" purchase-item="p"> </tr>
                   </tbody>
