@@ -21,15 +21,19 @@
             vm.purchases = [];
             vm.loading = true;
             vm.totalSpent = 0;
+            vm.totalAmount = 0;
 
             vm.expandList = expandList;
             vm.getTotalAmount = getTotalAmount;
             vm.getPurchases = getPurchases;
+            vm.isCardCompleted = isCardCompleted;
 
             activate();
 
+            /************* Implementation Details **************/
             function activate() {
                 vm.getPurchases(vm.item._id);
+                vm.totalAmount = vm.getTotalAmount();
                 vm.loading = false;
             }
 
@@ -44,11 +48,19 @@
             function getPurchases(atmId) {
                 purchase.get(atmId).then(function (data) {
                     vm.purchases = data;
+                    vm.totalSpent = getTotalSpent();
                     vm.loading = false;
-                    vm.totalSpent = vm.purchases.reduce(function (prev, curr) {
-                        return prev + curr.amount;
-                    }, 0);
                 });
+            }
+
+            function getTotalSpent() {
+                return vm.purchases.reduce(function (prev, curr) {
+                    return prev + curr.amount;
+                }, 0);
+            }
+
+            function isCardCompleted() {
+                return vm.totalSpent === vm.getTotalAmount();
             }
         }
     }
