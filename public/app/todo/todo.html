@@ -2,27 +2,6 @@
     <div class="jumbotron text-center jumbotron-lower">
         <h1><span class="label label-info">{{vm.numberOfTodos}}</span> {{vm.jumbotronLabel}}</h1>
     </div>
-    <div ng-repeat="todo in vm.todos | orderBy:'done'">
-        <div class="row todo-item">
-            <div class="col-sm-4 col-sm-offset-3">
-                <p ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>
-            </div>
-            <div class="col-sm-2">
-                <button ng-hide="todo.done" type="button" class="btn btn-success" ng-click="vm.completeTodo(todo)"
-                    data-placement="left" title="mark complete" tooltip>
-                    <i class="fa fa-check"></i> Done</button>
-                <button ng-show="todo.done" type="button" class="btn btn-default" ng-click="vm.completeTodo(todo)"
-                    data-placement="left" title="more to do?" tooltip>
-                    <i class="fa fa-check"></i> Not Done?</button>
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)"
-                    title="delete item" data-placement="right" tooltip>
-                    <i class="fa fa-trash"></i> Delete</button>
-            </div>
-        </div>
-    </div>
-    <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2 text-center">
             <form>
@@ -34,6 +13,27 @@
                 <button type="submit" class="btn btn-primary btn-lg" ng-click="vm.createTodo()">Add</button>
             </form>
         <p class="text-muted text-center"><em>Only you will be able so see your 'Todos'</em></p>
+        </div>
+    </div>
+    <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
+    <div ng-repeat="todo in vm.todos | orderBy:'done'">
+        <div class="row todo-item">
+            <div class="col-sm-4 col-sm-offset-2">
+                <p ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>
+            </div>
+            <div class="col-sm-2 text-right">
+                <button ng-hide="todo.done" type="button" class="btn btn-success" ng-click="vm.completeTodo(todo)"
+                    data-placement="left" title="mark complete" tooltip>
+                    <i class="fa fa-check"></i> Done</button>
+                <button ng-show="todo.done" type="button" class="btn btn-sm btn-default" ng-click="vm.completeTodo(todo)"
+                    data-placement="left" title="more to do?" tooltip>
+                    <i class="fa fa-close"></i> Not Done?</button>
+            </div>
+            <div class="col-sm-2 text-right">
+                <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)"
+                    title="delete item" data-placement="right" tooltip>
+                    <i class="fa fa-trash"></i> Delete</button>
+            </div>
         </div>
     </div>
 </div>
