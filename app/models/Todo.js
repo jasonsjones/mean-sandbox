@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var todoSchema = new mongoose.Schema({
     text: String,
     done: {type: Boolean, default: false},
+    createdOn: {type: Date, default: Date.now()},
     userId: {type: String, default: 'global'}
 });
 
@@ -20,5 +21,4 @@ exports.createDefaultTodos = function () {
             Todo.create({text: 'Global -- Complete linkedin profile'});
         }
     });
-
 };
