@@ -5,48 +5,54 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    function UserAdminCtrl($http, sbEditUser, register, notifier, $location, $route) {
+    function UserAdminCtrl($location, $route, userCache, sbEditUser, register, notifier) {
         var vm = this;
 
-        vm.users = null;
+        vm.users = [];
         vm.loading = true;
-
         vm.userTableSortCol = '-roles';
         vm.sortOrderAsc = false;
 
+        vm.isAdmin = isAdmin;
+        vm.deleteUser = deleteUser;
+        vm.updateUser = updateUser;
+        vm.changeSortColumn = changeSortColumn;
+
         getUsers();
 
-        vm.isAdmin = function (user) {
+        /**************** Implementation Details *******************/
+        function isAdmin(user) {
             if (user) {
                 return user.roles.indexOf('admin') > -1;
             } else {
                 return false;
             }
-        };
+        }
 
-        vm.deleteUser = function (user) {
-
+        function deleteUser(user) {
             register.deleteUser(user)
-            .then(function () {
-                notifier.notify('user successfully deleted');
-                $route.reload();
-            },
-            function () {
-                notifier.error('user was not deleted');
-            });
-        };
+                .then(function () {
+                    notifier.notify('user successfully deleted');
+                    $route.reload();
+                },
+                function () {
+                    notifier.error('user was not deleted');
+                });
 
-        vm.updateUser = function (user) {
+        }
+
+        function updateUser(user) {
             sbEditUser.userToEdit = user;
             $location.path('/admin/edituser');
-        };
+        }
 
-        vm.changeSortColumn = function (column) {
+        function changeSortColumn(column) {
             vm.sortOrderAsc = !vm.sortOrderAsc;
             vm.userTableSortCol = (vm.sortOrderAsc ? column : '-'+column);
-        };
+        }
+
         function getUsers() {
-            $http.get('/api/users').success(function (users) {
+            userCache.query().then(function (users) {
                 vm.users = users;
                 vm.loading = false;
             });
