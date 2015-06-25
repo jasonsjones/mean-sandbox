@@ -5,7 +5,7 @@
     angular.module('app.account')
         .factory('register', register);
 
-    function register($q, $http, identity, $window) {
+    function register($http, $q, $window, userCache, identity) {
         var service = {
             createUser: createUser,
             deleteUser: deleteUser,
@@ -22,6 +22,7 @@
                 .success(function (user) {
                     identity.currentUser = user;
                     $window.localStorage.currentUser = JSON.stringify(user);
+                    userCache.usersChanged();
                     deferred.resolve(user);
                 })
                 .error(function (error) {
@@ -37,6 +38,7 @@
             $http.delete('/api/users/' + userToDelete._id)
                 .success(function (data) {
                     console.log(data);
+                    userCache.usersChanged();
                     deferred.resolve(data);
                 });
 
@@ -52,6 +54,7 @@
                         identity.currentUser = user;
                         $window.localStorage.currentUser = JSON.stringify(user);
                     }
+                    userCache.usersChanged();
                     deferred.resolve();
                 })
                 .error(function (response) {

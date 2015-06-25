@@ -17,12 +17,9 @@
         vm.local = {
             username:  ute.local.username
         },
-        vm.roles = {};
-
-        //if (ute.isAdmin()) {
-        if (ute.roles.indexOf('admin') > -1) {
-            vm.roles.admin = true;
-        }
+        vm.roles = {
+            admin: isAdmin(ute)
+        };
 
         vm.toggleEditPassword = function () {
             vm.editPassword = !vm.editPassword;
@@ -70,5 +67,9 @@
                 });
             }
         };
+
+        function isAdmin(user) {
+           return user.roles.indexOf('admin') > -1;
+        }
     }
 }());
