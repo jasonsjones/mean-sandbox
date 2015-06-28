@@ -10,7 +10,9 @@
 ## Description
 
 This project is a place to integrate many of the projects that I've come across
-in my journey to learn the MEAN stack.
+in my journey to learn the MEAN stack.  This project consists of some core
+functionality for user registration and authentication, as well as a few apps
+to exercise the full MEAN stack implementing a RESTful back-end server.
 
 ### Features
 
@@ -28,3 +30,8 @@ in my journey to learn the MEAN stack.
     * simple interface to add a new 'todo'
     * *TODO* (a little meta...): implement data caching for the
       the todo list
+
+* Implements ATM cash tracker
+    * tracks amount spent and amount remaining for atm withdrawals
+    * provides a detailed view to add new purchases
+    * implements custom directives
