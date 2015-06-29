@@ -1,17 +1,18 @@
 <div class="container">
     <div class="page-header">
-        <h1>ATM Transactions</h1>
+        <h1>ATM Cash Tracker</h1>
     </div>
-    <p class="lead">This page will provide the place to track all ATM
-    transactions as well as input new transactions</p>
-    <a href="/new-atm" class="btn btn-default btn-large new-atm-btn"
+    <p class="lead">A place to track all ATM cash transactions &mdash; so you
+           know what you spend all your cash on...</p>
+           <p><em>and it does all the math for you</em></p>
+    <a href="/new-atm" class="btn btn-warning btn-large new-atm-btn"
             data-placement="top" title="track new ATM transaction" tooltip>
             <i class="fa fa-plus"></i> <strong>ATM Transaction</strong>
     </a>
 
-    <div ng-repeat="t in vm.transactions">
+    <div ng-repeat="withdrawal in vm.transactions">
         <div class="col-md-4">
-            <atm-card item="t"></atm-card>
+            <atm-card item="withdrawal"></atm-card>
         </div>
     </div>
 </div>
