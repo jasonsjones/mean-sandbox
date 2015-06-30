@@ -1,38 +1,44 @@
-<div class="container">
-    <div class="jumbotron text-center jumbotron-lower">
-        <h1><span class="label label-info">{{vm.numberOfTodos}}</span> {{vm.jumbotronLabel}}</h1>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 text-center">
-            <form>
-                <div class="form-group">
-                    <input type="text" class="todo-input form-control input-lg text-center"
-                           placeholder="So much to do...so little time"
-                           ng-model="vm.formData.text">
-                </div>
-                <button type="submit" class="btn btn-primary btn-lg" ng-click="vm.createTodo()">Add</button>
-            </form>
-        <p class="text-muted text-center"><em>Only you will be able so see your 'Todos'</em></p>
+<div class="banner">
+    <div class="container">
+        <div class="jumbotron text-center jumbotron-lower">
+            <h1><span class="label label-info">{{vm.numberOfTodos}}</span> {{vm.jumbotronLabel}}</h1>
         </div>
     </div>
-    <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
-    <div ng-repeat="todo in vm.todos | orderBy:'done'">
-        <div class="row todo-item">
-            <div class="col-sm-4 col-sm-offset-2">
-                <p ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>
+</div>
+<div class="middle">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group todo-form">
+                        <input type="text" class="todo-input form-control input-lg text-center"
+                               placeholder="So much to do...so little time"
+                               ng-model="vm.formData.text">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="vm.createTodo()">Add</button>
+                </form>
+            <p class="text-muted text-center"><em>Only you will be able so see your 'Todos'</em></p>
             </div>
-            <div class="col-sm-2 text-right">
-                <button ng-hide="todo.done" type="button" class="btn btn-success" ng-click="vm.completeTodo(todo)"
-                    data-placement="left" title="mark complete" tooltip>
-                    <i class="fa fa-check"></i> Done</button>
-                <button ng-show="todo.done" type="button" class="btn btn-sm btn-default" ng-click="vm.completeTodo(todo)"
-                    data-placement="left" title="more to do?" tooltip>
-                    <i class="fa fa-close"></i> Not Done?</button>
-            </div>
-            <div class="col-sm-2 text-right">
-                <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)"
-                    title="delete item" data-placement="right" tooltip>
-                    <i class="fa fa-trash"></i> Delete</button>
+        </div>
+        <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
+        <div ng-repeat="todo in vm.todos | orderBy:'done'">
+            <div class="row todo-item">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <p ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>
+                </div>
+                <div class="col-sm-2 text-right">
+                    <button ng-hide="todo.done" type="button" class="btn btn-success" ng-click="vm.completeTodo(todo)"
+                        data-placement="left" title="mark complete" tooltip>
+                        <i class="fa fa-check"></i> Done</button>
+                    <button ng-show="todo.done" type="button" class="btn btn-sm btn-default" ng-click="vm.completeTodo(todo)"
+                        data-placement="left" title="more to do?" tooltip>
+                        <i class="fa fa-close"></i> Not Done?</button>
+                </div>
+                <div class="col-sm-2 text-right">
+                    <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)"
+                        title="delete item" data-placement="right" tooltip>
+                        <i class="fa fa-trash"></i> Delete</button>
+                </div>
             </div>
         </div>
     </div>
