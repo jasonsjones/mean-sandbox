@@ -5,23 +5,14 @@
              Check out the code on Github <a href=""
                 class="btn btn-primary">view on <i class="fa fa-github"></i> Github</a></p>
 
-        <div class="row mean-components">
-            <div class="col-md-3" ng-repeat="service in vm.components">
-                <img ng-src="{{service.imgUrl}}" class="img-responsive">
-            </div>
-        </div>
-        <div class="row mean-components">
-            <div class="col-md-3" ng-repeat="service in vm.components">
-                <p ng-bind="service.description"></p>
-            </div>
-        </div>
-        <div class="row mean-components">
-            <div class="col-md-3" ng-repeat="service in vm.components">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mean-components" ng-repeat="service in vm.components">
+                <img ng-src="{{service.imgUrl}}" class="img-responsive mean-img">
+                <p class="mean-description" ng-bind="service.description"></p>
                 <a class="btn btn-primary btn-block"
                    ng-href="{{service.webUrl}}">Learn more</a>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -35,7 +26,7 @@
                         <p class="lead">Todos</p>
                         <p>The traditional 'Todo' app</p>
                         <p class="text-muted" ng-hide="vm.identity.isAuthenticated()">
-                            <small><em>Must be logged in...</em></small></p>
+                            <small><em>Log in to check it out...</em></small></p>
                     </div>
                 </div>
             </div>
@@ -46,7 +37,7 @@
                         <p class="lead">ATM Cash Tracker</p>
                         <p>A simple way to track ATM transactions</p>
                         <p class="text-muted" ng-hide="vm.identity.isAuthenticated()">
-                            <small><em>Must be logged in...</em></small></p>
+                            <small><em>Log in to check it out...</em></small></p>
                     </div>
                 </div>
             </div>
