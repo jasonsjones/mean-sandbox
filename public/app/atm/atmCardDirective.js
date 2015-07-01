@@ -15,7 +15,7 @@
             bindToController: true
         };
 
-        function atmCardCtrl(purchase) {
+        function atmCardCtrl($rootScope, ATM, purchase) {
             var vm = this;
             vm.expanded = false;
             vm.purchases = [];
@@ -26,6 +26,7 @@
             vm.expandList = expandList;
             vm.getTotalAmount = getTotalAmount;
             vm.getPurchases = getPurchases;
+            vm.deleteTransaction = deleteTransaction;
             vm.isCardCompleted = isCardCompleted;
 
             activate();
@@ -61,6 +62,22 @@
 
             function isCardCompleted() {
                 return vm.totalSpent === vm.getTotalAmount();
+            }
+
+            function deleteTransaction(id) {
+                purchase.removeAllPurchases(id).then(function (result) {
+                    if (result.success) {
+                        console.log('all purchases deleted...now deleting transaction');
+                        ATM.deleteTransaction(id).then(function (result) {
+                            if (result.success) {
+                                $rootScope.$broadcast('ATMChanged', {withdrawal: vm.item});
+                                console.log('transaction deleted');
+                            }
+                        });
+                    } else {
+                        console.log('unable to delete all purchases from transaction');
+                    }
+                });
             }
         }
     }
