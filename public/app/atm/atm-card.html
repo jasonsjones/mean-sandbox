@@ -1,38 +1,40 @@
-<div class="atm-card">
-    <div class="atm-card-header">
-        <a ng-href="/atm-details/{{vm.item._id}}"><i class="fa fa-pencil"></i> Edit</a>
-        <i class="fa fa-close pull-right" ng-click="vm.deleteTransaction(vm.item._id)"></i>
-        <h3 class="text-center">ATM Withdrawal</h3>
-        <h4><span class="amount">{{ vm.totalAmount | currency}}</span>
-            <span class="location pull-right">{{ vm.item.date | date }}</span></h4>
-        <p class="location">{{ vm.item.location }}
-           <i ng-show="vm.expanded" ng-click="vm.expandList()" class="fa fa-chevron-up pull-right"></i>
-           <i ng-hide="vm.expanded" ng-click="vm.expandList()" class="fa fa-chevron-down pull-right"></i></p>
-    </div>
-    <div class="atm-card-body">
-        <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
-        <table class="table atm-list" ng-show="vm.expanded">
-            <thead>
-                <th>Amount</th>
-                <th>Description</th>
-            </thead>
-            <tbody class="purchase-item" ng-repeat="p in vm.purchases">
-                <tr>
-                    <td>{{ p.amount | currency }}</td>
-                    <td>{{ p.description }}</td>
-                </tr>
-            </tbody>
-
-            <tfoot>
-                <tr>
-                    <td>{{ vm.totalSpent | currency }}</td>
-                    <td>total</td>
-                </tr>
-                <tr class="text-right remaining">
-                    <td>{{ (vm.totalAmount - vm.totalSpent) | currency }}</td>
-                    <td>remaining</td>
-                </tr>
-            </tfoot>
-        </table>
+<div class="middle">
+    <div class="atm-card">
+        <div class="atm-card-header">
+            <a ng-href="/atm-details/{{vm.item._id}}"><i class="fa fa-pencil"></i> Edit</a>
+            <i class="fa fa-close pull-right" ng-click="vm.deleteTransaction(vm.item._id)"></i>
+            <h3 class="text-center">ATM Withdrawal</h3>
+            <h4><span class="amount">{{ vm.totalAmount | currency}}</span>
+                <span class="location pull-right">{{ vm.item.date | date }}</span></h4>
+            <p class="location">{{ vm.item.location }}
+               <i ng-show="vm.expanded" ng-click="vm.expandList()" class="fa fa-chevron-up pull-right"></i>
+               <i ng-hide="vm.expanded" ng-click="vm.expandList()" class="fa fa-chevron-down pull-right"></i></p>
+        </div>
+        <div class="atm-card-body">
+            <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
+            <table class="table atm-list" ng-show="vm.expanded">
+                <thead>
+                    <th>Amount</th>
+                    <th>Description</th>
+                </thead>
+                <tbody class="purchase-item" ng-repeat="p in vm.purchases">
+                    <tr>
+                        <td>{{ p.amount | currency }}</td>
+                        <td>{{ p.description }}</td>
+                    </tr>
+                </tbody>
+    
+                <tfoot>
+                    <tr>
+                        <td>{{ vm.totalSpent | currency }}</td>
+                        <td>total</td>
+                    </tr>
+                    <tr class="text-right remaining">
+                        <td>{{ (vm.totalAmount - vm.totalSpent) | currency }}</td>
+                        <td>remaining</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>
