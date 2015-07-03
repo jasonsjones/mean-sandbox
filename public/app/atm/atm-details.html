@@ -1,42 +1,44 @@
-<div class="container">
-  <div class="col-lg-8 col-lg-offset-2">
-      <div class="atm-card">
-          <div class="atm-card-header">
-              <a href="/atm"><i class="fa fa-long-arrow-left fa-2x pull-left"></i></a>
-              <i class="fa fa-close fa-2x pull-right"></i>
-              <h2 class="text-center">ATM Transaction Details</h2>
-              <h4><span class="amount">{{ vm.totalAmount | currency}}</span>
-                  <span class="location pull-right">{{ vm.transaction.date | date }}</span></h4>
-              <p class="location">{{ vm.transaction.location }}</p>
-          </div>
-          <div class="atm-card-body">
-              <table class="table">
-                  <thead>
-                      <th>Amount</th>
-                      <th>Description</th>
-                  </thead>
-                  <tbody>
-                      <tr>
-                        <div class="input-group">
-                          <td><input type="text" class="form-control" placeholder="Purchase Amount" ng-model="vm.newPurchase.amount"/></td>
-                          <td><input type="text" class="form-control" placeholder="Description" ng-model="vm.newPurchase.description"/></td>
-                          <td><button class="btn btn-primary" ng-click="vm.addPurchase()"><i class="fa fa-plus"></i> Add</button></td>
-                        </div>
-                      </tr>
-                      <tr ng-repeat="p in vm.purchases" purchase-item="p"> </tr>
-                  </tbody>
-                  <tfoot>
-                      <tr>
-                          <td>{{ vm.totalSpent | currency }}</td>
-                          <td>total</td>
-                      </tr>
-                      <tr class="text-right remaining">
-                          <td>{{ (vm.totalAmount - vm.totalSpent) | currency }}</td>
-                          <td>remaining</td>
-                      </tr>
-                  </tfoot>
-              </table>
-          </div>
-      </div>
+<div class="middle">
+  <div class="container">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="atm-card">
+            <div class="atm-card-header">
+                <a href="/atm"><i class="fa fa-long-arrow-left fa-2x pull-left"></i></a>
+                <i class="fa fa-close fa-2x pull-right"></i>
+                <h2 class="text-center">ATM Transaction Details</h2>
+                <h4><span class="amount">{{ vm.totalAmount | currency}}</span>
+                    <span class="location pull-right">{{ vm.transaction.date | date }}</span></h4>
+                <p class="location">{{ vm.transaction.location }}</p>
+            </div>
+            <div class="atm-card-body">
+                <table class="table">
+                    <thead>
+                        <th>Amount</th>
+                        <th>Description</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <div class="input-group">
+                            <td><input type="text" class="form-control" placeholder="Purchase Amount" ng-model="vm.newPurchase.amount"/></td>
+                            <td><input type="text" class="form-control" placeholder="Description" ng-model="vm.newPurchase.description"/></td>
+                            <td><button class="btn btn-primary" ng-click="vm.addPurchase()"><i class="fa fa-plus"></i> Add</button></td>
+                          </div>
+                        </tr>
+                        <tr ng-repeat="p in vm.purchases" purchase-item="p"> </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>{{ vm.totalSpent | currency }}</td>
+                            <td>total</td>
+                        </tr>
+                        <tr class="text-right remaining">
+                            <td>{{ (vm.totalAmount - vm.totalSpent) | currency }}</td>
+                            <td>remaining</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
   </div>
 </div>
