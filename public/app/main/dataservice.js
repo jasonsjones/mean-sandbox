@@ -4,7 +4,7 @@
     angular.module('app.core')
         .factory('dataservice', dataserviceFactory);
 
-    function dataserviceFactory($q) {
+    function dataserviceFactory($q, $http) {
         var meanComponents = [
             {imgUrl: 'img/mongodb.png',
              webUrl: 'http://www.mongodb.org',
@@ -39,6 +39,20 @@
         /********* Implementation Details **********/
         function query() {
             return $q.when(meanComponents);
+        }
+
+        function newQuery() {
+            var deferred = $q.defer();
+
+            $http.get('./mean-components.json')
+                .success(function(data) {
+                    deferred.resolve(data);
+                })
+                .error(function () {
+                    console.log('unable to get the mean-components');
+                });
+
+            return deferred.promise;
         }
     }
 }());
