@@ -5,6 +5,9 @@
         </div>
         <hr>
         <h3>Users</h3>
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" placeholder="Search for user..." ng-model="vm.query"/>
+        </div>
         <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
         <table class="table table-condensed">
             <thead>
@@ -17,7 +20,7 @@
                     <th><span class="clickable" ng-click="vm.changeSortColumn('lastModified')">Last Modified</span></th>
             </thead>
             <tbody>
-                <tr ng-repeat="user in vm.users | orderBy:vm.userTableSortCol">
+                <tr ng-repeat="user in vm.users | filter: vm.query | orderBy:vm.userTableSortCol">
                     <td>{{ user.firstName + ' ' + user.lastName }}</td>
                     <td>{{ user.local.username }}</td>
                     <td>{{ user.email }}</td>
