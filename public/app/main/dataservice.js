@@ -44,7 +44,7 @@
         function newQuery() {
             var deferred = $q.defer();
 
-            $http.get('./mean-components.json')
+            $http.get('mean-components.json')
                 .success(function(data) {
                     deferred.resolve(data);
                 })
