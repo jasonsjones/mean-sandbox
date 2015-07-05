@@ -22,14 +22,34 @@
             <div class="col-md-4">
                 <h4 class="text-center">
                     <i class="fa fa-user"></i> User Registration & Authentication</h4>
+                <ul>
+                    <li>utilizes passport-local for user authentication</li>
+                    <li>hashes user's password with random salt to store in db</li>
+                    <li>implements naive data caching to return the list of users
+                        to avoid hitting the back-end unnecessarily</li>
+                    <li>TODO: implement Oauth2 registration/authentication for github,
+                        or other online sites/services</li>
+                </ul>
             </div>
             <div class="col-md-4">
                 <h4 class="text-center">
                     <i class="fa fa-check"></i> TODO Application</h4>
+                <ul>
+                    <li>able to complete a 'todo' item without deleting</li>
+                    <li>keeps track of the number of 'todos' remaining</li>
+                    <li>simple interface to add a new 'todo'</li>
+                    <li>TODO: (a little meta...): implement data caching for
+                        the todo list</li>
+                </ul>
             </div>
             <div class="col-md-4">
                 <h4 class="text-center">
                     <i class="fa fa-money"></i> ATM Cash Tracker</h4>
+                <ul>
+                    <li>tracks amount spent and amount remaining for atm withdrawals</li>
+                    <li>provides a detailed view to add new purchases</li>
+                    <li>implements custom directives</li>
+                </ul>
             </div>
         </div>
 
