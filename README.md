@@ -29,7 +29,7 @@ to exercise the full MEAN stack implementing a RESTful back-end server.
     * keeps track of the number of 'todos' remaining
     * simple interface to add a new 'todo'
     * *TODO* (a little meta...): implement data caching for the
-      the todo list
+      todo list
 
 * Implements ATM cash tracker
     * tracks amount spent and amount remaining for atm withdrawals
