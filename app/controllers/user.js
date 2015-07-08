@@ -37,8 +37,17 @@ exports.createUser = function (req, res, next) {
             if (err) {
                 return next(err);
             }
+
+            user.lastLogin = Date.now();
             req.session.user = user;
-            res.json(user);
+
+            user.save(function (err) {
+                if (err) {
+                    res.status(400);
+                    return res.json({reason: err.toString()});
+                }
+                res.json(user);
+            });
         });
     });
 };

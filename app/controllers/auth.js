@@ -33,7 +33,14 @@ exports.authenticateWithPassport = function (req, res, next) {
                 return next(err);
             }
             req.session.user = user;
-            res.json({success: true, user: user});
+            user.lastLogin = Date.now();
+            user.save(function (err) {
+                if (err) {
+                    res.status(400);
+                    return res.json({reason: err.toString()});
+                }
+                res.json({success: true, user: user});
+            });
         });
     });
 
