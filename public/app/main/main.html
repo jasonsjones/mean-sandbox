@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-2">
-                <div class="tile animate-scale-up">
+                <div class="tile" ng-class="{ 'animate-scale-up': vm.identity.isAuthenticated() }">
                     <div class="tile-content text-center">
                         <a href="/todos"><i class="fa fa-3x fa-check"></i></a>
                         <p class="lead">Todos</p>
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="tile animate-scale-up">
+                <div class="tile" ng-class="{ 'animate-scale-up': vm.identity.isAuthenticated() }">
                     <div class="tile-content text-center">
                         <a href="/atm"><i class="fa fa-3x fa-money"></i></a>
                         <p class="lead">ATM Cash Tracker</p>
