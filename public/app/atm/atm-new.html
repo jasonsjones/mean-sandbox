@@ -1,47 +1,49 @@
 <div class="middle new-atm-page">
-<div class="container">
-    <div class="page-header">
-        <h1>New ATM Transaction</h1>
+    <div class="container">
+        <div class="new-atm-form col-md-offset-1">
+            <div class="new-atm-form-header">
+                <h1>New ATM Withdrawal</h1>
+            </div>
+            <div class="new-atm-form-body">
+                <form class="form-horizontal" name="newATMForm">
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="amount">Amount</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="number" name="amount" placeholder="Withdrawal Amount" ng-model="vm.cashAmount">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="serviceFee">Service Fee</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="number" name="serviceFee"
+                                   placeholder="Service Fee" ng-model="vm.serviceFee">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="date">Date</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="date" name="date"
+                                   placeholder="Date" ng-model="vm.date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="location">Location</label>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="location"
+                                   placeholder="Location" ng-model="vm.location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="pull-right">
+                                <button class="btn btn-primary" ng-click="vm.add()"><i class="fa fa-plus"></i> Submit</button>
+                                &nbsp; <a href="/atm" class="btn btn-default"><i class="fa fa-times"></i> Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <form class="form-horizontal col-md-8 col-md-offset-2" name="newATMForm">
-
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="amount">Amount</label>
-            <div class="col-md-6">
-                <input class="form-control" type="text" name="amount" placeholder="Amount" ng-model="vm.cashAmount">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="serviceFee">Service Fee</label>
-            <div class="col-md-6">
-                <input class="form-control" type="text" name="serviceFee"
-                placeholder="Service Fee" ng-model="vm.serviceFee">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="date">Date</label>
-            <div class="col-md-6">
-                <input class="form-control" type="date" name="date"
-                placeholder="Date" ng-model="vm.date">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="location">Location</label>
-            <div class="col-md-6">
-                <input class="form-control" type="text" name="location"
-                placeholder="Location" ng-model="vm.location">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-6 col-md-offset-2">
-                <div class="pull-right">
-                   <button class="btn btn-primary" ng-click="vm.add()"><i class="fa fa-plus"></i> Submit</button>
-                   &nbsp; <a href="/atm" class="btn btn-default"><i class="fa fa-times"></i> Cancel</a>
-                </div>
-            </div>
-        </div>
-
-    </form>
-
-</div>
 </div>
