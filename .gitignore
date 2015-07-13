@@ -1,11 +1,12 @@
 .c9/
 .idea/
+bower_components/
 node_modules/
 public/components
 data/
 npm-debug.log
 *.swp
-public/.tmp
+.tmp/
 .dbcreds
 mongod
 build/
