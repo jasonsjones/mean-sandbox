@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <!-- build:css styles/lib.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css" />
-        <link rel="stylesheet" href="components/toastr/toastr.css" />
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="/bower_components/toastr/toastr.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -22,53 +23,54 @@
         <div ng-include="'app/main/navbar.html'"></div>
         <div ng-view=""></div>
         <div ng-include="'app/main/footer.html'"></div>
+
         <!-- build:js js/lib.js -->
         <!-- bower:js -->
-        <script src="components/jquery/dist/jquery.js"></script>
-        <script src="components/angular/angular.js"></script>
-        <script src="components/angular-mocks/angular-mocks.js"></script>
-        <script src="components/angular-resource/angular-resource.js"></script>
-        <script src="components/angular-route/angular-route.js"></script>
-        <script src="components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="components/toastr/toastr.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
+        <script src="/bower_components/angular-resource/angular-resource.js"></script>
+        <script src="/bower_components/angular-route/angular-route.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/bower_components/toastr/toastr.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:js js/app.js -->
         <!-- inject:js -->
-        <script src="/app/app.module.js"></script>
-        <script src="/app/account/app.account.module.js"></script>
-        <script src="/app/core/app.core.module.js"></script>
-        <script src="/app/atm/app.atm.module.js"></script>
-        <script src="/app/todo/app.todo.module.js"></script>
-        <script src="/app/app.js"></script>
-        <script src="/app/account/NavBarLoginCtrl.js"></script>
-        <script src="/app/account/ProfileCtrl.js"></script>
-        <script src="/app/account/RegisterCtrl.js"></script>
-        <script src="/app/account/identity.js"></script>
-        <script src="/app/account/register.js"></script>
-        <script src="/app/account/sbAuth.js"></script>
-        <script src="/app/account/sbUser.js"></script>
-        <script src="/app/account/userAPI.js"></script>
-        <script src="/app/admin/EditUserCtrl.js"></script>
-        <script src="/app/admin/UserAdminCtrl.js"></script>
-        <script src="/app/admin/sbEditUser.js"></script>
-        <script src="/app/admin/userCache.js"></script>
-        <script src="/app/core/tooltipDirective.js"></script>
-        <script src="/app/main/Controller.js"></script>
-        <script src="/app/main/NavBarCtrl.js"></script>
-        <script src="/app/main/dataservice.js"></script>
-        <script src="/app/atm/ATMCtrl.js"></script>
-        <script src="/app/atm/ATMDetailsCtrl.js"></script>
-        <script src="/app/atm/NewATMCtrl.js"></script>
-        <script src="/app/atm/PurchaseCtrl.js"></script>
-        <script src="/app/atm/atm.js"></script>
-        <script src="/app/atm/atmCardDirective.js"></script>
-        <script src="/app/atm/purchaseItemDirective.js"></script>
-        <script src="/app/atm/purchases.js"></script>
-        <script src="/app/todo/TodoCtrl.js"></script>
-        <script src="/app/todo/todo.js"></script>
-        <script src="/app/util/notifier.js"></script>
+        <script src="/public/app/app.module.js"></script>
+        <script src="/public/app/account/app.account.module.js"></script>
+        <script src="/public/app/atm/app.atm.module.js"></script>
+        <script src="/public/app/core/app.core.module.js"></script>
+        <script src="/public/app/todo/app.todo.module.js"></script>
+        <script src="/public/app/app.js"></script>
+        <script src="/public/app/account/NavBarLoginCtrl.js"></script>
+        <script src="/public/app/account/ProfileCtrl.js"></script>
+        <script src="/public/app/account/RegisterCtrl.js"></script>
+        <script src="/public/app/account/identity.js"></script>
+        <script src="/public/app/account/register.js"></script>
+        <script src="/public/app/account/sbAuth.js"></script>
+        <script src="/public/app/account/sbUser.js"></script>
+        <script src="/public/app/account/userAPI.js"></script>
+        <script src="/public/app/admin/EditUserCtrl.js"></script>
+        <script src="/public/app/admin/UserAdminCtrl.js"></script>
+        <script src="/public/app/admin/sbEditUser.js"></script>
+        <script src="/public/app/admin/userCache.js"></script>
+        <script src="/public/app/atm/ATMCtrl.js"></script>
+        <script src="/public/app/atm/ATMDetailsCtrl.js"></script>
+        <script src="/public/app/atm/NewATMCtrl.js"></script>
+        <script src="/public/app/atm/PurchaseCtrl.js"></script>
+        <script src="/public/app/atm/atm.js"></script>
+        <script src="/public/app/atm/atmCardDirective.js"></script>
+        <script src="/public/app/atm/purchaseItemDirective.js"></script>
+        <script src="/public/app/atm/purchases.js"></script>
+        <script src="/public/app/core/tooltipDirective.js"></script>
+        <script src="/public/app/main/Controller.js"></script>
+        <script src="/public/app/main/NavBarCtrl.js"></script>
+        <script src="/public/app/main/dataservice.js"></script>
+        <script src="/public/app/todo/TodoCtrl.js"></script>
+        <script src="/public/app/todo/todo.js"></script>
+        <script src="/public/app/util/notifier.js"></script>
         <!-- endinject -->
 
         <!-- inject:templates:js -->

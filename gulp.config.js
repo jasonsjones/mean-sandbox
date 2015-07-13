@@ -1,7 +1,7 @@
 module.exports = function () {
-    var client = 'public/';
+    var client = './public/';
     var clientApp = client + 'app/';
-    var temp = client + '.tmp/';
+    var temp = './.tmp/';
 
     var config = {
 
@@ -16,7 +16,7 @@ module.exports = function () {
         build: './build/',
         client: client,
         css: temp + 'styles.css',
-        fonts: client + 'components/font-awesome/fonts/**/*.*',
+        fonts: './bower_components/font-awesome/fonts/**/*.*',
         html: clientApp + '**/*.html',
         htmltemplates: clientApp + '**/*.html',
         images: client + 'img/**/*.*',
@@ -55,8 +55,8 @@ module.exports = function () {
          */
          bower: {
             json: require('./bower.json'),
-            directory: client + 'components/',
-            ignorePath: '../' // this doesn't work...
+            directory: 'bower_components/',
+            ignorePath: '..'
         },
 
         /**

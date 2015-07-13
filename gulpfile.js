@@ -46,7 +46,7 @@ gulp.task('images', ['clean-images'], function () {
     return gulp
         .src(config.images)
         .pipe($.imagemin({optimizationLevel: 4}))
-        .pipe(gulp.dest(config.build + 'images'));
+        .pipe(gulp.dest(config.build + 'img'));
 });
 
 gulp.task('clean', function (done) {
@@ -100,7 +100,7 @@ gulp.task('wiredep', function () {
     return gulp
         .src(config.index)
         .pipe(wiredep(wiredepOptions))
-        .pipe($.inject(gulp.src(config.js), {ignorePath: 'public'}))
+        .pipe($.inject(gulp.src(config.js)))
         .pipe(gulp.dest(config.client));
 });
 
@@ -109,22 +109,21 @@ gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function () {
 
     return gulp
         .src(config.index)
-        .pipe($.inject(gulp.src(config.css), {ignorePath: 'public'}))
+        .pipe($.inject(gulp.src(config.css)))
         .pipe(gulp.dest(config.client));
 });
 
 gulp.task('optimize', ['inject'], function () {
     log('Optimizing the javascript, css, and html');
 
-    var assets = $.useref.assets({searchPath: './public'});
+    var assets = $.useref.assets({searchPath: './'});
     var templateCache = config.temp + config.templateCache.file;
 
     return gulp
         .src(config.index)
         .pipe($.plumber())
         .pipe($.inject(gulp.src(templateCache, {read: false}), {
-            starttag: '<!-- inject:templates:js -->',
-            ignorePath: 'public'
+            starttag: '<!-- inject:templates:js -->'
         }))
         .pipe(assets)
         .pipe(assets.restore())
