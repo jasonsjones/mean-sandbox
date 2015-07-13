@@ -1,5 +1,4 @@
 {
-    "directory": "public/components",
     "scripts": {
       "postinstall": "gulp wiredep"
     }
