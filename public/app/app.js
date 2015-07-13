@@ -24,39 +24,39 @@
 
         $routeProvider
             .when('/', {
-                templateUrl: '/app/main/main.html',
+                templateUrl: 'app/main/main.html',
                 controller: 'Controller',
                 controllerAs: 'vm'
             })
             .when('/register', {
-                templateUrl: '/app/account/register.html',
+                templateUrl: 'app/account/register.html',
                 controller: 'RegisterCtrl',
                 controllerAs: 'vm'
             })
             .when('/profile', {
-                templateUrl: '/app/account/profile.html',
+                templateUrl: 'app/account/profile.html',
                 controller: 'ProfileCtrl',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.user
             })
             .when('/about', {
-                templateUrl: '/app/main/about.html',
+                templateUrl: 'app/main/about.html',
                 controller: 'Controller',
                 controllerAs: 'vm'
             })
             .when('/contact', {
-                templateUrl: '/app/main/contact.html',
+                templateUrl: 'app/main/contact.html',
                 controller: 'Controller',
                 controllerAs: 'vm'
             })
             .when('/todos', {
-                templateUrl: '/app/todo/todo.html',
+                templateUrl: 'app/todo/todo.html',
                 controller: 'TodoCtrl',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.user
             })
             .when('/atm', {
-                templateUrl: '/app/atm/atm.html',
+                templateUrl: 'app/atm/atm.html',
                 controller: 'ATMCtrl',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.user
