@@ -1,55 +1,60 @@
-<div class="container">
-    <div class="well">
-    <h1>Register</h1>
-    <p class="leading">Please enter your information below to register for new account</p>
-    <form class="form-horizontal" name="signupForm">
+<div class="middle no-banner-page">
+    <div class="container">
+        <div class="mean-form col-md-offset-1">
+            <div class="mean-form-header">
+                <h1>Register</h1>
+                <p class="lead">Please enter your information below to register for new account</p>
+            </div>
+            <div class="mean-form-body">
+                <form action="" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="fname">First Name</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="fname" placeholder="First Name" ng-model="vm.firstName">
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="fname">First Name</label>
-            <div class="col-md-10">
-                <input class="form-control" type="text" name="fname" placeholder="First Name" ng-model="vm.firstName">
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="lname">Last Name</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="lname" placeholder="Last Name" ng-model="vm.lastName">
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="lname">Last Name</label>
-            <div class="col-md-10">
-                <input class="form-control" type="text" name="lname" placeholder="Last Name" ng-model="vm.lastName">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="email">Email</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="email" name="email" placeholder="Email" ng-model="vm.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="username">Username</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="username" placeholder="Username" ng-model="vm.username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="password">Password</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password" name="password" placeholder="Password" ng-model="vm.password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="confirm-password">Confirm Password</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password" name="confirm-password" placeholder="Enter Password Again" ng-model="vm.confirmPassword">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="pull-right">
+                                <button class="btn btn-primary" ng-click="vm.registerNewUser()"><i class="fa fa-user-plus"></i> Submit</button>
+                                &nbsp; <a href="/" class="btn btn-default"><i class="fa fa-times"></i> Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="email">Email</label>
-            <div class="col-md-10">
-                <input class="form-control" type="email" name="email" placeholder="Email" ng-model="vm.email">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="username">Username</label>
-            <div class="col-md-10">
-                <input class="form-control" type="text" name="username" placeholder="Username" ng-model="vm.username">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="password">Password</label>
-            <div class="col-md-10">
-                <input class="form-control" type="password" name="password" placeholder="Password" ng-model="vm.password">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="confirm-password">Confirm Password</label>
-            <div class="col-md-10">
-                <input class="form-control" type="password" name="confirm-password" placeholder="Enter Password Again" ng-model="vm.confirmPassword">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10 col-md-offset-2">
-                <div class="pull-right">
-                   <button class="btn btn-primary" ng-click="vm.registerNewUser()"><i class="fa fa-user-plus"></i> Submit</button>
-                   &nbsp; <a href="/" class="btn btn-default"><i class="fa fa-times"></i> Cancel</a>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+    </div>
 </div>
