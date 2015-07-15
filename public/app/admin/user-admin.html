@@ -1,16 +1,17 @@
 <div class="middle user-list">
     <div class="container">
-        <div class="well page-label">
-            <h1>Admin Page</h1>
-        </div>
-        <hr>
-        <h3>Users</h3>
-        <div class="form-group col-md-4">
-            <input type="text" class="form-control" placeholder="Search for user..." ng-model="vm.query"/>
-        </div>
-        <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
-        <table class="table table-condensed">
-            <thead>
+        <div class="mean-form col-md-offset-1">
+            <div class="mean-form-header">
+                <h1>Admin Page</h1>
+            </div>
+            <hr>
+            <h3>Users</h3>
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" placeholder="Search for user..." ng-model="vm.query"/>
+            </div>
+            <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
+            <table class="table table-condensed">
+                <thead>
                 <tr>
                     <th>Name</th>
                     <th>Username</th>
@@ -18,8 +19,8 @@
                     <th><span class="clickable" ng-click="vm.changeSortColumn('roles')">Admin</span></th>
                     <th><span class="clickable" ng-click="vm.changeSortColumn('createdOn')">Created On</span></th>
                     <th><span class="clickable" ng-click="vm.changeSortColumn('lastModified')">Last Modified</span></th>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr ng-repeat="user in vm.users | filter: vm.query | orderBy:vm.userTableSortCol">
                     <td>{{ user.firstName + ' ' + user.lastName }}</td>
                     <td>{{ user.local.username }}</td>
@@ -27,9 +28,10 @@
                     <td><span ng-if="vm.isAdmin(user)"><i class="fa fa-check"></i></span></td>
                     <td>{{ user.createdOn | date:'medium' }}</td>
                     <td>{{ user.lastModified | date:'medium' }}</td>
-                    <td><button ng-click="vm.updateUser(user)" class="btn btn-info"><i class="fa fa-pencil"></i> Edit User</button></td>
+                    <td><button ng-click="vm.updateUser(user)" class="btn btn-info"><i class="fa fa-pencil"></i> Edit </button></td>
                     <td><button ng-click="vm.deleteUser(user)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button></td> </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
