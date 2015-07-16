@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+
+        <base href="/">
+        <title>MEAN Sandbox</title>
 
         <!-- build:css styles/lib.css -->
         <!-- bower:css -->
@@ -16,8 +22,6 @@
         <!-- endinject -->
         <!-- endbuild -->
 
-        <base href="/">
-        <title>MEAN Sandbox</title>
     </head>
     <body ng-app="app">
         <div ng-include="'app/main/navbar.html'"></div>
@@ -44,6 +48,10 @@
         <script src="/public/app/core/app.core.module.js"></script>
         <script src="/public/app/todo/app.todo.module.js"></script>
         <script src="/public/app/app.js"></script>
+        <script src="/public/app/admin/EditUserCtrl.js"></script>
+        <script src="/public/app/admin/UserAdminCtrl.js"></script>
+        <script src="/public/app/admin/sbEditUser.js"></script>
+        <script src="/public/app/admin/userCache.js"></script>
         <script src="/public/app/account/NavBarLoginCtrl.js"></script>
         <script src="/public/app/account/ProfileCtrl.js"></script>
         <script src="/public/app/account/RegisterCtrl.js"></script>
@@ -52,10 +60,6 @@
         <script src="/public/app/account/sbAuth.js"></script>
         <script src="/public/app/account/sbUser.js"></script>
         <script src="/public/app/account/userAPI.js"></script>
-        <script src="/public/app/admin/EditUserCtrl.js"></script>
-        <script src="/public/app/admin/UserAdminCtrl.js"></script>
-        <script src="/public/app/admin/sbEditUser.js"></script>
-        <script src="/public/app/admin/userCache.js"></script>
         <script src="/public/app/atm/ATMCtrl.js"></script>
         <script src="/public/app/atm/ATMDetailsCtrl.js"></script>
         <script src="/public/app/atm/NewATMCtrl.js"></script>
@@ -65,11 +69,11 @@
         <script src="/public/app/atm/purchaseItemDirective.js"></script>
         <script src="/public/app/atm/purchases.js"></script>
         <script src="/public/app/core/tooltipDirective.js"></script>
+        <script src="/public/app/todo/TodoCtrl.js"></script>
+        <script src="/public/app/todo/todo.js"></script>
         <script src="/public/app/main/Controller.js"></script>
         <script src="/public/app/main/NavBarCtrl.js"></script>
         <script src="/public/app/main/dataservice.js"></script>
-        <script src="/public/app/todo/TodoCtrl.js"></script>
-        <script src="/public/app/todo/todo.js"></script>
         <script src="/public/app/util/notifier.js"></script>
         <!-- endinject -->
 
