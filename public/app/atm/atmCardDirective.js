@@ -6,7 +6,7 @@
     function atmCard() {
         return {
             restrict: 'EA',
-            templateUrl: '/app/atm/atm-card.html',
+            templateUrl: 'app/atm/atm-card.html',
             scope: {
                 item: '='
             },

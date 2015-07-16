@@ -6,7 +6,7 @@
     function purchaseItem() {
         return {
             restrict: 'EA',
-            templateUrl: '/app/atm/purchase-item.html',
+            templateUrl: 'app/atm/purchase-item.html',
             scope: {
                 item: '=purchaseItem'
             },
