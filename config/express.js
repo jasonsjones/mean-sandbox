@@ -26,14 +26,12 @@ module.exports = function (config) {
         case 'build':
             console.log('** BUILD **');
             app.use(express.static('./build/'));
-            app.use('/*', express.static('./build/index.html'));
             break;
         case 'devlocal':
             console.log('** DEVLOCAL **');
             app.use(express.static('./public/'));
+            app.use(express.static('./.tmp/'));
             app.use(express.static('./'));
-            app.use(express.static('./.tmp'));
-            //app.use('/*', express.static('./public/index.html'));
             break;
         default:
     }
