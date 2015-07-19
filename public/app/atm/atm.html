@@ -4,10 +4,6 @@
         <p class="lead">A place to track all ATM cash transactions &mdash; so you
                know what you spend all your cash on...</p>
                <p><em>and it does all the math for you</em></p>
-        <a href="/new-atm" class="btn btn-warning btn-large new-atm-btn"
-                data-placement="top" title="track new ATM transaction" tooltip>
-                <i class="fa fa-plus"></i> <strong>ATM Transaction</strong>
-        </a>
     </div>
 </div>
 <div class="middle atm-list-page">
@@ -16,6 +12,11 @@
             <div class="col-md-4">
                 <atm-card item="withdrawal"></atm-card>
             </div>
+        </div>
+        <div class="col-md-4 add-atm">
+            <a href="/new-atm" data-placement="top" title="add a new ATM withdrawal" tooltip>
+                <h3><i class="fa fa-plus"></i> Add Withdrawal</h3>
+            </a>
         </div>
     </div>
 </div>
