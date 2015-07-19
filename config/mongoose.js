@@ -12,6 +12,5 @@ module.exports = function (config) {
     });
 
     userModel.createDefaultUsers();
-    todoModel.createDefaultTodos();
     atmModel.createDefaultATMTransactions();
 };
