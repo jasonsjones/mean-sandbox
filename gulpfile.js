@@ -77,7 +77,7 @@ gulp.task('clean-code', function (done) {
 });
 
 gulp.task('less-watcher', function () {
-    gulp.watch([config.less], ['styles']);
+    gulp.watch([config.allless], ['styles']);
 });
 
 gulp.task('templatecache', ['clean-code'], function () {
