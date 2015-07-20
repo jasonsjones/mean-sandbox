@@ -1,9 +1,9 @@
 <div class="middle">
     <div class="atm-card">
         <div class="atm-card-header">
-            <a ng-href="/atm-details/{{vm.item._id}}"><i class="fa fa-pencil"></i> Edit</a>
+            <a ng-href="/atm-details/{{vm.item._id}}"><i class="fa fa-pencil"></i> <em>Edit</em></a>
             <i class="fa fa-close pull-right" ng-click="vm.deleteTransaction(vm.item._id)"></i>
-            <h3 class="text-center">ATM Withdrawal</h3>
+            <a ng-href="/atm-details/{{vm.item._id}}"><h3 class="text-center">ATM Withdrawal</h3></a>
             <h4><span class="amount">{{ vm.totalAmount | currency}}</span>
                 <span class="location pull-right">{{ vm.item.date | date }}</span></h4>
             <p class="location">{{ vm.item.location }}
