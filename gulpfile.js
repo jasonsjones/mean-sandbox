@@ -195,13 +195,13 @@ function startBrowserSync(env) {
             config.temp + '**/*.css'
         ];
 
-        gulp.watch([config.less], ['styles'])
+        gulp.watch([config.allless], ['styles'])
             .on('change', function (event) {
                 changeEvent(event);
             });
     } else {
         optsFiles = [];
-        gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
+        gulp.watch([config.allless, config.js, config.html], ['optimize', browserSync.reload])
             .on('change', function (event) {
                 changeEvent(event);
             });

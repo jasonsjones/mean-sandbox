@@ -26,8 +26,8 @@ module.exports = function () {
             clientApp + '**/*.js',
             '!' + clientApp + '**/*Spec.js'
         ],
-
         less: client + 'css/styles.less',
+        allless: client + 'css/*.less',
         serverFiles: ['server.js', 'app/**/*.js', 'config/**/*.js'],
         temp: temp,
 
