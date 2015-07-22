@@ -31,7 +31,7 @@
                 if (response.data.success) {
                     var user = response.data.user;
                     identity.currentUser = user;
-                    $window.localStorage.currentUser = JSON.stringify(user);
+                    $window.sessionStorage.currentUser = JSON.stringify(user);
                     deferred.resolve(true);
                 } else {
                     deferred.resolve(false);

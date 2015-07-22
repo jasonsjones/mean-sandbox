@@ -6,7 +6,7 @@
 
     function identityFactory($window) {
 
-        var storage = $window.localStorage;
+        var storage = $window.sessionStorage;
         var currentUser = null;
 
         if (storage.getItem('currentUser')) {

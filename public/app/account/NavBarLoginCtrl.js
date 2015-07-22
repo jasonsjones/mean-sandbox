@@ -33,7 +33,7 @@
             vm.username = '';
             vm.password = '';
             notifier.notify('You successfully logged out!');
-            $window.localStorage.removeItem('currentUser');
+            $window.sessionStorage.removeItem('currentUser');
             $location.path('/');
         }
 

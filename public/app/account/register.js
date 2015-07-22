@@ -6,6 +6,7 @@
         .factory('register', register);
 
     function register($http, $q, $window, userCache, identity) {
+        var storage = $window.sessionStorage;
         var service = {
             createUser: createUser,
             deleteUser: deleteUser,
@@ -21,7 +22,7 @@
             $http.post('/api/users', newUserData)
                 .success(function (user) {
                     identity.currentUser = user;
-                    $window.localStorage.currentUser = JSON.stringify(user);
+                    storage.currentUser = JSON.stringify(user);
                     userCache.usersChanged();
                     deferred.resolve(user);
                 })
@@ -52,7 +53,7 @@
                 .success(function (user) {
                     if (id === identity.currentUser._id) {
                         identity.currentUser = user;
-                        $window.localStorage.currentUser = JSON.stringify(user);
+                        storage.currentUser = JSON.stringify(user);
                     }
                     userCache.usersChanged();
                     deferred.resolve();
