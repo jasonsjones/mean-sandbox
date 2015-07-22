@@ -15,20 +15,15 @@ html, body {
     width: 100%;
     min-height: 300px;
     background: linear-gradient(@bannerBg, darken(@bannerBg, 15%));
-    color: #ccc;
+    color: @bannerTextColor;
     padding-bottom: 20px;
+
     h1 {
         font-size: 64px;
         margin: 0;
         padding: 20px 0;
     }
 }
-
-/*
-.navbar-brand {
-    padding-top: 5px;
-}
-*/
 
 .navbar {
     margin-bottom: 0;
@@ -123,7 +118,7 @@ html, body {
 }
 
 .banner-note {
-  color: darken(#ccc, 15%);
+  color: darken(@bannerTextColor, 15%);
   font-size: 1.3em;
 }
 
