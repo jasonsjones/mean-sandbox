@@ -1,6 +1,6 @@
 <div class="middle user-list">
     <div class="container">
-        <div class="mean-form col-md-offset-1">
+        <div class="mean-form">
             <div class="mean-form-header">
                 <h1>Admin Page</h1>
             </div>
@@ -19,6 +19,9 @@
                     <th><span class="clickable" ng-click="vm.changeSortColumn('roles')">Admin</span></th>
                     <th><span class="clickable" ng-click="vm.changeSortColumn('createdOn')">Created On</span></th>
                     <th><span class="clickable" ng-click="vm.changeSortColumn('lastModified')">Last Modified</span></th>
+                    <th><span class="clickable" ng-click="vm.changeSortColumn('lastLogin')">Last Login</span></th>
+                    <th></th>
+                    <th></th>
                 </thead>
                 <tbody>
                 <tr ng-repeat="user in vm.users | filter: vm.query | orderBy:vm.userTableSortCol">
@@ -28,6 +31,7 @@
                     <td><span ng-if="vm.isAdmin(user)"><i class="fa fa-check"></i></span></td>
                     <td>{{ user.createdOn | date:'medium' }}</td>
                     <td>{{ user.lastModified | date:'medium' }}</td>
+                    <td>{{ user.lastLogin | date:'medium' }}</td>
                     <td><button ng-click="vm.updateUser(user)" class="btn btn-info"><i class="fa fa-pencil"></i> Edit </button></td>
                     <td><button ng-click="vm.deleteUser(user)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button></td> </tr>
                 </tbody>
