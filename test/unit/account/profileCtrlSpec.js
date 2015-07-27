@@ -21,7 +21,7 @@ describe('ProfileCtrl', function () {
 
         mockNotifier = {
             notify: function () {}
-        },
+        };
 
         mockIdentity = {
             currentUser: {
