@@ -19,13 +19,13 @@ describe('NavBarLoginCtrl', function () {
 
         mockNotifier = {
             notify: function () {}
-        },
+        };
 
         mockWindow = {
-            localStorage: {
+            sessionStorage: {
                 removeItem: function (item) { }
             }
-        },
+        };
 
         mockIdentity = {
             currentUser: {
@@ -78,12 +78,12 @@ describe('NavBarLoginCtrl', function () {
     it('signout method calls other services', function () {
         sandbox.spy(mockNotifier, 'notify');
         sandbox.spy(mockLocation, 'path');
-        sandbox.spy(mockWindow.localStorage, 'removeItem');
+        sandbox.spy(mockWindow.sessionStorage, 'removeItem');
 
         navbarLoginCtrl.signout();
 
         expect(mockNotifier.notify.calledOnce).to.be.true;
         expect(mockNotifier.notify.calledOnce).to.be.true;
-        expect(mockWindow.localStorage.removeItem.calledOnce).to.be.true;
+        expect(mockWindow.sessionStorage.removeItem.calledOnce).to.be.true;
     });
 });
