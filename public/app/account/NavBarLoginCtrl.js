@@ -4,6 +4,7 @@
     angular.module('app.account')
         .controller('NavBarLoginCtrl', NavBarLoginCtrl);
 
+    NavBarLoginCtrl.$inject = ['$location', '$window', 'sbAuth', 'identity', 'notifier'];
     function NavBarLoginCtrl($location, $window, sbAuth, identity, notifier) {
         var vm = this;
         vm.identity = identity;
