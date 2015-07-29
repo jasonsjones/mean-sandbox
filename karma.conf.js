@@ -22,7 +22,7 @@ module.exports = function(config) {
       'test/test-app.js',
       'public/app/app.module.js',
       'public/app/app.js',
-      'public/app/**/app.*.module.js',
+      'public/app/**/*.module.js',
       'public/app/**/*.js',
       'test/**/*.js'
     ],
