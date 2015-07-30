@@ -9,6 +9,7 @@
         var vm = this;
         var ute = sbEditUser.userToEdit;
         var isCurrentUser = (ute._id === identity.currentUser._id);
+
         vm.editPassword = false;
 
         vm.firstName = ute.firstName;
@@ -21,12 +22,16 @@
             admin: isAdmin(ute)
         };
 
-        vm.toggleEditPassword = function () {
-            vm.editPassword = !vm.editPassword;
-        };
+        vm.toggleEditPassword = toggleEditPassword;
+        vm.updateData = updateData;
 
-        vm.updateData = function () {
-            var userUpdate = {
+        /********** implementation details *********/
+        function toggleEditPassword() {
+            vm.editPassword = !vm.editPassword;
+        }
+
+        function updateData() {
+            var updatedUserData = {
                 firstName: vm.firstName,
                 lastName: vm.lastName,
                 email: vm.email,
@@ -36,11 +41,7 @@
                 roles: {}
             };
 
-            if (vm.roles.admin) {
-                userUpdate.roles.admin = true;
-            } else {
-                userUpdate.roles.admin = false;
-            }
+            determineRole(updatedUserData);
 
             if (vm.newPassword && vm.newPassword.length > 0) {
                 if (vm.newPassword !== vm.confirmPassword) {
@@ -48,11 +49,11 @@
                     vm.newPassword = '';
                     vm.confirmPassword = '';
                 } else {
-                    userUpdate.local.password = vm.newPassword;
-                    sendToAuthService(userUpdate);
+                    updatedUserData.local.password = vm.newPassword;
+                    sendToAuthService(updatedUserData);
                 }
             } else {
-                sendToAuthService(userUpdate);
+                sendToAuthService(updatedUserData);
             }
 
             //////////////////
@@ -66,10 +67,18 @@
                     notifier.error(reason);
                 });
             }
-        };
+        }
 
         function isAdmin(user) {
            return user.roles.indexOf('admin') > -1;
+        }
+
+        function determineRole(user) {
+            if (vm.roles.admin) {
+                user.roles.admin = true;
+            } else {
+                user.roles.admin = false;
+            }
         }
     }
 }());
