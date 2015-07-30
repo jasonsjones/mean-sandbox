@@ -4,6 +4,7 @@
     angular.module('app.account')
         .factory('identity', identityFactory);
 
+    identityFactory.$inject = ['$window'];
     function identityFactory($window) {
 
         var storage = $window.sessionStorage;

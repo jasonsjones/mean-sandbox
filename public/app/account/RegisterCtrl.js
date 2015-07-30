@@ -5,6 +5,7 @@
     angular.module('app.account')
         .controller('RegisterCtrl', RegisterCtrl);
 
+    RegisterCtrl.$inject = ['$location', 'register', 'notifier'];
     function RegisterCtrl($location, register, notifier) {
 
         var vm = this;

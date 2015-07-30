@@ -5,6 +5,7 @@
     angular.module('app.account')
         .factory('userAPI', userAPI);
 
+    userAPI.$inject = ['$http'];
     function userAPI($http) {
 
         return {

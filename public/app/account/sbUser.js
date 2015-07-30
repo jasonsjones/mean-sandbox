@@ -5,6 +5,7 @@
     angular.module('app.account')
         .service('sbUser', sbUser);
 
+    sbUser.$inject = ['$resource'];
     function sbUser($resource) {
 
         var UserResource = $resource('/api/users/:id', {id: '@_id'},

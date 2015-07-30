@@ -5,6 +5,7 @@
     angular.module('app.account')
         .factory('register', register);
 
+    register.$inject = ['$http', '$q', '$window', 'userCache', 'identity'];
     function register($http, $q, $window, userCache, identity) {
         var storage = $window.sessionStorage;
         var service = {

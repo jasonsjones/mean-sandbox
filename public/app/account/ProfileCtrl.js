@@ -4,6 +4,7 @@
     angular.module('app.account')
         .controller('ProfileCtrl', ProfileCtrl);
 
+    ProfileCtrl.$inject = ['$location', 'identity', 'notifier', 'register'];
     function ProfileCtrl($location, identity, notifier, register) {
         var vm = this;
 
@@ -61,7 +62,7 @@
                     notifier.error(reason);
                 });
             }
-        };
+        }
 
         function toggleEditPassword () {
             vm.editPassword = !vm.editPassword;

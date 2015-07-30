@@ -5,6 +5,7 @@
     angular.module('app.account')
         .factory('sbAuth', sbAuth);
 
+    sbAuth.$inject = ['$http', '$q', '$window', 'identity'];
     function sbAuth($http, $q, $window, identity) {
 
         var service = {
