@@ -4,6 +4,7 @@
     angular.module('app.core')
         .factory('userCache', userCache);
 
+    userCache.$inject = ['$http', '$q'];
     function userCache($http, $q) {
         var cachedUsers = null;
 

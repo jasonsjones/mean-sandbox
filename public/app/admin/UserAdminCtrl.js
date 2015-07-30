@@ -5,6 +5,7 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
+    UserAdminCtrl.$inject =['$location', '$route', 'userCache', 'sbEditUser', 'register', 'notifier'];
     function UserAdminCtrl($location, $route, userCache, sbEditUser, register, notifier) {
         var vm = this;
 

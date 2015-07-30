@@ -4,8 +4,8 @@
     angular.module('app.core')
         .controller('EditUserCtrl', EditUserCtrl);
 
-    //////////
-    function EditUserCtrl(sbEditUser, identity, register, notifier, $location) {
+    EditUserCtrl.$inject = ['$location', 'sbEditUser', 'identity', 'register', 'notifier'];
+    function EditUserCtrl($location, sbEditUser, identity, register, notifier) {
         var vm = this;
         var ute = sbEditUser.userToEdit;
         var isCurrentUser = (ute._id === identity.currentUser._id);
