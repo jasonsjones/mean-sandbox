@@ -3,7 +3,7 @@
     angular.module('app.todo')
         .controller('TodoCtrl', TodoCtrl);
 
-    ////////////////////////
+    TodoCtrl.$inject = ['todo', 'notifier'];
     function TodoCtrl(todo, notifier) {
 
         var vm = this;

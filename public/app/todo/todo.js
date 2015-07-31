@@ -5,6 +5,7 @@
     angular.module('app.todo')
         .factory('todo', todo);
 
+    todo.$inject = ['$http'];
     function todo($http) {
         return {
             get: function () {

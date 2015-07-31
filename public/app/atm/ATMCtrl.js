@@ -3,7 +3,7 @@
     angular.module('app.atm')
         .controller('ATMCtrl', ATMCtrl);
 
-    ////////////////////
+    ATMCtrl.$inject = ['$scope', 'ATM', 'purchase'];
     function ATMCtrl($scope, ATM, purchase) {
 
         var vm = this;

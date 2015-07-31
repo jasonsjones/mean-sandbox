@@ -1,12 +1,9 @@
-/**
- * Created by jsjones on 6/2/15.
- */
 (function () {
     'use strict';
     angular.module('app.atm')
         .factory('ATM', ATM);
 
-    //////////////
+    ATM.$inject = ['$http', '$q'];
     function ATM($http, $q) {
 
         var service = {
@@ -19,7 +16,7 @@
 
         return service;
 
-        ////////////////////////
+        /********** Implementation Details *********/
         function getTotalAmount(transaction) {
             return transaction.cashAmount + transaction.serviceFee;
         }

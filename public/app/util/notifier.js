@@ -5,6 +5,7 @@
 
     angular.module('app.core').factory('notifier', notifier);
 
+    notifier.$inject = ['toastr'];
     function notifier(toastr) {
         toastr.options.closeButton = true;
         toastr.options.progressBar = true;

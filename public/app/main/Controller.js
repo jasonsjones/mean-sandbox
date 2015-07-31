@@ -4,6 +4,7 @@
     angular.module('app.core')
         .controller('Controller', Controller);
 
+    Controller.$inject = ['dataservice', 'identity'];
     function Controller(dataservice, identity) {
 
         var vm = this;

@@ -4,7 +4,8 @@
     angular.module('app.core')
         .factory('dataservice', dataserviceFactory);
 
-    function dataserviceFactory($q, $http) {
+    dataserviceFactory.$inject = ['$http', '$q'];
+    function dataserviceFactory($http, $q) {
         var meanComponents = [
             {imgUrl: 'img/mongodb.png',
              webUrl: 'http://www.mongodb.org',

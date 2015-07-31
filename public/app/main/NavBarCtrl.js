@@ -3,6 +3,7 @@
     angular.module('app.core')
         .controller('NavBarCtrl', NavBarCtrl);
 
+    NavBarCtrl.$inject = ['$location', 'identity'];
     function NavBarCtrl($location, identity) {
 
         var vm = this;

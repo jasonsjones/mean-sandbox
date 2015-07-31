@@ -3,6 +3,7 @@
     angular.module('app.atm')
         .controller('ATMDetailsCtrl', ATMDetailsCtrl);
 
+    ATMDetailsCtrl.$inject = ['$scope', '$routeParams', 'ATM', 'purchase'];
     function ATMDetailsCtrl($scope, $routeParams, ATM, purchase) {
         var vm = this;
         var atmId = $routeParams.atmId;

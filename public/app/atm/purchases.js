@@ -3,7 +3,7 @@
     angular.module('app.atm')
         .factory('purchase', purchase);
 
-    ////////////////
+    purchase.$inject = ['$http', '$q'];
     function purchase($http, $q) {
         var service = {
             get: get,
@@ -15,6 +15,7 @@
 
         return service;
 
+        /********** Implementation Details *********/
         function get(atmId) {
             var deferred = $q.defer();
             var url = '/api/atms/' + atmId + '/purchases';

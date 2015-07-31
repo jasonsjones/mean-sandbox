@@ -3,7 +3,7 @@
     angular.module('app.atm')
         .controller('PurchaseCtrl', PurchaseCtrl);
 
-    ////////////////
+    PurchaseCtrl.$inject = ['purchase'];
     function PurchaseCtrl(purchase) {
         var vm = this;
         vm.purchases = null;
