@@ -32,6 +32,14 @@ module.exports = function () {
         temp: temp,
 
         /**
+         * optimized files
+         */
+        optimized: {
+            app: 'app.js',
+            lib: 'lib.js'
+        },
+
+        /**
          * template cache
          *
          */
