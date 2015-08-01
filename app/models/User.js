@@ -34,14 +34,13 @@ function createDefaultUsers() {
             console.log('creating list of default users in db...');
 
             var salt = hash.createSalt();
-            var pwd = hash.hashPassword(salt, 'jason');
-
+            var pwd = hash.hashPassword(salt, 'changeMe');
             User.create({
-                firstName: 'Jason',
-                lastName: 'Jones',
-                email: 'jason@jasonsjones.com',
+                firstName: 'Admin',
+                lastName: 'User',
+                email: 'admin@meansandbox.com',
                 local: {
-                    username: 'jason',
+                    username: 'admin',
                     password: pwd,
                     salt: salt
                 },
@@ -49,39 +48,13 @@ function createDefaultUsers() {
             });
 
             salt = hash.createSalt();
-            pwd = hash.hashPassword(salt, 'joe');
+            pwd = hash.hashPassword(salt, 'demoUser');
             User.create({
-                firstName: 'Joe',
-                lastName: 'Eames',
-                email: 'joe@joeeames.com',
+                firstName: 'Demo',
+                lastName: 'User',
+                email: 'demo@meansandbox.com',
                 local: {
-                    username: 'joe',
-                    password: pwd,
-                    salt: salt
-                }
-            });
-
-            salt = hash.createSalt();
-            pwd = hash.hashPassword(salt, 'john');
-            User.create({
-                firstName: 'John',
-                lastName: 'Papa',
-                email: 'john@johnpapa.com',
-                local: {
-                    username: 'john',
-                    password: pwd,
-                    salt: salt
-                }
-            });
-
-            salt = hash.createSalt();
-            pwd = hash.hashPassword(salt, 'ward');
-            User.create({
-                firstName: 'Ward',
-                lastName: 'Bell',
-                email: 'ward@wardbell.com',
-                local: {
-                    username: 'ward',
+                    username: 'demo',
                     password: pwd,
                     salt: salt
                 }
