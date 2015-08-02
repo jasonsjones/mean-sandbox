@@ -1,6 +1,7 @@
 module.exports = function () {
     var client = './public/';
     var clientApp = client + 'app/';
+    var root = './';
     var temp = './.tmp/';
 
     var config = {
@@ -28,6 +29,7 @@ module.exports = function () {
         ],
         less: client + 'css/styles.less',
         allless: client + 'css/*.less',
+        root: root,
         serverFiles: ['server.js', 'app/**/*.js', 'config/**/*.js'],
         temp: temp,
 
@@ -61,11 +63,16 @@ module.exports = function () {
         /**
          * bower and npm locations
          */
-         bower: {
+        bower: {
             json: require('./bower.json'),
             directory: 'bower_components/',
             ignorePath: '..'
         },
+
+        packages: [
+            './package.json',
+            './bower.json'
+        ],
 
         /**
          * Node Settings
