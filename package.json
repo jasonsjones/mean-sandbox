@@ -3,6 +3,14 @@
   "version": "0.0.1",
   "description": "Playground to explore the MEAN stack",
   "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jasonsjones/mean-sandbox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jasonsjones/mean-sandbox/issues"
+  },
+  "homepage": "https://github.com/jasonsjones/mean-sandbox",
   "dependencies": {
     "body-parser": "^1.11.0",
     "express": "^4.11.2",
