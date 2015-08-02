@@ -24,7 +24,7 @@
         <div ng-repeat="todo in vm.todos | orderBy:'done'">
             <div class="row todo-item">
                 <div class="col-sm-4 col-sm-offset-2">
-                    <p ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>
+                    <p class="todo-task" ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>
                 </div>
                 <div class="col-sm-2 text-right">
                     <button ng-hide="todo.done" type="button" class="btn btn-success" ng-click="vm.completeTodo(todo)"
