@@ -25,7 +25,7 @@ exports.createTodo = function (req, res) {
             console.log(err);
             res.send(err);
         } else {
-            _getTodos(req, res);
+            res.json(todo);
         }
     });
 };
@@ -35,7 +35,7 @@ exports.deleteTodo = function (req, res) {
         if (err) {
             res.send(err);
         } else {
-            _getTodos(req, res);
+            res.json({success: true});
         }
     });
 };
@@ -49,11 +49,11 @@ exports.updateTodo = function (req, res) {
         todo.text = todoData.text;
         todo.done = todoData.done;
 
-        todo.save(function (err) {
+        todo.save(function (err, todo) {
             if (err) {
                 return res.status(400).send({reason: err.toString()});
             }
-            _getTodos(req, res);
+            res.json(todo);
         });
     });
 };
