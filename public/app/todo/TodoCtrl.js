@@ -21,11 +21,7 @@
 
         /************* Implementation Details **************/
         function initialize() {
-            todo.query().then(function (data) {
-                vm.todos = data;
-                vm.loading = false;
-                vm.numberOfTodos = updateNumberOfTodos();
-            });
+            getTodos();
         }
 
         function createTodo() {
@@ -36,9 +32,10 @@
                 todo.create(vm.formData)
                     .success(function (data) {
                         vm.formData = {};
-                        vm.todos = data;
+                        vm.todos.push(data);
                         vm.numberOfTodos = updateNumberOfTodos();
                         vm.loading = false;
+                        notifier.notify('TODO added to list...');
                     });
             }
         }
@@ -47,10 +44,10 @@
             vm.loading = true;
             todo.delete(id)
                 .success(function (data) {
-                    console.log('todo deleted...');
-                    vm.todos = data;
-                    vm.numberOfTodos = updateNumberOfTodos();
-                    vm.loading = false;
+                    if (data.success) {
+                        notifier.notify('TODO deleted...');
+                        getTodos();
+                    }
                 });
         }
 
@@ -58,9 +55,17 @@
             todoToUpdate.done = !todoToUpdate.done;
             todo.update(todoToUpdate._id, todoToUpdate)
                 .success(function (data) {
-                    vm.todos = data;
-                    vm.numberOfTodos = updateNumberOfTodos();
+                    getTodos();
                 });
+        }
+
+        function getTodos() {
+            vm.loading = true;
+            todo.query().then(function (data) {
+                vm.todos = data;
+                vm.numberOfTodos = updateNumberOfTodos();
+                vm.loading = false;
+            });
         }
 
         function updateNumberOfTodos(argument) {
