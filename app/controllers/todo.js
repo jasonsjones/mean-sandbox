@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Todo = mongoose.model('Todo');
 
 function _getTodos(req, res) {
-    Todo.find({userId: {$in: ['global', req.session.user._id]}})
+    Todo.find({userId: req.session.user._id})
         .exec(function (err, todos) {
             if (err) {
                 res.send(err);
