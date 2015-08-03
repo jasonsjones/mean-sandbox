@@ -5,11 +5,11 @@
     angular.module('app.todo')
         .factory('todo', todo);
 
-    todo.$inject = ['$http'];
-    function todo($http) {
+    todo.$inject = ['$http', 'todoCache'];
+    function todo($http, todoCache) {
         return {
-            get: function () {
-                return $http.get('/api/todos');
+            query: function () {
+                return todoCache.query();
             },
 
             create: function (todoData) {
