@@ -25,12 +25,16 @@ exports.getUserById = function (req, res) {
 
 exports.createUser = function (req, res, next) {
     var userData = req.body;
+    userData.local.username = userData.local.username.toLowerCase();
     userData.local.salt= hash.createSalt();
-    userData.local.password = hash.hashPassword(userData.local.salt, userData.local.password);
+    userData.local.password = hash.hashPassword(
+            userData.local.salt, userData.local.password);
 
     User.create(userData, function (err, user) {
         if (err) {
-            // TODO check for duplicate user error
+            if (err.toString().indexOf('E11000') > -1) {
+                err = new Error('Duplicate username');
+            }
             return res.status(400).json({reason: err.toString()});
         }
         req.logIn(user, function (err) {

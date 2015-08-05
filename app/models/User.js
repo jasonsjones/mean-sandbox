@@ -6,14 +6,25 @@ var userSchema = mongoose.Schema({
     lastName: String,
     email: String,
     local: {
-        username: String,
+        username: {
+            type: String,
+            unique: true
+        },
         password: String,
         salt: String
     },
     roles: [String],
-    createdOn: {type: Date, default: Date.now},
-    lastModified: {type: Date, default: Date.now},
-    lastLogin: {type: Date}
+    createdOn: {
+        type: Date,
+        default: Date.now
+    },
+    lastModified: {
+        type: Date,
+        default: Date.now
+    },
+    lastLogin: {
+        type: Date
+    }
 });
 
 userSchema.methods.authenticate = function (pwdToMatch) {

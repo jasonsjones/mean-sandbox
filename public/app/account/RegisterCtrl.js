@@ -29,8 +29,12 @@
                     notifier.notify('User account for ' + user.local.username + ' created');
                     $location.path('/');
                 },
-                function (reason) {
-                    notifier.error(reason);
+                function (response) {
+                    notifier.error(response.reason);
+                    if (response.reason === 'Error: Duplicate username') {
+                        vm.username = '';
+                        clearPasswords();
+                    }
                 });
             } else {
                 if (!isPasswordCorrect()) {
@@ -38,13 +42,17 @@
                 } else {
                     notifier.error('Password is required');
                 }
-                vm.password = '';
-                vm.confirmPassword = '';
+                clearPasswords();
             }
         }
 
         function isPasswordCorrect() {
             return vm.password === vm.confirmPassword;
+        }
+
+        function clearPasswords() {
+            vm.password = '';
+            vm.confirmPassword = '';
         }
     }
 }());
