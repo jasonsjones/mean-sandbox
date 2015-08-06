@@ -30,9 +30,9 @@
             } else {
                 vm.loading = true;
                 todo.create(vm.formData)
-                    .success(function (data) {
+                    .success(function (todo) {
                         vm.formData = {};
-                        vm.todos.push(data);
+                        vm.todos.push(todo);
                         vm.numberOfTodos = updateNumberOfTodos();
                         vm.loading = false;
                         notifier.notify('TODO added to list...');
