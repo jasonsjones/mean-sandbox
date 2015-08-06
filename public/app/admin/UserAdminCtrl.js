@@ -5,8 +5,8 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    UserAdminCtrl.$inject =['$location', '$route', 'userCache', 'sbEditUser', 'register', 'notifier'];
-    function UserAdminCtrl($location, $route, userCache, sbEditUser, register, notifier) {
+    UserAdminCtrl.$inject =['$location', 'userCache', 'sbEditUser', 'register', 'notifier'];
+    function UserAdminCtrl($location, userCache, sbEditUser, register, notifier) {
         var vm = this;
 
         vm.users = [];
@@ -34,7 +34,7 @@
             register.deleteUser(user)
                 .then(function () {
                     notifier.notify('user successfully deleted');
-                    $route.reload();
+                    getUsers();
                 },
                 function () {
                     notifier.error('user was not deleted');
