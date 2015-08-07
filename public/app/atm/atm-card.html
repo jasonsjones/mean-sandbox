@@ -6,12 +6,15 @@
         <h4><span class="amount">{{ vm.totalAmount | currency}}</span>
             <span class="location pull-right">{{ vm.item.date | date }}</span></h4>
         <p class="location">{{ vm.item.location }}
-           <i ng-show="vm.expanded" ng-click="vm.expandList()" class="fa fa-chevron-up pull-right"></i>
-           <i ng-hide="vm.expanded" ng-click="vm.expandList()" class="fa fa-chevron-down pull-right"></i></p>
+           <!--<i ng-show="vm.expanded" ng-click="vm.expandList()" class="fa fa-chevron-up pull-right"></i>-->
+           <!--<i ng-show="vm.expanded" ng-click="vm.expandList()" class="fa fa-chevron-up pull-right"></i>-->
+           <i class="fa fa-chevron-down pull-right"></i></p>
     </div>
     <div class="atm-card-body">
-        <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
-        <table class="table atm-list" ng-show="vm.expanded">
+        <!--<p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>-->
+        <!--<p class="text-center"><i class="fa fa-spinner fa-spin fa-3x"></i></p>-->
+        <!--<table class="table atm-list" ng-show="vm.expanded">-->
+        <table class="table atm-list"">
             <thead>
                 <th>Amount</th>
                 <th>Description</th>

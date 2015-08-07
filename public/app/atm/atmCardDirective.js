@@ -10,10 +10,32 @@
             scope: {
                 item: '='
             },
+            link: linkFunction,
             controller: atmCardCtrl,
             controllerAs: 'vm',
             bindToController: true
         };
+
+        function linkFunction(scope, element, attrs) {
+            var downChevron = $(element).find('.fa-chevron-down');
+            var upChevron = $(element).find('.fa-chevron-up');
+
+            downChevron.on('click', function () {
+                console.log('downChevron clicked');
+                var header = $(this).closest('.atm-card-header');
+                var atmBody = header.next();
+                var atmList = $(atmBody).find('.atm-list');
+                $(atmList).fadeToggle(300);
+            });
+
+            upChevron.on('click', function () {
+                console.log('upChevron clicked');
+            });
+
+            $(element).find('.atm-card-body').on('click', function () {
+                console.log('atm-card-body clicked');
+            });
+        }
 
         function atmCardCtrl($rootScope, ATM, purchase) {
             var vm = this;
