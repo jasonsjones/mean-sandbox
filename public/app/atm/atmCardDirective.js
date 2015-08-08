@@ -17,35 +17,23 @@
         };
 
         function linkFunction(scope, element, attrs) {
-            var downChevron = $(element).find('.fa-chevron-down');
-            var upChevron = $(element).find('.fa-chevron-up');
+            var $atmListToggle = $(element).find('#atm-list-toggle');
 
-            downChevron.on('click', function () {
-                console.log('downChevron clicked');
-                var header = $(this).closest('.atm-card-header');
-                var atmBody = header.next();
-                var atmList = $(atmBody).find('.atm-list');
-                $(atmList).fadeToggle(300);
-            });
-
-            upChevron.on('click', function () {
-                console.log('upChevron clicked');
-            });
-
-            $(element).find('.atm-card-body').on('click', function () {
-                console.log('atm-card-body clicked');
+            $atmListToggle.on('click', function () {
+                var $atmBody = $(this).closest('.atm-card-header').next();
+                var $atmList = $atmBody.find('.atm-list');
+                $atmBody.slideToggle(400);
+                $(this).toggleClass("fa-chevron-down fa-chevron-up");
             });
         }
 
         function atmCardCtrl($rootScope, ATM, purchase) {
             var vm = this;
-            vm.expanded = false;
             vm.purchases = [];
             vm.loading = true;
             vm.totalSpent = 0;
             vm.totalAmount = 0;
 
-            vm.expandList = expandList;
             vm.getTotalAmount = getTotalAmount;
             vm.getPurchases = getPurchases;
             vm.deleteTransaction = deleteTransaction;
@@ -58,10 +46,6 @@
                 vm.getPurchases(vm.item._id);
                 vm.totalAmount = vm.getTotalAmount();
                 vm.loading = false;
-            }
-
-            function expandList() {
-                vm.expanded = !vm.expanded;
             }
 
             function getTotalAmount() {
@@ -103,4 +87,4 @@
             }
         }
     }
-})();
+}());
