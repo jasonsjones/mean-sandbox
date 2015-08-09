@@ -71,6 +71,7 @@ exports.updateUserById = function (req, res) {
         user.firstName = userUpdates.firstName;
         user.lastName = userUpdates.lastName;
         user.email = userUpdates.email;
+        user.zipcode = userUpdates.zipcode;
         user.local.username = userUpdates.local.username;
         user.lastModified = Date.now();
 

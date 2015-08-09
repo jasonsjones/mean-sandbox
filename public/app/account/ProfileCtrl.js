@@ -13,6 +13,7 @@
         vm.firstName = identity.currentUser.firstName;
         vm.lastName = identity.currentUser.lastName;
         vm.email = identity.currentUser.email;
+        vm.zipcode = identity.currentUser.zipcode;
         vm.local = {
             username : identity.currentUser.local.username
         };
@@ -30,6 +31,7 @@
                 local: {
                     username: vm.local.username
                 },
+                zipcode: vm.zipcode,
                 roles: {}
             };
 

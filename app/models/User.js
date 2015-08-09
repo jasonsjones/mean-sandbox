@@ -13,6 +13,7 @@ var userSchema = mongoose.Schema({
         password: String,
         salt: String
     },
+    zipcode: String,
     roles: [String],
     createdOn: {
         type: Date,
@@ -55,6 +56,7 @@ function createDefaultUsers() {
                     password: pwd,
                     salt: salt
                 },
+                zipcode: '92106',
                 roles: ['admin']
             });
 
@@ -68,7 +70,8 @@ function createDefaultUsers() {
                     username: 'demo',
                     password: pwd,
                     salt: salt
-                }
+                },
+                zipcode: '95307'
             });
         }
     });

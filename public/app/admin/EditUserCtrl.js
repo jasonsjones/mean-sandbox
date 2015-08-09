@@ -17,7 +17,8 @@
         vm.email = ute.email;
         vm.local = {
             username:  ute.local.username
-        },
+        };
+        vm.zipcode = ute.zipcode;
         vm.roles = {
             admin: isAdmin(ute)
         };
@@ -38,6 +39,7 @@
                 local: {
                     username: vm.local.username
                 },
+                zipcode: vm.zipcode,
                 roles: {}
             };
 

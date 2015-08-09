@@ -20,7 +20,8 @@
                 local: {
                     username: vm.username,
                     password: vm.password
-                }
+                },
+                zipcode: vm.zipcode
             };
 
             if (newUser.local.password.length > 0 && isPasswordCorrect()) {
