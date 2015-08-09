@@ -1,10 +1,11 @@
 (function () {
     'use strict';
+
     angular.module('app.atm')
         .factory('purchase', purchase);
 
-    purchase.$inject = ['$http', '$q'];
-    function purchase($http, $q) {
+    purchase.$inject = ['$http', '$q', 'purchaseCache'];
+    function purchase($http, $q, purchaseCache) {
         var service = {
             get: get,
             add: add,
@@ -17,17 +18,7 @@
 
         /********** Implementation Details *********/
         function get(atmId) {
-            var deferred = $q.defer();
-            var url = '/api/atms/' + atmId + '/purchases';
-
-            $http.get(url)
-                .success(function (purchases) {
-                    deferred.resolve(purchases);
-                })
-                .error(function () {
-                   deferred.reject('failed to get purchases');
-                });
-            return deferred.promise;
+            return purchaseCache.query(atmId);
         }
 
         function add(atmId, data) {
@@ -37,6 +28,7 @@
             $http.post(url, data)
                 .success(function (newPurchaseData) {
                     deferred.resolve(newPurchaseData);
+                    purchaseCache.purchasesChanged(atmId);
                 })
                 .error(function () {
                     deferred.reject('failed to add new purchase');
@@ -51,7 +43,8 @@
 
             $http.put(url, data)
                 .success(function (response) {
-                   deferred.resolve(response)
+                    deferred.resolve(response);
+                    purchaseCache.purchasesChanged(atmId);
                 })
                 .error(function () {
                     deferred.reject('failed to update purchase id: ' + purchaseId);
@@ -66,10 +59,11 @@
 
             $http.delete(url)
                 .success(function (data) {
-                   deferred.resolve(data);
+                    deferred.resolve(data);
+                    purchaseCache.purchasesChanged(atmId);
                 })
                 .error(function () {
-                   deferred.reject('failed to delete purchase');
+                    deferred.reject('failed to delete purchase');
                 });
 
             return deferred.promise;
@@ -82,6 +76,7 @@
             $http.delete(url)
                 .success(function (data) {
                     deferred.resolve(data);
+                    purchaseCache.purchasesChanged(atmId);
                 })
                 .error(function () {
                     deferred.reject('failed to delete all purchases');
