@@ -3,8 +3,8 @@
     angular.module('app.atm')
         .factory('ATM', ATM);
 
-    ATM.$inject = ['$http', '$q'];
-    function ATM($http, $q) {
+    ATM.$inject = ['$http', '$q', 'atmCache'];
+    function ATM($http, $q, atmCache) {
 
         var service = {
             getTotalAmount: getTotalAmount,
@@ -22,29 +22,11 @@
         }
 
         function query() {
-            var deferred = $q.defer();
-            var url = '/api/atms';
-            $http.get(url)
-                .success(function (data) {
-                    deferred.resolve(data);
-                })
-                .error(function () {
-                    deferred.reject('Failed to retrieve the ATM transactions');
-                });
-            return deferred.promise;
+            return atmCache.query();
         }
 
         function getById(id) {
-            var deferred = $q.defer();
-            var url = '/api/atms/' + id;
-            $http.get(url)
-                .success(function (data) {
-                    deferred.resolve(data);
-                })
-                .error(function () {
-                    deferred.reject('Failed to get ATM transaction '+ id);
-                });
-            return deferred.promise;
+            return atmCache.getATMById(id);
         }
 
         function addTransaction(atmData) {
@@ -52,14 +34,14 @@
             var url = '/api/atms';
             $http.post(url, atmData)
                 .success(function (transaction) {
-                    deferred.resolve(transaction)
+                    deferred.resolve(transaction);
+                    atmCache.atmChanged();
                 })
                 .error(function () {
                     deferred.reject('failed to add transaction');
                 });
 
             return deferred.promise;
-
         }
 
         function deleteTransaction(id) {
@@ -68,6 +50,7 @@
             $http.delete(url)
                 .success(function (data) {
                     deferred.resolve(data);
+                    atmCache.atmChanged();
                 })
                 .error(function () {
                     deferred.reject('failed to delete transaction');
@@ -75,5 +58,5 @@
             return deferred.promise;
         }
     }
-})();
+}());
 
