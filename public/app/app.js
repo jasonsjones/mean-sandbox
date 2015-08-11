@@ -33,6 +33,11 @@
                 controller: 'RegisterCtrl',
                 controllerAs: 'vm'
             })
+            .when('/login', {
+                templateUrl: 'app/account/login.html',
+                controller: 'NavBarLoginCtrl',
+                controllerAs: 'vm'
+            })
             .when('/profile', {
                 templateUrl: 'app/account/profile.html',
                 controller: 'ProfileCtrl',

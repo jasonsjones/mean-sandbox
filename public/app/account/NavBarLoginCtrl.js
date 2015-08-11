@@ -21,6 +21,7 @@
                 .then(function (success) {
                     if (success) {
                         notifier.notify('You have successfully logged in');
+                        $location.path('/');
                     } else {
                         notifier.error('Unable to login. Please enter proper login credentials');
                         vm.username = '';
