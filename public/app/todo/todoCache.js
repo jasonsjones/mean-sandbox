@@ -10,7 +10,7 @@
 
         var factory = {
             query: query,
-            todosChanged: todosChanged
+            clearCache: clearCache
         };
 
         return factory;
@@ -32,7 +32,7 @@
             return deferred.promise;
         }
 
-        function todosChanged() {
+        function clearCache() {
             cachedTodos = null;
         }
     }

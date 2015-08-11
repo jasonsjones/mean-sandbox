@@ -12,7 +12,7 @@
         var factory = {
             query: query,
             getATMById: getATMById,
-            atmChanged: atmChanged
+            clearCache: clearCache
         };
 
         return factory;
@@ -60,7 +60,7 @@
             return deferred.promise;
         }
 
-        function atmChanged() {
+        function clearCache() {
             cachedATMs = null;
         }
     }

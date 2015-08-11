@@ -10,7 +10,7 @@
 
         var factory = {
             query: query,
-            purchasesChanged: purchasesChanged
+            clearCache: clearCache
         };
 
         return factory;
@@ -39,7 +39,7 @@
 
         }
 
-        function purchasesChanged(atmId) {
+        function clearCache(atmId) {
             console.log('purchases for atmId ' + atmId + ' has changed');
             cachedPurchases[atmId] = null;
         }

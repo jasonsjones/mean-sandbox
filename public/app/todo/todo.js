@@ -13,17 +13,17 @@
             },
 
             create: function (todoData) {
-                todoCache.todosChanged();
+                todoCache.clearCache();
                 return $http.post('/api/todos', todoData);
             },
 
             update: function (id, todoData) {
-                todoCache.todosChanged();
+                todoCache.clearCache();
                 return $http.put('/api/todos/' + id, todoData);
             },
 
             delete: function (id) {
-                todoCache.todosChanged();
+                todoCache.clearCache();
                 return $http.delete('/api/todos/' + id);
             }
         };

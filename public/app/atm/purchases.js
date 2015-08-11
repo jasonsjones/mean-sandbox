@@ -28,7 +28,7 @@
             $http.post(url, data)
                 .success(function (newPurchaseData) {
                     deferred.resolve(newPurchaseData);
-                    purchaseCache.purchasesChanged(atmId);
+                    purchaseCache.clearCache(atmId);
                 })
                 .error(function () {
                     deferred.reject('failed to add new purchase');
@@ -44,7 +44,7 @@
             $http.put(url, data)
                 .success(function (response) {
                     deferred.resolve(response);
-                    purchaseCache.purchasesChanged(atmId);
+                    purchaseCache.clearCache(atmId);
                 })
                 .error(function () {
                     deferred.reject('failed to update purchase id: ' + purchaseId);
@@ -60,7 +60,7 @@
             $http.delete(url)
                 .success(function (data) {
                     deferred.resolve(data);
-                    purchaseCache.purchasesChanged(atmId);
+                    purchaseCache.clearCache(atmId);
                 })
                 .error(function () {
                     deferred.reject('failed to delete purchase');
@@ -76,7 +76,7 @@
             $http.delete(url)
                 .success(function (data) {
                     deferred.resolve(data);
-                    purchaseCache.purchasesChanged(atmId);
+                    purchaseCache.clearCache(atmId);
                 })
                 .error(function () {
                     deferred.reject('failed to delete all purchases');

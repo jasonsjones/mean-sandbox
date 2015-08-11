@@ -4,8 +4,8 @@
     angular.module('app.account')
         .controller('NavBarLoginCtrl', NavBarLoginCtrl);
 
-    NavBarLoginCtrl.$inject = ['$location', '$window', 'sbAuth', 'identity', 'notifier'];
-    function NavBarLoginCtrl($location, $window, sbAuth, identity, notifier) {
+    NavBarLoginCtrl.$inject = ['$location', '$window', 'sbAuth', 'identity', 'notifier', 'dataCache'];
+    function NavBarLoginCtrl($location, $window, sbAuth, identity, notifier, dataCache) {
         var vm = this;
         vm.identity = identity;
 
@@ -35,6 +35,7 @@
             vm.password = '';
             notifier.notify('You successfully logged out!');
             $window.sessionStorage.removeItem('currentUser');
+            dataCache.clearAllCache();
             $location.path('/');
         }
 

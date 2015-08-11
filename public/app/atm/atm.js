@@ -35,7 +35,7 @@
             $http.post(url, atmData)
                 .success(function (transaction) {
                     deferred.resolve(transaction);
-                    atmCache.atmChanged();
+                    atmCache.clearCache();
                 })
                 .error(function () {
                     deferred.reject('failed to add transaction');
@@ -50,7 +50,7 @@
             $http.delete(url)
                 .success(function (data) {
                     deferred.resolve(data);
-                    atmCache.atmChanged();
+                    atmCache.clearCache();
                 })
                 .error(function () {
                     deferred.reject('failed to delete transaction');
