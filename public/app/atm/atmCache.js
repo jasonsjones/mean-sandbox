@@ -30,6 +30,7 @@
                 $http.get(url)
                     .success(function (data) {
                         cachedATMs = data;
+                        populateATMByIdCache();
                         deferred.resolve(data);
                     })
                 .error(function () {
@@ -62,6 +63,15 @@
 
         function clearCache() {
             cachedATMs = null;
+        }
+
+        function populateATMByIdCache() {
+            if (cachedATMs) {
+                cachedATMs.forEach(function (atm) {
+                    cachedATMsById[atm._id] = atm;
+                });
+
+            }
         }
     }
 }());
