@@ -5,9 +5,15 @@
                 <h1>Admin Page</h1>
             </div>
             <hr>
-            <h3>Users</h3>
+            <p class="lead">There are {{vm.users.length}} registered users.</p>
+            <h3>Users List</h3>
             <div class="form-group col-md-4">
                 <input type="text" class="form-control" placeholder="Search for user..." ng-model="vm.query"/>
+            </div>
+            <div class="pull-right">
+                <a href="/admin/users-grid" class="btn btn-default" ng-click="vm.toggleGridLayout()" ng-hide="vm.showGridLayout">
+                    <i class="fa fa-th"></i> Grid Layout
+                </a>
             </div>
             <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
             <table class="table table-condensed">

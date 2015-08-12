@@ -1,0 +1,41 @@
+<section class="middle user-list">
+    <div class="container">
+        <div class="mean-form">
+            <div class="mean-form-header">
+                <h1>Admin Page</h1>
+            </div>
+            <hr>
+            <div class="row">
+                <h3>Users Grid</h3>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" placeholder="Search for user..." ng-model="vm.query" />
+                </div>
+                <div class="pull-right">
+                    <a href="/admin/users" class="btn btn-default" ng-click="vm.toggleGridLayout()" ng-hide="vm.showGridLayout"><i class="fa fa-list"></i> List Layout</a>
+                </div>
+            </div>
+            <div class="row">
+            <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
+                <div class="col-md-3">
+                    <div class="user-grid">
+                        <img src="img/default-user-sm.png" class="img-responsive img-circle pull-left"></img>
+                        <div class="user-details">
+                            <p>Jason Jones</p>
+                            <p>( jsjones )</p>
+                            <p><i class="fa fa-check"></i> admin</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="user-grid">
+                        <img src="img/default-user-sm.png" class="img-responsive img-circle pull-left"></img>
+                        <div class="user-details">
+                            <p>John Papa</p>
+                            <p>( john )</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -13,11 +13,13 @@
         vm.loading = true;
         vm.userTableSortCol = '-roles';
         vm.sortOrderAsc = false;
+        vm.showGridLayout = false;
 
         vm.isAdmin = isAdmin;
         vm.deleteUser = deleteUser;
         vm.updateUser = updateUser;
         vm.changeSortColumn = changeSortColumn;
+        vm.toggleGridLayout = toggleGridLayout;
 
         getUsers();
 
@@ -57,6 +59,10 @@
                 vm.users = users;
                 vm.loading = false;
             });
+        }
+
+        function toggleGridLayout() {
+            vm.showGridLayout = !vm.showGridLayout;
         }
     }
 }());
