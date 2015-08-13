@@ -85,6 +85,12 @@
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.admin
             })
+            .when('/admin/users/:userId', {
+                templateUrl: 'app/admin/user-details.html',
+                controller: 'UserDetailsCtrl',
+                controllerAs: 'vm',
+                resolve: routeRoleCheck.admin
+            })
             .when('/admin/users-grid', {
                 templateUrl: 'app/admin/user-grid.html',
                 controller: 'UserAdminCtrl',
