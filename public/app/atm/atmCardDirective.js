@@ -27,7 +27,7 @@
             });
         }
 
-        function atmCardCtrl($rootScope, ATM, purchase) {
+        function atmCardCtrl($rootScope, $window, ATM, purchase) {
             var vm = this;
             vm.purchases = [];
             vm.loading = true;
@@ -71,19 +71,22 @@
             }
 
             function deleteTransaction(id) {
-                purchase.removeAllPurchases(id).then(function (result) {
-                    if (result.success) {
-                        console.log('all purchases deleted...now deleting transaction');
-                        ATM.deleteTransaction(id).then(function (result) {
-                            if (result.success) {
-                                $rootScope.$broadcast('ATMChanged', {withdrawal: vm.item});
-                                console.log('transaction deleted');
-                            }
-                        });
-                    } else {
-                        console.log('unable to delete all purchases from transaction');
-                    }
-                });
+                if ($window.confirm('Are you sure you want to delete ATM ' + id + ' ?')) {
+
+                    purchase.removeAllPurchases(id).then(function (result) {
+                        if (result.success) {
+                            console.log('all purchases deleted...now deleting transaction');
+                            ATM.deleteTransaction(id).then(function (result) {
+                                if (result.success) {
+                                    $rootScope.$broadcast('ATMChanged', {withdrawal: vm.item});
+                                    console.log('transaction deleted');
+                                }
+                            });
+                        } else {
+                            console.log('unable to delete all purchases from transaction');
+                        }
+                    });
+                }
             }
         }
     }

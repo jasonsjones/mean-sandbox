@@ -1,8 +1,8 @@
 <div class="atm-card">
     <div class="atm-card-header">
         <a ng-href="/atm-details/{{vm.item._id}}"><i class="fa fa-pencil"></i> <em>Edit</em></a>
-        <button class="btn btn-sm btn-danger pull-right">
-            <i class="fa fa-trash" ng-click="vm.deleteTransaction(vm.item._id)"></i>
+        <button class="btn btn-sm btn-danger pull-right" ng-click="vm.deleteTransaction(vm.item._id)">
+            <i class="fa fa-trash" ></i>
             Delete
         </button>
         <a ng-href="/atm-details/{{vm.item._id}}"><h3 class="text-center">ATM Withdrawal</h3></a>

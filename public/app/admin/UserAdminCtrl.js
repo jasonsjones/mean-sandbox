@@ -5,8 +5,8 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    UserAdminCtrl.$inject =['$location', 'userCache', 'sbEditUser', 'register', 'notifier'];
-    function UserAdminCtrl($location, userCache, sbEditUser, register, notifier) {
+    UserAdminCtrl.$inject = ['$location', '$window', 'userCache', 'sbEditUser', 'register', 'notifier'];
+    function UserAdminCtrl($location, $window, userCache, sbEditUser, register, notifier) {
         var vm = this;
 
         vm.users = [];
@@ -33,15 +33,16 @@
         }
 
         function deleteUser(user) {
-            register.deleteUser(user)
-                .then(function () {
-                    notifier.notify('user successfully deleted');
-                    getUsers();
-                },
-                function () {
-                    notifier.error('user was not deleted');
-                });
-
+            if ($window.confirm('Are you sure you want to delete ' + user.local.username)) {
+                register.deleteUser(user)
+                    .then(function () {
+                        notifier.notify('user successfully deleted');
+                        getUsers();
+                    },
+                    function () {
+                        notifier.error('user was not deleted');
+                    });
+            }
         }
 
         function updateUser(user) {
