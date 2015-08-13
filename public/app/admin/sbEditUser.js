@@ -8,7 +8,9 @@
             firstName: 'Default',
             lastName: 'User',
             email: 'user@domain.com',
-            username: 'default'
+            local: {
+                username: 'default'
+            }
         };
 
         return {
