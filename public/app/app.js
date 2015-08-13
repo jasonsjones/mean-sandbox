@@ -6,6 +6,7 @@
         .config(config);
 
     //=======================
+    config.$inject = ['$routeProvider', '$locationProvider'];
     function config($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
 
@@ -101,7 +102,10 @@
     }
 
     angular.module('app')
-        .run(function($rootScope, $location) {
+        .run(runFunction);
+
+        runFunction.$inject = ['$rootScope', '$location'];
+        function runFunction($rootScope, $location) {
             $rootScope.$on('$routeChangeError', handleRouteChangeError);
 
             function handleRouteChangeError(evt, current, previous, rejection) {
@@ -109,6 +113,5 @@
                     $location.path('/');
                 }
             }
-        });
-
+        }
 }());
