@@ -19,7 +19,7 @@
             </div>
             <div class="row">
                 <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
-                <div ng-repeat="user in vm.users | filter:vm.query">
+                <div ng-repeat="user in vm.users | filter:vm.query | orderBy:vm.userTableSortCol">
                     <div class="col-md-3">
                         <div class="user-grid">
                             <img src="img/default-user-sm.png" class="img-responsive img-circle pull-left"></img>

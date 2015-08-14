@@ -1,17 +1,57 @@
-<section class="middle">
+<section class="middle user-detail-page">
     <div class="container">
-        <div class="mean-form">
-            <div class="mean-form-header">
-                <h1>{{ vm.user.firstName + ' ' + vm.user.lastName }}</h1>
-                <h3>{{ vm.user.local.username }}</h3>
-            </div>
-            <hr>
-            <div class="row">
-                <img src="img/default-user.png" class="img-responsive img-circle pull-left"></img>
-                <h3>email: {{ vm.user.email }}</h3>
-                <h3>Last Log in: {{ vm.user.lastLogin | date: 'mediumDate' }}</h3>
-                <h3>Last Modified: {{ vm.user.lastModified | date: 'mediumDate' }}</h3>
-                <h3>Created On: {{ vm.user.createdOn | date: 'mediumDate' }}</h3>
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="mean-form">
+                <div class="mean-form-header">
+                    <div class="row">
+                        <a href="/admin/users-grid"<i class="fa fa-close fa-2x pull-right"></i></a>
+                        <img src="img/default-user.png" class="img-responsive img-circle pull-left"></img>
+                        <h1 class="text-center">{{ vm.user.firstName + ' ' + vm.user.lastName }}</h1>
+                        <h3 class="text-center">{{ vm.user.local.username }}</h3>
+                        <h4 class="text-center" ng-show="vm.isAdmin(vm.user)">Admin</h4>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3>Email:</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3>{{ vm.user.email }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3>Zipcode:</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3>{{ vm.user.zipcode }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3>Last Login:</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3>{{ vm.user.lastLogin | date: 'mediumDate' }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3>Last Modified:</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3>{{ vm.user.lastModified | date: 'mediumDate' }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h3>Created On</h3>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3>{{ vm.user.createdOn | date: 'mediumDate' }}</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
