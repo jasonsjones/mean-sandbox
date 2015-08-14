@@ -2,17 +2,19 @@
     <div class="container">
         <h1>MEAN Sandbox</h1>
         <h3>A playground to explore the MEAN stack</h3>
-        <div class="col-md-3">
-            <img src="../img/mongodb.png" class="img-responsive mean-img">
-        </div>
-        <div class="col-md-3">
-            <img src="../img/express.png" class="img-responsive mean-img">
-        </div>
-        <div class="col-md-3">
-            <img src="../img/angularjs.png" class="img-responsive mean-img">
-        </div>
-        <div class="col-md-3">
-            <img src="../img/nodejs.png" class="img-responsive mean-img">
+        <div class="row mean-components">
+            <div class="col-md-3 mean-components-header">
+                <img src="../img/mongodb.png" class="img-responsive mean-img">
+            </div>
+            <div class="col-md-3 mean-components-header">
+                <img src="../img/express.png" class="img-responsive mean-img">
+            </div>
+            <div class="col-md-3 mean-components-header">
+                <img src="../img/angularjs.png" class="img-responsive mean-img">
+            </div>
+            <div class="col-md-3 mean-components-header">
+                <img src="../img/nodejs.png" class="img-responsive mean-img">
+            </div>
         </div>
     </div>
 </div>
@@ -24,15 +26,15 @@
         <div class="row about-features">
             <div class="col-md-4">
                 <div class="about-features-header text-center">
-                    <h3><i class="fa fa-user"></i> User Registration & Authentication</h3>
+                    <h3><i class="fa fa-user"></i> User Registration & Auth</h3>
                 </div>
                 <ul>
                     <li>utilizes passport-local for user authentication</li>
-                    <li>hashes user's password with random salt to store in db</li>
+                    <li>user's passwords are hashed with a per user salt before writing to db</li>
                     <li>implements naive data caching to return the list of users
                         to avoid hitting the back-end unnecessarily</li>
-                    <li>provides 'admins' the ability to view and modify other users' profiles</li>
-                    <li>TODO: implement Oauth2 registration/authentication for github,
+                    <li>provides 'admins' the ability to view (both a list- & grid-view) and modify other users' profiles</li>
+                    <li><strong>TODO:</strong> implement Oauth2 registration/authentication for github,
                         or other online sites/services</li>
                 </ul>
             </div>
@@ -44,8 +46,7 @@
                     <li>able to complete a 'todo' item without deleting</li>
                     <li>keeps track of the number of 'todos' remaining</li>
                     <li>simple interface to add a new 'todo'</li>
-                    <li>TODO: (a little meta...): implement data caching for
-                        the todo list</li>
+                    <li>implements data caching for the todo list</li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -56,6 +57,7 @@
                     <li>tracks amount spent and amount remaining for atm withdrawals</li>
                     <li>provides a detailed view to add new purchases</li>
                     <li>implements custom directives</li>
+                    <li>implements data caching for ATM data</li>
                 </ul>
             </div>
         </div>
