@@ -27,7 +27,6 @@
                     <th><span class="clickable" ng-click="vm.changeSortColumn('lastModified')">Last Modified</span></th>
                     <th><span class="clickable" ng-click="vm.changeSortColumn('lastLogin')">Last Login</span></th>
                     <th></th>
-                    <th></th>
                 </thead>
                 <tbody>
                 <tr ng-repeat="user in vm.users | filter: vm.query | orderBy:vm.userTableSortCol">
@@ -38,8 +37,18 @@
                     <td>{{ user.createdOn | date:'medium' }}</td>
                     <td>{{ user.lastModified | date:'medium' }}</td>
                     <td>{{ user.lastLogin | date:'medium' }}</td>
-                    <td><button ng-click="vm.updateUser(user)" class="btn btn-info"><i class="fa fa-pencil"></i> Edit </button></td>
-                    <td><button ng-click="vm.deleteUser(user)" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button></td> </tr>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Action <i class="fa fa-caret-down"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li ng-click="vm.updateUser(user)"><a href="#"><i class="fa fa-pencil"></i> Edit</a></li>
+                                <li ng-click="vm.deleteUser(user)"><a href="#"><i class="fa fa-trash"></i> Delete</a></li>
+                                <li><a href="#"><i class="fa fa-info"></i> Details</a></li>
+                            </ul>
+                        </div>
+                    </td>
                 </tbody>
             </table>
         </div>
