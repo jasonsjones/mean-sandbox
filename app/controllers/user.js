@@ -45,12 +45,14 @@ exports.createUser = function (req, res, next) {
             user.lastLogin = Date.now();
             req.session.user = user;
 
-            user.save(function (err) {
+            user.save(function (err, user) {
                 if (err) {
                     res.status(400);
                     return res.json({reason: err.toString()});
                 }
-                res.json(user);
+                user.local.salt = undefined;
+                user.local.password = undefined;
+                res.json({success: true, user: user});
             });
         });
     });

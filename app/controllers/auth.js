@@ -34,11 +34,13 @@ exports.authenticateWithPassport = function (req, res, next) {
             }
             req.session.user = user;
             user.lastLogin = Date.now();
-            user.save(function (err) {
+            user.save(function (err, user) {
                 if (err) {
                     res.status(400);
                     return res.json({reason: err.toString()});
                 }
+                user.local.salt = undefined;
+                user.local.password = undefined;
                 res.json({success: true, user: user});
             });
         });
