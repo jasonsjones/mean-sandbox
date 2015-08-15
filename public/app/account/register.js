@@ -21,11 +21,14 @@
             var deferred = $q.defer();
 
             $http.post('/api/users', newUserData)
-                .success(function (user) {
-                    identity.currentUser = user;
-                    storage.currentUser = JSON.stringify(user);
-                    userCache.usersChanged();
-                    deferred.resolve(user);
+                .success(function (data) {
+                    if (data.success) {
+                        var user = data.user;
+                        identity.currentUser = user;
+                        storage.currentUser = JSON.stringify(user);
+                        userCache.usersChanged();
+                        deferred.resolve(user);
+                    }
                 })
                 .error(function (error) {
                     deferred.reject(error);
