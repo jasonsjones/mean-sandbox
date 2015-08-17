@@ -3,39 +3,39 @@
     <div class="mean-form col-md-offset-1">
         <div class="mean-form-header">
         <h1>Edit User Profile</h1>
-        <h3>User: {{ vm.firstName + ' ' + vm.lastName  }}</h3>
+        <h3>User: {{ vm.user.firstName + ' ' + vm.user.lastName  }}</h3>
         </div>
         <div class="mean-form-body">
         <form class="form-horizontal" name="profileUpdate">
             <div class="form-group">
                 <label class="col-md-2 control-label" for="fname">First Name</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="fname" placeholder="First Name" ng-model="vm.firstName">
+                    <input class="form-control" type="text" name="fname" placeholder="First Name" ng-model="vm.user.firstName">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label" for="lname">Last Name</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="lname" placeholder="Last Name" ng-model="vm.lastName">
+                    <input class="form-control" type="text" name="lname" placeholder="Last Name" ng-model="vm.user.lastName">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-md-2 control-label" for="email">Email</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="email" name="email" placeholder="Email" ng-model="vm.email">
+                    <input class="form-control" type="email" name="email" placeholder="Email" ng-model="vm.user.email">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label" for="zipcode">Zipcode</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="zipcode" placeholder="Zipcode" ng-model="vm.zipcode">
+                    <input class="form-control" type="text" name="zipcode" placeholder="Zipcode" ng-model="vm.user.zipcode">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label" for="username">Username</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" name="username" placeholder="Username" ng-model="vm.local.username">
+                    <input class="form-control" type="text" name="username" placeholder="Username" ng-model="vm.user.local.username">
                 </div>
             </div>
             <div class="form-group">

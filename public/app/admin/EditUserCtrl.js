@@ -4,23 +4,27 @@
     angular.module('app.core')
         .controller('EditUserCtrl', EditUserCtrl);
 
-    EditUserCtrl.$inject = ['$location', 'sbEditUser', 'identity', 'register', 'notifier'];
-    function EditUserCtrl($location, sbEditUser, identity, register, notifier) {
+    EditUserCtrl.$inject = ['$location', '$routeParams', 'userCache', 'sbEditUser', 'identity', 'register', 'notifier'];
+    function EditUserCtrl($location, $routeParams, userCache, sbEditUser, identity, register, notifier) {
+        // looks like dependency for sbEditUser has been eliminated by using the userCache
         var vm = this;
-        var ute = sbEditUser.userToEdit;
-        var isCurrentUser = (ute._id === identity.currentUser._id);
+        // var ute = sbEditUser.userToEdit;
+        // var ute = userCache.getUserById($routeParams.userId);
+        vm.user = userCache.getUserById($routeParams.userId);
+
+        var isCurrentUser = (vm.user._id === identity.currentUser._id);
 
         vm.editPassword = false;
 
-        vm.firstName = ute.firstName;
-        vm.lastName = ute.lastName;
-        vm.email = ute.email;
-        vm.local = {
-            username:  ute.local.username
-        };
-        vm.zipcode = ute.zipcode;
+        // vm.firstName = ute.firstName;
+        // vm.lastName = ute.lastName;
+        // vm.email = ute.email;
+        // vm.local = {
+        //     username:  ute.local.username
+        // };
+        // vm.zipcode = ute.zipcode;
         vm.roles = {
-            admin: isAdmin(ute)
+            admin: isAdmin(vm.user)
         };
 
         vm.toggleEditPassword = toggleEditPassword;
@@ -33,13 +37,13 @@
 
         function updateData() {
             var updatedUserData = {
-                firstName: vm.firstName,
-                lastName: vm.lastName,
-                email: vm.email,
+                firstName: vm.user.firstName,
+                lastName: vm.user.lastName,
+                email: vm.user.email,
                 local: {
-                    username: vm.local.username
+                    username: vm.user.local.username
                 },
-                zipcode: vm.zipcode,
+                zipcode: vm.user.zipcode,
                 roles: {}
             };
 
@@ -61,7 +65,7 @@
             //////////////////
 
             function sendToAuthService(newUserData) {
-                register.updateUser(ute._id, newUserData).then(function () {
+                register.updateUser(vm.user._id, newUserData).then(function () {
                     notifier.notify('User information for ' + newUserData.local.username +
                                     ' has been successfully updated');
                     $location.path('/admin/users');

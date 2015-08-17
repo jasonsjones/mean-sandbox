@@ -97,7 +97,7 @@
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.admin
             })
-            .when('/admin/edituser', {
+            .when('/admin/edituser/:userId', {
                 templateUrl: 'app/admin/edit-profile.html',
                 controller: 'EditUserCtrl',
                 controllerAs: 'vm'

@@ -43,7 +43,7 @@
                                 Action <i class="fa fa-caret-down"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li ng-click="vm.updateUser(user)"><a href="#"><i class="fa fa-pencil"></i> Edit</a></li>
+                                <li><a ng-href="/admin/edituser/{{user._id}}"><i class="fa fa-pencil"></i> Edit</a></li>
                                 <li ng-click="vm.deleteUser(user)"><a href="#"><i class="fa fa-trash"></i> Delete</a></li>
                                 <li><a href="#"><i class="fa fa-info"></i> Details</a></li>
                             </ul>
