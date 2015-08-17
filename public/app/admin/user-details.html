@@ -1,6 +1,6 @@
 <section class="middle user-details-page">
     <div class="container">
-        <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-sm-10 col-sm-offset-1">
             <div class="mean-form">
                 <div class="mean-form-header">
                     <div class="row">
@@ -13,43 +13,69 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 col-sm-offset-1">
                         <h3>Email:</h3>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <h3>{{ vm.user.email }}</h3>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 col-sm-offset-1">
                         <h3>Zipcode:</h3>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <h3>{{ vm.user.zipcode }}</h3>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 col-sm-offset-1">
                         <h3>Last Login:</h3>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <h3>{{ vm.user.lastLogin | date: 'mediumDate' }}</h3>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 col-sm-offset-1">
                         <h3>Last Modified:</h3>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <h3>{{ vm.user.lastModified | date: 'mediumDate' }}</h3>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 col-sm-offset-1">
                         <h3>Created On:</h3>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <h3>{{ vm.user.createdOn | date: 'mediumDate' }}</h3>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h4><i class="fa fa-user"></i> local</h4>
+                            <p>
+                                <strong>id:</strong> {{ vm.user._id }} <br>
+                                <strong>email:</strong> {{ vm.user.email }} <br>
+                                <strong>password:</strong> {{ vm.user.local.password }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h4 class="text-info"><i class="fa fa-twitter"></i> twitter</h4>
+                            <div ng-show="vm.user.twitter">
+                                <p>
+                                    <strong>id:</strong> {{ vm.user.twitter.id }} <br>
+                                    <strong>token:</strong> {{ vm.user.twitter.token }} <br>
+                                    <strong>email:</strong> {{ vm.user.twitter.email }} <br>
+                                    <strong>name:</strong> {{ vm.user.twitter.displayName }} <br>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
