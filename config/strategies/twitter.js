@@ -35,18 +35,18 @@ module.exports = function () {
                                 if (err) {
                                     throw err;
                                 }
+                                req.session.user = user;
                                 return done(null, user);
                             });
 
                         } else {
+                            req.session.user = user;
                             return done(null, user);
                         }
-
                         // if no user is found with that twitter id
                     } else {
-
                         // create one
-                        createNewUser(token, profile, done);
+                        createNewUser(req, token, profile, done);
                     }
                 });
 
@@ -72,7 +72,7 @@ module.exports = function () {
         });
     }
 
-    function createNewUser(token, profile, done) {
+    function createNewUser(req, token, profile, done) {
         var newUser = new User();
         newUser.twitter.id = profile.id;
         newUser.twitter.token = token;
@@ -83,6 +83,7 @@ module.exports = function () {
             if (err) {
                 throw err;
             }
+            req.session.user = newUser;
             return done(null, newUser);
         });
     }
