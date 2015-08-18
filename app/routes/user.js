@@ -1,7 +1,7 @@
 var auth = require('../controllers/auth');
 var user = require('../controllers/user');
 
-module.exports = function (api) {
+module.exports = function (api, passport) {
 
     api.route('/api/users')
         .get(user.getUsers)
@@ -14,4 +14,10 @@ module.exports = function (api) {
 
     api.route('/login')
         .post(auth.authenticateWithPassport);
+
+    api.route('/connect/twitter')
+        .get(passport.authenticate('twitter'));
+
+    api.route('/unlink/twitter')
+        .get(auth.unlinkTwitter);
 };

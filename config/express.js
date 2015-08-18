@@ -36,7 +36,7 @@ module.exports = function (config) {
         default:
     }
 
-    require('../app/routes/user')(router);
+    require('../app/routes/user')(router, passport);
     require('../app/routes/todo')(router);
     require('../app/routes/atm')(router);
     app.use(router);

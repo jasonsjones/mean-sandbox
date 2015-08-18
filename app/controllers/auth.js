@@ -48,3 +48,14 @@ exports.authenticateWithPassport = function (req, res, next) {
 
     auth(req, res, next);
 };
+
+exports.unlinkTwitter = function (req, res) {
+    var user = req.session.user;
+    user.twitter.token = undefined;
+    user.save(function (err) {
+        if (err) {
+            throw err;
+        }
+        res.redirect('/profile');
+    });
+};
