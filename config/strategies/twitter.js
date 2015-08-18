@@ -31,6 +31,7 @@ module.exports = function () {
                             user.twitter.token = token;
                             user.twitter.username = profile.username;
                             user.twitter.displayName = profile.displayName;
+                            user.lastLogin = Date.now();
                             user.save(function (err) {
                                 if (err) {
                                     throw err;
@@ -78,6 +79,7 @@ module.exports = function () {
         newUser.twitter.token = token;
         newUser.twitter.username = profile.username;
         newUser.twitter.displayName = profile.displayName;
+        newUser.lastLogin = Date.now();
 
         newUser.save(function (err) {
             if (err) {
