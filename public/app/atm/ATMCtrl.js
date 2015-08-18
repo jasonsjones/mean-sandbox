@@ -9,7 +9,6 @@
         var vm = this;
 
         vm.transactions = [];
-        vm.loading = true;
         vm.expanded = false;
 
         vm.getTotalAmount = getTotalAmount;
@@ -31,6 +30,7 @@
         }
 
         function getTransactions() {
+            vm.loading = true;
             ATM.query().then(function (data) {
                 vm.transactions = data;
                 vm.loading = false;
