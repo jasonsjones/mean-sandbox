@@ -23,6 +23,16 @@ exports.getUserById = function (req, res) {
     });
 };
 
+exports.getCurrentUser = function (req, res) {
+    if (req.session.user) {
+        console.log('user is logged in...');
+        return res.json({success: true, user: req.session.user});
+    } else {
+        console.log('no user logged in...');
+        return res.json({success: false, message: 'no current user available'});
+    }
+};
+
 exports.createUser = function (req, res, next) {
     var userData = req.body;
     userData.local.username = userData.local.username.toLowerCase();

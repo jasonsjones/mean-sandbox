@@ -12,19 +12,25 @@ module.exports = function (api, passport) {
         .put(user.updateUserById)
         .delete(user.deleteUser);
 
+    api.route('/api/users/current')
+        .get(user.getCurrentUser);
+
     api.route('/login')
         .post(auth.authenticateWithPassport);
 
     api.route('/auth/twitter')
-        .get(passport.authenticate('twitter'));
+        // .get(passport.authenticate('twitter'));
+        .get(auth.authWithTwitter);
 
     api.route('/auth/twitter/callback')
         .get(passport.authenticate('twitter', {
-            failureRedirect: '/login'}),
-                function (req, res) {
-                    res.redirect('/');
-                }
-            );
+            failureRedirect: '/login'
+        }), function (req, res) {
+                console.log('session user:');
+                console.log(req.session.user);
+                res.redirect('/');
+            }
+        );
 
     api.route('/connect/twitter')
         .get(passport.authenticate('twitter'));

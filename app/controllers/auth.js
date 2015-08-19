@@ -49,6 +49,10 @@ exports.authenticateWithPassport = function (req, res, next) {
     auth(req, res, next);
 };
 
+exports.authWithTwitter = function (req, res, next) {
+    passport.authenticate('twitter')(req, res, next);
+};
+
 exports.unlinkTwitter = function (req, res) {
     var user = req.session.user;
     user.twitter.token = undefined;
