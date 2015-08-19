@@ -7,6 +7,7 @@
         'app.core',
         'app.account',
         'app.todo',
-        'app.atm'
+        'app.atm',
+        'app.weather'
     ]);
 }());

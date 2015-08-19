@@ -4,8 +4,8 @@
     angular.module('app.account')
         .controller('NavBarLoginCtrl', NavBarLoginCtrl);
 
-    NavBarLoginCtrl.$inject = ['$location', '$window', 'sbAuth', 'identity', 'notifier', 'dataCache'];
-    function NavBarLoginCtrl($location, $window, sbAuth, identity, notifier, dataCache) {
+    NavBarLoginCtrl.$inject = ['$rootScope', '$location', '$window', 'sbAuth', 'identity', 'notifier', 'dataCache'];
+    function NavBarLoginCtrl($rootScope, $location, $window, sbAuth, identity, notifier, dataCache) {
         var vm = this;
         vm.identity = identity;
 
@@ -21,6 +21,7 @@
                 .then(function (success) {
                     if (success) {
                         notifier.notify('You have successfully logged in');
+                        $rootScope.$broadcast('userChange');
                         $location.path('/');
                     } else {
                         notifier.error('Unable to login. Please enter proper login credentials');
@@ -37,6 +38,7 @@
             notifier.notify('You successfully logged out!');
             $window.sessionStorage.removeItem('currentUser');
             dataCache.clearAllCache();
+            $rootScope.$broadcast('userChange');
             $location.path('/');
         }
 
