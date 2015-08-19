@@ -15,6 +15,7 @@ module.exports = function () {
 
     function twitterCallbackFn(req, token, tokenSecret, profile, done) {
         process.nextTick(function () {
+            console.log(profile);
             // if no user is logged in
             if (!req.session.user) {
                 // find user in the db based on the twitter id
@@ -41,8 +42,14 @@ module.exports = function () {
                             });
 
                         } else {
-                            req.session.user = user;
-                            return done(null, user);
+                            user.lastLogin = Date.now();
+                            user.save(function (err) {
+                                if (err) {
+                                    throw err;
+                                }
+                                req.session.user = user;
+                                return done(null, user);
+                            });
                         }
                         // if no user is found with that twitter id
                     } else {
