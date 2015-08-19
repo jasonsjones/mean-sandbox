@@ -34,10 +34,7 @@
 
         function loginWithTwitter() {
             console.log('logging using twitter oAuth...');
-            sbAuth.authenticateUserWithTwitter()
-                .then(function (data) {
-                    console.log(data);
-                });
+            sbAuth.authenticateUserWithTwitter();
         }
 
         function signout() {

@@ -42,15 +42,19 @@
         }
 
         function authenticateUserWithTwitter() {
-            var deferred = $q.defer();
-            $http.get('/auth/twitter')
-                .success(function (data) {
-                    console.log(data);
-                })
-                .error(function (response) {
-                    console.log(response);
-                });
-            return deferred.promise;
+            // var deferred = $q.defer();
+            $window.location.href = 'auth/twitter';
+
+            // $http.get('/api/users/current')
+            //     .success(function (data) {
+            //         // deferred.resolve(data);
+            //         console.log(data);
+            //     })
+            //     .error(function (response) {
+            //         console.log(response);
+            //         // deferred.reject(response);
+            //     });
+            // return deferred.promise;
         }
 
         function authorizeAuthenticatedUserForRoute() {
