@@ -32,7 +32,14 @@
                             </div>
                         </div>
                     </div>
-                    <p>Don't have an account?  <a href="/register"> Register here</a></p>
+                    <div class="row">
+                        <button ng-click="vm.loginWithTwitter()"
+                                class="btn btn-info"><i class="fa fa-twitter"></i> Sign in with Twitter</button>
+                    </div>
+                    <div class="row">
+                        <br>
+                        <p>Don't have an account?  <a href="/register"> Register here</a></p>
+                    </div>
                 </form>
             </div>
         </div>

@@ -1,5 +1,5 @@
 var passport = require('passport');
-var TwitterStrategy = require('passport-twitter').Stratedy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 var mongoose = require('mongoose');
 
 var User = mongoose.model('User');

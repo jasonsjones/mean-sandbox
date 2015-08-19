@@ -10,6 +10,7 @@
 
         var service = {
             authenticateUser: authenticateUser,
+            authenticateUserWithTwitter: authenticateUserWithTwitter,
             authorizeCurrentUserForRoute: authorizeCurrentUserForRoute,
             authorizeAuthenticatedUserForRoute: authorizeAuthenticatedUserForRoute
         };
@@ -38,6 +39,18 @@
                     deferred.resolve(false);
                 }
             }
+        }
+
+        function authenticateUserWithTwitter() {
+            var deferred = $q.defer();
+            $http.get('/auth/twitter')
+                .success(function (data) {
+                    console.log(data);
+                })
+                .error(function (response) {
+                    console.log(response);
+                });
+            return deferred.promise;
         }
 
         function authorizeAuthenticatedUserForRoute() {

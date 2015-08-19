@@ -15,6 +15,17 @@ module.exports = function (api, passport) {
     api.route('/login')
         .post(auth.authenticateWithPassport);
 
+    api.route('/auth/twitter')
+        .get(passport.authenticate('twitter'));
+
+    api.route('/auth/twitter/callback')
+        .get(passport.authenticate('twitter', {
+            failureRedirect: '/login'}),
+                function (req, res) {
+                    res.redirect('/');
+                }
+            );
+
     api.route('/connect/twitter')
         .get(passport.authenticate('twitter'));
 
