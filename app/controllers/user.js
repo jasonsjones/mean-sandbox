@@ -68,6 +68,11 @@ exports.createUser = function (req, res, next) {
     });
 };
 
+exports.signOutUser = function (req, res) {
+    req.session.user = null;
+    res.json({success: true});
+};
+
 exports.updateUserById = function (req, res) {
     User.findOne({_id: req.params.id}).exec(function (err, user) {
         if (err) {

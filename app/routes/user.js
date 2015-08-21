@@ -12,8 +12,11 @@ module.exports = function (api, passport) {
         .put(user.updateUserById)
         .delete(user.deleteUser);
 
-    api.route('/api/users/current')
+    api.route('/api/user/current')
         .get(user.getCurrentUser);
+
+    api.route('/api/user/signout')
+        .get(user.signOutUser);
 
     api.route('/login')
         .post(auth.authenticateWithPassport);
@@ -26,8 +29,6 @@ module.exports = function (api, passport) {
         .get(passport.authenticate('twitter', {
             failureRedirect: '/login'
         }), function (req, res) {
-                console.log('session user:');
-                console.log(req.session.user);
                 res.redirect('/');
             }
         );
