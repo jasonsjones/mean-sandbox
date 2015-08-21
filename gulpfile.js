@@ -255,7 +255,7 @@ function startBrowserSync(env) {
     }
 
     var options = {
-        proxy: 'localhost:' + port,
+        proxy: '127.0.0.1:' + port,
         port: 3000,
         files: optsFiles,
         ghostMode: {
