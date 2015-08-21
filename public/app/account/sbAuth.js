@@ -12,7 +12,9 @@
             authenticateUser: authenticateUser,
             authenticateUserWithTwitter: authenticateUserWithTwitter,
             authorizeCurrentUserForRoute: authorizeCurrentUserForRoute,
-            authorizeAuthenticatedUserForRoute: authorizeAuthenticatedUserForRoute
+            authorizeAuthenticatedUserForRoute: authorizeAuthenticatedUserForRoute,
+            getCurrentUserFromServer: getCurrentUserFromServer,
+            signOutUser: signOutUser
         };
 
         return service;
@@ -42,19 +44,7 @@
         }
 
         function authenticateUserWithTwitter() {
-            // var deferred = $q.defer();
-            $window.location.href = 'auth/twitter';
-
-            // $http.get('/api/users/current')
-            //     .success(function (data) {
-            //         // deferred.resolve(data);
-            //         console.log(data);
-            //     })
-            //     .error(function (response) {
-            //         console.log(response);
-            //         // deferred.reject(response);
-            //     });
-            // return deferred.promise;
+            $window.location.href = '/auth/twitter';
         }
 
         function authorizeAuthenticatedUserForRoute() {
@@ -72,6 +62,39 @@
             } else {
                 return $q.reject('not authorized');
             }
+        }
+
+        function getCurrentUserFromServer() {
+            var deferred = $q.defer();
+            if (!identity.currentUser) {
+                console.log('user is not logged in on client');
+                $http.get('/api/user/current')
+                    .success(authSuccess);
+            } else {
+                deferred.resolve(false);
+            }
+            return deferred.promise;
+
+            /////////////
+            function authSuccess(data) {
+                if (data.success) {
+                    var user = data.user;
+                    identity.currentUser = user;
+                    $window.sessionStorage.currentUser = JSON.stringify(user);
+                    deferred.resolve(true);
+                } else {
+                    deferred.resolve(false);
+                }
+            }
+        }
+
+        function signOutUser() {
+            var deferred = $q.defer();
+            $http.get('/api/user/signout')
+                .success(function (success) {
+                    deferred.resolve(true);
+                });
+            return deferred.promise;
         }
     }
 

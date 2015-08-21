@@ -16,6 +16,8 @@
         vm.signout = signout;
         vm.loginWithTwitter = loginWithTwitter;
 
+        getUserFromServer();
+
         /********* Implementation Details **********/
         function login() {
             sbAuth.authenticateUser(vm.username, vm.password)
@@ -46,6 +48,23 @@
             dataCache.clearAllCache();
             $rootScope.$broadcast('userChange');
             $location.path('/');
+            sbAuth.signOutUser()
+                .then(function (success) {
+                    if (success) {
+                        console.log('user logged out on server');
+                    }
+                });
+        }
+
+        function getUserFromServer() {
+            sbAuth.getCurrentUserFromServer()
+                .then(function (success) {
+                    if (success) {
+                        notifier.notify('You have successfully logged in');
+                        $rootScope.$broadcast('userChange');
+                        $location.path('/');
+                    }
+                });
         }
 
     }
