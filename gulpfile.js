@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
-var browserSync = require('browser-sync');
+var browserSync = require('browser-sync').create();
 var config = require('./gulp.config')();
 var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
@@ -272,7 +272,7 @@ function startBrowserSync(env) {
         reloadDelay: 0 //1000
     };
 
-    browserSync(options);
+    browserSync.init(options);
 }
 
 function clean(path, done) {
