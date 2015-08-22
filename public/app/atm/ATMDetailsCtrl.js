@@ -18,6 +18,7 @@
         vm.getPurchases = getPurchases;
         vm.addPurchase = addPurchase;
         vm.getTotalSpent = getTotalSpent;
+        vm.isCardCompleted = isCardCompleted;
 
         initialize();
 
@@ -63,5 +64,9 @@
                 vm.totalSpent = vm.getTotalSpent();
             });
         }
+
+        function isCardCompleted() {
+            return vm.totalSpent === vm.totalAmount;
+        }
     }
-})();
+}());
