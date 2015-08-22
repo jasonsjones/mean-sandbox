@@ -82,6 +82,17 @@ module.exports = function () {
 
     function createNewUser(req, token, profile, done) {
         var newUser = new User();
+
+        var name = profile.displayName;
+        if (name.indexOf(' ') > -1) {
+            var names = name.split(' ');
+            newUser.firstName = names[0];
+            newUser.lastName = names[names.length - 1];
+        } else {
+            newUser.firstName = profile.displayName;
+        }
+
+        newUser.local.username = profile.username;
         newUser.twitter.id = profile.id;
         newUser.twitter.token = token;
         newUser.twitter.username = profile.username;
