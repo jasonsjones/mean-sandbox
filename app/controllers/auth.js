@@ -54,12 +54,18 @@ exports.authWithTwitter = function (req, res, next) {
 };
 
 exports.unlinkTwitter = function (req, res) {
-    var user = req.session.user;
-    user.twitter.token = undefined;
-    user.save(function (err) {
-        if (err) {
-            throw err;
-        }
-        res.redirect('/profile');
+    User.findOne({_id: req.session.user._id}).exec(function (err, user) {
+        user.twitter.id = undefined;
+        user.twitter.token = undefined;
+        user.twitter.username = undefined;
+        user.twitter.displayName = undefined;
+        user.save(function (err) {
+            if (err) {
+                throw err;
+            }
+            user.local.salt = undefined;
+            user.local.password = undefined;
+            res.json({success: true, user: user});
+        });
     });
 };

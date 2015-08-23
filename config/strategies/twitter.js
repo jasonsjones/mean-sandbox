@@ -15,7 +15,6 @@ module.exports = function () {
 
     function twitterCallbackFn(req, token, tokenSecret, profile, done) {
         process.nextTick(function () {
-            console.log(profile);
             // if no user is logged in
             if (!req.session.user) {
                 // find user in the db based on the twitter id
@@ -66,17 +65,22 @@ module.exports = function () {
     }
 
     function linkAccounts(req, token, profile, done) {
-        var user = req.session.user;
-        user.twitter.id = profile.id;
-        user.twitter.token = token;
-        user.twitter.username = profile.username;
-        user.twitter.displayName = profile.displayName;
-
-        user.save(function (err) {
+        User.findOne({_id: req.session.user._id}).exec(function (err, user) {
             if (err) {
                 throw err;
             }
-            return done(null, user);
+            user.twitter = {};
+            user.twitter.id = profile.id;
+            user.twitter.token = token;
+            user.twitter.username = profile.username;
+            user.twitter.displayName = profile.displayName;
+
+            user.save(function (err) {
+                if (err) {
+                    throw err;
+                }
+                return done(null, user);
+            });
         });
     }
 
