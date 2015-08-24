@@ -79,6 +79,7 @@ module.exports = function () {
                 if (err) {
                     throw err;
                 }
+                req.session.user = user;
                 return done(null, user);
             });
         });

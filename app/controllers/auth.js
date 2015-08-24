@@ -63,6 +63,7 @@ exports.unlinkTwitter = function (req, res) {
             if (err) {
                 throw err;
             }
+            req.session.user = user;
             user.local.salt = undefined;
             user.local.password = undefined;
             res.json({success: true, user: user});
