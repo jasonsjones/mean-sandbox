@@ -4,8 +4,8 @@
     angular.module('app.account')
         .factory('identity', identityFactory);
 
-    identityFactory.$inject = ['$window'];
-    function identityFactory($window) {
+    identityFactory.$inject = ['$window', '$http', '$q'];
+    function identityFactory($window, $http, $q) {
 
         var storage = $window.sessionStorage;
         var currentUser = null;
@@ -18,7 +18,8 @@
         var service = {
             currentUser: currentUser,
             isAuthenticated: isAuthenticated,
-            isAuthorizedForRole: isAuthorizedForRole
+            isAuthorizedForRole: isAuthorizedForRole,
+            getCurrentUserFromServer: getCurrentUserFromServer
         };
 
         return service;
@@ -30,6 +31,25 @@
 
         function isAuthorizedForRole(role) {
             return this.isAuthenticated() && this.currentUser.roles.indexOf(role) > -1;
+        }
+
+        function getCurrentUserFromServer() {
+            var deferred = $q.defer();
+            $http.get('/api/user/current')
+                .success(authSuccess);
+            return deferred.promise;
+
+            /////////////
+            function authSuccess(data) {
+                if (data.success) {
+                    var user = data.user;
+                    currentUser = user;
+                    storage.currentUser = JSON.stringify(user);
+                    deferred.resolve(user);
+                } else {
+                    deferred.resolve(false);
+                }
+            }
         }
     }
 }());

@@ -62,6 +62,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <p ng-hide="vm.currentUser.twitter">User is not connected to twitter</p>
+                        <button class="btn btn-info" ng-hide="vm.currentUser.twitter" ng-click="vm.connectToTwitter()">Connect to <i class="fa fa-twitter"></i></button>
+                        <p ng-show="vm.currentUser.twitter">User is connected to twitter</p>
+                        <button class="btn btn-info" ng-show="vm.currentUser.twitter" ng-click="vm.unlinkTwitter()">Unlink <i class="fa fa-twitter"></i> account</button>
+                    </div>
                 </form>
             </div>
         </div>

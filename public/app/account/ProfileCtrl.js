@@ -4,8 +4,8 @@
     angular.module('app.account')
         .controller('ProfileCtrl', ProfileCtrl);
 
-    ProfileCtrl.$inject = ['$location', 'identity', 'notifier', 'register'];
-    function ProfileCtrl($location, identity, notifier, register) {
+    ProfileCtrl.$inject = ['$location', 'identity', 'sbAuth', 'notifier', 'register'];
+    function ProfileCtrl($location, identity, sbAuth, notifier, register) {
         var vm = this;
 
         vm.editPassword = false;
@@ -20,8 +20,16 @@
 
         vm.toggleEditPassword = toggleEditPassword;
         vm.updateData = updateData;
+        vm.connectToTwitter = connectToTwitter;
+        vm.unlinkTwitter = unlinkTwitter;
+
+        activate();
 
         /********* Implementation Details **********/
+        function activate() {
+            getCurrentUser();
+        }
+
         function updateData () {
 
             var userUpdate = {
@@ -68,6 +76,27 @@
 
         function toggleEditPassword () {
             vm.editPassword = !vm.editPassword;
+        }
+
+        function connectToTwitter() {
+            sbAuth.connectToTwitter();
+        }
+
+        function unlinkTwitter() {
+            sbAuth.unlinkTwitter()
+                .then(function (data) {
+                    if (data.success) {
+                        vm.currentUser = data.user;
+                    }
+                });
+        }
+
+        function getCurrentUser() {
+            identity.getCurrentUserFromServer()
+                .then(function (data) {
+                    vm.currentUser = data;
+                    console.log(vm.currentUser);
+                });
         }
     }
 }());

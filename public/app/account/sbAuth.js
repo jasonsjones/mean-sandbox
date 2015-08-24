@@ -5,16 +5,18 @@
     angular.module('app.account')
         .factory('sbAuth', sbAuth);
 
-    sbAuth.$inject = ['$http', '$q', '$window', 'identity'];
-    function sbAuth($http, $q, $window, identity) {
+    sbAuth.$inject = ['$http', '$q', '$window', 'identity', 'userCache'];
+    function sbAuth($http, $q, $window, identity, userCache) {
 
         var service = {
             authenticateUser: authenticateUser,
             authenticateUserWithTwitter: authenticateUserWithTwitter,
             authorizeCurrentUserForRoute: authorizeCurrentUserForRoute,
             authorizeAuthenticatedUserForRoute: authorizeAuthenticatedUserForRoute,
+            connectToTwitter: connectToTwitter,
             getCurrentUserFromServer: getCurrentUserFromServer,
-            signOutUser: signOutUser
+            signOutUser: signOutUser,
+            unlinkTwitter: unlinkTwitter
         };
 
         return service;
@@ -64,6 +66,11 @@
             }
         }
 
+        function connectToTwitter() {
+            userCache.usersChanged();
+            $window.location.href = '/connect/twitter';
+        }
+
         function getCurrentUserFromServer() {
             var deferred = $q.defer();
             if (!identity.currentUser) {
@@ -93,6 +100,16 @@
             $http.get('/api/user/signout')
                 .success(function (success) {
                     deferred.resolve(true);
+                });
+            return deferred.promise;
+        }
+
+        function unlinkTwitter() {
+            var deferred = $q.defer();
+            $http.get('/unlink/twitter')
+                .success(function (data) {
+                    userCache.usersChanged();
+                    deferred.resolve(data);
                 });
             return deferred.promise;
         }
