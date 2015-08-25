@@ -12,14 +12,14 @@
 
         var routeRoleCheck = {
             admin: {
-                auth: function (sbAuth) {
+                auth: ['sbAuth', function (sbAuth) {
                     return sbAuth.authorizeCurrentUserForRoute('admin');
-                }
+                }]
             },
             user : {
-                auth: function (sbAuth) {
+                auth: ['sbAuth', function (sbAuth) {
                     return sbAuth.authorizeAuthenticatedUserForRoute();
-                }
+                }]
             }
         };
 
