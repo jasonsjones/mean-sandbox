@@ -1,7 +1,7 @@
 var passport = require('passport');
 var User = require('mongoose').model('User');
 
-module.exports = function() {
+module.exports = function(config) {
 
     passport.serializeUser(function (user, done) {
         if (user) {
@@ -16,5 +16,5 @@ module.exports = function() {
     });
 
     require('./strategies/local')();
-    require('./strategies/twitter')();
+    require('./strategies/twitter')(config);
 };

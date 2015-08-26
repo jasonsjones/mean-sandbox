@@ -3,13 +3,12 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 var mongoose = require('mongoose');
 
 var User = mongoose.model('User');
-var configAuth = require('../auth');
 
-module.exports = function () {
+module.exports = function (config) {
     passport.use('twitter', new TwitterStrategy({
-        consumerKey: configAuth.twitterAuth.consumerKey,
-        consumerSecret: configAuth.twitterAuth.consumerSecret,
-        callbackURL: configAuth.twitterAuth.callbackURL,
+        consumerKey: config.twitterAuth.consumerKey,
+        consumerSecret: config.twitterAuth.consumerSecret,
+        callbackURL: config.twitterAuth.callbackURL,
         passReqToCallback: true
     }, twitterCallbackFn));
 

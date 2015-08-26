@@ -8,7 +8,7 @@ require('./config/mongoose')(config);
 
 var app = require('./config/express')(config);
 
-require('./config/passport')();
+require('./config/passport')(config);
 
 app.listen(config.port, function () {
     console.log('Server started on port ' + config.port);
