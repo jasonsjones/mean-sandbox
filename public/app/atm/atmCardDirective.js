@@ -23,7 +23,7 @@
                 var $atmBody = $(this).closest('.atm-card-header').next();
                 var $atmList = $atmBody.find('.atm-list');
                 $atmBody.slideToggle(400);
-                $(this).toggleClass("fa-chevron-down fa-chevron-up");
+                $(this).toggleClass('fa-chevron-down fa-chevron-up');
             });
         }
 

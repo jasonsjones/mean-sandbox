@@ -31,11 +31,9 @@
                         deferred.resolve(data);
                     })
                     .error(function (response) {
-                       deferred.reject(response);
+                        deferred.reject(response);
                     });
-
-
-                }
+            }
             return deferred.promise;
 
         }

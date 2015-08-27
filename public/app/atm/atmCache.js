@@ -44,19 +44,19 @@
             var deferred = $q.defer();
 
             if (cachedATMsById[atmId]) {
-                console.log('getting ATM '+ atmId + ' from cache...');
+                console.log('getting ATM ' + atmId + ' from cache...');
                 deferred.resolve(cachedATMsById[atmId]);
             } else {
                 console.log('hitting the backend to get ATM ' + atmId);
-                    var url = '/api/atms/' + atmId;
-                    $http.get(url)
-                        .success(function (data) {
-                            deferred.resolve(data);
-                            cachedATMsById[atmId] = data;
-                        })
-                        .error(function () {
-                            deferred.reject('Failed to get ATM transaction '+ atmId);
-                        });
+                var url = '/api/atms/' + atmId;
+                $http.get(url)
+                    .success(function (data) {
+                        deferred.resolve(data);
+                        cachedATMsById[atmId] = data;
+                    })
+                    .error(function () {
+                        deferred.reject('Failed to get ATM transaction ' + atmId);
+                    });
             }
             return deferred.promise;
         }

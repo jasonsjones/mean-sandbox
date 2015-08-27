@@ -32,7 +32,7 @@
                         deferred.resolve(cachedPurchases[atmId]);
                     })
                     .error(function () {
-                       deferred.reject('failed to get purchases');
+                        deferred.reject('failed to get purchases');
                     });
             }
             return deferred.promise;
