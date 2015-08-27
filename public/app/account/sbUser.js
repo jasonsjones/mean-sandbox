@@ -13,8 +13,9 @@
                 update: {
                     method: 'PUT',
                     isArray: false
+                }
             }
-        });
+        );
 
         UserResource.prototype.isAdmin = function () {
             return this.roles && this.roles.indexOf('admin') > -1;

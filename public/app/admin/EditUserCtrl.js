@@ -4,8 +4,11 @@
     angular.module('app.core')
         .controller('EditUserCtrl', EditUserCtrl);
 
-    EditUserCtrl.$inject = ['$location', '$routeParams', 'userCache', 'sbEditUser', 'identity', 'register', 'notifier'];
-    function EditUserCtrl($location, $routeParams, userCache, sbEditUser, identity, register, notifier) {
+    EditUserCtrl.$inject = ['$location', '$routeParams', 'userCache',
+                            'sbEditUser', 'identity', 'register', 'notifier'];
+    function EditUserCtrl($location, $routeParams, userCache,
+                          sbEditUser, identity, register, notifier) {
+
         // looks like dependency for sbEditUser has been eliminated by using the userCache
         var vm = this;
         // var ute = sbEditUser.userToEdit;
@@ -76,7 +79,7 @@
         }
 
         function isAdmin(user) {
-           return user.roles.indexOf('admin') > -1;
+            return user.roles.indexOf('admin') > -1;
         }
 
         function determineRole(user) {

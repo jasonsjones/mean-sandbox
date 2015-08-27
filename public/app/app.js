@@ -110,14 +110,14 @@
     angular.module('app')
         .run(runFunction);
 
-        runFunction.$inject = ['$rootScope', '$location'];
-        function runFunction($rootScope, $location) {
-            $rootScope.$on('$routeChangeError', handleRouteChangeError);
+    runFunction.$inject = ['$rootScope', '$location'];
+    function runFunction($rootScope, $location) {
+        $rootScope.$on('$routeChangeError', handleRouteChangeError);
 
-            function handleRouteChangeError(evt, current, previous, rejection) {
-                if (rejection === 'not authorized') {
-                    $location.path('/');
-                }
+        function handleRouteChangeError(evt, current, previous, rejection) {
+            if (rejection === 'not authorized') {
+                $location.path('/');
             }
         }
+    }
 }());

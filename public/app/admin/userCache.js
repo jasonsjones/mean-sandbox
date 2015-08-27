@@ -48,7 +48,5 @@
                 cachedUsersById[user._id] = user;
             });
         }
-
-
     }
 }());

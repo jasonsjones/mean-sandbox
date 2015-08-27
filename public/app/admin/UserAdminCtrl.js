@@ -5,8 +5,10 @@
     angular.module('app.core')
         .controller('UserAdminCtrl', UserAdminCtrl);
 
-    UserAdminCtrl.$inject = ['$location', '$window', 'userCache', 'sbEditUser', 'register', 'notifier'];
-    function UserAdminCtrl($location, $window, userCache, sbEditUser, register, notifier) {
+    UserAdminCtrl.$inject = ['$location', '$window', 'userCache',
+                             'sbEditUser', 'register', 'notifier'];
+    function UserAdminCtrl($location, $window, userCache,
+                           sbEditUser, register, notifier) {
         var vm = this;
 
         vm.users = [];
@@ -52,7 +54,7 @@
 
         function changeSortColumn(column) {
             vm.sortOrderAsc = !vm.sortOrderAsc;
-            vm.userTableSortCol = (vm.sortOrderAsc ? column : '-'+column);
+            vm.userTableSortCol = (vm.sortOrderAsc ? column : '-' + column);
         }
 
         function getUsers() {
