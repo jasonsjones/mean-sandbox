@@ -187,7 +187,7 @@ gulp.task('serve-dev', ['inject'], function () {
 });
 
 gulp.task('serve-dev-c9io', ['inject'], function () {
-    serve('devlocalc9.io');
+    serve('devlocalc9io');
 });
 
 /***************************/
@@ -239,7 +239,7 @@ function startBrowserSync(env) {
 
     var optsFiles;
 
-    if (env === 'devlocal' || env === 'devweb' || env == 'devlocalc9.io') {
+    if (env === 'devlocal' || env === 'devweb' || env == 'devlocalc9io') {
         optsFiles = [
             config.client + '**/*.*',
             '!' + config.less,

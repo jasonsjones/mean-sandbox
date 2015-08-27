@@ -33,6 +33,12 @@ module.exports = function (config) {
             app.use(express.static('./.tmp/'));
             app.use(express.static('./'));
             break;
+        case 'devlocalc9io':
+            console.log('** DEVLOCAL--c9.io **');
+            app.use(express.static('./public/'));
+            app.use(express.static('./.tmp/'));
+            app.use(express.static('./'));
+            break;
         default:
     }
 
