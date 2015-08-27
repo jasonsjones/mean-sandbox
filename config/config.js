@@ -24,8 +24,8 @@ module.exports = {
         port: process.env.PORT || 7401,
         twitterAuth: twitterConfigLocal
     },
-    devlocalc9io: {
-        env: 'devlocalc9io',
+    devc9io: {
+        env: 'devc9io',
         db: 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + ':' +
                 (process.env.DB_1_PORT_27017_TCP_PORT || '27017') + '/meansandbox',
         secret: 'learningtheMEANstack',

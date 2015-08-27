@@ -28,13 +28,13 @@ module.exports = function (config) {
             app.use(express.static('./build/'));
             break;
         case 'devlocal':
-            console.log('** DEVLOCAL **');
+            console.log('** DEV-LOCAL **');
             app.use(express.static('./public/'));
             app.use(express.static('./.tmp/'));
             app.use(express.static('./'));
             break;
-        case 'devlocalc9io':
-            console.log('** DEVLOCAL--c9.io **');
+        case 'devc9io':
+            console.log('** DEV-c9.io **');
             app.use(express.static('./public/'));
             app.use(express.static('./.tmp/'));
             app.use(express.static('./'));
