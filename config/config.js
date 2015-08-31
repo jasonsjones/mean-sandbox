@@ -2,6 +2,7 @@ var twitterConsumerKey = process.env.SB_TWITTER_CONSUMER_KEY;
 var twitterConsumerSecret = process.env.SB_TWITTER_CONSUMER_SECRET;
 var twitterLocalCallback = 'http://127.0.0.1:3000/auth/twitter/callback';
 var twitterC9Callback = 'https://mean-sandbox-jsj0nes.c9.io/auth/twitter/callback';
+var twitterDOCallback = 'http://meansandbox.com/auth/twitter/callback';
 
 var twitterConfigLocal = {
     consumerKey: twitterConsumerKey,
@@ -13,6 +14,12 @@ var twitterConfigC9 = {
     consumerKey: twitterConsumerKey,
     consumerSecret: twitterConsumerSecret,
     callbackURL: twitterC9Callback
+};
+
+var twitterConfigProdDO = {
+    consumerKey: twitterConsumerKey,
+    consumerSecret: twitterConsumerSecret,
+    callbackURL: twitterDOCallback
 };
 
 module.exports = {
@@ -44,6 +51,7 @@ module.exports = {
         db: 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + ':' +
                 (process.env.DB_1_PORT_27017_TCP_PORT || '27017') + '/meansandbox',
         secret: 'learningtheMEANstack',
-        port: process.env.PORT || 7401
+        port: process.env.PORT || 7401,
+        twitterAuth: twitterConfigProdDO
     }
 };
