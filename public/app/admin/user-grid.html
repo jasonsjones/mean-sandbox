@@ -27,7 +27,7 @@
                                 <p>{{ user.firstName + ' ' + user.lastName }}</p>
                                 <p>( {{ user.local.username }} )</p>
                                 <p ng-if="vm.isAdmin(user)"><i class="fa fa-check"></i> admin</p>
-                                <a ng-href="/admin/users/{{user._id}}"> Details</a>
+                                <a ng-href="/admin/users/{{user._id}}"><i class="fa fa-eye"></i> Details</a>
                             </div>
                         </div>
                     </div>
