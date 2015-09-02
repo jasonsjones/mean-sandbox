@@ -1,3 +1,6 @@
+var emailUser = process.env.MS_GMAIL_USER;
+var emailPass = process.env.MS_GMAIL_PASS;
+
 var twitterConsumerKey = process.env.SB_TWITTER_CONSUMER_KEY;
 var twitterConsumerSecret = process.env.SB_TWITTER_CONSUMER_SECRET;
 var twitterLocalCallback = 'http://127.0.0.1:3000/auth/twitter/callback';
@@ -29,6 +32,8 @@ module.exports = {
                 (process.env.DB_1_PORT_27017_TCP_PORT || '27017') + '/meansandbox',
         secret: 'learningtheMEANstack',
         port: process.env.PORT || 7401,
+        emailUser: emailUser,
+        emailPass: emailPass,
         twitterAuth: twitterConfigLocal
     },
     devc9io: {
@@ -37,6 +42,8 @@ module.exports = {
                 (process.env.DB_1_PORT_27017_TCP_PORT || '27017') + '/meansandbox',
         secret: 'learningtheMEANstack',
         port: process.env.PORT || 7401,
+        emailUser: emailUser,
+        emailPass: emailPass,
         twitterAuth: twitterConfigC9
     },
     devweb: {
@@ -52,6 +59,8 @@ module.exports = {
                 (process.env.DB_1_PORT_27017_TCP_PORT || '27017') + '/meansandbox',
         secret: 'learningtheMEANstack',
         port: process.env.PORT || 7401,
+        emailUser: emailUser,
+        emailPass: emailPass,
         twitterAuth: twitterConfigProdDO
     }
 };
