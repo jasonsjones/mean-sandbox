@@ -10,12 +10,10 @@ exports.testEmail = function (req, res) {
         text: 'This is a test email sent from nodemailer running on a node server'
     };
 
-    console.log(mailOptions);
     sendEmail(res, mailOptions);
 };
 
 exports.contactEmail = function (req, res) {
-    console.log(req.body);
     var mailOptions = {
         from: 'MEAN Sandbox <meansandbox@gmail.com>',
         to: 'meansandbox@gmail.com',
@@ -24,7 +22,6 @@ exports.contactEmail = function (req, res) {
         subject: req.body.subject,
         text:  req.body.message
     };
-    console.log(mailOptions);
     sendEmail(res, mailOptions);
 };
 
@@ -34,8 +31,7 @@ function sendEmail(res, mailOpts) {
             console.log(err);
             res.json({success: false, message: err});
         } else {
-            console.log(info);
-            res.json({success: true, message: 'email sent--yay!!'})
+            res.json({success: true, message: 'email sent--yay!!'});
         }
     });
 }
