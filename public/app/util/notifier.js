@@ -3,7 +3,8 @@
 
     angular.module('app.core').value('toastr', toastr);
 
-    angular.module('app.core').factory('notifier', notifier);
+    angular.module('app.core')
+        .factory('notifier', notifier);
 
     notifier.$inject = ['toastr'];
     function notifier(toastr) {
@@ -17,19 +18,20 @@
             info: info
         };
 
+        /********** Implementation Details *********/
         function notify(msg) {
             toastr.success(msg);
-            console.log(msg);
+            console.log('LOG: ' + msg);
         }
 
         function error(msg) {
             toastr.error(msg);
-            console.log(msg);
+            console.log('ERROR: ' + msg);
         }
 
         function info(msg) {
             toastr.info(msg);
-            console.log(msg);
+            console.log('INFO: ' + msg);
         }
     }
 }());
