@@ -60,6 +60,16 @@ describe('ProfileCtrl', function () {
     });
 
     it('is defined', function () {
-       expect(profileCtrl).to.exist;
+        expect(profileCtrl).to.exist;
+    });
+
+    it('editPassword flag is false by default', function () {
+        expect(profileCtrl.editPassword).to.be.false;
+    });
+
+    it('editPassword flag is toggled with call to toggleEditPassword', function () {
+        expect(profileCtrl.editPassword).to.be.false;
+        profileCtrl.toggleEditPassword();
+        expect(profileCtrl.editPassword).to.be.true;
     });
 });
