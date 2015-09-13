@@ -2,22 +2,30 @@
 
 describe('ProfileCtrl', function () {
 
+    beforeEach(module('app.core'))
     beforeEach(module('app.account'))
-    beforeEach(function () {
-        module('app.core');
-    });
 
-    var regService, sandbox;
+    var regService, authService, sandbox;
 
     var profileCtrl,
         mockNotifier,
         mockLocation,
         mockIdentity;
 
-    beforeEach(inject(function ($controller, $injector) {
+    beforeEach(inject(function ($controller, $injector, $q) {
+
+        var user = {
+            'firstName': 'Larry',
+            'lastName': 'Smith',
+             'email': 'larry@larrySmith.com',
+            'local': {
+                'username': 'larry'
+            }
+        };
 
         sandbox = sinon.sandbox.create();
         regService = $injector.get('register');
+        authService = $injector.get('sbAuth');
 
         mockNotifier = {
             notify: function () {}
@@ -30,7 +38,10 @@ describe('ProfileCtrl', function () {
                 }
             },
             isAuthenticated: function () { },
-            isAuthorizedForRole: function (role) { }
+            isAuthorizedForRole: function (role) { },
+            getCurrentUserFromServer: function () {
+                return $q.when(user);
+            }
         };
 
         mockLocation = {

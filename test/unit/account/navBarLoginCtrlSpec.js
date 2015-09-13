@@ -2,6 +2,9 @@
 
 describe('NavBarLoginCtrl', function () {
 
+    beforeEach(module('app.core'));
+    beforeEach(module('app.atm'));
+    beforeEach(module('app.todo'));
     beforeEach(module('app.account'));
 
     var authservice, sandbox;
