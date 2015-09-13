@@ -74,7 +74,7 @@
         function getCurrentUserFromServer() {
             var deferred = $q.defer();
             if (!identity.currentUser) {
-                console.log('user is not logged in on client');
+                console.log('sbAuth -- user is not logged in on client');
                 $http.get('/api/user/current')
                     .success(authSuccess);
             } else {
