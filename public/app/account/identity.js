@@ -35,8 +35,13 @@
 
         function getCurrentUserFromServer() {
             var deferred = $q.defer();
-            $http.get('/api/user/current')
-                .success(authSuccess);
+            if (this.currentUser === null) {
+                console.log('identity -- user is not logged in on client');
+                $http.get('/api/user/current')
+                    .success(authSuccess);
+            } else {
+                deferred.resolve(this.currentUser);
+            }
             return deferred.promise;
 
             /////////////
