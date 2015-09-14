@@ -48,6 +48,8 @@ describe('ProfileCtrl', function () {
             path: function (url) { }
         };
 
+        sandbox.spy(mockIdentity, 'getCurrentUserFromServer');
+
         profileCtrl = $controller('ProfileCtrl', {
             $location: mockLocation,
             identity: mockIdentity,
@@ -71,5 +73,9 @@ describe('ProfileCtrl', function () {
         expect(profileCtrl.editPassword).to.be.false;
         profileCtrl.toggleEditPassword();
         expect(profileCtrl.editPassword).to.be.true;
+    });
+
+    it('identity.getCurrentUserFromServer is called when controller is loaded', function () {
+        expect(mockIdentity.getCurrentUserFromServer.calledOnce).to.be.true;
     });
 });
