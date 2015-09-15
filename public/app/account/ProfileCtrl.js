@@ -8,15 +8,8 @@
     function ProfileCtrl($location, identity, sbAuth, notifier, register) {
         var vm = this;
 
+        vm.currentUser = null;
         vm.editPassword = false;
-
-        vm.firstName = identity.currentUser.firstName;
-        vm.lastName = identity.currentUser.lastName;
-        vm.email = identity.currentUser.email;
-        vm.zipcode = identity.currentUser.zipcode;
-        vm.local = {
-            username : identity.currentUser.local.username
-        };
 
         vm.toggleEditPassword = toggleEditPassword;
         vm.updateData = updateData;
