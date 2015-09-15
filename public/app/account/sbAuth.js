@@ -28,14 +28,14 @@
             $http.post('/login', {
                 username: username,
                 password: password
-            }).then(authSuccess);
+            }).success(authSuccess);
 
             return deferred.promise;
 
             /////////////
-            function authSuccess(response) {
-                if (response.data.success) {
-                    var user = response.data.user;
+            function authSuccess(data) {
+                if (data.success) {
+                    var user = data.user;
                     identity.currentUser = user;
                     $window.sessionStorage.currentUser = JSON.stringify(user);
                     deferred.resolve(true);
