@@ -5,12 +5,11 @@ describe('ProfileCtrl', function () {
     beforeEach(module('app.core'))
     beforeEach(module('app.account'))
 
-    var regService, authService, sandbox;
+    var regService, authService, idService, sandbox;
 
     var profileCtrl,
         mockNotifier,
-        mockLocation,
-        mockIdentity;
+        mockLocation;
 
     beforeEach(inject(function ($controller, $injector, $q) {
 
@@ -26,33 +25,21 @@ describe('ProfileCtrl', function () {
         sandbox = sinon.sandbox.create();
         regService = $injector.get('register');
         authService = $injector.get('sbAuth');
+        idService = $injector.get('identity');
 
         mockNotifier = {
             notify: function () {}
-        };
-
-        mockIdentity = {
-            currentUser: {
-                local: {
-                    username: 'larry'
-                }
-            },
-            isAuthenticated: function () { },
-            isAuthorizedForRole: function (role) { },
-            getCurrentUserFromServer: function () {
-                return $q.when(user);
-            }
         };
 
         mockLocation = {
             path: function (url) { }
         };
 
-        sandbox.spy(mockIdentity, 'getCurrentUserFromServer');
+        sandbox.stub(idService, 'getCurrentUserFromServer').returns($q.when(user));
 
         profileCtrl = $controller('ProfileCtrl', {
             $location: mockLocation,
-            identity: mockIdentity,
+            //identity: mockIdentity,
             notifier: mockNotifier
         });
     }));
@@ -76,6 +63,6 @@ describe('ProfileCtrl', function () {
     });
 
     it('identity.getCurrentUserFromServer is called when controller is loaded', function () {
-        expect(mockIdentity.getCurrentUserFromServer.calledOnce).to.be.true;
+        expect(idService.getCurrentUserFromServer.calledOnce).to.be.true;
     });
 });
