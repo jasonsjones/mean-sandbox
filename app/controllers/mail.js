@@ -17,7 +17,6 @@ exports.contactEmail = function (req, res) {
     var mailOptions = {
         from: 'MEAN Sandbox <meansandbox@gmail.com>',
         to: 'meansandbox@gmail.com',
-        cc: 'jsjones96@gmail.com',
         replyTo: req.body.from,
         subject: req.body.subject,
         text:  req.body.message
