@@ -197,3 +197,37 @@ html, body {
 .toast-bottom-right {
     bottom: @footerHeight;
 }
+
+@media (max-width: 767px) {
+    .banner {
+        h1 {
+            font-size: 32px;
+        }
+        .lead {
+            line-height: 2.0em;
+        }
+    }
+    .mean-components {
+        margin: 20px auto;
+        text-align: center;
+
+        .mean-img {
+            height: 50px;
+            margin: 0 auto 5px auto;
+        }
+
+        .mean-description {
+            min-height: 50px;
+        }
+    }
+    .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+
+        .navbar-form {
+            button, a, input {
+                margin-top: 15px;
+            }
+        }
+    }
+}
