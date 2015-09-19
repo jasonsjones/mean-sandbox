@@ -20,11 +20,16 @@
             color: white;
         }
 
+        .amount {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
         .date {
             font-style: italic;
             color: @dateColor;
             float: right;
-            font-size: 80%;
+            font-size: 18px;
         }
         .location {
             color: lighten(@dateColor, 20%);
@@ -35,6 +40,10 @@
     .atm-card-body {
         background: white;
         font-size: 22px;
+
+        .form-group {
+            margin: 15px 15px 0 15px;
+        }
 
         .atm-list {
             font-size: 18px;
@@ -56,6 +65,22 @@
             font-style: italic;
             color: green;
             border-top: 2px solid #777;
+        }
+
+        .atm-total, .atm-remaining {
+            font-weight: bold;
+            font-style: italic;
+            margin: 0 10px;
+        }
+
+        .atm-total {
+            color: green;
+            border-top: 2px solid #777;
+        }
+
+        .atm-remaining {
+            color: #003366;
+            padding: 10px 80px;
         }
     }
 }
@@ -86,11 +111,33 @@
     }
 }
 
-.amount {
-    font-size: 18px;
-    font-weight: bold;
-}
 
 .remaining {
     color: #003366;
+}
+
+@media (max-width: 767px) {
+    .atm-card {
+        .atm-card-header {
+            h2 {
+                font-size: 22px;
+            }
+
+            .amount, .date {
+                font-size: 16px;
+            }
+        }
+
+        .atm-card-body {
+            font-size: 14px;
+
+            .atm-total, .atm-remaining {
+                text-align: right;
+            }
+
+            .atm-remaining {
+                padding: 10px 0;
+            }
+        }
+    }
 }
