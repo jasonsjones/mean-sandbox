@@ -39,32 +39,19 @@
 
     .atm-card-body {
         background: white;
-        font-size: 22px;
+        font-size: 20px;
 
         .form-group {
             margin: 15px 15px 0 15px;
         }
 
         .atm-list {
-            font-size: 18px;
-        }
-
-        .table {
-            margin-bottom: 0;
+            margin: 5px 15px;
+            padding-bottom: 10px;
 
             .fa {
                 cursor: pointer;
             }
-            tbody tr td .fa-trash {
-                width: 25px;
-            }
-        }
-
-        tfoot {
-            font-weight: bold;
-            font-style: italic;
-            color: green;
-            border-top: 2px solid #777;
         }
 
         .atm-total, .atm-remaining {
@@ -116,7 +103,21 @@
     color: #003366;
 }
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 480px) {
+    .atm-card {
+        .atm-card-header {
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        .atm-card-body {
+            font-size: 14px;
+        }
+    }
+}
+
+@media only screen and (max-width: 767px) {
     .atm-card {
         .atm-card-header {
             h2 {
@@ -129,7 +130,12 @@
         }
 
         .atm-card-body {
-            font-size: 14px;
+            font-size: 16px;
+            .atm-list {
+                margin: 0 15px;
+                padding: 10px 0;
+                border-bottom: 1px solid black;
+            }
 
             .atm-total, .atm-remaining {
                 text-align: right;
@@ -138,6 +144,7 @@
             .atm-remaining {
                 padding: 10px 0;
             }
+
         }
     }
 }

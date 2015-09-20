@@ -1,13 +1,26 @@
-<td ng-hide="vm.editPurchaseState">{{ vm.item.amount | currency }}</td>
-<td ng-hide="vm.editPurchaseState">{{ vm.item.description }}</td>
-
-<div class="input-group">
-    <td ng-show="vm.editPurchaseState"><input type="text" class="form-control" ng-model="vm.item.amount"/></td>
-    <td ng-show="vm.editPurchaseState"><input type="text" class="form-control" ng-model="vm.item.description"/></td>
+<div>
+    <div class="col-md-3 col-xs-6">
+        <span ng-hide="vm.editPurchaseState">{{ vm.item.amount | currency }}</span>
+        <span ng-show="vm.editPurchaseState"><input type="text" class="form-control" ng-model="vm.item.amount"/></span>
+    </div>
+    <div class="col-md-5 col-xs-6">
+        <span ng-hide="vm.editPurchaseState">{{ vm.item.description }}</span>
+        <span ng-show="vm.editPurchaseState">
+            <input type="text" class="form-control" ng-model="vm.item.description"/>
+        </span>
+    </div>
+    <div class="col-md-2 col-xs-6">
+        <span ng-hide="vm.editPurchaseState">
+            <i class="fa fa-pencil" ng-click="vm.editPurchase()"></i> Edit
+        </span>
+        <span ng-show="vm.editPurchaseState">
+            <i class="fa fa-plus" ng-click="vm.updatePurchase()"></i> Update
+        </span>
+    </div>
+    <div class="col-md-2 col-xs-6">
+        <span>
+            <i class="fa fa-trash" ng-click="vm.deletePurchase()"></i> Delete
+        </span>
+    </div>
 </div>
-
-<td ng-hide="vm.editPurchaseState"><i class="fa fa-pencil" ng-click="vm.editPurchase()"></i></td>
-<td ng-show="vm.editPurchaseState"><i class="fa fa-plus" ng-click="vm.updatePurchase()"></i></td>
-
-<td><i class="fa fa-trash" ng-click="vm.deletePurchase()"></i></td>
 

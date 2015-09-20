@@ -39,13 +39,7 @@
                     </div>
                     <hr>
 
-
-                    <table class="table">
-                        <tbody>
-                            <tr ng-repeat="p in vm.purchases" purchase-item="p"> </tr>
-                        </tbody>
-                    </table>
-
+                    <div class="row atm-list" ng-repeat="p in vm.purchases" purchase-item="p"></div>
 
                     <div class="row atm-total">
                         <div class="col-xs-3">
