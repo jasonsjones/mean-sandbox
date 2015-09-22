@@ -31,10 +31,10 @@
 
         <div ng-repeat="todo in vm.todos | orderBy:'done'">
             <div class="row todo-item">
-                <div class="col-sm-4 col-sm-offset-2">
+                <div class="col-sm-6 col-sm-offset-1">
                     <p class="todo-task" ng-class="{'todo-completed text-muted': todo.done}">{{ todo.text }}</p>
                 </div>
-                <div class="col-sm-2 col-xs-6 text-right">
+                <div class="col-sm-2 col-xs-6">
                     <button ng-hide="todo.done" type="button"
                             class="btn btn-success" ng-click="vm.completeTodo(todo)"
                             data-placement="left" title="mark complete" tooltip>
@@ -45,7 +45,7 @@
                             data-placement="left" title="more to do?" tooltip>
                         <i class="fa fa-close"></i> Not Done?</button>
                 </div>
-                <div class="col-sm-2 col-xs-6 text-right">
+                <div class="col-sm-2 col-xs-6">
                     <button class="btn btn-danger" ng-click="vm.deleteTodo(todo._id)"
                         title="delete item" data-placement="right" tooltip>
                         <i class="fa fa-trash"></i> Delete</button>
