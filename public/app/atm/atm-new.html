@@ -1,18 +1,24 @@
 <div class="middle no-banner-page">
     <div class="container">
+
         <div class="mean-form col-md-offset-1">
+
             <div class="mean-form-header">
                 <h1>New ATM Withdrawal</h1>
             </div>
+
             <div class="mean-form-body">
                 <form class="form-horizontal" name="newATMForm">
 
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="amount">Amount</label>
                         <div class="col-md-6">
-                            <input class="form-control" type="number" name="amount" placeholder="Withdrawal Amount" ng-model="vm.cashAmount">
+                            <input class="form-control" type="number" name="amount"
+                            placeholder="Withdrawal Amount"
+                            ng-model="vm.cashAmount">
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="serviceFee">Service Fee</label>
                         <div class="col-md-6">
@@ -20,6 +26,7 @@
                                    placeholder="Service Fee" ng-model="vm.serviceFee">
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="date">Date</label>
                         <div class="col-md-6">
@@ -27,6 +34,7 @@
                                    placeholder="Date" ng-model="vm.date">
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="location">Location</label>
                         <div class="col-md-6">
@@ -34,14 +42,21 @@
                                    placeholder="Location" ng-model="vm.location">
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="pull-right">
-                                <button class="btn btn-primary" ng-click="vm.add()"><i class="fa fa-plus"></i> Submit</button>
-                                &nbsp; <a href="/atm" class="btn btn-default"><i class="fa fa-times"></i> Cancel</a>
+                                <button class="btn btn-primary" ng-click="vm.add()">
+                                    <i class="fa fa-plus"></i> Submit
+                                </button>
+                                &nbsp;
+                                <a href="/atm" class="btn btn-default">
+                                    <i class="fa fa-times"></i> Cancel
+                                </a>
                             </div>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>
