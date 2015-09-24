@@ -4,16 +4,16 @@
         <h3>A playground to explore the MEAN stack</h3>
         <div class="row mean-components">
             <div class="col-md-3 mean-components-header">
-                <img src="../img/mongodb.png" class="img-responsive mean-img">
+                <img src="../img/mongodb.png" class="img-responsive mean-img center-block">
             </div>
             <div class="col-md-3 mean-components-header">
-                <img src="../img/express.png" class="img-responsive mean-img">
+                <img src="../img/express.png" class="img-responsive mean-img center-block">
             </div>
             <div class="col-md-3 mean-components-header">
-                <img src="../img/angularjs.png" class="img-responsive mean-img">
+                <img src="../img/angularjs.png" class="img-responsive mean-img center-block">
             </div>
             <div class="col-md-3 mean-components-header">
-                <img src="../img/nodejs.png" class="img-responsive mean-img">
+                <img src="../img/nodejs.png" class="img-responsive mean-img center-block">
             </div>
         </div>
     </div>
@@ -30,12 +30,11 @@
                 </div>
                 <ul>
                     <li>utilizes passport-local for user authentication</li>
+                    <li>implements Oauth2 registration/ authentication for twitter</li>
                     <li>user's passwords are hashed with a per user salt before writing to db</li>
-                    <li>implements naive data caching to return the list of users
+                    <li>implements data caching to return the list of users
                         to avoid hitting the back-end unnecessarily</li>
-                    <li>provides 'admins' the ability to view (both a list- & grid-view) and modify other users' profiles</li>
-                    <li><strong>TODO:</strong> implement Oauth2 registration/authentication for github,
-                        or other online sites/services</li>
+                    <li>provides application 'admins' the ability to view (both a list- & grid-view) and modify other users' profiles</li>
                 </ul>
             </div>
             <div class="col-md-4">
