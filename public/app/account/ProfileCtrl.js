@@ -26,13 +26,13 @@
         function updateData () {
 
             var userUpdate = {
-                firstName: vm.firstName,
-                lastName: vm.lastName,
-                email: vm.email,
+                firstName: vm.currentUser.firstName,
+                lastName: vm.currentUser.lastName,
+                email: vm.currentUser.email,
                 local: {
-                    username: vm.local.username
+                    username: vm.currentUser.local.username
                 },
-                zipcode: vm.zipcode,
+                zipcode: vm.currentUser.zipcode,
                 roles: {}
             };
 
