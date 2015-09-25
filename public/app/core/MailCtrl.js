@@ -19,16 +19,21 @@
                 message: vm.msgBody
             };
 
-            mailer.sendContactEmail(mailPayload)
-                .then(function (data) {
-                    if (data.success) {
-                        notifier.info('Message sent -- Thank you!');
-                    } else {
-                        notifier.err(data.message);
-                    }
-                });
+            if (mailPayload.from && mailPayload.subject && mailPayload.message) {
+                mailer.sendContactEmail(mailPayload)
+                    .then(function (data) {
+                        if (data.success) {
+                            notifier.info('Message sent -- Thank you!');
+                        } else {
+                            notifier.error(data.message);
+                        }
+                    });
 
-            $location.path('/');
+                $location.path('/');
+
+            } else {
+                notifier.error("Please fill out all the information before submitting.  Thank you.");
+            }
         }
     }
 
