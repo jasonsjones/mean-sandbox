@@ -46,7 +46,7 @@ html, body {
 }
 
 .mean-components {
-    margin: 20px auto 0 auto;
+    margin: 20px auto 30px auto;
 
     .mean-components-header {
         min-height: 100px;
@@ -113,6 +113,14 @@ html, body {
     min-height: 750px;
 }
 
+.about-banner-description {
+    color: white;
+    margin-top: 20px;
+    line-height: 1.8em;
+    font-size: 18px;
+    font-style: italic;
+}
+
 .about-features {
     padding-top: 20px;
 
@@ -122,6 +130,7 @@ html, body {
         border-radius: 10px 8px 0 0;
         padding: 10px 0;
     }
+
     ul {
         background: lighten(@pageBg, 5%);
         border: 2px solid darken(@pageBg, 15%);
@@ -201,12 +210,18 @@ html, body {
 @media only screen and (max-width: 767px) {
     .banner {
         h1 {
-            font-size: 32px;
+            font-size: 34px;
         }
+
+        h3 {
+            font-size: 24px;
+        }
+
         .lead {
             line-height: 2.0em;
         }
     }
+
     .mean-components {
         margin: 20px auto;
         text-align: center;
@@ -220,6 +235,7 @@ html, body {
             min-height: 50px;
         }
     }
+
     .navbar {
         margin-bottom: 0;
         border-radius: 0;
@@ -228,6 +244,26 @@ html, body {
             button, a, input {
                 margin-top: 15px;
             }
+        }
+    }
+
+    .about-page {
+        h2 {
+            font-size: 24px;
+        }
+    }
+
+    .about-banner-description {
+        margin-top: 15px;
+        line-height: 1.4em;
+        font-size: 16px;
+        font-style: italic;
+    }
+
+    .about-features {
+        font-size: 90%;
+        .about-features-header {
+            font-size: 80%;
         }
     }
 }
