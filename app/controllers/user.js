@@ -53,6 +53,7 @@ exports.createUser = function (req, res, next) {
             }
 
             user.lastLogin = Date.now();
+            user.loggedIn = true;
             req.session.user = user;
 
             user.save(function (err, user) {
@@ -69,8 +70,20 @@ exports.createUser = function (req, res, next) {
 };
 
 exports.signOutUser = function (req, res) {
-    req.session.user = null;
-    res.json({success: true});
+    User.findOne({_id: req.session.user._id}).exec(function (err, user) {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        user.loggedIn = false;
+        user.save(function (err) {
+            if (err) {
+                console.log(err);
+            }
+            req.session.user = null;
+            res.json({success: true});
+        });
+    });
 };
 
 exports.updateUserById = function (req, res) {

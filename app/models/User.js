@@ -33,6 +33,10 @@ var userSchema = mongoose.Schema({
     },
     lastLogin: {
         type: Date
+    },
+    loggedIn: {
+        type: Boolean,
+        default: false
     }
 });
 

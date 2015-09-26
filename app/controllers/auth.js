@@ -32,8 +32,11 @@ exports.authenticateWithPassport = function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            req.session.user = user;
+
             user.lastLogin = Date.now();
+            user.loggedIn = true;
+            req.session.user = user;
+
             user.save(function (err, user) {
                 if (err) {
                     res.status(400);

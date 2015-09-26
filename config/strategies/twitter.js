@@ -31,6 +31,7 @@ module.exports = function (config) {
                             user.twitter.username = profile.username;
                             user.twitter.displayName = profile.displayName;
                             user.lastLogin = Date.now();
+                            user.loggedIn = true;
                             user.save(function (err) {
                                 if (err) {
                                     throw err;
@@ -41,11 +42,14 @@ module.exports = function (config) {
 
                         } else {
                             user.lastLogin = Date.now();
+                            user.loggedIn = true;
+                            req.session.user = user;
                             user.save(function (err) {
                                 if (err) {
                                     throw err;
                                 }
-                                req.session.user = user;
+                                user.local.salt = undefined;
+                                user.local.password = undefined;
                                 return done(null, user);
                             });
                         }
@@ -102,6 +106,7 @@ module.exports = function (config) {
         newUser.twitter.username = profile.username;
         newUser.twitter.displayName = profile.displayName;
         newUser.lastLogin = Date.now();
+        newUser.loggedIn = true;
 
         newUser.save(function (err) {
             if (err) {
