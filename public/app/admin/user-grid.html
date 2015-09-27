@@ -18,12 +18,15 @@
                 </div>
             </div>
             <div class="row">
+                <p>The shaded users are currently logged in</p>
+            </div>
+            <div class="row">
                 <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
                 <div ng-repeat="user in vm.users | filter:vm.query | orderBy:vm.userTableSortCol">
                     <div class="col-md-3">
-                        <div class="user-grid">
+                        <div class="user-grid" ng-class="{loggedIn: vm.isUserLoggedIn(user)}">
                             <img src="img/default-user-sm.png" class="img-responsive img-circle pull-left"></img>
-                            <div class="user-details">
+                            <div class="user-details" >
                                 <p>{{ user.firstName + ' ' + user.lastName }}</p>
                                 <p>( {{ user.local.username }} )</p>
                                 <p ng-if="vm.isAdmin(user)"><i class="fa fa-check"></i> admin</p>

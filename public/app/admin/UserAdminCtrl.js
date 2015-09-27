@@ -22,6 +22,7 @@
         vm.updateUser = updateUser;
         vm.changeSortColumn = changeSortColumn;
         vm.toggleGridLayout = toggleGridLayout;
+        vm.isUserLoggedIn = isUserLoggedIn;
 
         getUsers();
 
@@ -66,6 +67,10 @@
 
         function toggleGridLayout() {
             vm.showGridLayout = !vm.showGridLayout;
+        }
+
+        function isUserLoggedIn(user) {
+            return user.loggedIn;
         }
     }
 }());
