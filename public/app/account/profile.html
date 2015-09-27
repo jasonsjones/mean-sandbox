@@ -4,37 +4,43 @@
             <div class="mean-form-header">
                 <h1>Edit User Profile</h1>
             </div>
+            <hr>
             <div class="mean-form-body">
                 <form class="form-horizontal" name="profileUpdate">
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="fname">First Name</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" name="fname" placeholder="First Name" ng-model="vm.currentUser.firstName">
+                            <input class="form-control" type="text" name="fname"
+                            placeholder="First Name" ng-model="vm.currentUser.firstName">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="lname">Last Name</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" name="lname" placeholder="Last Name" ng-model="vm.currentUser.lastName">
+                            <input class="form-control" type="text" name="lname"
+                            placeholder="Last Name" ng-model="vm.currentUser.lastName">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="email">Email</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="email" name="email" placeholder="Email" ng-model="vm.currentUser.email">
+                            <input class="form-control" type="email" name="email"
+                            placeholder="Email" ng-model="vm.currentUser.email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="zipcode">Zipcode</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" name="zipcode" placeholder="Zipcode" ng-model="vm.currentUser.zipcode">
+                            <input class="form-control" type="text" name="zipcode"
+                            placeholder="Zipcode" ng-model="vm.currentUser.zipcode">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="username">Username</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" name="username" placeholder="Username" ng-model="vm.currentUser.local.username">
+                            <input class="form-control" type="text" name="username"
+                            placeholder="Username" ng-model="vm.currentUser.local.username">
                         </div>
                     </div>
 
@@ -43,28 +49,42 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label" for="new-password">New Password</label>
                             <div class="col-md-8">
-                                <input class="form-control" type="password" name="new-password" placeholder="Enter New Password" ng-model="vm.newPassword">
+                                <input class="form-control" type="password"
+                                name="new-password" placeholder="Enter New Password"
+                                ng-model="vm.newPassword">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label" for="confirm-password">Confirm New Password</label>
                             <div class="col-md-8">
-                                <input class="form-control" type="password" name="confirm-password" placeholder="Enter Password Again" ng-model="vm.confirmPassword">
+                                <input class="form-control" type="password"
+                                name="confirm-password" placeholder="Enter Password Again"
+                                ng-model="vm.confirmPassword">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-8 col-md-offset-2">
-                            <a href="" class="btn btn-info" ng-hide="vm.editPassword" ng-click="vm.toggleEditPassword()"> Change Password?</a>
+                            <a href="" class="btn btn-info" ng-hide="vm.editPassword"
+                                ng-click="vm.toggleEditPassword()"> Change Password?</a>
                             <div class="pull-right">
-                                <button class="btn btn-primary" ng-click="vm.updateData()"><i class="fa fa-check"></i> Update</button>
-                                &nbsp; <a href="/" class="btn btn-default"><i class="fa fa-times"></i> Cancel</a>
+                                <button class="btn btn-primary" ng-click="vm.updateData()">
+                                    <i class="fa fa-check"></i> Update
+                                </button>
+                                &nbsp;
+                                <a href="/" class="btn btn-default">
+                                    <i class="fa fa-times"></i> Cancel
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <button class="btn btn-info" ng-hide="vm.currentUser.twitter" ng-click="vm.connectToTwitter()">Connect to <i class="fa fa-twitter"></i></button>
-                        <button class="btn btn-info" ng-show="vm.currentUser.twitter" ng-click="vm.unlinkTwitter()">Unlink <i class="fa fa-twitter"></i> account</button>
+                        <button class="btn btn-info" ng-hide="vm.currentUser.twitter"
+                            ng-click="vm.connectToTwitter()">Connect to <i class="fa fa-twitter"></i>
+                        </button>
+                        <button class="btn btn-info" ng-show="vm.currentUser.twitter"
+                            ng-click="vm.unlinkTwitter()">Unlink <i class="fa fa-twitter"></i> account
+                        </button>
                     </div>
                 </form>
             </div>
