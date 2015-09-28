@@ -142,6 +142,6 @@ exports.deleteUser = function (req, res) {
         if (err) {
             return res.send(err);
         }
-        res.send({message: 'user removed'});
+        res.send({message: 'user removed', success: true});
     });
 };
