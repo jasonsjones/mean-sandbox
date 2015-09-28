@@ -19,7 +19,8 @@
             currentUser: currentUser,
             isAuthenticated: isAuthenticated,
             isAuthorizedForRole: isAuthorizedForRole,
-            getCurrentUserFromServer: getCurrentUserFromServer
+            getCurrentUserFromServer: getCurrentUserFromServer,
+            clearIdentity: clearIdentity
         };
 
         return service;
@@ -55,6 +56,11 @@
                     deferred.resolve(false);
                 }
             }
+        }
+
+        function clearIdentity() {
+            this.currentUser = null;
+            storage.removeItem('currentUser');
         }
     }
 }());
