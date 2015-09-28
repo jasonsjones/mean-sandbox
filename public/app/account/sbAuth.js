@@ -5,8 +5,8 @@
     angular.module('app.account')
         .factory('sbAuth', sbAuth);
 
-    sbAuth.$inject = ['$http', '$q', '$window', 'identity', 'userCache'];
-    function sbAuth($http, $q, $window, identity, userCache) {
+    sbAuth.$inject = ['$http', '$q', '$window', 'identity', 'userCache', 'dataCache'];
+    function sbAuth($http, $q, $window, identity, userCache, dataCache) {
 
         var service = {
             authenticateUser: authenticateUser,
@@ -99,6 +99,8 @@
             var deferred = $q.defer();
             $http.get('/api/user/signout')
                 .success(function (success) {
+                    identity.clearIdentity();
+                    dataCache.clearAllCache();
                     deferred.resolve(true);
                 });
             return deferred.promise;
