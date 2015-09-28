@@ -4,8 +4,8 @@
     angular.module('app.account')
         .controller('ProfileCtrl', ProfileCtrl);
 
-    ProfileCtrl.$inject = ['$location', 'identity', 'sbAuth', 'notifier', 'register'];
-    function ProfileCtrl($location, identity, sbAuth, notifier, register) {
+    ProfileCtrl.$inject = ['$rootScope', '$location', '$window', 'identity', 'sbAuth', 'notifier', 'register'];
+    function ProfileCtrl($rootScope, $location, $window, identity, sbAuth, notifier, register) {
         var vm = this;
 
         vm.currentUser = null;
@@ -15,6 +15,7 @@
         vm.updateData = updateData;
         vm.connectToTwitter = connectToTwitter;
         vm.unlinkTwitter = unlinkTwitter;
+        vm.deleteAcct = deleteAcct;
 
         activate();
 
@@ -90,6 +91,26 @@
                     vm.currentUser = data;
                     console.log(vm.currentUser);
                 });
+        }
+
+        function deleteAcct() {
+            var userToDelete = vm.currentUser;
+            if ($window.confirm('Are you sure you want to delete your account? \nThis can NOT be undone.')) {
+                console.log('are you sure you want to delete account for:');
+                console.dir(userToDelete);
+                // first need to signout user
+                // then need to delete
+                sbAuth.signOutUser()
+                    .then(function (success) {
+                        return register.deleteUser(userToDelete)
+                    }).then(function (data) {
+                        if (data.success) {
+                            $rootScope.$broadcast('userChange');
+                            $location.path('/');
+                            console.log('logged out now can delete...');
+                        }
+                    });
+            }
         }
     }
 }());
