@@ -30,10 +30,10 @@
                         $location.path('/');
                     } else {
                         notifier.error('Unable to login. Please enter proper login credentials');
-                        vm.username = '';
-                        vm.password = '';
                     }
                 });
+                vm.username = '';
+                vm.password = '';
         }
 
         function loginWithTwitter() {
@@ -42,18 +42,13 @@
         }
 
         function signout() {
-            vm.identity.currentUser = null;
-            vm.username = '';
-            vm.password = '';
-            notifier.notify('You successfully logged out!');
-            $window.sessionStorage.removeItem('currentUser');
-            dataCache.clearAllCache();
-            $rootScope.$broadcast('userChange');
-            $location.path('/');
             sbAuth.signOutUser()
                 .then(function (success) {
                     if (success) {
                         console.log('user logged out on server');
+                        notifier.notify('You successfully logged out!');
+                        $rootScope.$broadcast('userChange');
+                        $location.path('/');
                     }
                 });
         }
