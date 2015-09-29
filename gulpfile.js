@@ -32,6 +32,14 @@ gulp.task('styles', ['clean-styles'], function () {
         .pipe(gulp.dest(config.temp));
 });
 
+gulp.task('favicon', function () {
+    log('Copying favicon');
+
+    return gulp
+        .src(config.favicon)
+        .pipe(gulp.dest(config.build));
+});
+
 gulp.task('fonts', ['clean-fonts'], function () {
     log('Copying fonts');
 
@@ -113,7 +121,7 @@ gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function () {
         .pipe(gulp.dest(config.client));
 });
 
-gulp.task('optimize', ['inject', 'fonts', 'images'], function () {
+gulp.task('optimize', ['inject', 'fonts', 'images', 'favicon'], function () {
     log('Optimizing the javascript, css, and html');
 
     var assets = $.useref.assets({searchPath: './'});
