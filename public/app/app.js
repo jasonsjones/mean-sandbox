@@ -31,17 +31,17 @@
             })
             .when('/register', {
                 templateUrl: 'app/account/register.html',
-                controller: 'RegisterCtrl',
+                controller: 'RegisterController',
                 controllerAs: 'vm'
             })
             .when('/login', {
                 templateUrl: 'app/account/login.html',
-                controller: 'NavBarLoginCtrl',
+                controller: 'NavBarLoginController',
                 controllerAs: 'vm'
             })
             .when('/profile', {
                 templateUrl: 'app/account/profile.html',
-                controller: 'ProfileCtrl',
+                controller: 'ProfileController',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.user
             })

@@ -2,11 +2,11 @@
     'use strict';
 
     angular.module('app.account')
-        .controller('NavBarLoginCtrl', NavBarLoginCtrl);
+        .controller('NavBarLoginController', NavBarLoginController);
 
-    NavBarLoginCtrl.$inject = ['$rootScope', '$location', '$window',
+    NavBarLoginController.$inject = ['$rootScope', '$location', '$window',
                                'sbAuth', 'identity', 'notifier', 'dataCache'];
-    function NavBarLoginCtrl($rootScope, $location, $window,
+    function NavBarLoginController($rootScope, $location, $window,
                              sbAuth, identity, notifier, dataCache) {
         var vm = this;
         vm.identity = identity;

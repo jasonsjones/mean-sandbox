@@ -5,7 +5,7 @@
         .module('app.core')
         .controller('NavBarController', NavBarController);
 
-    NavBarCtrl.$inject = ['$location', 'identity'];
+    NavBarController.$inject = ['$location', 'identity'];
     function NavBarController($location, identity) {
 
         var vm = this;

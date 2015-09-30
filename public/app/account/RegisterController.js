@@ -3,10 +3,10 @@
     'use strict';
 
     angular.module('app.account')
-        .controller('RegisterCtrl', RegisterCtrl);
+        .controller('RegisterController', RegisterController);
 
-    RegisterCtrl.$inject = ['$location', 'register', 'notifier'];
-    function RegisterCtrl($location, register, notifier) {
+    RegisterController.$inject = ['$location', 'register', 'notifier'];
+    function RegisterController($location, register, notifier) {
 
         var vm = this;
         vm.registerNewUser = registerNewUser;

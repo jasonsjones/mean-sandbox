@@ -2,10 +2,10 @@
     'use strict';
 
     angular.module('app.account')
-        .controller('ProfileCtrl', ProfileCtrl);
+        .controller('ProfileController', ProfileController);
 
-    ProfileCtrl.$inject = ['$rootScope', '$location', '$window', 'identity', 'sbAuth', 'notifier', 'register'];
-    function ProfileCtrl($rootScope, $location, $window, identity, sbAuth, notifier, register) {
+    ProfileController.$inject = ['$rootScope', '$location', '$window', 'identity', 'sbAuth', 'notifier', 'register'];
+    function ProfileController($rootScope, $location, $window, identity, sbAuth, notifier, register) {
         var vm = this;
 
         vm.currentUser = null;
