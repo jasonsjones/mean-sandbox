@@ -2,11 +2,11 @@
 (function () {
     'use strict';
     angular.module('app.core')
-        .controller('EditUserCtrl', EditUserCtrl);
+        .controller('EditUserController', EditUserController);
 
-    EditUserCtrl.$inject = ['$location', '$routeParams', 'userCache',
+    EditUserController.$inject = ['$location', '$routeParams', 'userCache',
                             'sbEditUser', 'identity', 'register', 'notifier'];
-    function EditUserCtrl($location, $routeParams, userCache,
+    function EditUserController($location, $routeParams, userCache,
                           sbEditUser, identity, register, notifier) {
 
         // looks like dependency for sbEditUser has been eliminated by using the userCache

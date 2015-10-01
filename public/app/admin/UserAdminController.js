@@ -3,11 +3,11 @@
     /* global angular: true */
 
     angular.module('app.core')
-        .controller('UserAdminCtrl', UserAdminCtrl);
+        .controller('UserAdminController', UserAdminController);
 
-    UserAdminCtrl.$inject = ['$location', '$window', 'userCache',
+    UserAdminController.$inject = ['$location', '$window', 'userCache',
                              'sbEditUser', 'register', 'notifier'];
-    function UserAdminCtrl($location, $window, userCache,
+    function UserAdminController($location, $window, userCache,
                            sbEditUser, register, notifier) {
         var vm = this;
 

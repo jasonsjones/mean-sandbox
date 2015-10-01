@@ -2,9 +2,10 @@
     'use strict';
 
     angular.module('app.core')
-        .controller('UserDetailsCtrl', UserDetailsCtrl);
+        .controller('UserDetailsController', UserDetailsController);
 
-    function UserDetailsCtrl($routeParams, userCache) {
+    UserDetailsController.$inject = ['$routeParams', 'userCache'];
+    function UserDetailsController($routeParams, userCache) {
 
         var vm = this;
         vm.userTableSortCol = '-roles';

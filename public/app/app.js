@@ -81,25 +81,25 @@
             })
             .when('/admin/users', {
                 templateUrl: 'app/admin/user-admin.html',
-                controller: 'UserAdminCtrl',
+                controller: 'UserAdminController',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.admin
             })
             .when('/admin/users/:userId', {
                 templateUrl: 'app/admin/user-details.html',
-                controller: 'UserDetailsCtrl',
+                controller: 'UserDetailsController',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.admin
             })
             .when('/admin/users-grid', {
                 templateUrl: 'app/admin/user-grid.html',
-                controller: 'UserAdminCtrl',
+                controller: 'UserAdminController',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.admin
             })
             .when('/admin/edituser/:userId', {
                 templateUrl: 'app/admin/edit-profile.html',
-                controller: 'EditUserCtrl',
+                controller: 'EditUserController',
                 controllerAs: 'vm'
             })
             .otherwise({
