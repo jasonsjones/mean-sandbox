@@ -1,10 +1,10 @@
 (function () {
     'use strict';
     angular.module('app.atm')
-        .controller('PurchaseCtrl', PurchaseCtrl);
+        .controller('PurchaseController', PurchaseController);
 
-    PurchaseCtrl.$inject = ['purchase'];
-    function PurchaseCtrl(purchase) {
+    PurchaseController.$inject = ['purchase'];
+    function PurchaseController(purchase) {
         var vm = this;
         vm.purchases = null;
         vm.loading = true;

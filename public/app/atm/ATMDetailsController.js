@@ -1,10 +1,10 @@
 (function () {
     'use strict';
     angular.module('app.atm')
-        .controller('ATMDetailsCtrl', ATMDetailsCtrl);
+        .controller('ATMDetailsController', ATMDetailsController);
 
-    ATMDetailsCtrl.$inject = ['$scope', '$routeParams', 'ATM', 'purchase'];
-    function ATMDetailsCtrl($scope, $routeParams, ATM, purchase) {
+    ATMDetailsController.$inject = ['$scope', '$routeParams', 'ATM', 'purchase'];
+    function ATMDetailsController($scope, $routeParams, ATM, purchase) {
         var vm = this;
         var atmId = $routeParams.atmId;
 

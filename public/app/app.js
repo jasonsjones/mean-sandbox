@@ -57,25 +57,25 @@
             })
             .when('/todos', {
                 templateUrl: 'app/todo/todo.html',
-                controller: 'TodoCtrl',
+                controller: 'TodoController',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.user
             })
             .when('/atm', {
                 templateUrl: 'app/atm/atm.html',
-                controller: 'ATMCtrl',
+                controller: 'ATMController',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.user
             })
             .when('/new-atm', {
                 templateUrl: 'app/atm/atm-new.html',
-                controller: 'NewATMCtrl',
+                controller: 'NewATMController',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.user
             })
             .when('/atm-details/:atmId', {
                 templateUrl: 'app/atm/atm-details.html',
-                controller: 'ATMDetailsCtrl',
+                controller: 'ATMDetailsController',
                 controllerAs: 'vm',
                 resolve: routeRoleCheck.user
             })

@@ -1,10 +1,10 @@
 (function () {
     'use strict';
     angular.module('app.atm')
-        .controller('NewATMCtrl', NewATMCtrl);
+        .controller('NewATMController', NewATMController);
 
-    NewATMCtrl.$inject = ['$location', 'ATM', 'notifier'];
-    function NewATMCtrl($location, ATM, notifier) {
+    NewATMController.$inject = ['$location', 'ATM', 'notifier'];
+    function NewATMController($location, ATM, notifier) {
         var vm = this;
 
         vm.add = add;

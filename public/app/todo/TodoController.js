@@ -2,10 +2,10 @@
     'use strict';
 
     angular.module('app.todo')
-        .controller('TodoCtrl', TodoCtrl);
+        .controller('TodoController', TodoController);
 
-    TodoCtrl.$inject = ['todo', 'notifier'];
-    function TodoCtrl(todo, notifier) {
+    TodoController.$inject = ['todo', 'notifier'];
+    function TodoController(todo, notifier) {
 
         var vm = this;
         vm.loading = true;
