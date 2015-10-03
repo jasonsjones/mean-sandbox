@@ -52,7 +52,7 @@
             })
             .when('/contact', {
                 templateUrl: 'app/main/contact.html',
-                controller: 'MailCtrl',
+                controller: 'MailController',
                 controllerAs: 'vm'
             })
             .when('/todos', {

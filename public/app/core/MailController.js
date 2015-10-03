@@ -2,11 +2,10 @@
     'use strict';
 
     angular.module('app.core')
-        .controller('MailCtrl', MailCtrl);
+        .controller('MailController', MailController);
 
-    MailCtrl.$inject = ['$location', 'mailer', 'notifier'];
-    function MailCtrl($location, mailer, notifier) {
-        console.log('MailCtrl loaded and ready to work...');
+    MailController.$inject = ['$location', 'mailer', 'notifier'];
+    function MailController($location, mailer, notifier) {
         var vm = this;
 
         vm.sendContactEmail = sendContactEmail;
