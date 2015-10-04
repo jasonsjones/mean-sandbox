@@ -1,8 +1,10 @@
 'use strict';
 
-describe('ProfileCtrl', function () {
+describe('ProfileController', function () {
 
     beforeEach(module('app.core'))
+    beforeEach(module('app.atm'))
+    beforeEach(module('app.todo'))
     beforeEach(module('app.account'))
 
     var regService, authService, idService, sandbox;
@@ -37,7 +39,7 @@ describe('ProfileCtrl', function () {
 
         sandbox.stub(idService, 'getCurrentUserFromServer').returns($q.when(user));
 
-        profileCtrl = $controller('ProfileCtrl', {
+        profileCtrl = $controller('ProfileController', {
             $location: mockLocation,
             //identity: mockIdentity,
             notifier: mockNotifier

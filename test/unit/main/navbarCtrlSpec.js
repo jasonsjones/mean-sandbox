@@ -1,6 +1,6 @@
 'use strict';
 
-describe('NavBarCtrl', function () {
+describe('NavBarController', function () {
 
     beforeEach(module('app.core'));
 
@@ -26,7 +26,7 @@ describe('NavBarCtrl', function () {
             }
         };
 
-        navbarCtrl = $controller('NavBarCtrl', {
+        navbarCtrl = $controller('NavBarController', {
             $location: mockLocation,
             identity: mockIdentity
         });
