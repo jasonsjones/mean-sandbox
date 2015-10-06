@@ -22,7 +22,9 @@ describe('NavBarLoginController', function () {
         dataCacheService = $injector.get('dataCache');
 
         mockNotifier = {
-            notify: function () {}
+            notify: function () {
+                console.log('notifing from the mock notifier...');
+            }
         };
 
         mockWindow = {
@@ -92,19 +94,15 @@ describe('NavBarLoginController', function () {
     });
 
     it('signout method calls other services', inject(function ($rootScope, $q) {
-        //sandbox.spy(mockLocation, 'path');
-        //sandbox.spy(mockWindow.sessionStorage, 'removeItem');
-        //sandbox.spy(dataCacheService, 'clearAllCache');
+        sandbox.spy(mockLocation, 'path');
         sandbox.stub(authservice, 'signOutUser').returns($q.when(true));
-        //sandbox.spy(mockNotifier, 'notify');
+        sandbox.spy(mockNotifier, 'notify');
 
         navbarLoginCtrl.signout();
         $rootScope.$digest();
 
-        //expect(mockNotifier.notify.calledOnce).to.be.true;
-        //expect(mockLocation.path.calledOnce).to.be.true;
-        //expect(mockWindow.sessionStorage.removeItem.calledOnce).to.be.true;
-        //expect(dataCacheService.clearAllCache.calledOnce).to.be.true;
+        expect(mockNotifier.notify.called).to.be.true;
+        expect(mockLocation.path.called).to.be.true;
         expect(authservice.signOutUser.calledOnce).to.be.true;
     }));
 });
