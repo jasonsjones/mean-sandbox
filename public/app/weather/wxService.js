@@ -23,7 +23,8 @@
             } else {
                 var baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
                 var query = '?zip=' + zip + ',us&units=imperial';
-                var url = baseUrl + query;
+                var API = '&APPID=a600be65b6ec16f86cf386aefd894300'
+                var url = baseUrl + query + API;
 
                 $http.get(url)
                     .success(function (data) {
