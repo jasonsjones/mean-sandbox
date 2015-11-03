@@ -16,7 +16,7 @@
                     return sbAuth.authorizeCurrentUserForRoute('admin');
                 }]
             },
-            user : {
+            user: {
                 auth: ['sbAuth', function (sbAuth) {
                     return sbAuth.authorizeAuthenticatedUserForRoute();
                 }]
