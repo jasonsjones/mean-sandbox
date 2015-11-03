@@ -30,7 +30,7 @@
             } else {
                 vm.loading = true;
                 todo.create(vm.formData)
-                    .success(function (todo) {
+                    .then(function (todo) {
                         vm.formData = {};
                         vm.todos.push(todo);
                         vm.numberOfTodos = updateNumberOfTodos();
@@ -43,7 +43,7 @@
         function deleteTodo (id) {
             vm.loading = true;
             todo.delete(id)
-                .success(function (data) {
+                .then(function (data) {
                     if (data.success) {
                         notifier.notify('TODO deleted...');
                         getTodos();
@@ -54,7 +54,7 @@
         function completeTodo(todoToUpdate) {
             todoToUpdate.done = !todoToUpdate.done;
             todo.update(todoToUpdate._id, todoToUpdate)
-                .success(function (data) {
+                .then(function (data) {
                     getTodos();
                 });
         }
