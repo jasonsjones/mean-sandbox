@@ -24,7 +24,7 @@
                 zipcode: vm.zipcode
             };
 
-            if (newUser.local.password.length > 0 && isPasswordCorrect()) {
+            if (isPasswordValid()) {
                 register.createUser(newUser)
                 .then(function (user) {
                     notifier.notify('User account for ' + user.local.username + ' created');
@@ -41,7 +41,7 @@
                 if (!isPasswordCorrect()) {
                     notifier.error('Passwords do not match');
                 } else {
-                    notifier.error('Password is required');
+                    notifier.error('Password must be longer than 8 characters');
                 }
                 clearPasswords();
             }
@@ -54,6 +54,10 @@
         function clearPasswords() {
             vm.password = '';
             vm.confirmPassword = '';
+        }
+
+        function isPasswordValid() {
+            return vm.password.length > 8 && isPasswordCorrect();
         }
     }
 }());
