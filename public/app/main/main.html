@@ -46,7 +46,10 @@
                    <div class="tile-content text-center">
                        <i class="fa fa-3x fa-cloud"></i>
                        <p class="lead">Current Weather</p>
-                       <p class="text-center" ng-show="vm.loading"><i class="fa fa-spinner fa-spin fa-3x"></i></p>
+                       <div ng-show="vm.loading">
+                           <p><i class="fa fa-spinner fa-spin fa-2x"></i></p>
+                           <p class="text-muted">This feature has been broken since transitioning the site to https</p>
+                       </div>
                        <div ng-hide="vm.loading">
                            <p>{{vm.wx.name }}</p>
                            <p>{{vm.wx.main.temp | number:0 }} F &mdash; {{ vm.wx.weather[0].description }}</p>
@@ -63,14 +66,5 @@
                     from day-to-day.
                 </p>
             </div>
-            <div class="alert alert-danger disclaimer" role="alert">
-                <p>
-                    <strong>CONNECTION:</strong> This site is <strong>NOT</strong> currently secured with a TLS connection.
-                    It is in the development plan to have a secure connection (https://) in the very near future once
-                    <a href="https://letsencrypt.org">letsencrypt</a> begins providing certificates. Currently all data will
-                    be sent to the server over an unencrypted connection, so it is highly recommended that you  do not use
-                    your banking password on this site, or any other site for that matter...
-                </p>
         </div>
-    </div>
 </div>
