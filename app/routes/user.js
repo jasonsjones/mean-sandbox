@@ -1,10 +1,21 @@
 var auth = require('../controllers/auth');
 var user = require('../controllers/user');
 
+function isAuthorized(req, res, next) {
+    if (req.session.user && req.session.user.roles.indexOf('admin') > -1) {
+        next();
+    } else {
+        res.json({
+            success: false,
+            message: "Restricted API -- you are not authorized."
+        });
+    }
+}
+
 module.exports = function (api, passport) {
 
     api.route('/api/users')
-        .get(user.getUsers)
+        .get(isAuthorized, user.getUsers)
         .post(user.createUser);
 
     api.route('/api/users/:id')
