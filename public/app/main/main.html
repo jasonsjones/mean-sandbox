@@ -51,8 +51,9 @@
                            <p class="text-muted">3rd Party API only available via http://</p>
                        </div>
                        <div ng-hide="vm.loading">
-                           <p>{{vm.wx.name }}</p>
-                           <p>{{vm.wx.main.temp | number:0 }} F &mdash; {{ vm.wx.weather[0].description }}</p>
+                           <p>{{vm.cityInfo.city }}, {{vm.cityInfo.state}}</p>
+                           <!--<p>{{vm.wx.name }}</p>-->
+                           <!--<p>{{vm.wx.main.temp | number:0 }} F &mdash; {{ vm.wx.weather[0].description }}</p>-->
                        </div>
                    </div>
                 </div>
