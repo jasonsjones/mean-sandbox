@@ -14,7 +14,7 @@ exports.getUsers = function (req, res) {
 
 exports.getUserById = function (req, res) {
     console.log(req.params);
-    User.find({"_id": req.params.id}, '-salt -password').exec(function (err, user) {
+    User.find({'_id': req.params.id}, '-salt -password').exec(function (err, user) {
         if (err) {
             console.log('error');
         } else {
@@ -36,7 +36,7 @@ exports.getCurrentUser = function (req, res) {
 exports.createUser = function (req, res, next) {
     var userData = req.body;
     userData.local.username = userData.local.username.toLowerCase();
-    userData.local.salt= hash.createSalt();
+    userData.local.salt = hash.createSalt();
     userData.local.password = hash.hashPassword(
             userData.local.salt, userData.local.password);
 

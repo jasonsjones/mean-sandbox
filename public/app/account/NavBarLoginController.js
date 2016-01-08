@@ -32,8 +32,8 @@
                         notifier.error('Unable to login. Please enter proper login credentials');
                     }
                 });
-                vm.username = '';
-                vm.password = '';
+            vm.username = '';
+            vm.password = '';
         }
 
         function loginWithTwitter() {

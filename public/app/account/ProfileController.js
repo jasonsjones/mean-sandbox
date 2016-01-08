@@ -4,8 +4,10 @@
     angular.module('app.account')
         .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['$rootScope', '$location', '$window', 'identity', 'sbAuth', 'notifier', 'register'];
-    function ProfileController($rootScope, $location, $window, identity, sbAuth, notifier, register) {
+    ProfileController.$inject = ['$rootScope', '$location', '$window',
+                                  'identity', 'sbAuth', 'notifier', 'register'];
+    function ProfileController($rootScope, $location, $window, identity,
+                                sbAuth, notifier, register) {
         var vm = this;
 
         vm.currentUser = null;
@@ -95,14 +97,15 @@
 
         function deleteAcct() {
             var userToDelete = vm.currentUser;
-            if ($window.confirm('Are you sure you want to delete your account? \nThis can NOT be undone.')) {
+            if ($window.confirm('Are you sure you want to delete your account? \n' +
+                                 'This can NOT be undone.')) {
                 console.log('are you sure you want to delete account for:');
                 console.dir(userToDelete);
                 // first need to signout user
                 // then need to delete
                 sbAuth.signOutUser()
                     .then(function (success) {
-                        return register.deleteUser(userToDelete)
+                        return register.deleteUser(userToDelete);
                     }).then(function (data) {
                         if (data.success) {
                             $rootScope.$broadcast('userChange');

@@ -31,7 +31,8 @@
                 $location.path('/');
 
             } else {
-                notifier.error("Please fill out all the information before submitting.  Thank you.");
+                notifier.error('Please fill out all the information before submitting. ' +
+                ' Thank you.');
             }
         }
     }
