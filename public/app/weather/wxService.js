@@ -45,6 +45,7 @@
             var deferred = $q.defer();
             if (cityInfoCache) {
                 deferred.resolve(cityInfoCache);
+                console.log('returning cityInfoCache...');
             } else {
                 var key = 'pPRkpWH11B8ZiypsBuFNFR6DwwvcVZIkPzFevmgxXoxgXWIzqnm6etJL0fXVfGf4';
                 var baseUrl = 'https://www.zipcodeapi.com/rest/' + key;
@@ -53,7 +54,15 @@
                 console.log(url);
 
                 // call $http.get(url) to get data to pass to the resolve method
-                deferred.resolve({city: 'Seattle', state: 'WA'});
+                // deferred.resolve({city: 'Seattle', state: 'WA'});
+                $http.get(url)
+                    .success(function (data) {
+                        cityInfoCache = data;
+                        deferred.resolve(data);
+                    })
+                    .error(function (response) {
+                        deferred.reject(response);
+                    });
             }
             return deferred.promise;
         }
