@@ -50,8 +50,9 @@
         function primeWxInfo() {
             if (identity.currentUser) {
                 getWxByZip(identity.currentUser.zipcode);
+                getInfoByZip(identity.currentUser.zipcode);
             } else {
-                // getWxByZip(vm.zipcode);
+                getWxByZip(vm.zipcode);
                 getInfoByZip(vm.zipcode);
             }
         }

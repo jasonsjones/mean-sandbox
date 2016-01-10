@@ -23,10 +23,7 @@
             if (wxCache) {
                 deferred.resolve(wxCache);
             } else {
-                var baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
-                var query = '?zip=' + zip + ',us&units=imperial';
-                var API = '&APPID=a600be65b6ec16f86cf386aefd894300';
-                var url = baseUrl + query + API;
+                var url = 'api/weather/' + zip;
 
                 $http.get(url)
                     .success(function (data) {
@@ -47,14 +44,8 @@
                 deferred.resolve(cityInfoCache);
                 console.log('returning cityInfoCache...');
             } else {
-                var key = 'pPRkpWH11B8ZiypsBuFNFR6DwwvcVZIkPzFevmgxXoxgXWIzqnm6etJL0fXVfGf4';
-                var baseUrl = 'https://www.zipcodeapi.com/rest/' + key;
-                var query = '/info.json/' + zip + '/degrees';
-                var url = baseUrl + query;
-                console.log(url);
+                var url = 'api/cityinfo/' + zip;
 
-                // call $http.get(url) to get data to pass to the resolve method
-                // deferred.resolve({city: 'Seattle', state: 'WA'});
                 $http.get(url)
                     .success(function (data) {
                         cityInfoCache = data;
