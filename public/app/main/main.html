@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="tile" ng-class="{ 'animate-scale-up': vm.identity.isAuthenticated() }">
+                <div class="tile top-border-yellow" ng-class="{ 'animate-scale-up': vm.identity.isAuthenticated() }">
                     <div class="tile-content text-center">
                         <a href="/todos"><i class="fa fa-3x fa-check"></i></a>
                         <p class="lead">TODO App</p>
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="tile" ng-class="{ 'animate-scale-up': vm.identity.isAuthenticated() }">
+                <div class="tile top-border-red" ng-class="{ 'animate-scale-up': vm.identity.isAuthenticated() }">
                     <div class="tile-content text-center">
                         <a href="/atm"><i class="fa fa-3x fa-money"></i></a>
                         <p class="lead">ATM Cash Tracker</p>
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="tile" ng-controller="WxCtrl as vm">
+                <div class="tile top-border-green" ng-controller="WxCtrl as vm">
                    <div class="tile-content text-center">
                        <i class="fa fa-3x fa-cloud"></i>
                        <p class="lead">Current Weather</p>
