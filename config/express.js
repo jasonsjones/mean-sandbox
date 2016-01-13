@@ -48,6 +48,8 @@ module.exports = function (config) {
     require('../app/routes/mail')(router);
     app.use(router);
 
+    require('../app/routes/externalApi')(app);
+
     // this route needs to be defined at the end of all other routes
     require('../app/routes/index')(app, environment);
 
