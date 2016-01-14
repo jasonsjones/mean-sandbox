@@ -17,7 +17,7 @@ module.exports = function (config) {
             // if no user is logged in
             if (!req.session.user) {
                 // find user in the db based on the twitter id
-                User.findOne({ 'twitter.id': profile.id }, function (err, user) {
+                User.findOne({'twitter.id': profile.id}, function (err, user) {
                     if (err) {
                         return done(err, null);
                     }

@@ -7,7 +7,7 @@ function isAuthorized(req, res, next) {
     } else {
         res.json({
             success: false,
-            message: "Restricted API -- you are not authorized."
+            message: 'Restricted API -- you are not authorized.'
         });
     }
 }

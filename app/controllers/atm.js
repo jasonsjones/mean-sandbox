@@ -55,4 +55,4 @@ exports.deleteTransaction = function (req, res) {
             res.send({success: true});
         }
     });
-}
+};
