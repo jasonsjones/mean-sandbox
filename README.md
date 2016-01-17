@@ -68,6 +68,14 @@ course on the the topic, [AngularJS Patterns: Clean Code][ps-ngpatterns].
     party weather API no longer works since it is only available via a non
     secure connection (http://).
 
+    *Update:*  I realized the issue stemmed from the fact that the app was
+    making the call to the openweathermap API from the _client_--not a good
+    design decision.  To resolve the issue, need to move the openweathermap API
+    call to the server and expose a RESTful endpoint on the server that will
+    return the results of the query back to the client.
+
+    *Resolved:* 10 Jan 16.
+
 ---------------
 
 ### DEVELOPMENT DISCLAIMER
