@@ -24,6 +24,23 @@ exports.contactEmail = function (req, res) {
     sendEmail(res, mailOptions);
 };
 
+exports.userSignupMsg = function (opts) {
+    var mailOptions = {
+        from: 'MEAN Sandbox <meansandbox@gmail.com>',
+        to: 'jsjones96@gmail.com',
+        subject: opts.subject || 'no subject provided',
+        text: opts.text || 'no text provided'
+    };
+
+    transport.sendMail(mailOptions, function (err, info) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(info);
+        }
+    });
+};
+
 function sendEmail(res, mailOpts) {
     transport.sendMail(mailOpts, function (err, info) {
         if (err) {

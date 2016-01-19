@@ -1,5 +1,6 @@
 var User = require('mongoose').model('User');
 var hash = require('../util/hash');
+var mailer = require('./mail');
 
 exports.getUsers = function (req, res) {
     User.find({}, '-salt -password').exec(function (err, users) {
@@ -64,6 +65,8 @@ exports.createUser = function (req, res, next) {
                 user.local.salt = undefined;
                 user.local.password = undefined;
                 res.json({success: true, user: user});
+
+                sendNewUserAlertMsg(user);
             });
         });
     });
@@ -145,3 +148,16 @@ exports.deleteUser = function (req, res) {
         res.send({message: 'user removed', success: true});
     });
 };
+
+function sendNewUserAlertMsg(user) {
+    var msg = 'This message is notification that a new user just registered';
+    msg += ' at meansandbox.com.\n\n';
+    msg += 'User: ' + user.firstName + ' ' + user.lastName + '\n';
+    msg += 'username: ' + user.local.username + '\n';
+    msg += 'Date: ' + user.lastLogin;
+
+    mailer.userSignupMsg({
+        subject: 'New User (' + user.local.username + ') Registered',
+        text: msg
+    });
+}
