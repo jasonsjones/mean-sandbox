@@ -64,7 +64,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve:build": "gulp serve-build --nosync"
+    "serve:build": "./scripts/serve-build-digitalocean.sh"
   },
   "author": "Jason Jones <jsjones96(at)gmail.com>",
   "license": "MIT"
